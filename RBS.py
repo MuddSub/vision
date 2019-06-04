@@ -14,51 +14,51 @@ lg = []
 ################################
 # helpers and driver
 ################################
+def show(img,msg="image",ana=True):
+	cv2.imshow(msg,img)
+	if ana:
+		analysis(img)
+	cv2.waitKey(0)
+def show2(img,msg="image2",ana = True):
 
+	cv2.imshow(msg,img/255)
+	if ana:
+		analysis(img)
+	cv2.waitKey(100)
+def test(name,path1):
+	#"/Users/rongk/Downloads/test.jpg"):
+	if name == "d":
+		path0 ="/home/dhyang/Desktop/Vision/Vision/test2/"
+	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
+	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
+	else:
+		path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
+	path2=".jpg"
+	path = path0+str(path1)+path2
+	print(path)
+	img = cv2.imread(path)
 
-def show(img, msg="image", ana=True):
-    cv2.imshow(msg, img)
-    if ana:
-        analysis(img)
-    cv2.waitKey(0)
-
-
-def show2(img, msg="image2", ana=True):
-
-    cv2.imshow(msg, img/255)
-    if ana:
-        analysis(img)
-    cv2.waitKey(100)
-
-
-def test(path1):
-    #"/Users/rongk/Downloads/test.jpg"):
-    path0 = "/home/dhyang/Desktop/Vision/Vision/test1/"
-    path2 = ".jpg"
-    path = path0+str(path1)+path2
-    print(path)
-    img = cv2.imread(path)
-    cv2.imshow("testing begins initial", img)
-    img2 = filter(img)
-    #show2(img2,'final product')
-    # cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
-
-def drive(path1):
-    #"/Users/rongk/Downloads/test.jpg"):
-    path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
-    path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
-    path0 = "/Users/rongk/Downloads/Vision-2/Vision/test2/"
-    path2 = ".jpg"
-    path = path0+str(path1)+path2
-    img = cv2.imread(path)
-    cv2.imshow("initial", img)
-    img2 = enhance(img)
-    #show2(img2,'final product')
-    # cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
+	cv2.imshow("testing begins initial",img)
+	img2 = filter(img)
+	#show2(img2,'final product')
+	#cv2.waitKey(0)
+	cv2.destroyAllWindows()
+def drive(name,path1):
+	#"/Users/rongk/Downloads/test.jpg"):
+	if name == "d":
+		path0 ="/home/dhyang/Desktop/Vision/Vision/test2/"
+	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
+	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
+	else:
+		path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
+	path2=".jpg"
+	path = path0+str(path1)+path2
+	img = cv2.imread(path)
+	cv2.imshow("initial",img)
+	img2 = enhance(img)
+	#show2(img2,'final product')
+	#cv2.waitKey(0)
+	cv2.destroyAllWindows()
 
 def analysis(img):
     hist, bins = np.histogram(img.ravel(), 256, [0, 256])
@@ -684,22 +684,20 @@ def FWluminanceWeight(img, L):
     gCnl = np.float32(gCnl)
     rCnl = np.float32(rCnl)
     '''
-	for i in range(len(L)):
-		for j in range(len(L[0])):
-			part1 = (bCnl[i][j]/255.0 - L[i][j])**2
-			part2 = (gCnl[i][j]/255.0 - L[i][j])**2
-			part3 = (rCnl[i][j]/255.0 - L[i][j])**2
-			lum[i][j]
-	'''
+    for i in range(len(L)):
+	    for j in range(len(L[0])):
+    		part1 = (bCnl[i][j]/255.0 - L[i][j])**2
+    		part2 = (gCnl[i][j]/255.0 - L[i][j])**2
+                part3 = (rCnl[i][j]/255.0 - L[i][j])**2
+	    	lum[i][j]
+    '''
 
-    lum = (1+(bCnl/255 - L)**2 + (gCnl/255 - L)**2 + (rCnl/255 - L)**2)**0.5
+    lum =(1+(bCnl/255 -L)**2 + (gCnl/255 -L)**2 + (rCnl/255 - L)**2)**0.5
 
     return lum
 
-
 def main():
-    print(int(sys.argv[1]))
-    test(int(sys.argv[1]))
+    test(sys.argv[1],int(sys.argv[2]))
 
 
 if __name__ == "__main__":
