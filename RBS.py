@@ -33,7 +33,7 @@ def show2(img, msg="image2", ana=True):
 
 def test(path1):
     #"/Users/rongk/Downloads/test.jpg"):
-    path0 = "/home/dhyang/Desktop/Vision/Vision/test2/"
+    path0 = "/home/dhyang/Desktop/Vision/Vision/test1/"
     path2 = ".jpg"
     path = path0+str(path1)+path2
     print(path)
