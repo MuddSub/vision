@@ -35,7 +35,9 @@ def test(name,path1):
 		path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
 	path2=".jpg"
 	path = path0+str(path1)+path2
+	print(path)
 	img = cv2.imread(path)
+	
 	cv2.imshow("testing begins initial",img)
 	img2 = filter(img)
 	#show2(img2,'final product')

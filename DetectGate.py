@@ -34,10 +34,18 @@ from scipy.ndimage.interpolation import zoom
 # In[86]:
 
 
-def importImage(file):
-	img = cv2.imread(file)
-	return img
 
+def show(img,msg="image",ana=True):
+	cv2.imshow(msg,img)
+	if ana:
+		analysis(img)
+	cv2.waitKey(0)
+
+def show2(img,msg="image2",ana = True):
+	cv2.imshow(msg,img/255)
+	if ana:
+		analysis(img)
+	cv2.waitKey(100)
 
 # ## Image Processing
 
@@ -562,6 +570,7 @@ def displayResult():
 	
 def tkInit(o1, original, segmented, newImg, backSubtract):
 	print("Launching Tk Visualization")
+	global root 
 	root.attributes("-fullscreen", True) 
 	root.title = ("Underwater Gate Computer Vision")
 	cv2.imwrite('result.jpg', o1)
@@ -612,8 +621,8 @@ def Hough(img):
 # In[80]:
 
 
-def mainImg(file,name):
-	original = importImage(file)
+def mainImg(img,name):
+	original = img
 	origin = copy.deepcopy(original)
 	o1 = original
 	segmented = threshold(original)
@@ -711,18 +720,25 @@ def drive(name,num):
 # In[ ]:
 
 
-
+global root 
 
 def main():
 	name=sys.argv[1]
-	num=sys.argv[2]
-	
+	path1=sys.argv[2]
+	global root 
 	root = tk.Tk()
-	if name == "k":
-		path = "/Users/krong/Downloads/visionCode/Vision/test2/"
-	elif name =="d":
-		path = "/Users/Daniel Yang/Desktop/Vision/"
-	newI = mainImg(path+str(num)+".jpg","new image")
+	if name == "d":
+		path0 ="/home/dhyang/Desktop/Vision/Vision/test2/"
+	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
+	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
+	else:
+		path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
+	path2=".jpg"
+	path = path0+str(path1)+path2
+	print(path)
+	img = cv2.imread(path)
+	cv2.imshow("a",img)
+	newI = mainImg(img,"new image")
 
 if __name__ == "__main__":
     main()
