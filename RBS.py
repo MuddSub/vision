@@ -25,11 +25,14 @@ def show2(img,msg="image2",ana = True):
 	if ana:
 		analysis(img)
 	cv2.waitKey(100)
-def test(path1):
+def test(name,path1):
 	#"/Users/rongk/Downloads/test.jpg"):
-	path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
-	path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
-	path0 = "/Users/rongk/Downloads/Vision-2/Vision/test2/"
+	if name == "d":
+		path0 ="/home/dhyang/Desktop/Vision/Vision/test2/"
+	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
+	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
+	else:
+		path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
 	path2=".jpg"
 	path = path0+str(path1)+path2
 	img = cv2.imread(path)
@@ -38,11 +41,14 @@ def test(path1):
 	#show2(img2,'final product')
 	#cv2.waitKey(0)
 	cv2.destroyAllWindows()
-def drive(path1):
+def drive(name,path1):
 	#"/Users/rongk/Downloads/test.jpg"):
-	path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
-	path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
-	path0 = "/Users/rongk/Downloads/Vision-2/Vision/test2/"
+	if name == "d":
+		path0 ="/home/dhyang/Desktop/Vision/Vision/test2/"
+	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
+	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
+	else:
+		path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
 	path2=".jpg"
 	path = path0+str(path1)+path2
 	img = cv2.imread(path)
@@ -630,4 +636,9 @@ def FWluminanceWeight(img,L):
 	lum =(1+(bCnl/255 -L)**2 + (gCnl/255 -L)**2 + (rCnl/255 - L)**2)**0.5	
 	
 	return lum
+def main():
+    test(sys.argv[1],int(sys.argv[2]))
 
+
+if __name__ == "__main__":
+    main()
