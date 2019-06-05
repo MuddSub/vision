@@ -1,4 +1,3 @@
-# from RemoveBackScatter and Java codes by Isaac Changhua 
 import cv2
 import numpy as np
 import copy
@@ -53,7 +52,7 @@ def show2(img,msg="image2",ana = True):
 def open(name,path1):
 	#"/Users/rongk/Downloads/test.jpg"):
 	if name == "d":
-		path0 ="/home/dhyang/Desktop/Vision/Vision/test2/"
+		path0 ="/home/dhyang/Desktop/Vision/Vision/test1/"
 	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
 	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
 	else:
@@ -74,13 +73,13 @@ def analysis(img):
 #######################################
 def filter(image,blkSize=10*10,patchSize=8,lamb=10,gamma=1.7,r=10,eps=1e-6,level=5):
 	image = np.array(image,np.float32)
-	
+
 	bgr = cv2.split(image)
 	#show(bgr[2]/255,"initial red",False)
 
 	#image decomposition, probably key
 	decomposed = IDilluRefDecompose(image)
-	AL, RL = decomposed[0], decomposed[1]	
+	AL, RL = decomposed[0], decomposed[1]
 
 	RL = FsimpleColorBalance(RL,colorBalanceRatio) #checked
 	#show2(RL,"color corrected reflective") #checked
@@ -88,12 +87,12 @@ def filter(image,blkSize=10*10,patchSize=8,lamb=10,gamma=1.7,r=10,eps=1e-6,level
 	#show(bgr[0]/255,"RL blue",False)
 	#show(bgr[1]/255,"RL green",False)
 	#show(bgr[2]/255,"RL red",False)
-	return RL	
+	return RL
 ####################################################
-#Img Decompose: weighted image decompose 
+#Img Decompose: weighted image decompose
 ####################################################
 def IDilluRefDecompose(img):
-	AList=[] 
+	AList=[]
 	# illumination
 	RList=[]
 	# reflectance
@@ -114,7 +113,7 @@ def IDilluRefDecompose(img):
 # Filter
 ######################################
 def FsimpleColorBalance(img,percent):
-	if percent<=0:	
+	if percent<=0:
 		percent = 5
 	img = np.array(img,np.float32)
 	rows = img.shape[0]
@@ -124,7 +123,7 @@ def FsimpleColorBalance(img,percent):
 	if chnls == 3:
 		channels = cv2.split(img)
 	else:
-		channels = copy.deepcopy(img) 
+		channels = copy.deepcopy(img)
 		# Not sure
 	channels = np.array(channels)
 	for i in range(chnls):
@@ -132,8 +131,8 @@ def FsimpleColorBalance(img,percent):
 		flat =list (channels[i].flat)
 		flat.sort()
 		lowVal = flat[int(np.floor(len(flat)*halfPercent))]
-		
-	
+
+
 		topVal = flat[int(np.ceil(len(flat)*(1-halfPercent)))]
 		channels[i] = np.where(channels[i]>lowVal,channels[i],lowVal)
 		channels[i] = np.where(channels[i]<topVal,channels[i],topVal)
@@ -150,7 +149,7 @@ def binarization(img):
 	thresh1 = cv2.bitwise_not(thresh1)
 	return thresh1
 
-	
+
 
 def getLines(newImg):
 	csums = np.sum(newImg, axis=0)
@@ -175,8 +174,8 @@ def getLines(newImg):
 	#error = lineLocs[2][1]-(lineLocs[0][1]+lineLocs[1][1])/2
 	error = 0
 	return lineLocs, error
-	
-		
+
+
 def plotLines(lineLocs, original):
 	for i in range(2):
 		cv2.line(original, (lineLocs[i][0], 0), (lineLocs[i][0], original.shape[0]), (0,255,0), 3)
@@ -200,31 +199,31 @@ def adjust(image):
 	alphah = 3
 	alphas = 3
 	alphav = 5
-	
-	
+
+
 	h,s,v=cv2.split(image)
 	new_image = np.zeros(image.shape, image.dtype)
 	h1,s1,v1 = cv2.split(new_image)
-	
+
 	maximum = h.mean()
 	#maximum = h.min()
 	print(maximum)
 	beta = 127-alphah*maximum # Simple brightness control
 	print(beta)
 	h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
-	
+
 	maximum = s.mean()
 	print(maximum)
 	beta = 127-alphas*maximum # Simple brightness control
 	print(beta)
 	s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
-	
-	
+
+
 	maximum = v.mean()
 	beta = 127-alphav*maximum # Simple brightness control
 	print(beta)
 	v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
-	
+
 	new_image = cv2.merge([h1,s1,v1])
 	return new_image
 
@@ -239,24 +238,24 @@ def mainImg(img):
 	original = filter(original)
 	show2(original,"filtered",False)
 	segmented = segment(original)
-	
+
 	segmented = adjust(segmented)
-	
-	
+
+
 	#Higher discernability = lower distinguishing power
-	
+
 	discernability = 31
-	
+
 	newImg = cv2.medianBlur(segmented,discernability)
 	newImg = 255-cv2.absdiff(segmented, newImg)
 
 	newImg1 = binarization(newImg)
-	
+
 	lineLocs, certainty = getLines(newImg1)
 	o1 = plotLines(lineLocs,o1)
 	print("Certainty: ", certainty)
-	
-	
+
+
 	cv2.imshow("alpha",segmented)
 	cv2.imshow("binarization",newImg1)
 	cv2.imshow("background subtraction",newImg)
