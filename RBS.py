@@ -28,7 +28,7 @@ def show2(img,msg="image2",ana = True):
 def test(name,path1):
 	#"/Users/rongk/Downloads/test.jpg"):
 	if name == "d":
-		path0 ="/home/dhyang/Desktop/Vision/Vision/test2/"
+		path0 ="/home/dhyang/Desktop/Vision/Vision/test1/"
 	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
 	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
 	else:
@@ -86,6 +86,7 @@ def filter(image, blkSize=10*10, patchSize=8, lamb=10, gamma=1.7, r=10, eps=1e-6
 
     RL = FsimpleColorBalance(RL, colorBalanceRatio)  # checked
     show2(RL, "color corrected reflective")  # checked
+
     bgr = cv2.split(RL)
     show(bgr[0]/255, "RL blue", False)
     show(bgr[1]/255, "RL green", False)
