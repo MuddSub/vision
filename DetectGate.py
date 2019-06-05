@@ -5,7 +5,7 @@
 
 # In[1]:
 
-
+import sys
 import glob
 import os
 import subprocess
@@ -20,7 +20,7 @@ import copy
 import pylab as pl
 import math
 import tkinter as tk
-from IPython import display
+#from IPython import display
 from scipy.spatial.distance import cdist
 from scipy.stats import linregress
 from scipy.signal import convolve2d, gaussian, argrelextrema
@@ -687,7 +687,7 @@ def mainImg(file,name):
 def drive(name,num):
 	root = tk.Tk()
 	if name == "k":
-		path = "/Users/krong/Downloads/visionCode/Vision/test2/")
+		path = "/Users/krong/Downloads/visionCode/Vision/test2/"
 	elif name =="d":
 		path = "/Users/Daniel Yang/Desktop/Vision/"
 	newI = mainImg(path+str(num)+".jpg","new image")
@@ -713,3 +713,16 @@ def drive(name,num):
 
 
 
+def main():
+	name=sys.argv[1]
+	num=sys.argv[2]
+	
+	root = tk.Tk()
+	if name == "k":
+		path = "/Users/krong/Downloads/visionCode/Vision/test2/"
+	elif name =="d":
+		path = "/Users/Daniel Yang/Desktop/Vision/"
+	newI = mainImg(path+str(num)+".jpg","new image")
+
+if __name__ == "__main__":
+    main()
