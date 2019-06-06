@@ -58,7 +58,7 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/Vision/bins/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/gate2/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -158,8 +158,9 @@ def FsimpleColorBalance(img, percent):
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
-def binarization(gray):
-    ret, thresh1 = cv2.threshold(gray,150, 255, cv2.THRESH_BINARY_INV)
+def binarization(img):
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    ret, thresh1 = cv2.threshold(gray, 245, 255, cv2.THRESH_BINARY_INV)
     thresh1 = cv2.bitwise_not(thresh1)
     return thresh1
 
@@ -212,8 +213,8 @@ def segment(image):
 
 
 def adjust(image):
-    alphah = 0
-    alphas = 0
+    alphah = 3
+    alphas = 3
     alphav = 5
 
     h, s, v = cv2.split(image)
@@ -241,19 +242,7 @@ def adjust(image):
     new_image = cv2.merge([h1, s1, v1])
     return new_image
 
-
-def boundingRectangle(original,thresh):
-    contours,h = cv2.findContours(thresh,1,2)
-    for cnt in contours:
-        rect = cv2.minAreaRect(cnt)
-        box = cv2.boxPoints(rect)
-        box = np.int0(box)
-        area = cv2.contourArea(cnt)
-        if area > 1000 and area < 100000:
-            cv2.drawContours(original,[box],0,(0,0,255),2)
-
 ############################################
-
 
 
 def mainImg(img):
@@ -265,24 +254,28 @@ def mainImg(img):
     cv2.imshow("original", origin)
     original = filter(original)
     show2(original, "filtered", False)
+    segmented = segment(original)
 
-    segmented = adjust(original)
+    segmented = adjust(segmented)
 
-    #color filter red
-    r = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
-    redSpace = r[:,:,2]
+    # Higher discernability = lower distinguishing power
 
-    #binarization
-    redSpace = cv2.bitwise_not(redSpace)
-    newImg1 = binarization(redSpace)
+    discernability = 31
 
-    boundingRectangle(o1,newImg1)
+    newImg = cv2.medianBlur(segmented, discernability)
+    newImg = 255-cv2.absdiff(segmented, newImg)
+
+    newImg1 = binarization(newImg)
+
+    lineLocs, certainty = getLines(newImg1)
+    o1 = plotLines(lineLocs, o1)
+    print("Certainty: ", certainty)
 
     #segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
     #r, g, b = cv2.split(segmented)
     cv2.imshow("alpha", segmented)
     cv2.imshow("binarization", newImg1)
-    cv2.imshow("background subtraction", redSpace)
+    cv2.imshow("background subtraction", newImg)
     cv2.imshow("result", o1)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
