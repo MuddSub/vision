@@ -28,7 +28,7 @@ def show2(img,msg="image2",ana = True):
 def test(name,path1):
 	#"/Users/rongk/Downloads/test.jpg"):
 	if name == "d":
-		path0 ="/home/dhyang/Desktop/Vision/Vision/test1/"
+		path0 ="/home/dhyang/Desktop/Vision/Vision/bins/"
 	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
 	#path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
 	else:
