@@ -2,30 +2,7 @@ import cv2
 import numpy as np
 import copy
 import sys
-from matplotlib import pyplot as plt
-import glob
-import os
-import subprocess
-import numpy as np
-import copy
-from scipy import ndimage
-from scipy import signal
-import matplotlib.patches as patches
 import time
-import copy
-import pylab as pl
-import math
-import tkinter as tk
-#from IPython import display
-from scipy.spatial.distance import cdist
-from scipy.stats import linregress
-from scipy.signal import convolve2d, gaussian, argrelextrema
-from PIL import ImageTk, Image
-import cv2
-
-from PIL import Image
-from scipy.ndimage.interpolation import zoom
-
 
 ###################################################
 colorBalanceRatio = 5
@@ -58,7 +35,7 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/Vision/gate2/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -81,16 +58,12 @@ def analysis(img):
 #######################################
 
 
-def filter(image, blkSize=10*10, patchSize=8, lamb=10, gamma=1.7, r=10, eps=1e-6, level=5):
+def reflect(image, blkSize=10*10, patchSize=8, lamb=10, gamma=1.7, r=10, eps=1e-6, level=5):
     image = np.array(image, np.float32)
-
     bgr = cv2.split(image)
     #show(bgr[2]/255,"initial red",False)
-
     # image decomposition, probably key
-    decomposed = IDilluRefDecompose(image)
-    AL, RL = decomposed[0], decomposed[1]
-
+    RL = IDilluRefDecompose(image)
     RL = FsimpleColorBalance(RL, colorBalanceRatio)  # checked
     # show2(RL,"color corrected reflective") #checked
     bgr = cv2.split(RL)
@@ -104,29 +77,23 @@ def filter(image, blkSize=10*10, patchSize=8, lamb=10, gamma=1.7, r=10, eps=1e-6
 
 
 def IDilluRefDecompose(img):
-    AList = []
-    # illumination
     RList = []
-    # reflectance
     bgr = cv2.split(img)
     for cnl in bgr:
-        alCnl = copy.deepcopy(cnl)
         rlcnl = copy.deepcopy(cnl)
         maxVal = np.asmatrix(cnl).max()
         k = np.multiply(cnl, .5/maxVal)
         rlcnl = np.multiply(k, rlcnl)
-        alCnl = np.subtract(alCnl, rlcnl)
-        AList.append(alCnl)
         RList.append(rlcnl)
-    Al = cv2.merge(AList)
     Rl = cv2.merge(RList)
-    return [Al, Rl]
+    return Rl
 ######################################
 # Filter
 ######################################
 
 
 def FsimpleColorBalance(img, percent):
+    start_time = time.time()
     if percent <= 0:
         percent = 5
     img = np.array(img, np.float32)
@@ -140,19 +107,27 @@ def FsimpleColorBalance(img, percent):
         channels = copy.deepcopy(img)
         # Not sure
     channels = np.array(channels)
+
     for i in range(chnls):
         # find the low and high precentile values based on input percentile
-        flat = list(channels[i].flat)
+        flat = np.array(channels[i].flat)
+        print("--- %s seconds ---" % (time.time() - start_time))
         flat.sort()
+        print("--- %s seconds ---" % (time.time() - start_time))
         lowVal = flat[int(np.floor(len(flat)*halfPercent))]
 
         topVal = flat[int(np.ceil(len(flat)*(1-halfPercent)))]
         channels[i] = np.where(channels[i] > lowVal, channels[i], lowVal)
         channels[i] = np.where(channels[i] < topVal, channels[i], topVal)
+        print("--- %s seconds ---" % (time.time() - start_time))
         channels[i] = cv2.normalize(
             channels[i], channels[i], 0.0, 255.0/2, cv2.NORM_MINMAX)
+        print("--- %s seconds ---" % (time.time() - start_time))
         channels[i] = np.float32(channels[i])
+        print("=======================================")
+
     result = cv2.merge(channels)
+    print("--- %s seconds ---" % (time.time() - start_time))
     return result
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -165,7 +140,7 @@ def binarization(img):
     return thresh1
 
 
-def getLines(newImg):
+def getLines(newImg,graph):
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
     lineLocs = []
@@ -179,7 +154,7 @@ def getLines(newImg):
         if rhs >= newImg.shape[1]:
             rhs = newImg.shape[1]-1
         csums[lhs:rhs] = 1000000
-    if True:
+    if graph:
         plt.plot(csums1)
         for i in range(len(lineLocs)):
             plt.axvline(x=lineLocs[i][0], color='r', linewidth=1)
@@ -223,20 +198,15 @@ def adjust(image):
 
     maximum = h.mean()
     #maximum = h.min()
-    print(maximum)
     beta = 127-alphah*maximum  # Simple brightness control
-    print(beta)
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
-    print(maximum)
     beta = 127-alphas*maximum  # Simple brightness control
-    print(beta)
     s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
     maximum = v.mean()
     beta = 127-alphav*maximum  # Simple brightness control
-    print(beta)
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
     new_image = cv2.merge([h1, s1, v1])
@@ -246,14 +216,17 @@ def adjust(image):
 
 
 def mainImg(img):
+    start_time = time.time()
     original = img
     origin = copy.deepcopy(original)
 
     o1 = original
+    print("--- %s seconds ---" % (time.time() - start_time))
 
-    cv2.imshow("original", origin)
-    original = filter(original)
-    show2(original, "filtered", False)
+    #cv2.imshow("original", origin)
+    original = reflect(original)
+    print("--- %s seconds ---" % (time.time() - start_time))
+
     segmented = segment(original)
 
     segmented = adjust(segmented)
@@ -266,16 +239,15 @@ def mainImg(img):
     newImg = 255-cv2.absdiff(segmented, newImg)
 
     newImg1 = binarization(newImg)
+    print("--- %s seconds ---" % (time.time() - start_time))
 
-    lineLocs, certainty = getLines(newImg1)
+    lineLocs, certainty = getLines(newImg1,False)
     o1 = plotLines(lineLocs, o1)
-    print("Certainty: ", certainty)
+    print("--- %s seconds ---" % (time.time() - start_time))
 
-    #segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
-    #r, g, b = cv2.split(segmented)
     cv2.imshow("alpha", segmented)
     cv2.imshow("binarization", newImg1)
-    cv2.imshow("background subtraction", newImg)
+    #cv2.imshow("background subtraction", newImg)
     cv2.imshow("result", o1)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
