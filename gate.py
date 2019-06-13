@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import copy
+from skimage.data import page
+from skimage.filters import (threshold_otsu, threshold_niblack, threshold_sauvola)
 import os
 import sys
 import time
@@ -134,8 +136,14 @@ def FsimpleColorBalance(img, percent):
 
 def binarization(img):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    ret, thresh1 = cv2.threshold(gray, 245, 255, cv2.THRESH_BINARY_INV)
+    #gray = cv2.bilateralFilter(gray,9,10,15)
+    thresh1 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 215, 5)
+    #ret, thresh1 = cv2.threshold(gray, 250, 255, cv2.THRESH_BINARY_INV)
+
     thresh1 = cv2.bitwise_not(thresh1)
+    #thresh1 = cv2.bilateralFilter(thresh1,9,75,75)
+    retval2,thresh2 = cv2.threshold(gray,5,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+
     return thresh1
 
 
@@ -212,8 +220,42 @@ def adjust(image):
     new_image = cv2.merge([h1, s1, v1])
     return new_image
 
+
+def adjustRGB(image):
+    alphah = 3
+    alphas = 3
+    alphav = 0
+
+    image = cv2.cvtColor(image, cv2.COLOR_HSV2BGR)
+    h, s, v = cv2.split(image)
+    new_image = np.zeros(image.shape, image.dtype)
+    h1, s1, v1 = cv2.split(new_image)
+
+    maximum = h.mean()
+    #maximum = h.min()
+    beta = 127-alphah*maximum  # Simple brightness control
+    h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
+
+    maximum = s.mean()
+    beta = 127-alphas*maximum  # Simple brightness control
+    s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
+
+    maximum = v.mean()
+    beta = 127-alphav*maximum  # Simple brightness control
+    v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
+
+    new_image = cv2.merge([h1, s1, v1])
+    new_image = cv2.cvtColor(new_image,cv2.COLOR_BGR2HSV);
+    return new_image
+
 ############################################
 
+def HoughLines(gray):
+    edges = cv2.Canny(gray,50,150,apertureSize = 3)
+    lines = cv2.HoughLinesP(image=edges,rho=0.02,theta=np.pi/500, threshold=0,lines=np.array([]), minLineLength = 30,maxLineGap=2)
+    a,b,c = lines.shape
+    for i in range(a):
+        cv2.line(gray, (lines[i][0][0], lines[i][0][1]), (lines[i][0][2], lines[i][0][3]), (0, 0, 255), 3, cv2.LINE_AA)
 
 def mainImg(img):
     start_time = time.time()
@@ -228,34 +270,37 @@ def mainImg(img):
     segmented = segment(original)
 
     segmented = adjust(segmented)
+    #segmented = adjustRGB(segmented)
 
     # Higher discernability = lower distinguishing power
 
-    discernability = 41
+    discernability = 25
 
     newImg = cv2.medianBlur(segmented, discernability)
     newImg = 255-cv2.absdiff(segmented, newImg)
 
-    newImg1 = cv2.cvtColor(newImg, cv2.COLOR_BGR2GRAY)
+    #newImg = cv2.cvtColor(newImg, cv2.COLOR_BGR2GRAY)
     #newImg1 = binarization(newImg)
     #newImg1 = cv2.fastNlMeansDenoisingColored(newImg,None,10,0,7,21)
     newImg1 = binarization(newImg)
     #newImg1 = cv2.bilateralFilter(newImg1,9,75,75)
 
+    #experimental code: blob subtraction
+    #mask = cv2.dilate(newImg1,np.ones((1,10)),iterations=1)
+    newImg1 = cv2.erode(newImg1,np.ones((1,2)),iterations=1)
+    #newImg1_inv = cv2.bitwise_not(newImg1)
+    #newImg2 = cv2.multiply(newImg1_inv, mask)
+    #newImg2 = cv2.bitwise_not(newImg2)
 
-    mask = cv2.dilate(newImg1,np.ones((1,10)),iterations=1)
-    mask = cv2.erode(mask,np.ones((11,11)),iterations=1)
-    newImg1_inv = cv2.bitwise_not(newImg1)
-
-    newImg2 = cv2.multiply(newImg1_inv, mask)
-    newImg2 = cv2.bitwise_not(newImg2)
-    lineLocs, certainty = getLines(newImg2,True)
+    lineLocs, certainty = getLines(newImg1,True)
     o1 = plotLines(lineLocs, o1)
+
+    #HoughLines(newImg2)
 
     cv2.imshow("alpha", segmented)
     cv2.imshow("binarization", newImg1)
-    cv2.imshow("mask", mask)
-    cv2.imshow("multiplied",newImg2)
+    #cv2.imshow("mask", mask)
+    #cv2.imshow("multiplied",newImg2)
     cv2.imshow("background subtraction", newImg)
     cv2.imshow("result", o1)
     cv2.waitKey(0)
