@@ -128,7 +128,7 @@ def FsimpleColorBalance(img, percent):
 
 
 def binarization(gray):
-    ret, thresh1 = cv2.threshold(gray,200, 255, cv2.THRESH_BINARY)
+    ret, thresh1 = cv2.threshold(gray,150, 255, cv2.THRESH_BINARY_INV)
     thresh1 = cv2.bitwise_not(thresh1)
     return thresh1
 
@@ -181,9 +181,9 @@ def segment(image):
 
 
 def adjust(image):
-    alphah = 3
-    alphas = 3
-    alphav = 3
+    alphah = 0
+    alphas = 0
+    alphav = 5
 
     h, s, v = cv2.split(image)
     new_image = np.zeros(image.shape, image.dtype)
@@ -229,17 +229,19 @@ def mainImg(img):
 
     #cv2.imshow("original", origin)
     original = reflect(original)
-    show2(original, "filtered", False)
+    #show2(original, "filtered", False)
     segmented = adjust(original)
+    #color filter red
+    r = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
+    redSpace = r[:,:,2]
 
     #binarization
-    newImg1 = cv2.cvtColor(segmented, cv2.COLOR_BGR2GRAY)
-
-    newImg1 = binarization(newImg1)
+    redSpace = cv2.bitwise_not(redSpace)
+    newImg1 = binarization(redSpace)
     boundingRectangle(o1,newImg1)
-    segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
+    #segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
     cv2.imshow("alpha", segmented)
-    cv2.imshow("binarization", newImg1)
+    #cv2.imshow("binarization", newImg1)
     #cv2.imshow("background subtraction", redSpace)
     end_time = time.time()
     cv2.imshow("result", o1)
