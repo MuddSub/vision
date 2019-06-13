@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
+import matplotlib.pyplot as plt
 import copy
+import os
 import sys
 import time
 
@@ -35,14 +37,17 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/Vision/gate2/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate2/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/gate5/gate_training_"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
         path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
-    path2 = ".jpg"
-    path = path0+str(path1)+path2
-    img = cv2.imread(path)
+    path = path0+str(path1)
+    if os.path.isfile(path+'.jpg'):
+        img = cv2.imread(path+'.jpg')
+    else:
+        img = cv2.imread(path+'.png')
     return img
 
 
@@ -138,7 +143,7 @@ def getLines(newImg,graph):
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
     lineLocs = []
-    leeway = 100
+    leeway = 20
     for i in range(2):
         lineLocs.append([np.argmin(csums), csums[np.argmin(csums)]])
         lhs = lineLocs[i][0]-leeway
@@ -152,6 +157,7 @@ def getLines(newImg,graph):
         plt.plot(csums1)
         for i in range(len(lineLocs)):
             plt.axvline(x=lineLocs[i][0], color='r', linewidth=1)
+        plt.ioff()
         plt.show()
     newImg = cv2.cvtColor(newImg, cv2.COLOR_GRAY2BGR)
     #error = lineLocs[2][1]-(lineLocs[0][1]+lineLocs[1][1])/2
@@ -184,7 +190,7 @@ def segment(image):
 def adjust(image):
     alphah = 3
     alphas = 3
-    alphav = 5
+    alphav = 3
 
     h, s, v = cv2.split(image)
     new_image = np.zeros(image.shape, image.dtype)
@@ -225,19 +231,32 @@ def mainImg(img):
 
     # Higher discernability = lower distinguishing power
 
-    discernability = 31
+    discernability = 41
 
     newImg = cv2.medianBlur(segmented, discernability)
     newImg = 255-cv2.absdiff(segmented, newImg)
 
+    newImg1 = cv2.cvtColor(newImg, cv2.COLOR_BGR2GRAY)
+    #newImg1 = binarization(newImg)
+    #newImg1 = cv2.fastNlMeansDenoisingColored(newImg,None,10,0,7,21)
     newImg1 = binarization(newImg)
+    #newImg1 = cv2.bilateralFilter(newImg1,9,75,75)
 
-    lineLocs, certainty = getLines(newImg1,False)
+
+    mask = cv2.dilate(newImg1,np.ones((1,10)),iterations=1)
+    mask = cv2.erode(mask,np.ones((11,11)),iterations=1)
+    newImg1_inv = cv2.bitwise_not(newImg1)
+
+    newImg2 = cv2.multiply(newImg1_inv, mask)
+    newImg2 = cv2.bitwise_not(newImg2)
+    lineLocs, certainty = getLines(newImg2,True)
     o1 = plotLines(lineLocs, o1)
 
     cv2.imshow("alpha", segmented)
     cv2.imshow("binarization", newImg1)
-    #cv2.imshow("background subtraction", newImg)
+    cv2.imshow("mask", mask)
+    cv2.imshow("multiplied",newImg2)
+    cv2.imshow("background subtraction", newImg)
     cv2.imshow("result", o1)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
