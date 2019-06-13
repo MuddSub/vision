@@ -3,6 +3,7 @@ import numpy as np
 import copy
 import sys
 import time
+import os
 
 ###################################################
 colorBalanceRatio = 5
@@ -35,14 +36,19 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/Vision/gate2/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
         path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
-    path2 = ".jpg"
-    path = path0+str(path1)+path2
-    img = cv2.imread(path)
+    if os.path.exists(path0+str(path1)+'.png'):
+        path2 = ".png"
+        path = path0+str(path1)+path2
+        img = cv2.imread(path)
+    else:
+        path2 = '.jpg'
+        path = path0+str(path1)+path2
+        img = cv2.imread(path)
     return img
 
 
@@ -138,7 +144,7 @@ def getLines(newImg,graph):
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
     lineLocs = []
-    leeway = 100
+    leeway = 25
     for i in range(2):
         lineLocs.append([np.argmin(csums), csums[np.argmin(csums)]])
         lhs = lineLocs[i][0]-leeway
@@ -177,8 +183,8 @@ def plotLines(lineLocs, original):
 
 def segment(image):
     mdpt = (int)(image.shape[0]/2)
-    striph = 150
-    return image[mdpt - striph: mdpt + striph, :]
+    factor = 0.5
+    return image[(int)(mdpt - factor*mdpt):(int)( mdpt + factor*mdpt),:]
 
 
 def adjust(image):
@@ -219,7 +225,7 @@ def mainImg(img):
     #cv2.imshow("original", origin)
     original = reflect(original)
 
-    segmented = segment(original)
+    segmented = original
 
     segmented = adjust(segmented)
 
@@ -231,7 +237,11 @@ def mainImg(img):
     newImg = 255-cv2.absdiff(segmented, newImg)
 
     newImg1 = binarization(newImg)
-
+    kernel = np.ones((10,1),np.uint8)
+    newImg1 =  cv2.erode(newImg1,np.ones((4,1),np.uint8),iterations=1)
+    #newImg1 = cv2.dilate(newImg1,kernel,iterations = 2)
+    #newImg1 = cv2.erode(newImg1,np.ones((1,3),np.uint8),iterations = 1)
+    newImg1 = segment(newImg1)
     lineLocs, certainty = getLines(newImg1,False)
     o1 = plotLines(lineLocs, o1)
 
