@@ -39,8 +39,8 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate2/"
-        path0 = "/home/dhyang/Desktop/Vision/Vision/gate5/gate_training_"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate3/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -141,8 +141,8 @@ def binarization(img):
     #ret, thresh1 = cv2.threshold(gray, 250, 255, cv2.THRESH_BINARY_INV)
 
     thresh1 = cv2.bitwise_not(thresh1)
-    #thresh1 = cv2.bilateralFilter(thresh1,9,75,75)
-    retval2,thresh2 = cv2.threshold(gray,5,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+    thresh1 = cv2.bilateralFilter(thresh1,9,75,75)
+
 
     return thresh1
 
@@ -152,6 +152,8 @@ def getLines(newImg,graph):
     csums1 = copy.deepcopy(csums)
     lineLocs = []
     leeway = 20
+
+
     for i in range(2):
         lineLocs.append([np.argmin(csums), csums[np.argmin(csums)]])
         lhs = lineLocs[i][0]-leeway
@@ -252,10 +254,11 @@ def adjustRGB(image):
 
 def HoughLines(gray):
     edges = cv2.Canny(gray,50,150,apertureSize = 3)
-    lines = cv2.HoughLinesP(image=edges,rho=0.02,theta=np.pi/500, threshold=0,lines=np.array([]), minLineLength = 30,maxLineGap=2)
+    lines = cv2.HoughLinesP(image=edges,rho=1,theta=np.pi/180, threshold=0,lines=np.array([]), minLineLength = 30,maxLineGap=4)
     a,b,c = lines.shape
     for i in range(a):
-        cv2.line(gray, (lines[i][0][0], lines[i][0][1]), (lines[i][0][2], lines[i][0][3]), (0, 0, 255), 3, cv2.LINE_AA)
+        if (abs((lines[i][0][0]-lines[i][0][2])/(lines[i][0][1]-lines[i][0][3]) ) < 0.2):
+            cv2.line(gray, (lines[i][0][0], lines[i][0][1]), (lines[i][0][2], lines[i][0][3]), (0, 0, 255), 3, cv2.LINE_AA)
 
 def mainImg(img):
     start_time = time.time()
@@ -286,36 +289,39 @@ def mainImg(img):
     #newImg1 = cv2.bilateralFilter(newImg1,9,75,75)
 
     #experimental code: blob subtraction
-    #mask = cv2.dilate(newImg1,np.ones((1,10)),iterations=1)
-    newImg1 = cv2.erode(newImg1,np.ones((1,2)),iterations=1)
+    for i in range(0):
+        newImg1 = cv2.dilate(newImg1,np.ones((2,1)),iterations=1)
+        newImg1 = cv2.erode(newImg1,np.ones((2,1)),iterations=2)
     #newImg1_inv = cv2.bitwise_not(newImg1)
     #newImg2 = cv2.multiply(newImg1_inv, mask)
     #newImg2 = cv2.bitwise_not(newImg2)
 
-    lineLocs, certainty = getLines(newImg1,True)
-    o1 = plotLines(lineLocs, o1)
+    #lineLocs, certainty = getLines(newImg1,True)
+    #o1 = plotLines(lineLocs, o1)
 
-    #HoughLines(newImg2)
+    #HoughLines(newImg1)
 
-    cv2.imshow("alpha", segmented)
-    cv2.imshow("binarization", newImg1)
+    #cv2.imshow("alpha", segmented)
+    #cv2.imshow("binarization", newImg1)
     #cv2.imshow("mask", mask)
     #cv2.imshow("multiplied",newImg2)
-    cv2.imshow("background subtraction", newImg)
-    cv2.imshow("result", o1)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.imshow("background subtraction", newImg)
+    #cv2.imshow("result", o1)
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
-    return segmented
+    return newImg1
 ####################################################
 #########################################################
 #####################################################
 
 
 def main():
-    img = open(sys.argv[1], int(sys.argv[2]))
-    mainImg(img)
-    print("Vision Code")
+    for i in range(1,128):
+        print('Processed: '+str(i))
+        img = open(sys.argv[1], i)
+        b = mainImg(img)
+        cv2.imwrite('/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test_binarized/'+str(i)+'.jpg',b)
 
 
 if __name__ == "__main__":
