@@ -35,12 +35,17 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/Vision/bins/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/bins1/images/bins_training_"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
+<<<<<<< HEAD
         path0 = "/Users/rongk/Downloads/visionCode/Vision/bins/"
     path2 = ".jpg"
+=======
+        path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
+    path2 = ".png"
+>>>>>>> 4d50d2269d8c248bfa8e869f8a22640ccb8f167c
     path = path0+str(path1)+path2
     img = cv2.imread(path)
     return img
@@ -128,7 +133,7 @@ def FsimpleColorBalance(img, percent):
 
 
 def binarization(gray):
-    ret, thresh1 = cv2.threshold(gray,150, 255, cv2.THRESH_BINARY_INV)
+    ret, thresh1 = cv2.threshold(gray,200, 255, cv2.THRESH_BINARY)
     thresh1 = cv2.bitwise_not(thresh1)
     return thresh1
 
@@ -181,9 +186,9 @@ def segment(image):
 
 
 def adjust(image):
-    alphah = 0
-    alphas = 0
-    alphav = 5
+    alphah = 1
+    alphas = 1
+    alphav = 1
 
     h, s, v = cv2.split(image)
     new_image = np.zeros(image.shape, image.dtype)
@@ -229,19 +234,17 @@ def mainImg(img):
 
     #cv2.imshow("original", origin)
     original = reflect(original)
-    #show2(original, "filtered", False)
+    show2(original, "filtered", False)
     segmented = adjust(original)
-    #color filter red
-    r = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
-    redSpace = r[:,:,2]
 
     #binarization
-    redSpace = cv2.bitwise_not(redSpace)
-    newImg1 = binarization(redSpace)
+    newImg1 = cv2.cvtColor(segmented, cv2.COLOR_BGR2GRAY)
+
+    newImg1 = binarization(newImg1)
     boundingRectangle(o1,newImg1)
-    #segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
+    segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
     cv2.imshow("alpha", segmented)
-    #cv2.imshow("binarization", newImg1)
+    cv2.imshow("binarization", newImg1)
     #cv2.imshow("background subtraction", redSpace)
     end_time = time.time()
     cv2.imshow("result", o1)
@@ -262,3 +265,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
