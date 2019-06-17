@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import copy
 from skimage.data import page
 from skimage.filters import (threshold_otsu, threshold_niblack, threshold_sauvola)
+from skimage.transform import rotate
+from scipy import signal
 import os
 import sys
 import time
@@ -39,8 +41,8 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate3/"
-        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -137,11 +139,11 @@ def FsimpleColorBalance(img, percent):
 def binarization(img):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     #gray = cv2.bilateralFilter(gray,9,10,15)
-    thresh1 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 215, 5)
+    thresh1 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 2005, 0)
     #ret, thresh1 = cv2.threshold(gray, 250, 255, cv2.THRESH_BINARY_INV)
 
     thresh1 = cv2.bitwise_not(thresh1)
-    thresh1 = cv2.bilateralFilter(thresh1,9,75,75)
+    #thresh1 = cv2.bilateralFilter(thresh1,4,5,75)
 
 
     return thresh1
@@ -176,7 +178,7 @@ def getLines(newImg,graph):
 
 
 def plotLines(lineLocs, original):
-    for i in range(2):
+    for i in range(len(lineLocs)):
         cv2.line(original, (lineLocs[i][0], 0),
                  (lineLocs[i][0], original.shape[0]), (0, 255, 0), 3)
     norm = 0
@@ -260,6 +262,56 @@ def HoughLines(gray):
         if (abs((lines[i][0][0]-lines[i][0][2])/(lines[i][0][1]-lines[i][0][3]) ) < 0.2):
             cv2.line(gray, (lines[i][0][0], lines[i][0][1]), (lines[i][0][2], lines[i][0][3]), (0, 0, 255), 3, cv2.LINE_AA)
 
+def rotateToHorizontal(img, lb=-20, ub=20, incr=.5, topN=2):
+    bestscore = -np.inf
+    bestTheta = 0
+    for theta in np.arange(lb, ub, incr):
+        imgRot = rotate(img,theta)
+        csums = np.sum(imgRot, axis=0)
+        csums_sorted = sorted(csums)[::-1]
+        curscore = np.sum(csums_sorted[0:topN])
+        if curscore > bestscore:
+            bestscore = curscore
+            bestTheta = theta
+    result = rotate(img,bestTheta)
+    print(bestTheta)
+    return result
+
+def findLeft(img):
+    ans = []
+    ans1 = []
+    for i in range(len(img)):
+        if i<len(img)-2:
+            ans.append(np.subtract(img[i+2],np.add(img[i+1],img[i])))
+        if i > 1:
+            ans1.append(np.subtract(img[i-2],np.add(img[i],img[i-1])))
+    csums1 = np.sum(ans1,axis=0)
+    csums = np.sum(ans,axis = 0)
+    plt.plot(csums1)
+    plt.show()
+
+    leeway = 20
+    lineLocs = []
+    for i in range(2):
+        lineLocs.append([np.argmax(csums), csums[np.argmax(csums)]])
+        lhs = lineLocs[i][0]-leeway
+        rhs = lineLocs[i][0]+leeway
+        if lhs < 0:
+            lhs = 0
+        if rhs >= img.shape[1]:
+            rhs = img.shape[1]-1
+        csums[lhs:rhs] = 0
+    for i in range(2,4):
+        lineLocs.append([np.argmax(csums1), csums[np.argmax(csums1)]])
+        lhs = lineLocs[i][0]-leeway
+        rhs = lineLocs[i][0]+leeway
+        if lhs < 0:
+            lhs = 0
+        if rhs >= img.shape[1]:
+            rhs = img.shape[1]-1
+        csums1[lhs:rhs] = 0
+    return lineLocs
+
 def mainImg(img):
     start_time = time.time()
     original = img
@@ -286,22 +338,22 @@ def mainImg(img):
     #newImg1 = binarization(newImg)
     #newImg1 = cv2.fastNlMeansDenoisingColored(newImg,None,10,0,7,21)
     newImg1 = binarization(newImg)
+    #newImg1 = rotateToHorizontal(newImg1)
+    #lineLocs = findLeft(newImg1)
     #newImg1 = cv2.bilateralFilter(newImg1,9,75,75)
 
     #experimental code: blob subtraction
-    for i in range(0):
-        newImg1 = cv2.dilate(newImg1,np.ones((2,1)),iterations=1)
-        newImg1 = cv2.erode(newImg1,np.ones((2,1)),iterations=2)
     #newImg1_inv = cv2.bitwise_not(newImg1)
     #newImg2 = cv2.multiply(newImg1_inv, mask)
     #newImg2 = cv2.bitwise_not(newImg2)
 
-    #lineLocs, certainty = getLines(newImg1,True)
-    #o1 = plotLines(lineLocs, o1)
+    lineLocs, certainty = getLines(newImg1,False)
+    o1 = plotLines(lineLocs, o1)
 
     #HoughLines(newImg1)
 
     #cv2.imshow("alpha", segmented)
+    #plt.imshow(newImg1)
     #cv2.imshow("binarization", newImg1)
     #cv2.imshow("mask", mask)
     #cv2.imshow("multiplied",newImg2)
@@ -317,12 +369,18 @@ def mainImg(img):
 
 
 def main():
-    for i in range(1,128):
-        print('Processed: '+str(i))
-        img = open(sys.argv[1], i)
+    if sys.argv[2]=='all':
+        for i in range(1,126):
+            img = open(sys.argv[1], i)
+            b = mainImg(img)
+            cv2.imwrite("/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train_binarized/"+str(i)+".jpg",b)
+    else:
+        img = open(sys.argv[1], sys.argv[2])
         b = mainImg(img)
-        cv2.imwrite('/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test_binarized/'+str(i)+'.jpg',b)
-
+        cv2.imshow("original",img)
+        cv2.imshow("binarized",b)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
 
 if __name__ == "__main__":
     main()
