@@ -42,7 +42,7 @@ def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
         #path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
-        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -139,7 +139,7 @@ def FsimpleColorBalance(img, percent):
 def binarization(img):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     #gray = cv2.bilateralFilter(gray,9,10,15)
-    thresh1 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 2005, 0)
+    thresh1 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 5, 2)
     #ret, thresh1 = cv2.threshold(gray, 250, 255, cv2.THRESH_BINARY_INV)
 
     thresh1 = cv2.bitwise_not(thresh1)
@@ -373,7 +373,7 @@ def main():
         for i in range(1,126):
             img = open(sys.argv[1], i)
             b = mainImg(img)
-            cv2.imwrite("/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train_binarized/"+str(i)+".jpg",b)
+            cv2.imwrite("/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test_binarized/"+str(i)+".jpg",b)
     else:
         img = open(sys.argv[1], sys.argv[2])
         b = mainImg(img)
