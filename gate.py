@@ -137,6 +137,7 @@ def FsimpleColorBalance(img, percent):
 
 
 def binarization(img):
+    img = cv2.GaussianBlur(img,(5,5),0)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     #gray = cv2.bilateralFilter(gray,9,10,15)
     thresh1 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 35, 2)
@@ -338,6 +339,7 @@ def mainImg(img):
     #newImg1 = binarization(newImg)
     #newImg1 = cv2.fastNlMeansDenoisingColored(newImg,None,10,0,7,21)
     newImg1 = binarization(newImg)
+    #newImg1 = cv2.dilate(newImg1,np.ones((2,1)),iterations = 1)
     #newImg1 = rotateToHorizontal(newImg1)
     #lineLocs = findLeft(newImg1)
     #newImg1 = cv2.bilateralFilter(newImg1,9,75,75)
@@ -347,7 +349,7 @@ def mainImg(img):
     #newImg2 = cv2.multiply(newImg1_inv, mask)
     #newImg2 = cv2.bitwise_not(newImg2)
 
-    lineLocs, certainty = getLines(newImg1,False)
+    lineLocs, certainty = getLines(newImg1,True)
     o1 = plotLines(lineLocs, o1)
 
     #HoughLines(newImg1)
