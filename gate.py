@@ -5,6 +5,7 @@ import copy
 from skimage.data import page
 from skimage.filters import (threshold_otsu, threshold_niblack, threshold_sauvola)
 from skimage.transform import rotate
+from scipy.signal import savgol_filter
 from scipy import signal
 import os
 import sys
@@ -151,23 +152,35 @@ def binarization(img):
 
 
 def getLines(newImg,graph):
+    newImg = 255-newImg
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
     lineLocs = []
     leeway = 20
-
+    f = savgol_filter(csums1,101,2,0)
+    csums = np.subtract(csums,f)
+    csums = np.convolve(csums,[-1,2,-1])
+    csums[0]=0
+    csums[1]=0
+    csums[-1]=0
+    csums[-2]=0
+    csums2 = copy.deepcopy(csums)
+    #for i in range(len(csums)):
+    #    if i > 0:
+    #        csums[i] = csums2[i]+csums2[i-1]
+    #csums2 = copy.deepcopy(csums)
 
     for i in range(2):
-        lineLocs.append([np.argmin(csums), csums[np.argmin(csums)]])
+        lineLocs.append([np.argmax(csums), csums[np.argmax(csums)]])
         lhs = lineLocs[i][0]-leeway
         rhs = lineLocs[i][0]+leeway
         if lhs < 0:
             lhs = 0
         if rhs >= newImg.shape[1]:
             rhs = newImg.shape[1]-1
-        csums[lhs:rhs] = 1000000
+        csums[lhs:rhs] = 0
     if graph:
-        plt.plot(csums1)
+        plt.plot(csums2)
         for i in range(len(lineLocs)):
             plt.axvline(x=lineLocs[i][0], color='r', linewidth=1)
         plt.ioff()
