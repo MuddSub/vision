@@ -159,6 +159,7 @@ def getLines(newImg,graph):
     leeway = 20
     f = savgol_filter(csums1,101,2,0)
     csums = np.subtract(csums,f)
+    csums = np.convolve(csums,[1,1])
     csums = np.convolve(csums,[2,-1])
     csums[0]=0
     csums[1]=0
@@ -242,7 +243,7 @@ def adjust(image):
 def adjustLAB(image):
     alphah = 1
     alphas = 0
-    alphav = 1
+    alphav = 0
 
     image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
     h, s, v = cv2.split(image)
@@ -251,7 +252,7 @@ def adjustLAB(image):
 
     maximum = h.mean()
     #maximum = h.min()
-    beta = 127-alphah*maximum  # Simple brightness control
+    beta = -alphah*maximum  # Simple brightness control
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
@@ -262,13 +263,16 @@ def adjustLAB(image):
     beta = 127-alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
-    tmp = copy.deepcopy(h1)
-    tmp[tmp <= 254] = 1
-    tmp[tmp > 254]=0
+    tmp1 = copy.deepcopy(h)
+    tmp1[tmp1 <= 200] = 1
+    tmp1[tmp1 > 200] = 0
+    cv2.imshow("lsdjbcbbsj",h1)
+    cv2.imshow("sldldjchsohdj",tmp1)
+
 
     new_image = cv2.merge([h1, s1, v1])
     new_image = cv2.cvtColor(new_image,cv2.COLOR_LAB2BGR);
-    return new_image,tmp
+    return new_image,tmp1
 
 ############################################
 
@@ -346,10 +350,10 @@ def mainImg(img):
 
     segmented = adjust(segmented)
 
-    tmp,mask = adjustLAB(segmented)
-    cv2.imshow("skdjnbwi",tmp)
-    cv2.imshow("ljdjnsldjfs",mask)
-
+    new_img,mask = adjustLAB(segmented)
+    #cv2.imshow("skdjnbwi",new_img)
+    #cv2.imshow("ljdjnsldjfs",mask)
+    segmented = new_img
     # Higher discernability = lower distinguishing power
 
     discernability = 25
@@ -364,9 +368,12 @@ def mainImg(img):
     newImg1 = 255-newImg1
     #newImg1 = np.multiply(newImg1,mask)
     newImg1 = 255-newImg1
+
     newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations=1)
-    newImg1 = cv2.dilate(newImg1,np.ones((2,1)),iterations=1)
-    newImg1 = cv2.erode(newImg1,np.ones((2,1)),iterations=1)
+    #newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations=1)
+    newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations=1)
+
+
     #newImg1 = cv2.dilate(newImg1,np.ones((2,1)),iterations = 1)
     #newImg1 = rotateToHorizontal(newImg1)
     #lineLocs = findLeft(newImg1)
