@@ -43,7 +43,7 @@ def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
         #path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
-        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -156,7 +156,7 @@ def getLines(newImg,graph):
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
     lineLocs = []
-    leeway = 20
+    leeway = 50
     f = savgol_filter(csums1,101,2,0)
     csums = np.subtract(csums,f)
     csums = np.convolve(csums,[1,1])
@@ -280,9 +280,11 @@ def HoughLines(gray):
     edges = cv2.Canny(gray,50,150,apertureSize = 3)
     lines = cv2.HoughLinesP(image=edges,rho=1,theta=np.pi/180, threshold=0,lines=np.array([]), minLineLength = 30,maxLineGap=4)
     a,b,c = lines.shape
+    gray = cv2.cvtColor(gray,cv2.COLOR_GRAY2RGB)
     for i in range(a):
-        if (abs((lines[i][0][0]-lines[i][0][2])/(lines[i][0][1]-lines[i][0][3]) ) < 0.2):
-            cv2.line(gray, (lines[i][0][0], lines[i][0][1]), (lines[i][0][2], lines[i][0][3]), (0, 0, 255), 3, cv2.LINE_AA)
+        cv2.line(gray, (lines[i][0][0], lines[i][0][1]), (lines[i][0][2], lines[i][0][3]), (0, 0, 255), 3, cv2.LINE_AA)
+    cv2.imshow("lsdjjndldsjd",gray)
+
 
 def rotateToHorizontal(img, lb=-20, ub=20, incr=.5, topN=2):
     bestscore = -np.inf
@@ -387,11 +389,11 @@ def mainImg(img):
     lineLocs, certainty = getLines(newImg1,True)
     o1 = plotLines(lineLocs, o1)
 
-    HoughLines(newImg1)
+    #HoughLines(newImg1)
 
     #cv2.imshow("alpha", segmented)
     #plt.imshow(newImg1)
-    #cv2.imshow("binarization", newImg1)
+    cv2.imshow("binarization", newImg1)
     #cv2.imshow("mask", mask)
     #cv2.imshow("multiplied",newImg2)
     #cv2.imshow("background subtraction", newImg)
