@@ -159,7 +159,7 @@ def getLines(newImg,graph):
     leeway = 20
     f = savgol_filter(csums1,101,2,0)
     csums = np.subtract(csums,f)
-    csums = np.convolve(csums,[-1,2,-1])
+    csums = np.convolve(csums,[2,-1])
     csums[0]=0
     csums[1]=0
     csums[-1]=0
@@ -352,6 +352,7 @@ def mainImg(img):
     #newImg1 = binarization(newImg)
     #newImg1 = cv2.fastNlMeansDenoisingColored(newImg,None,10,0,7,21)
     newImg1 = binarization(newImg)
+    newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations=1)
     #newImg1 = cv2.dilate(newImg1,np.ones((2,1)),iterations = 1)
     #newImg1 = rotateToHorizontal(newImg1)
     #lineLocs = findLeft(newImg1)
