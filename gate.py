@@ -42,8 +42,8 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -159,7 +159,6 @@ def getLines(newImg,graph):
     leeway = 50
     f = savgol_filter(csums1,101,2,0)
     csums = np.subtract(csums,f)
-    csums = np.convolve(csums,[1,1])
     csums = np.convolve(csums,[2,-1])
     csums[0]=0
     csums[1]=0
@@ -225,15 +224,15 @@ def adjust(image):
 
     maximum = h.mean()
     #maximum = h.min()
-    beta = -alphah*maximum  # Simple brightness control
+    beta = 127-alphah*maximum  # Simple brightness control
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
-    beta = -alphas*maximum  # Simple brightness control
+    beta = 127-alphas*maximum  # Simple brightness control
     s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
     maximum = v.mean()
-    beta = -alphav*maximum  # Simple brightness control
+    beta = 127-alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
     new_image = cv2.merge([h1, s1, v1])
