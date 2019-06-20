@@ -239,12 +239,12 @@ def adjust(image):
     return new_image
 
 
-def adjustRGB(image):
-    alphah = 3
-    alphas = 3
+def adjustLAB(image):
+    alphah = 5
+    alphas = 0
     alphav = 0
 
-    image = cv2.cvtColor(image, cv2.COLOR_HSV2BGR)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
     h, s, v = cv2.split(image)
     new_image = np.zeros(image.shape, image.dtype)
     h1, s1, v1 = cv2.split(new_image)
@@ -262,9 +262,13 @@ def adjustRGB(image):
     beta = 127-alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
+    tmp = copy.deepcopy(h1)
+    tmp[tmp <= 254] = 1
+    tmp[tmp > 254]=0
+
     new_image = cv2.merge([h1, s1, v1])
-    new_image = cv2.cvtColor(new_image,cv2.COLOR_BGR2HSV);
-    return new_image
+    new_image = cv2.cvtColor(new_image,cv2.COLOR_LAB2BGR);
+    return tmp
 
 ############################################
 
@@ -336,10 +340,14 @@ def mainImg(img):
     #cv2.imshow("original", origin)
     original = reflect(original)
 
+
+
     segmented = segment(original)
 
     segmented = adjust(segmented)
-    #segmented = adjustRGB(segmented)
+
+    mask = adjustLAB(segmented)
+    cv2.imshow("ljdjnsldjfs",segmented)
 
     # Higher discernability = lower distinguishing power
 
@@ -352,7 +360,12 @@ def mainImg(img):
     #newImg1 = binarization(newImg)
     #newImg1 = cv2.fastNlMeansDenoisingColored(newImg,None,10,0,7,21)
     newImg1 = binarization(newImg)
+    newImg1 = 255-newImg1
+    newImg1 = np.multiply(newImg1,mask)
+    newImg1 = 255-newImg1
     newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations=1)
+    newImg1 = cv2.dilate(newImg1,np.ones((2,1)),iterations=1)
+    newImg1 = cv2.erode(newImg1,np.ones((2,1)),iterations=1)
     #newImg1 = cv2.dilate(newImg1,np.ones((2,1)),iterations = 1)
     #newImg1 = rotateToHorizontal(newImg1)
     #lineLocs = findLeft(newImg1)
