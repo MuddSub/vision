@@ -266,8 +266,8 @@ def adjustLAB(image):
     tmp1 = copy.deepcopy(h)
     tmp1[tmp1 <= 200] = 1
     tmp1[tmp1 > 200] = 0
-    cv2.imshow("lsdjbcbbsj",h1)
-    cv2.imshow("sldldjchsohdj",tmp1)
+    #cv2.imshow("lsdjbcbbsj",h1)
+    #cv2.imshow("sldldjchsohdj",tmp1)
 
 
     new_image = cv2.merge([h1, s1, v1])
@@ -371,7 +371,7 @@ def mainImg(img):
 
     newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations=1)
     #newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations=1)
-    newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations=1)
+    newImg1 = cv2.erode(newImg1,np.ones((3,1)),iterations=1)
 
 
     #newImg1 = cv2.dilate(newImg1,np.ones((2,1)),iterations = 1)
@@ -387,7 +387,7 @@ def mainImg(img):
     lineLocs, certainty = getLines(newImg1,True)
     o1 = plotLines(lineLocs, o1)
 
-    #HoughLines(newImg1)
+    HoughLines(newImg1)
 
     #cv2.imshow("alpha", segmented)
     #plt.imshow(newImg1)
