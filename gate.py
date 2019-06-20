@@ -240,9 +240,9 @@ def adjust(image):
 
 
 def adjustLAB(image):
-    alphah = 5
+    alphah = 1
     alphas = 0
-    alphav = 0
+    alphav = 1
 
     image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
     h, s, v = cv2.split(image)
@@ -268,7 +268,7 @@ def adjustLAB(image):
 
     new_image = cv2.merge([h1, s1, v1])
     new_image = cv2.cvtColor(new_image,cv2.COLOR_LAB2BGR);
-    return tmp
+    return new_image,tmp
 
 ############################################
 
@@ -346,8 +346,9 @@ def mainImg(img):
 
     segmented = adjust(segmented)
 
-    mask = adjustLAB(segmented)
-    cv2.imshow("ljdjnsldjfs",segmented)
+    tmp,mask = adjustLAB(segmented)
+    cv2.imshow("skdjnbwi",tmp)
+    cv2.imshow("ljdjnsldjfs",mask)
 
     # Higher discernability = lower distinguishing power
 
