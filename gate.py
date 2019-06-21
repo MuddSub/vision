@@ -42,8 +42,8 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
-        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/gate3/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -67,6 +67,39 @@ def analysis(img):
 # main program removebackscatter
 #######################################
 
+def detectNoteheadBlobs(img, minarea, maxarea):
+
+    # define blob detector
+    params = cv2.SimpleBlobDetector_Params()
+
+    # Change thresholds
+    # params.minThreshold = 100;
+    # params.maxThreshold = 200;
+
+    # Filter by Area
+    # params.filterByArea = True
+    params.minArea = minarea
+    params.maxArea = maxarea
+
+    # Filter by Circularity
+    # params.filterByCircularity = True
+    # params.minCircularity = 0.1
+
+    # Filter by Convexity
+    # params.filterByConvexity = True
+    # params.minConvexity = 0.87
+
+    # Filter by Inertia
+    # params.filterByInertia = True
+    # params.minInertiaRatio = 0.01
+
+    # Create a detector with the parameters
+    detector = cv2.SimpleBlobDetector_create(params)
+
+    keypoints = detector.detect(img)
+    im_with_keypoints = cv2.drawKeypoints(np.array(img), keypoints, np.array([]), (0,0,255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+
+    return keypoints, im_with_keypoints
 
 def reflect(image, blkSize=10*10, patchSize=8, lamb=10, gamma=1.7, r=10, eps=1e-6, level=5):
     image = np.array(image, np.float32)
@@ -159,11 +192,7 @@ def getLines(newImg,graph):
     leeway = 50
     f = savgol_filter(csums1,101,2,0)
     csums = np.subtract(csums,f)
-    csums = np.convolve(csums,[2,-1])
-    csums[0]=0
-    csums[1]=0
-    csums[-1]=0
-    csums[-2]=0
+    #csums = np.convolve(csums,[2,-1])
     csums2 = copy.deepcopy(csums)
     #for i in range(len(csums)):
     #    if i > 0:
@@ -179,6 +208,7 @@ def getLines(newImg,graph):
         if rhs >= newImg.shape[1]:
             rhs = newImg.shape[1]-1
         csums[lhs:rhs] = 0
+
     if graph:
         plt.plot(csums2)
         for i in range(len(lineLocs)):
@@ -209,7 +239,7 @@ def plotLines(lineLocs, original):
 
 def segment(image):
     mdpt = (int)(image.shape[0]/2)
-    striph = 150
+    striph = 100
     return image[mdpt - striph: mdpt + striph, :]
 
 
@@ -370,9 +400,10 @@ def mainImg(img):
     #newImg1 = np.multiply(newImg1,mask)
     newImg1 = 255-newImg1
 
-    newImg1 = cv2.erode(newImg1,np.ones((1,3)),iterations=1)
-    #newImg1 = cv2.dilate(newImg1,np.ones((3,1)),iterations=1)
-    newImg1 = cv2.erode(newImg1,np.ones((3,1)),iterations=1)
+    newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations=1)
+    for i in range(7):
+        newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations=1)
+        newImg1 = cv2.erode(newImg1,np.ones((4,1)),iterations=1)
 
 
     #newImg1 = cv2.dilate(newImg1,np.ones((2,1)),iterations = 1)
