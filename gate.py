@@ -102,17 +102,14 @@ def detectNoteheadBlobs(img, minarea, maxarea):
     return keypoints, im_with_keypoints
 
 def reflect(image, blkSize=10*10, patchSize=8, lamb=10, gamma=1, r=10, eps=1e-6, level=5):
+    start_time = time.time()
     image = np.array(image, np.float32)
     bgr = cv2.split(image)
-    #show(bgr[2]/255,"initial red",False)
-    # image decomposition, probably key
     RL = IDilluRefDecompose(image)
+    #print("1:",time.time()-start_time)
     RL = FsimpleColorBalance(RL, colorBalanceRatio)  # checked
-    # show2(RL,"color corrected reflective") #checked
+    #print("2:",time.time()-start_time)
     bgr = cv2.split(RL)
-    #show(bgr[0]/255,"RL blue",False)
-    #show(bgr[1]/255,"RL green",False)
-    #show(bgr[2]/255,"RL red",False)
     return RL
 ####################################################
 # Img Decompose: weighted image decompose
@@ -150,6 +147,7 @@ def FsimpleColorBalance(img, percent):
         channels = copy.deepcopy(img)
         # Not sure
     channels = np.array(channels)
+    print("1:",time.time()-start_time)
 
     for i in range(chnls):
         # find the low and high precentile values based on input percentile
@@ -163,6 +161,7 @@ def FsimpleColorBalance(img, percent):
         channels[i] = cv2.normalize(
             channels[i], channels[i], 0.0, 255.0/2, cv2.NORM_MINMAX)
         channels[i] = np.float32(channels[i])
+    print("2:",time.time()-start_time)
 
     result = cv2.merge(channels)
     return result
@@ -411,20 +410,18 @@ def mainImg(img):
 
     o1 = original
 
-    #cv2.imshow("original", origin)
-    original = reflect(original)
+    original = segment(original)
 
+    segmented = reflect(original)
 
-
-    segmented = segment(original)
 
     segmented = adjust(segmented)
 
+    print(time.time()-start_time)
 
     new_img,mask = adjustLAB(segmented)
-    #cv2.imshow("skdjnbwi",new_img)
-    #cv2.imshow("ljdjnsldjfs",mask)
     segmented = new_img
+    print(time.time()-start_time)
     # Higher discernability = lower distinguishing power
 
     discernability = 25
@@ -435,6 +432,8 @@ def mainImg(img):
     #newImg = cv2.cvtColor(newImg, cv2.COLOR_BGR2GRAY)
     #newImg1 = binarization(newImg)
     #newImg1 = cv2.fastNlMeansDenoisingColored(newImg,None,10,0,7,21)
+    print(time.time()-start_time)
+
     newImg1 = binarization(newImg)
     newImg1 = 255-newImg1
     #newImg1 = np.multiply(newImg1,mask)
@@ -444,6 +443,8 @@ def mainImg(img):
         newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
         newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
     newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations = 1)
+
+    print(time.time()-start_time)
 
     #newImg1 = rotateToHorizontal(newImg1)
     #lineLocs = findLeft(newImg1)
