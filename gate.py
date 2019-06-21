@@ -42,8 +42,8 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
-        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/gate8/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -309,7 +309,7 @@ def adjust(image):
 
 
 def adjustLAB(image):
-    alphah = 2
+    alphah = 3
     alphas = 0
     alphav = 2
 
@@ -488,7 +488,7 @@ def main():
         img = open(sys.argv[1], sys.argv[2])
         b = mainImg(img)
         cv2.imshow("original",img)
-        cv2.imshow("binarized",b)
+        #cv2.imshow("binarized",b)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
