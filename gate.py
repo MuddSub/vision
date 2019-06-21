@@ -42,7 +42,7 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate3/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
         path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
@@ -189,9 +189,9 @@ def getLines(newImg,graph):
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
     lineLocs = []
-    leeway = 50
+    leeway = 10
     f = savgol_filter(csums1,101,2,0)
-    csums = np.subtract(csums,f)
+    #csums = np.subtract(csums,f)
     #csums = np.convolve(csums,[2,-1])
     csums2 = copy.deepcopy(csums)
     #for i in range(len(csums)):
@@ -239,7 +239,7 @@ def plotLines(lineLocs, original):
 
 def segment(image):
     mdpt = (int)(image.shape[0]/2)
-    striph = 100
+    striph = 50
     return image[mdpt - striph: mdpt + striph, :]
 
 
@@ -270,11 +270,11 @@ def adjust(image):
 
 
 def adjustLAB(image):
-    alphah = 1
+    alphah = 2
     alphas = 0
-    alphav = 3
+    alphav = 2
 
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
     h, s, v = cv2.split(image)
     new_image = np.zeros(image.shape, image.dtype)
     h1, s1, v1 = cv2.split(new_image)
@@ -285,11 +285,11 @@ def adjustLAB(image):
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
-    beta = 50-alphas*maximum  # Simple brightness control
+    beta = 127-alphas*maximum  # Simple brightness control
     s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
     maximum = v.mean()
-    beta = 50-alphav*maximum  # Simple brightness control
+    beta = 127-alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
     tmp1 = copy.deepcopy(h)
@@ -300,7 +300,7 @@ def adjustLAB(image):
 
 
     new_image = cv2.merge([h1, s1, v1])
-    new_image = cv2.cvtColor(new_image,cv2.COLOR_LAB2BGR);
+    new_image = cv2.cvtColor(new_image,cv2.COLOR_YUV2BGR);
     return new_image,tmp1
 
 ############################################
@@ -381,6 +381,7 @@ def mainImg(img):
 
     segmented = adjust(segmented)
 
+
     new_img,mask = adjustLAB(segmented)
     #cv2.imshow("skdjnbwi",new_img)
     #cv2.imshow("ljdjnsldjfs",mask)
@@ -415,6 +416,7 @@ def mainImg(img):
 
 
     lineLocs, certainty = getLines(newImg1,True)
+    newImg1 = plotLines(lineLocs, newImg1)
     o1 = plotLines(lineLocs, o1)
 
     #HoughLines(newImg1)
