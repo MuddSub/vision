@@ -17,7 +17,7 @@ from skimage.color import rgb2gray
 # modified from algorithmia.com
 
 ###############################################
-#                 model
+#                 model and neural net
 ###############################################
 
 class Net(torch.nn.Module):
@@ -34,7 +34,7 @@ class Net(torch.nn.Module):
 		self.fc1 = torch.nn.Linear(9*15*64,9*64)
 		self.fc15 = torch.nn.Linear(9*64,64)
 		#64 input features, 2 output features
-		self.fc2 = torch.nn.Linear(64, 4)
+		self.fc2 = torch.nn.Linear(64, 2)
 
 	def forward(self,x):
 		
@@ -64,7 +64,7 @@ class Net(torch.nn.Module):
 		return int((in_size - kernel_size + 2*padding)/stride)+1
 
 ##############################################################
-#				data set
+#				data set and image processing
 ##############################################################
 class landmarksDataset(Dataset):
     """Face Landmarks dataset."""
@@ -87,13 +87,12 @@ class landmarksDataset(Dataset):
     def __getitem__(self, idx):
         img_name = os.path.join(self.root_dir,
                                 self.landmarks_frame.iloc[idx, 0])
-        print(img_name)
         image = io.imread(img_name)
         image = transform.resize(image,(300,640))
         image = rgb2gray(image)
-        landmarks = self.landmarks_frame.iloc[idx, 1:].as_matrix()
+        landmarks = self.landmarks_frame.iloc[idx, 1:].values
         landmarks = landmarks.astype('float').reshape(-1, 2)
-        sample = [torch.tensor([image]).type('torch.FloatTensor'),torch.tensor(landmarks).type('torch.FloatTensor')]
+        sample = [img_name,torch.tensor([image]).type('torch.FloatTensor'),torch.tensor(landmarks).type('torch.FloatTensor')]     
         return sample
 
 ###############################################################
@@ -101,15 +100,20 @@ class landmarksDataset(Dataset):
 ##############################################################
 def trainNet(net, batch, n_epochs, learning_rate, train_file, test_file):
 	
-
-	# 1. print out hyperparameters
+	########################################
+	# 1. SET UP
+	########################################
 	print("======== HYPERPARAMTERS =========")
 	print("batch size= ",batch)
 	print("epochs= ",n_epochs)
 	print("learning rate= ", learning_rate)
 	print("=" * 30)
 
-	# 2. get data
+
+
+	##############################################
+	# 2. get data and obtaining data
+	#################################################
 	train_data = landmarksDataset(train_file+"/label.csv",train_file)
 	test_data = landmarksDataset(test_file+"/label.csv",test_file)
 	train = torch.utils.data.DataLoader(train_data,
@@ -122,114 +126,145 @@ def trainNet(net, batch, n_epochs, learning_rate, train_file, test_file):
 	
 	
 	print("test length "+str(len(test)))
-
-	# 3. create net and optimizer function, and get trainning time
-
-	optimizer = optim.Adam(net.parameters(), lr= learning_rate)
-
-	train_start_time = time.time()
 	print("training length "+str(len(train)))
-	# 4. training 
-	for epoch in range(n_epochs):
-		print("##################################")
-		print("########   "+str(epoch)+"   ######")
 
-		# 4.1 training data parameters
-		running_loss = 0.0
+
+	####################################################
+	# 3. create net and optimizer function, and get trainning time
+	#####################################################
+	optimizer = optim.Adam(net.parameters(), lr= learning_rate)
+	start_time = time.time()
+
+
+	#######################################################
+	# 4. training 
+	#########################################################
+
+
+
+	best_net = None
+	best_score = 100
+	
+	for epoch in range(n_epochs):
+		
+		# record best net set up
+		
+		# print out format
+		print("="*30)
+		print("===========   "+str(epoch)+"   ============ ")
+
+		###################################
+		# 4.1 training section
+		##################################
+		
+
 		start_time = time.time()
 		trainning_loss = 0
-		for i, data in enumerate(train, 0):
-			#get input, x0 and x1 are positions of two bars of the gate
-			inputs,outputs = data
-			[output_x0,output_y0],[output_x1,output_y1]= outputs[0]
-			inputs,output_x0, output_x1,output_y1,output_y2 = Variable(inputs), Variable(output_x0), Variable(output_x1),Variable(output_y0),Variable(output_y1)
 
-			#set parameter gradient to zero
+		for i, data in enumerate(train, 0):
+		
+			###########   input labeling
+
+			name,inputs,outputs = data
+
+			[output_x0,output_y0],[output_x1,output_y1]= outputs[0]
+			
+			inputs,output_x0, output_x1 = Variable(inputs), Variable(output_x0), Variable(output_x1)
+			
+			##########    prediction labels
+
 			optimizer.zero_grad()
 
-			#forward pass, backward pass, optimizer
-			x0,y0,x1,y1 = net(inputs)[0]
-			#TO DO CHANGE OVER AREA OVERLAP LOSS
-			'''
-			x_0_diff = (0 if abs(output_x0-x0) < 25 else ( output_x0 - x0)**2)
-			x_1_diff = (0 if abs(output_x1-x1)<25 else (output_x1-x1)**2)
-			x_bound =( (0 if x0<640 else (640-x0)**2) + (0 if x1<640 else (640-x1)**2) + (0 if x0<x1-30 else (x0-x1+30)**2) )
-			y_diff = (abs(output_y0 - y0) +abs(output_y1-y1))
-			y_bound = ((0 if y0<300 else abs(300-y0)) + (0 if y1<300 else abs(300-y1)) + (0 if y0<y1-30 else (y0-y1+30)**2))
-			'''
-			print("output")
-			print(output_x0)
-			print(x0)
+			x0,x1 = net(inputs)[0]
+			
+			###########      Loss Function
+			
 			x_0_diff = (output_x0-x0)**2/100
 			x_1_diff = (output_x1-x1)**2/100
-			y_0_diff = (output_y0-y0)**2/100
-			y_1_diff = (output_y1-y1)**2/100
-			if x0<640 or x1<640 or x0<x1-30 or :	
-				x0.requires_grad=False
-				x1.requires_grad=False
-				y0.requires_grad=False
-				y1.requires_grad=False
-				x_bound =(0 if x0>0 else x0**2) +(0 if x1>0 else x1**2)+ (0 if x0<640 else (640-x0)**2) + (0 if x1<640 else (640-x1)**2) + (0 if x0<x1-30 else abs(x0-x1+30)) 
-				y_bound = (0 if y0>0 else y0**2) + (0 if y1>0 else y1**2)+ (0 if y0<300 else abs(300-y0))+ (0 if y1<300 else abs(300-y1)) + (0 if y0<y1-30 else abs(y0-y1+30))
-			y_diff = y_0_diff+y_1_diff
-			print("info")
-			print("x 0 diff"+ str(x_0_diff))
-			print("x1 diff "+str(x_1_diff))
-			print("x_bound"+str(x_bound))
-			print("y diff"+str(y_diff))
-			print("y bound"+str(y_bound))
-			x_diff=x_0_diff+x_1_diff
-			print("sum")
-			print(x_diff.item()+x_bound.item()+y_diff.item()+y_bound.item())
-			loss =(x_diff+ x_bound+y_diff+y_bound)
-			print("loss  "+str(loss.item()))
-			print(trainning_loss)
-			loss.backward()
-			optimizer.step()
-			trainning_loss+=loss.item()
-			'''
-			#print stat
-			running_loss+=loss_size.item()
-			total_train_loss += loss_size.item()
+
+			x_bound =x0-x0+( 0 if x0>0 else x0**2) +(0 if x1>0 else x1**2)+ (0 if x0<640 else (640-x0)**2) + (0 if x1<640 else (640-x1)**2) + (0 if x0<x1-30 else abs(x0-x1+30)) 
 			
-			#print every 10th batch of an epoch
-			if (i+1)%(print_every+1)==0:
-				print("Epoch {}, {:d}% \t train_loss: {:.2f} took: {:.2f}s".format(epoch+1, int(100 * (i+1) / n_batches), running_loss / print_every, time.time() - start_time))	
-				running_loss = 0
-				start_time = time.time()
-			'''
-		print("trainning loss:  "+str(trainning_loss))
-		total_loss = 0
+			x_diff=x_0_diff+x_1_diff
+			
+			loss =(x_diff+ x_bound)
+			
+			loss.backward()
+			
+			optimizer.step()
+			
+			trainning_loss+=loss.item()
+
+		print("Training Summary")
+		print("Epoch trainning loss: {:.2f}".format(trainning_loss) )
+		print("Average epoch training time: {:.2f}s".format( (time.time() - start_time)/len(train) ))
+		print("Epoch training time: {:.2f}s".format(time.time() - start_time))
+
+		######################################
+		#   TESTING section
+		########################################
+
 		test_loss = 0
-		total_x=0
-		total_y=0
+		
+		test_time = time.time()
+
 		for i, data in enumerate(test, 0):
 		
-			#get input, x0 and x1 are positions of two bars of the gate
-			inputs,outputs = data
+			# get labels 
+			name,inputs,outputs = data
 			print("outputs")
 			print(outputs)
-			
 			[output_x0,output_y0],[output_x1,output_y1]= outputs[0]
 			
-			#forward pass, backward pass, optimizer
+
+			# get predictions
 			prediction = net(inputs)[0]
 			print("prediction  ")
 			print(prediction)
-			x0,y0,x1,y1 = prediction
+			x0,x1=prediction
+			
+			# loss record
 			x_loss= abs(output_x0 - x0) +abs(output_x1-x1)
-			y_loss = abs(output_y0 - y0) +abs(output_y1-y1)
-			test_loss=test_loss+x_loss+y_loss
-			total_x+=x_loss
-			total_y+=y_loss
-			total_loss+=test_loss	
-		#print("Validation loss = {:.2f}".format(test_loss / len(test)))
-			print("test loss    "+ str(test_loss.item()))
-			print("x,y loss    "+ str(x_loss.item())+ "   "+str(y_loss.item()))
-		print("#############  total loss:   " + str(total_loss.item()))
-		print("############# x loss    "+ str(total_x.item()))
-	print("Training finished, took {:.2f}s".format(time.time() - train_start_time))
-	torch.save(net.state_dict(), train_file+str("net.txt"))
+			
+			test_loss=test_loss+x_loss
+			
+			print("x loss: "+ str(x_loss.item()))
+		
+		# record net if it is better
+		if best_score > test_loss/len(test):
+			best_score=test_loss/len(test)
+			store_path = train_file+str("gate.pth")
+			torch.save(net.state_dict(), store_path)
+			best_net = net.state_dict()
+			print("*"*30)
+			print("recorded")
+			print("*"*30)
+
+		# test summary print out
+
+		print("Testing Summary")
+		print("Epoch test loss: {:.2f}".format( test_loss.item() ))
+		print("Average Epoch test loss: {:.2f}".format( test_loss.item()/len(test) ))
+		print("Average Epoch test time: {:.2f}s".format( (time.time() - test_time)/len(test) ))
+		print("Best Score: {:.2f}".format( best_score ))
+
+	# overall summary
+	print("best score {:.2f}".format(best_score))
+	print("Neural Net time: {:.2f}s".format(time.time() - start_time))
+	return best_net
+
+
+
+
+############################################
+#    Test 
+#############################################
+def test(path):
+	model = torch.load(path)
+	model.eval()
+
+
+
+
 ###############################################
 #              driver
 ###############################################
