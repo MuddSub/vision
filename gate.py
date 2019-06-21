@@ -440,8 +440,9 @@ def mainImg(img):
     #newImg1 = np.multiply(newImg1,mask)
     newImg1 = 255-newImg1
 
-
-    newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 1)
+    for i in range(1):
+        newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
+        newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
     newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations = 1)
 
     #newImg1 = rotateToHorizontal(newImg1)
