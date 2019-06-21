@@ -12,7 +12,7 @@ import sys
 import time
 
 ###################################################
-colorBalanceRatio = 5
+colorBalanceRatio = 20
 lb = []
 lc = []
 le = []
@@ -101,7 +101,7 @@ def detectNoteheadBlobs(img, minarea, maxarea):
 
     return keypoints, im_with_keypoints
 
-def reflect(image, blkSize=10*10, patchSize=8, lamb=10, gamma=1.7, r=10, eps=1e-6, level=5):
+def reflect(image, blkSize=10*10, patchSize=8, lamb=10, gamma=1, r=10, eps=1e-6, level=5):
     image = np.array(image, np.float32)
     bgr = cv2.split(image)
     #show(bgr[2]/255,"initial red",False)
@@ -254,15 +254,15 @@ def adjust(image):
 
     maximum = h.mean()
     #maximum = h.min()
-    beta = 127-alphah*maximum  # Simple brightness control
+    beta = 50-alphah*maximum  # Simple brightness control
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
-    beta = 127-alphas*maximum  # Simple brightness control
+    beta = 50-alphas*maximum  # Simple brightness control
     s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
     maximum = v.mean()
-    beta = 127-alphav*maximum  # Simple brightness control
+    beta = 50-alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
     new_image = cv2.merge([h1, s1, v1])
@@ -270,8 +270,8 @@ def adjust(image):
 
 
 def adjustLAB(image):
-    alphah = 3
-    alphas = 3
+    alphah = 1
+    alphas = 0
     alphav = 3
 
     image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
@@ -285,11 +285,11 @@ def adjustLAB(image):
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
-    beta = 127-alphas*maximum  # Simple brightness control
+    beta = 50-alphas*maximum  # Simple brightness control
     s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
     maximum = v.mean()
-    beta = 127-alphav*maximum  # Simple brightness control
+    beta = 50-alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
     tmp1 = copy.deepcopy(h)
@@ -373,7 +373,7 @@ def mainImg(img):
     o1 = original
 
     #cv2.imshow("original", origin)
-   # original = reflect(original)
+    original = reflect(original)
 
 
 
@@ -400,13 +400,10 @@ def mainImg(img):
     #newImg1 = np.multiply(newImg1,mask)
     newImg1 = 255-newImg1
 
-    newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations=1)
-    for i in range(7):
-        newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations=1)
-        newImg1 = cv2.erode(newImg1,np.ones((4,1)),iterations=1)
 
+    newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 1)
+    newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations = 1)
 
-    #newImg1 = cv2.dilate(newImg1,np.ones((2,1)),iterations = 1)
     #newImg1 = rotateToHorizontal(newImg1)
     #lineLocs = findLeft(newImg1)
     #newImg1 = cv2.bilateralFilter(newImg1,9,75,75)
@@ -415,6 +412,7 @@ def mainImg(img):
     #newImg1_inv = cv2.bitwise_not(newImg1)
     #newImg2 = cv2.multiply(newImg1_inv, mask)
     #newImg2 = cv2.bitwise_not(newImg2)
+
 
     lineLocs, certainty = getLines(newImg1,True)
     o1 = plotLines(lineLocs, o1)
