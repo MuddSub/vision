@@ -373,7 +373,7 @@ def mainImg(img):
     o1 = original
 
     #cv2.imshow("original", origin)
-    original = reflect(original)
+   # original = reflect(original)
 
 
 
