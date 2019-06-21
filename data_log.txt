@@ -1,0 +1,15 @@
+left 1: image name
+left 2: top left x
+left 3: top left y
+bottom left
+top right
+bottom right
+Bad Train images
+103 
+107
+111
+115
+
+missed picc in train 
+128
+28

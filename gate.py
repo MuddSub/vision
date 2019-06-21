@@ -47,7 +47,7 @@ def open(name, path1):
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
-        path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
+        path0 = "/Users/rongk/Downloads/visionCode/Vision/Neural_Net/Test/"
     path = path0+str(path1)
     if os.path.isfile(path+'.jpg'):
         img = cv2.imread(path+'.jpg')
@@ -180,7 +180,7 @@ def getLines(newImg,graph):
         if rhs >= newImg.shape[1]:
             rhs = newImg.shape[1]-1
         csums[lhs:rhs] = 0
-    if graph:
+    if False:
         plt.plot(csums2)
         for i in range(len(lineLocs)):
             plt.axvline(x=lineLocs[i][0], color='r', linewidth=1)
@@ -283,7 +283,7 @@ def HoughLines(gray):
     gray = cv2.cvtColor(gray,cv2.COLOR_GRAY2RGB)
     for i in range(a):
         cv2.line(gray, (lines[i][0][0], lines[i][0][1]), (lines[i][0][2], lines[i][0][3]), (0, 0, 255), 3, cv2.LINE_AA)
-    cv2.imshow("lsdjjndldsjd",gray)
+    #cv2.imshow("lsdjjndldsjd",gray)
 
 
 def rotateToHorizontal(img, lb=-20, ub=20, incr=.5, topN=2):
@@ -312,7 +312,7 @@ def findLeft(img):
     csums1 = np.sum(ans1,axis=0)
     csums = np.sum(ans,axis = 0)
     plt.plot(csums1)
-    plt.show()
+    #plt.show()
 
     leeway = 20
     lineLocs = []
@@ -393,8 +393,10 @@ def mainImg(img):
 
     #cv2.imshow("alpha", segmented)
     #plt.imshow(newImg1)
-    cv2.imshow("binarization", newImg1)
-    #cv2.imshow("mask", mask)
+    
+	#cv2.imshow("binarization", newImg1)
+    
+	#cv2.imshow("mask", mask)
     #cv2.imshow("multiplied",newImg2)
     #cv2.imshow("background subtraction", newImg)
     #cv2.imshow("result", o1)
@@ -412,7 +414,7 @@ def main():
         for i in range(1,126):
             img = open(sys.argv[1], i)
             b = mainImg(img)
-            cv2.imwrite("/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train_binarized/"+str(i)+".jpg",b)
+            cv2.imwrite("/Users/rongk/Downloads/visionCode/Vision/Neural_Net/Test_binarized/"+str(i)+".jpg",b)
     else:
         img = open(sys.argv[1], sys.argv[2])
         b = mainImg(img)

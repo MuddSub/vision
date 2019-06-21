@@ -1,0 +1,12 @@
+image name
+top left x and y
+bottom right x and y
+all points might be larger to capture the gate
+
+
+plans:
+1) the error is pretty good rn, appears to overfit after 110
+
+goals
+1) try 2 features, then more features
+2) try more dimension
