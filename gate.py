@@ -200,7 +200,13 @@ def getLines(newImg,graph):
     #csums2 = copy.deepcopy(csums)
 
     for i in range(2):
-        lineLocs.append([np.argmax(csums), csums[np.argmax(csums)]])
+        pred = np.argmax(csums)
+        c1= newImg[:,pred]
+        m= (int)(np.sum(c1)/255)
+        if m<=40:
+            continue
+
+        lineLocs.append([pred, csums[np.argmax(csums)]])
         lhs = lineLocs[i][0]-leeway
         rhs = lineLocs[i][0]+leeway
         if lhs < 0:
@@ -208,6 +214,38 @@ def getLines(newImg,graph):
         if rhs >= newImg.shape[1]:
             rhs = newImg.shape[1]-1
         csums[lhs:rhs] = 0
+    if len(lineLocs)==2:
+        c1= newImg[:,lineLocs[0][0]]
+        c2 = newImg[:,lineLocs[1][0]]
+
+        m1 = np.sum(c1)
+        m2 = np.sum(c2)
+
+        w1 = np.arange(len(c1))
+        w2 = np.arange(len(c2))
+
+        com1 = (int)(np.sum(np.multiply(c1,w1))/m1)
+        com2 = (int)(np.sum(np.multiply(c2,w2))/m2)
+
+        I1 = 0
+        I2 = 0
+
+        l1 = 0
+        l2 = 0
+        for i in range(len(c1)):
+            if c1[i]!=0:
+                l1+=1
+                I1 +=abs(c1[i]-com1)
+            if c2[i]!=0:
+                l2+=1
+                I2 +=abs(c2[i]-com2)
+        I1 = I1/l1
+        I2 = I2/l2
+        print(m1/255,m2/255)
+        print(com1,com2)
+        print(I1,I2)
+
+
 
     if graph:
         plt.plot(csums2)
@@ -231,8 +269,9 @@ def plotLines(lineLocs, original):
         center = center + (50000-lineLocs[k][1])*lineLocs[k][0]
         norm = norm + (50000-lineLocs[k][1])
     #center = (int) (center/norm)
-    center = (int)((lineLocs[0][0]+lineLocs[1][0])/2)
-    cv2.line(original, (center, 0),
+    if len(lineLocs)==2:
+        center = (int)((lineLocs[0][0]+lineLocs[1][0])/2)
+        cv2.line(original, (center, 0),
              (center, original.shape[0]), (0, 0, 255), 1)
     return original
 
@@ -422,6 +461,7 @@ def mainImg(img):
     #HoughLines(newImg1)
 
     cv2.imshow("alpha", segmented)
+
     #plt.imshow(newImg1)
     cv2.imshow("binarization", newImg1)
     #cv2.imshow("mask", mask)
