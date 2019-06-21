@@ -42,8 +42,8 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
-        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -225,15 +225,15 @@ def adjust(image):
 
     maximum = h.mean()
     #maximum = h.min()
-    beta = 127-alphah*maximum  # Simple brightness control
+    beta = -alphah*maximum  # Simple brightness control
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
-    beta = 127-alphas*maximum  # Simple brightness control
+    beta = -alphas*maximum  # Simple brightness control
     s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
     maximum = v.mean()
-    beta = 127-alphav*maximum  # Simple brightness control
+    beta = -alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
     new_image = cv2.merge([h1, s1, v1])
@@ -241,9 +241,9 @@ def adjust(image):
 
 
 def adjustLAB(image):
-    alphah = 1
-    alphas = 0
-    alphav = 0
+    alphah = 3
+    alphas = 3
+    alphav = 3
 
     image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
     h, s, v = cv2.split(image)
@@ -371,8 +371,8 @@ def mainImg(img):
     #newImg1 = np.multiply(newImg1,mask)
     newImg1 = 255-newImg1
 
-    newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations=1)
-    #newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations=1)
+    newImg1 = cv2.erode(newImg1,np.ones((1,3)),iterations=1)
+    #newImg1 = cv2.dilate(newImg1,np.ones((3,1)),iterations=1)
     newImg1 = cv2.erode(newImg1,np.ones((3,1)),iterations=1)
 
 
@@ -391,7 +391,7 @@ def mainImg(img):
 
     #HoughLines(newImg1)
 
-    #cv2.imshow("alpha", segmented)
+    cv2.imshow("alpha", segmented)
     #plt.imshow(newImg1)
     
 	#cv2.imshow("binarization", newImg1)
