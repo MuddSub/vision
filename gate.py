@@ -188,7 +188,7 @@ def getLines(newImg,graph):
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
     lineLocs = []
-    leeway = 10
+    leeway = 15
     f = savgol_filter(csums1,101,2,0)
     #csums = np.subtract(csums,f)
     #csums = np.convolve(csums,[2,-1])
@@ -202,7 +202,7 @@ def getLines(newImg,graph):
         pred = np.argmax(csums)
         c1= newImg[:,pred]
         m= (int)(np.sum(c1)/255)
-        if m<=40:
+        if m<=35:
             continue
 
         lineLocs.append([pred, csums[np.argmax(csums)]])
@@ -308,7 +308,7 @@ def adjust(image):
 
 
 def adjustLAB(image):
-    alphah = 3
+    alphah = 2.5
     alphas = 0
     alphav = 2
 
@@ -330,16 +330,11 @@ def adjustLAB(image):
     beta = 127-alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
-    tmp1 = copy.deepcopy(h)
-    tmp1[tmp1 <= 200] = 1
-    tmp1[tmp1 > 200] = 0
-    #cv2.imshow("lsdjbcbbsj",h1)
-    #cv2.imshow("sldldjchsohdj",tmp1)
 
 
     new_image = cv2.merge([h1, s1, v1])
     new_image = cv2.cvtColor(new_image,cv2.COLOR_YUV2BGR);
-    return new_image,tmp1
+    return new_image
 
 ############################################
 
@@ -419,9 +414,7 @@ def mainImg(img):
 
     print(time.time()-start_time)
 
-    new_img,mask = adjustLAB(segmented)
-    segmented = new_img
-    print(time.time()-start_time)
+    segmented = adjustLAB(segmented)
     # Higher discernability = lower distinguishing power
 
     discernability = 25
@@ -442,6 +435,8 @@ def mainImg(img):
     for i in range(1):
         newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
         newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
+    newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
+    newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations=1)
     newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations = 1)
 
     print(time.time()-start_time)
