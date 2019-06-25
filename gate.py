@@ -310,7 +310,7 @@ def adjust(image):
 def adjustLAB(image):
     alphah = 2.5
     alphas = 0
-    alphav = 2
+    alphav = 5
 
     image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
     h, s, v = cv2.split(image)
