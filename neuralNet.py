@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import os
 import numpy as np
 import torch
@@ -25,37 +26,39 @@ class Net(torch.nn.Module):
 		super(Net, self).__init__()
 		#insize = 3*300*640, output size is 9*30*128
 		#might want to decrease stride size
-		self.conv1 = torch.nn.Conv2d( 1, 9, kernel_size = (10,5), stride = (10,5), padding = 0)
+		#self.conv1 = torch.nn.Conv2d( 1, 9, kernel_size = (10,5), stride = (10,5), padding = 0)
 		# might consider other pool, depending on pixel size of gates
 		
-		self.pool = torch.nn.AvgPool2d(kernel_size = 2, stride = 2, padding = 0)
+		#self.pool = torch.nn.AvgPool2d(kernel_size = 2, stride = 2, padding = 0)
 
 		# 9 * 15 * 64 inputs, 64 outputs
-		self.fc1 = torch.nn.Linear(9*15*64,9*64)
-		self.fc15 = torch.nn.Linear(9*64,64)
+		self.fc1 = torch.nn.Linear(1*300*640,20*640)
+		self.fc2 = torch.nn.Linear(20*640,300)
 		#64 input features, 2 output features
-		self.fc2 = torch.nn.Linear(64, 2)
+		self.fc3 = torch.nn.Linear(300,60)
+		self.fc4 = torch.nn.Linear(60, 2)
 
 	def forward(self,x):
 		
 		#batch size is 3*32*32
 		# compute activation of first covultion
 		#(1,300,644) to (9,30,129)
-		x= F.relu(self.conv1(x))
+		#x= F.relu(self.conv1(x))
 		
 		#(9,30,128) to (9,15,64)
-		x = self.pool(x)
+		#x = self.pool(x)
 
 		#reshape data to input to the input layer of neural net
 		#(9,15,64) to (1, 9*15*64)
-		x = x.view(1,9*15*64)
+		x = x.view(1,300*640)
 		
 		#compute activation of first fully connected layer
 		#(1,8640) to (1,5*64)
 		x= F.relu(self.fc1(x))
-		x=F.relu(self.fc15(x))
+		x=F.relu(self.fc2(x))
+		x=F.relu(self.fc3(x))
 		#compute the second fully connected layer, do not activate yet!
-		x=self.fc2(x)
+		x=self.fc4(x)
 
 		return x
 
@@ -89,6 +92,8 @@ class landmarksDataset(Dataset):
                                 self.landmarks_frame.iloc[idx, 0])
         image = io.imread(img_name)
         image = transform.resize(image,(300,640))
+        io.imshow(image)
+        io.show()
         image = rgb2gray(image)
         landmarks = self.landmarks_frame.iloc[idx, 1:].values
         landmarks = landmarks.astype('float').reshape(-1, 2)
@@ -161,6 +166,8 @@ def trainNet(net, batch, n_epochs, learning_rate, train_file, test_file):
 		start_time = time.time()
 		trainning_loss = 0
 
+		trainning_record=[]
+
 		for i, data in enumerate(train, 0):
 		
 			###########   input labeling
@@ -194,6 +201,8 @@ def trainNet(net, batch, n_epochs, learning_rate, train_file, test_file):
 			
 			trainning_loss+=loss.item()
 
+			trainning_record.append(loss.item()/len(train)/10)
+
 		print("Training Summary")
 		print("Epoch trainning loss: {:.2f}".format(trainning_loss) )
 		print("Average epoch training time: {:.2f}s".format( (time.time() - start_time)/len(train) ))
@@ -204,6 +213,8 @@ def trainNet(net, batch, n_epochs, learning_rate, train_file, test_file):
 		########################################
 
 		test_loss = 0
+
+		test_record=[]
 		
 		test_time = time.time()
 
@@ -227,6 +238,8 @@ def trainNet(net, batch, n_epochs, learning_rate, train_file, test_file):
 			
 			test_loss=test_loss+x_loss
 			
+			test_record.append(x_loss)
+
 			print("x loss: "+ str(x_loss.item()))
 		
 		# record net if it is better
@@ -250,6 +263,10 @@ def trainNet(net, batch, n_epochs, learning_rate, train_file, test_file):
 	# overall summary
 	print("best score {:.2f}".format(best_score))
 	print("Neural Net time: {:.2f}s".format(time.time() - start_time))
+	
+	plt.plot(range(120),trainning_record, "r",range(120), test_record,"b")
+	plt.show()
+
 	return best_net
 
 
@@ -279,7 +296,7 @@ def driver():
 		path0 = "/Users/rongk/Downloads/visionCode/Vision/Neural_Net/"
 	path_train = path0 + "Train/"
 	path_test = path0 +"Test/"
-	trainNet(Net(), 1, 120, 0.001, path_train,path_test)
+	trainNet(Net(), 1, 120, 0.01, path_train,path_test)
 	#32
 
 if __name__ == "__main__":

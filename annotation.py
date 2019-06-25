@@ -18,8 +18,8 @@ else:
 path_train = path0 + "Train"
 path_test = path0 +"Test"
 
-#path = path_test
-path = path_train
+path = path_test
+#path = path_train
 directory = os.fsencode(path)
 #write = os.open("log.txt",os.O_APPEND)
 
