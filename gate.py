@@ -202,7 +202,7 @@ def getLines(newImg,graph):
         pred = np.argmax(csums)
         c1= newImg[:,pred]
         m= (int)(np.sum(c1)/255)
-        if m<=35:
+        if m<=30:
             continue
 
         lineLocs.append([pred, csums[np.argmax(csums)]])
@@ -282,9 +282,9 @@ def segment(image):
 
 
 def adjust(image):
-    alphah = 8
-    alphas = 2
-    alphav = 2
+    alphah = 15
+    alphas = 6
+    alphav = 3
 
     h, s, v = cv2.split(image)
     new_image = np.zeros(image.shape, image.dtype)
@@ -308,7 +308,7 @@ def adjust(image):
 
 
 def adjustLAB(image):
-    alphah = 1
+    alphah = 0
     alphas = 0
     alphav = 1
 
@@ -327,7 +327,7 @@ def adjustLAB(image):
     s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
     maximum = v.mean()
-    beta = 127-alphav*maximum  # Simple brightness control
+    beta = -alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
 
@@ -410,11 +410,11 @@ def mainImg(img):
     segmented = reflect(original)
 
 
-    segmented = adjust(segmented)
+    segmented = adjustLAB(segmented)
 
     print(time.time()-start_time)
 
-    segmented = adjustLAB(segmented)
+    segmented = adjust(segmented)
     # Higher discernability = lower distinguishing power
 
     discernability = 25
