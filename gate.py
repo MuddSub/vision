@@ -282,8 +282,8 @@ def segment(image):
 
 
 def adjust(image):
-    alphah = 3
-    alphas = 3
+    alphah = 8
+    alphas = 5
     alphav = 3
 
     h, s, v = cv2.split(image)
@@ -292,15 +292,15 @@ def adjust(image):
 
     maximum = h.mean()
     #maximum = h.min()
-    beta = 50-alphah*maximum  # Simple brightness control
+    beta = -alphah*maximum  # Simple brightness control
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
-    beta = 50-alphas*maximum  # Simple brightness control
+    beta =127-alphas*maximum  # Simple brightness control
     s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
     maximum = v.mean()
-    beta = 50-alphav*maximum  # Simple brightness control
+    beta = 127-alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
     new_image = cv2.merge([h1, s1, v1])
@@ -308,9 +308,9 @@ def adjust(image):
 
 
 def adjustLAB(image):
-    alphah = 2.5
+    alphah = 1
     alphas = 0
-    alphav = 5
+    alphav = 1
 
     image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
     h, s, v = cv2.split(image)
