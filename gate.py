@@ -283,8 +283,8 @@ def segment(image):
 
 def adjust(image):
     alphah = 8
-    alphas = 5
-    alphav = 3
+    alphas = 2
+    alphav = 2
 
     h, s, v = cv2.split(image)
     new_image = np.zeros(image.shape, image.dtype)
