@@ -42,8 +42,8 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate8/"
-        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/gate7/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -456,7 +456,7 @@ def mainImg(img):
     o1 = plotLines(lineLocs, o1)
 
     #HoughLines(newImg1)
-
+    cv2.imshow("original",origin)
     cv2.imshow("alpha", segmented)
 
     #plt.imshow(newImg1)
@@ -483,7 +483,7 @@ def main():
     else:
         img = open(sys.argv[1], sys.argv[2])
         b = mainImg(img)
-        cv2.imshow("original",img)
+        cv2.imshow("Result",img)
         #cv2.imshow("binarized",b)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
