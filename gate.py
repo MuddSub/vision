@@ -42,8 +42,8 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/Vision/gate7/"
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate7/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -282,7 +282,7 @@ def segment(image):
 
 
 def adjust(image):
-    alphah = 15
+    alphah = 3
     alphas = 6
     alphav = 3
 
@@ -292,7 +292,7 @@ def adjust(image):
 
     maximum = h.mean()
     #maximum = h.min()
-    beta = -alphah*maximum  # Simple brightness control
+    beta = 127-alphah*maximum  # Simple brightness control
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
@@ -405,9 +405,9 @@ def mainImg(img):
 
     o1 = original
 
-    original = segment(original)
+    segmented = segment(original)
 
-    segmented = reflect(original)
+    #segmented = reflect(original)
 
 
     segmented = adjustLAB(segmented)
