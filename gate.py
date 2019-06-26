@@ -43,7 +43,7 @@ def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
         #path0 = "/home/dhyang/Desktop/Vision/Vision/gate7/"
-        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -436,8 +436,8 @@ def mainImg(img):
         newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
         newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
     newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
-    newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations=1)
-    newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations = 1)
+    #newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations=1)
+    #newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations = 1)
 
     print(time.time()-start_time)
 
