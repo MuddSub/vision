@@ -188,7 +188,7 @@ def getLines(newImg,graph):
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
     lineLocs = []
-    leeway = 15
+    leeway = 25
     f = savgol_filter(csums1,101,2,0)
     #csums = np.subtract(csums,f)
     #csums = np.convolve(csums,[2,-1])
