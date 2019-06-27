@@ -183,6 +183,7 @@ def binarization(img):
     return thresh1
 
 def rotateGetLines(image,graph):
+    numDetected = -1
     o = copy.deepcopy(image)
     o1 = copy.deepcopy(image)
     o1 = 255-o1
@@ -200,23 +201,23 @@ def rotateGetLines(image,graph):
         except:
             pass
     else:
-        print("Detected 0")
+        numDetected = 0
         return
     image = rotateToHorizontal(o)
     cv2.imshow("sdjfnskjf",image)
 
     lineLocs,_ = getLines(image, lineLocs)
-    if lineLocs == 2:
-        print("Detected 2")
+    if len(lineLocs) == 2:
+        numDetected = 2
     else:
-        print("Detected 1")
+        numDetected = 1
     if graph:
         plt.plot(csums)
         for i in range(len(lineLocs)):
             plt.axvline(x=lineLocs[i][0], color='r', linewidth=1)
         plt.ioff()
         plt.show()
-    return lineLocs
+    return lineLocs,numDetected
 
 
 
@@ -454,7 +455,7 @@ def mainImg(img):
     #newImg2 = cv2.bitwise_not(newImg2)
 
 
-    lineLocs = rotateGetLines(newImg1,True)
+    lineLocs,numDetected = rotateGetLines(newImg1,True)
     newImg1 = plotLines(lineLocs, newImg1)
     o1 = plotLines(lineLocs, o1)
 
