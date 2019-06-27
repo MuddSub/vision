@@ -42,8 +42,8 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/gate7/"
-        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/images/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -277,7 +277,7 @@ def plotLines(lineLocs, original):
 
 def segment(image):
     mdpt = (int)(image.shape[0]/2)
-    striph = 50
+    striph = 100
     return image[mdpt - striph: mdpt + striph, :]
 
 
