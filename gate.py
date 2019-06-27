@@ -348,20 +348,25 @@ def HoughLines(gray):
     cv2.imshow("lsdjjndldsjd",gray)
 
 
-def rotateToHorizontal(img, lb=-20, ub=20, incr=.5, topN=2):
+def rotateToHorizontal(img, lb=-10, ub=10, incr=.25, topN=2):
     bestscore = -np.inf
     bestTheta = 0
+    img = 255 - img
     for theta in np.arange(lb, ub, incr):
-        imgRot = rotate(img,theta)
+        imgRot = rotate(img,theta,cval = 0)
         csums = np.sum(imgRot, axis=0)
         csums_sorted = sorted(csums)[::-1]
         curscore = np.sum(csums_sorted[0:topN])
-        if curscore > bestscore:
+        if curscore >  bestscore:
             bestscore = curscore
             bestTheta = theta
-    result = rotate(img,bestTheta)
-    print(bestTheta)
-    return result
+    result = rotate(img,bestTheta,cval = 0)
+    np.set_printoptions(threshold=sys.maxsize)
+    #print(result)
+    print(bestTheta,bestscore)
+    img  = 255 - 255*result
+    img = img.astype(np.uint8)
+    return img
 
 def findLeft(img):
     ans = []
@@ -441,7 +446,7 @@ def mainImg(img):
 
     print(time.time()-start_time)
 
-    #newImg1 = rotateToHorizontal(newImg1)
+    newImg1 = rotateToHorizontal(newImg1)
     #lineLocs = findLeft(newImg1)
     #newImg1 = cv2.bilateralFilter(newImg1,9,75,75)
 
