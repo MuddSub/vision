@@ -277,7 +277,7 @@ def plotLines(lineLocs, original):
 
 def segment(image):
     mdpt = (int)(image.shape[0]/2)
-    striph = 100
+    striph = 50
     return image[mdpt - striph: mdpt + striph, :]
 
 
@@ -308,7 +308,7 @@ def adjust(image):
 
 
 def adjustLAB(image):
-    alphah = 0
+    alphah = 1
     alphas = 0
     alphav = 1
 
@@ -319,7 +319,7 @@ def adjustLAB(image):
 
     maximum = h.mean()
     #maximum = h.min()
-    beta = -alphah*maximum  # Simple brightness control
+    beta = 127-alphah*maximum  # Simple brightness control
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
