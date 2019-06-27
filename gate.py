@@ -12,7 +12,7 @@ import sys
 import time
 
 ###################################################
-colorBalanceRatio = 5
+colorBalanceRatio = 20
 lb = []
 lc = []
 le = []
@@ -42,8 +42,8 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/gate7/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -67,19 +67,49 @@ def analysis(img):
 # main program removebackscatter
 #######################################
 
+def detectNoteheadBlobs(img, minarea, maxarea):
 
-def reflect(image, blkSize=10*10, patchSize=8, lamb=10, gamma=1.7, r=10, eps=1e-6, level=5):
+    # define blob detector
+    params = cv2.SimpleBlobDetector_Params()
+
+    # Change thresholds
+    # params.minThreshold = 100;
+    # params.maxThreshold = 200;
+
+    # Filter by Area
+    # params.filterByArea = True
+    params.minArea = minarea
+    params.maxArea = maxarea
+
+    # Filter by Circularity
+    # params.filterByCircularity = True
+    # params.minCircularity = 0.1
+
+    # Filter by Convexity
+    # params.filterByConvexity = True
+    # params.minConvexity = 0.87
+
+    # Filter by Inertia
+    # params.filterByInertia = True
+    # params.minInertiaRatio = 0.01
+
+    # Create a detector with the parameters
+    detector = cv2.SimpleBlobDetector_create(params)
+
+    keypoints = detector.detect(img)
+    im_with_keypoints = cv2.drawKeypoints(np.array(img), keypoints, np.array([]), (0,0,255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+
+    return keypoints, im_with_keypoints
+
+def reflect(image, blkSize=10*10, patchSize=8, lamb=10, gamma=1, r=10, eps=1e-6, level=5):
+    start_time = time.time()
     image = np.array(image, np.float32)
     bgr = cv2.split(image)
-    #show(bgr[2]/255,"initial red",False)
-    # image decomposition, probably key
     RL = IDilluRefDecompose(image)
+    #print("1:",time.time()-start_time)
     RL = FsimpleColorBalance(RL, colorBalanceRatio)  # checked
-    # show2(RL,"color corrected reflective") #checked
+    #print("2:",time.time()-start_time)
     bgr = cv2.split(RL)
-    #show(bgr[0]/255,"RL blue",False)
-    #show(bgr[1]/255,"RL green",False)
-    #show(bgr[2]/255,"RL red",False)
     return RL
 ####################################################
 # Img Decompose: weighted image decompose
@@ -117,6 +147,7 @@ def FsimpleColorBalance(img, percent):
         channels = copy.deepcopy(img)
         # Not sure
     channels = np.array(channels)
+    print("1:",time.time()-start_time)
 
     for i in range(chnls):
         # find the low and high precentile values based on input percentile
@@ -130,6 +161,7 @@ def FsimpleColorBalance(img, percent):
         channels[i] = cv2.normalize(
             channels[i], channels[i], 0.0, 255.0/2, cv2.NORM_MINMAX)
         channels[i] = np.float32(channels[i])
+    print("2:",time.time()-start_time)
 
     result = cv2.merge(channels)
     return result
@@ -156,15 +188,10 @@ def getLines(newImg,graph):
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
     lineLocs = []
-    leeway = 50
+    leeway = 15
     f = savgol_filter(csums1,101,2,0)
-    csums = np.subtract(csums,f)
-    csums = np.convolve(csums,[1,1])
-    csums = np.convolve(csums,[2,-1])
-    csums[0]=0
-    csums[1]=0
-    csums[-1]=0
-    csums[-2]=0
+    #csums = np.subtract(csums,f)
+    #csums = np.convolve(csums,[2,-1])
     csums2 = copy.deepcopy(csums)
     #for i in range(len(csums)):
     #    if i > 0:
@@ -172,7 +199,13 @@ def getLines(newImg,graph):
     #csums2 = copy.deepcopy(csums)
 
     for i in range(2):
-        lineLocs.append([np.argmax(csums), csums[np.argmax(csums)]])
+        pred = np.argmax(csums)
+        c1= newImg[:,pred]
+        m= (int)(np.sum(c1)/255)
+        if m<=30:
+            continue
+
+        lineLocs.append([pred, csums[np.argmax(csums)]])
         lhs = lineLocs[i][0]-leeway
         rhs = lineLocs[i][0]+leeway
         if lhs < 0:
@@ -180,7 +213,44 @@ def getLines(newImg,graph):
         if rhs >= newImg.shape[1]:
             rhs = newImg.shape[1]-1
         csums[lhs:rhs] = 0
+<<<<<<< HEAD
     if False:
+=======
+    if len(lineLocs)==2:
+        c1= newImg[:,lineLocs[0][0]]
+        c2 = newImg[:,lineLocs[1][0]]
+
+        m1 = np.sum(c1)
+        m2 = np.sum(c2)
+
+        w1 = np.arange(len(c1))
+        w2 = np.arange(len(c2))
+
+        com1 = (int)(np.sum(np.multiply(c1,w1))/m1)
+        com2 = (int)(np.sum(np.multiply(c2,w2))/m2)
+
+        I1 = 0
+        I2 = 0
+
+        l1 = 0
+        l2 = 0
+        for i in range(len(c1)):
+            if c1[i]!=0:
+                l1+=1
+                I1 +=abs(c1[i]-com1)
+            if c2[i]!=0:
+                l2+=1
+                I2 +=abs(c2[i]-com2)
+        I1 = I1/l1
+        I2 = I2/l2
+        print(m1/255,m2/255)
+        print(com1,com2)
+        print(I1,I2)
+
+
+
+    if graph:
+>>>>>>> c38f686a0550c9f547ad130e797598dc2045d818
         plt.plot(csums2)
         for i in range(len(lineLocs)):
             plt.axvline(x=lineLocs[i][0], color='r', linewidth=1)
@@ -202,21 +272,22 @@ def plotLines(lineLocs, original):
         center = center + (50000-lineLocs[k][1])*lineLocs[k][0]
         norm = norm + (50000-lineLocs[k][1])
     #center = (int) (center/norm)
-    center = (int)((lineLocs[0][0]+lineLocs[1][0])/2)
-    cv2.line(original, (center, 0),
+    if len(lineLocs)==2:
+        center = (int)((lineLocs[0][0]+lineLocs[1][0])/2)
+        cv2.line(original, (center, 0),
              (center, original.shape[0]), (0, 0, 255), 1)
     return original
 
 
 def segment(image):
     mdpt = (int)(image.shape[0]/2)
-    striph = 150
+    striph = 50
     return image[mdpt - striph: mdpt + striph, :]
 
 
 def adjust(image):
-    alphah = 3
-    alphas = 3
+    alphah = 15
+    alphas = 6
     alphav = 3
 
     h, s, v = cv2.split(image)
@@ -229,11 +300,11 @@ def adjust(image):
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
-    beta = -alphas*maximum  # Simple brightness control
+    beta =127-alphas*maximum  # Simple brightness control
     s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
     maximum = v.mean()
-    beta = -alphav*maximum  # Simple brightness control
+    beta = 127-alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
     new_image = cv2.merge([h1, s1, v1])
@@ -241,11 +312,11 @@ def adjust(image):
 
 
 def adjustLAB(image):
-    alphah = 3
-    alphas = 3
-    alphav = 3
+    alphah = 0
+    alphas = 0
+    alphav = 1
 
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
     h, s, v = cv2.split(image)
     new_image = np.zeros(image.shape, image.dtype)
     h1, s1, v1 = cv2.split(new_image)
@@ -260,19 +331,14 @@ def adjustLAB(image):
     s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
     maximum = v.mean()
-    beta = 127-alphav*maximum  # Simple brightness control
+    beta = -alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
-    tmp1 = copy.deepcopy(h)
-    tmp1[tmp1 <= 200] = 1
-    tmp1[tmp1 > 200] = 0
-    #cv2.imshow("lsdjbcbbsj",h1)
-    #cv2.imshow("sldldjchsohdj",tmp1)
 
 
     new_image = cv2.merge([h1, s1, v1])
-    new_image = cv2.cvtColor(new_image,cv2.COLOR_LAB2BGR);
-    return new_image,tmp1
+    new_image = cv2.cvtColor(new_image,cv2.COLOR_YUV2BGR);
+    return new_image
 
 ############################################
 
@@ -343,19 +409,16 @@ def mainImg(img):
 
     o1 = original
 
-    #cv2.imshow("original", origin)
-    original = reflect(original)
+    original = segment(original)
+
+    segmented = reflect(original)
 
 
+    segmented = adjustLAB(segmented)
 
-    segmented = segment(original)
+    print(time.time()-start_time)
 
     segmented = adjust(segmented)
-
-    new_img,mask = adjustLAB(segmented)
-    #cv2.imshow("skdjnbwi",new_img)
-    #cv2.imshow("ljdjnsldjfs",mask)
-    segmented = new_img
     # Higher discernability = lower distinguishing power
 
     discernability = 25
@@ -366,17 +429,22 @@ def mainImg(img):
     #newImg = cv2.cvtColor(newImg, cv2.COLOR_BGR2GRAY)
     #newImg1 = binarization(newImg)
     #newImg1 = cv2.fastNlMeansDenoisingColored(newImg,None,10,0,7,21)
+    print(time.time()-start_time)
+
     newImg1 = binarization(newImg)
     newImg1 = 255-newImg1
     #newImg1 = np.multiply(newImg1,mask)
     newImg1 = 255-newImg1
 
-    newImg1 = cv2.erode(newImg1,np.ones((1,3)),iterations=1)
-    #newImg1 = cv2.dilate(newImg1,np.ones((3,1)),iterations=1)
-    newImg1 = cv2.erode(newImg1,np.ones((3,1)),iterations=1)
+    for i in range(1):
+        newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
+        newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
+    newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
+    newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations=1)
+    newImg1 = cv2.erode(newImg1,np.ones((1,5)),iterations = 1)
 
+    print(time.time()-start_time)
 
-    #newImg1 = cv2.dilate(newImg1,np.ones((2,1)),iterations = 1)
     #newImg1 = rotateToHorizontal(newImg1)
     #lineLocs = findLeft(newImg1)
     #newImg1 = cv2.bilateralFilter(newImg1,9,75,75)
@@ -386,12 +454,15 @@ def mainImg(img):
     #newImg2 = cv2.multiply(newImg1_inv, mask)
     #newImg2 = cv2.bitwise_not(newImg2)
 
+
     lineLocs, certainty = getLines(newImg1,True)
+    newImg1 = plotLines(lineLocs, newImg1)
     o1 = plotLines(lineLocs, o1)
 
     #HoughLines(newImg1)
-
+    cv2.imshow("original",origin)
     cv2.imshow("alpha", segmented)
+
     #plt.imshow(newImg1)
     
 	#cv2.imshow("binarization", newImg1)
@@ -418,8 +489,8 @@ def main():
     else:
         img = open(sys.argv[1], sys.argv[2])
         b = mainImg(img)
-        cv2.imshow("original",img)
-        cv2.imshow("binarized",b)
+        cv2.imshow("Result",img)
+        #cv2.imshow("binarized",b)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 

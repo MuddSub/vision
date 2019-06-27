@@ -32,11 +32,11 @@ class Net(torch.nn.Module):
 		#self.pool = torch.nn.AvgPool2d(kernel_size = 2, stride = 2, padding = 0)
 
 		# 9 * 15 * 64 inputs, 64 outputs
-		self.fc1 = torch.nn.Linear(1*300*640,20*640)
-		self.fc2 = torch.nn.Linear(20*640,300)
+		self.fc1 = torch.nn.Linear(1*300*640,640)
+		#self.fc2 = torch.nn.Linear(20*640,300)
 		#64 input features, 2 output features
-		self.fc3 = torch.nn.Linear(300,60)
-		self.fc4 = torch.nn.Linear(60, 2)
+		#self.fc3 = torch.nn.Linear(300,60)
+		self.fc4 = torch.nn.Linear(640, 2)
 
 	def forward(self,x):
 		
@@ -55,8 +55,8 @@ class Net(torch.nn.Module):
 		#compute activation of first fully connected layer
 		#(1,8640) to (1,5*64)
 		x= F.relu(self.fc1(x))
-		x=F.relu(self.fc2(x))
-		x=F.relu(self.fc3(x))
+		#x=F.relu(self.fc2(x))
+		#x=F.relu(self.fc3(x))
 		#compute the second fully connected layer, do not activate yet!
 		x=self.fc4(x)
 
@@ -92,8 +92,6 @@ class landmarksDataset(Dataset):
                                 self.landmarks_frame.iloc[idx, 0])
         image = io.imread(img_name)
         image = transform.resize(image,(300,640))
-        io.imshow(image)
-        io.show()
         image = rgb2gray(image)
         landmarks = self.landmarks_frame.iloc[idx, 1:].values
         landmarks = landmarks.astype('float').reshape(-1, 2)
