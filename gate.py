@@ -182,12 +182,48 @@ def binarization(img):
 
     return thresh1
 
+def rotateGetLines(image,graph):
+    o = copy.deepcopy(image)
+    o1 = copy.deepcopy(image)
+    o1 = 255-o1
+    csums = np.sum(o1,axis = 0)
+    image = rotateToHorizontal(image)
+    lineLocs,_ = getLines(image)
+    leeway = 10
+    if len(lineLocs)==1:
+        try:
+            o[:,lineLocs[0][0]-leeway:lineLocs[0][0]]=255
+        except:
+            pass
+        try:
+            o[:,lineLocs[0][0]:lineLocs[0][0]+leeway]=255
+        except:
+            pass
+    else:
+        print("Detected 0")
+        return
+    image = rotateToHorizontal(o)
+    cv2.imshow("sdjfnskjf",image)
 
-def getLines(newImg,graph):
+    lineLocs,_ = getLines(image, lineLocs)
+    if lineLocs == 2:
+        print("Detected 2")
+    else:
+        print("Detected 1")
+    if graph:
+        plt.plot(csums)
+        for i in range(len(lineLocs)):
+            plt.axvline(x=lineLocs[i][0], color='r', linewidth=1)
+        plt.ioff()
+        plt.show()
+    return lineLocs
+
+
+
+def getLines(newImg,lineLocs = []):
     newImg = 255-newImg
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
-    lineLocs = []
     leeway = 25
     f = savgol_filter(csums1,101,2,0)
     #csums = np.subtract(csums,f)
@@ -198,7 +234,7 @@ def getLines(newImg,graph):
     #        csums[i] = csums2[i]+csums2[i-1]
     #csums2 = copy.deepcopy(csums)
 
-    for i in range(2):
+    for i in range(1):
         pred = np.argmax(csums)
         c1= newImg[:,pred]
         m= (int)(np.sum(c1)/255)
@@ -213,45 +249,8 @@ def getLines(newImg,graph):
         if rhs >= newImg.shape[1]:
             rhs = newImg.shape[1]-1
         csums[lhs:rhs] = 0
-    if len(lineLocs)==2:
-        c1= newImg[:,lineLocs[0][0]]
-        c2 = newImg[:,lineLocs[1][0]]
-
-        m1 = np.sum(c1)
-        m2 = np.sum(c2)
-
-        w1 = np.arange(len(c1))
-        w2 = np.arange(len(c2))
-
-        com1 = (int)(np.sum(np.multiply(c1,w1))/m1)
-        com2 = (int)(np.sum(np.multiply(c2,w2))/m2)
-
-        I1 = 0
-        I2 = 0
-
-        l1 = 0
-        l2 = 0
-        for i in range(len(c1)):
-            if c1[i]!=0:
-                l1+=1
-                I1 +=abs(c1[i]-com1)
-            if c2[i]!=0:
-                l2+=1
-                I2 +=abs(c2[i]-com2)
-        I1 = I1/l1
-        I2 = I2/l2
-        print(m1/255,m2/255)
-        print(com1,com2)
-        print(I1,I2)
 
 
-
-    if graph:
-        plt.plot(csums2)
-        for i in range(len(lineLocs)):
-            plt.axvline(x=lineLocs[i][0], color='r', linewidth=1)
-        plt.ioff()
-        plt.show()
     newImg = cv2.cvtColor(newImg, cv2.COLOR_GRAY2BGR)
     #error = lineLocs[2][1]-(lineLocs[0][1]+lineLocs[1][1])/2
     error = 0
@@ -348,19 +347,19 @@ def HoughLines(gray):
     cv2.imshow("lsdjjndldsjd",gray)
 
 
-def rotateToHorizontal(img, lb=-10, ub=10, incr=.25, topN=2):
+def rotateToHorizontal(img, lb=-20, ub=20, incr=0.5, topN=1):
     bestscore = -np.inf
     bestTheta = 0
     img = 255 - img
     for theta in np.arange(lb, ub, incr):
-        imgRot = rotate(img,theta,cval = 0)
+        imgRot = rotate(img,theta,resize = True,cval = 0)
         csums = np.sum(imgRot, axis=0)
         csums_sorted = sorted(csums)[::-1]
         curscore = np.sum(csums_sorted[0:topN])
         if curscore >  bestscore:
             bestscore = curscore
             bestTheta = theta
-    result = rotate(img,bestTheta,cval = 0)
+    result = rotate(img,bestTheta,resize = True,cval = 0)
     np.set_printoptions(threshold=sys.maxsize)
     #print(result)
     print(bestTheta,bestscore)
@@ -441,12 +440,11 @@ def mainImg(img):
         newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
         newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
     newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
-    #newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations=1)
+    newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations=1)
     newImg1 = cv2.erode(newImg1,np.ones((1,3)),iterations = 1)
 
     print(time.time()-start_time)
 
-    newImg1 = rotateToHorizontal(newImg1)
     #lineLocs = findLeft(newImg1)
     #newImg1 = cv2.bilateralFilter(newImg1,9,75,75)
 
@@ -456,7 +454,7 @@ def mainImg(img):
     #newImg2 = cv2.bitwise_not(newImg2)
 
 
-    lineLocs, certainty = getLines(newImg1,True)
+    lineLocs = rotateGetLines(newImg1,True)
     newImg1 = plotLines(lineLocs, newImg1)
     o1 = plotLines(lineLocs, o1)
 
