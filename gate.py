@@ -42,8 +42,8 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/Vision/images/"
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Test/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/images/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -183,6 +183,7 @@ def binarization(img):
     return thresh1
 
 def rotateGetLines(image,graph):
+    start = time.time()
     numDetected = -1
     o = copy.deepcopy(image)
     o1 = copy.deepcopy(image)
@@ -217,6 +218,7 @@ def rotateGetLines(image,graph):
             plt.axvline(x=lineLocs[i][0], color='r', linewidth=1)
         plt.ioff()
         plt.show()
+
     return lineLocs,numDetected
 
 
@@ -226,7 +228,7 @@ def getLines(newImg,lineLocs = []):
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
     leeway = 25
-    f = savgol_filter(csums1,101,2,0)
+    #f = savgol_filter(csums1,101,2,0)
     #csums = np.subtract(csums,f)
     #csums = np.convolve(csums,[2,-1])
     csums2 = copy.deepcopy(csums)
@@ -348,18 +350,18 @@ def HoughLines(gray):
     cv2.imshow("lsdjjndldsjd",gray)
 
 
-def rotateToHorizontal(img, lb=-20, ub=20, incr=0.5, topN=1):
+def rotateToHorizontal(img, lb=-5, ub=5, incr=1, topN=1):
     bestscore = -np.inf
     bestTheta = 0
     img = 255 - img
     for theta in np.arange(lb, ub, incr):
         imgRot = rotate(img,theta,resize = True,cval = 0)
         csums = np.sum(imgRot, axis=0)
-        csums_sorted = sorted(csums)[::-1]
-        curscore = np.sum(csums_sorted[0:topN])
+        curscore = np.max(csums)
         if curscore >  bestscore:
             bestscore = curscore
             bestTheta = theta
+
     result = rotate(img,bestTheta,resize = True,cval = 0)
     np.set_printoptions(threshold=sys.maxsize)
     #print(result)
@@ -441,21 +443,13 @@ def mainImg(img):
         newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
         newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
     newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
-    #newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations=1)
     newImg1 = cv2.erode(newImg1,np.ones((1,3)),iterations = 1)
 
-    print(time.time()-start_time)
 
-    #lineLocs = findLeft(newImg1)
-    #newImg1 = cv2.bilateralFilter(newImg1,9,75,75)
-
-    #experimental code: blob subtraction
-    #newImg1_inv = cv2.bitwise_not(newImg1)
-    #newImg2 = cv2.multiply(newImg1_inv, mask)
-    #newImg2 = cv2.bitwise_not(newImg2)
-
+    print("before:" + str(time.time()-start_time))
 
     lineLocs,numDetected = rotateGetLines(newImg1,True)
+    print("Total: "+str(time.time()-start_time))
     #newImg1 = plotLines(lineLocs, newImg1)
     o1 = plotLines(lineLocs, o1)
 
