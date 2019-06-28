@@ -26,31 +26,31 @@ class Net(torch.nn.Module):
 		super(Net, self).__init__()
 		#insize = 3*300*640, output size is 9*30*128
 		#might want to decrease stride size
-		#self.conv1 = torch.nn.Conv2d( 1, 9, kernel_size = (10,5), stride = (10,5), padding = 0)
+		self.conv1 = torch.nn.Conv2d( 1, 9, kernel_size = (10,5), stride = (10,5), padding = 0)
 		# might consider other pool, depending on pixel size of gates
 		
-		#self.pool = torch.nn.AvgPool2d(kernel_size = 2, stride = 2, padding = 0)
+		self.pool = torch.nn.AvgPool2d(kernel_size = 2, stride = 2, padding = 0)
 
 		# 9 * 15 * 64 inputs, 64 outputs
-		self.fc1 = torch.nn.Linear(1*300*640,640)
+		self.fc1 = torch.nn.Linear(8640,5*64)
 		#self.fc2 = torch.nn.Linear(20*640,300)
 		#64 input features, 2 output features
 		#self.fc3 = torch.nn.Linear(300,60)
-		self.fc4 = torch.nn.Linear(640, 2)
+		self.fc4 = torch.nn.Linear(5*64, 2)
 
 	def forward(self,x):
 		
 		#batch size is 3*32*32
 		# compute activation of first covultion
-		#(1,300,644) to (9,30,129)
-		#x= F.relu(self.conv1(x))
+		#(1,300,644) to (9,30,128)
+		x= F.relu(self.conv1(x))
 		
 		#(9,30,128) to (9,15,64)
-		#x = self.pool(x)
+		x = self.pool(x)
 
 		#reshape data to input to the input layer of neural net
 		#(9,15,64) to (1, 9*15*64)
-		x = x.view(1,300*640)
+		x = x.view(1,9*15*64)
 		
 		#compute activation of first fully connected layer
 		#(1,8640) to (1,5*64)
@@ -294,7 +294,7 @@ def driver():
 		path0 = "/Users/rongk/Downloads/visionCode/Vision/Neural_Net/"
 	path_train = path0 + "Train/"
 	path_test = path0 +"Test/"
-	trainNet(Net(), 1, 120, 0.01, path_train,path_test)
+	trainNet(Net(), 1, 30, 0.01, path_train,path_test)
 	#32
 
 if __name__ == "__main__":
