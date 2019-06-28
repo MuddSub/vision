@@ -270,6 +270,8 @@ def plotLines(lineLocs, original):
                  (lineLocs[i], original.shape[0]), (0, 255, 0), 3)
     norm = 0
     center = 0
+    if len(lineLocs)!=2:
+        return
     for k in range(len(lineLocs)):
         center = center + (50000-lineLocs[1])*lineLocs[0]
         norm = norm + (50000-lineLocs[1])
