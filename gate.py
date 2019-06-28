@@ -24,20 +24,6 @@ lg = []
 ################################
 
 
-def show(img, msg="image", ana=True):
-    cv2.imshow(msg, img)
-    if ana:
-        analysis(img)
-    cv2.waitKey(0)
-
-
-def show2(img, msg="image2", ana=True):
-
-    cv2.imshow(msg, img/255)
-    if ana:
-        analysis(img)
-    cv2.waitKey(100)
-
 
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
@@ -147,7 +133,7 @@ def FsimpleColorBalance(img, percent):
         channels = copy.deepcopy(img)
         # Not sure
     channels = np.array(channels)
-    print("1:",time.time()-start_time)
+    #print("1:",time.time()-start_time)
 
     for i in range(chnls):
         # find the low and high precentile values based on input percentile
@@ -161,7 +147,7 @@ def FsimpleColorBalance(img, percent):
         channels[i] = cv2.normalize(
             channels[i], channels[i], 0.0, 255.0/2, cv2.NORM_MINMAX)
         channels[i] = np.float32(channels[i])
-    print("2:",time.time()-start_time)
+    #print("2:",time.time()-start_time)
 
     result = cv2.merge(channels)
     return result
@@ -183,6 +169,11 @@ def binarization(img):
     return thresh1
 
 def rotateGetLines(image,graph):
+    #HyperParamaters control speed
+    lb = -15
+    ub = 15
+    delta =2
+
     start = time.time()
     numDetected = -1
     lineLocs = []
@@ -190,7 +181,8 @@ def rotateGetLines(image,graph):
     o1 = copy.deepcopy(image)
     o1 = 255-o1
     csums = np.sum(o1,axis = 0)
-    image = rotateToHorizontal(image)
+    image = rotateToHorizontal(image,lb,ub,delta)
+    print(time.time()-start)
     k = getLines(image)
     if k != -1:
         lineLocs.append(getLines(image))
@@ -209,8 +201,7 @@ def rotateGetLines(image,graph):
     else:
         numDetected = 0
         return lineLocs,0
-    image = rotateToHorizontal(o)
-    cv2.imshow("sdjfnskjf",image)
+    image = rotateToHorizontal(o,lb,ub,delta)
     k = getLines(image)
     if k!= -1:
         lineLocs.append(getLines(image))
@@ -221,7 +212,7 @@ def rotateGetLines(image,graph):
     if graph:
         plt.plot(csums)
         for i in range(len(lineLocs)):
-            print(lineLocs[i])
+            #print(lineLocs[i])
             plt.axvline(x=lineLocs[i], color='r', linewidth=1)
         plt.ioff()
         plt.show()
@@ -326,7 +317,6 @@ def adjustLAB(image):
     h1, s1, v1 = cv2.split(new_image)
 
     maximum = h.mean()
-    #maximum = h.min()
     beta = 127-alphah*maximum  # Simple brightness control
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
@@ -353,10 +343,9 @@ def HoughLines(gray):
     gray = cv2.cvtColor(gray,cv2.COLOR_GRAY2RGB)
     for i in range(a):
         cv2.line(gray, (lines[i][0][0], lines[i][0][1]), (lines[i][0][2], lines[i][0][3]), (0, 0, 255), 3, cv2.LINE_AA)
-    cv2.imshow("lsdjjndldsjd",gray)
 
 
-def rotateToHorizontal(img, lb=-20, ub=20, incr=1, topN=1):
+def rotateToHorizontal(img, lb=-20, ub=20, incr=2, topN=1):
     bestscore = -np.inf
     bestTheta = 0
     img = 255 - img
@@ -369,9 +358,6 @@ def rotateToHorizontal(img, lb=-20, ub=20, incr=1, topN=1):
             bestTheta = theta
 
     result = rotate(img,bestTheta,resize = True,cval = 0)
-    np.set_printoptions(threshold=sys.maxsize)
-    #print(result)
-    print(bestTheta,bestscore)
     img  = 255 - 255*result
     img = img.astype(np.uint8)
     return img
@@ -420,12 +406,9 @@ def mainImg(img):
 
     segmented = segment(original)
 
-    #segmented = reflect(original)
-
 
     segmented = adjustLAB(segmented)
 
-    print(time.time()-start_time)
 
     segmented = adjust(segmented)
     # Higher discernability = lower distinguishing power
@@ -435,15 +418,12 @@ def mainImg(img):
     newImg = cv2.medianBlur(segmented, discernability)
     newImg = 255-cv2.absdiff(segmented, newImg)
 
-    #newImg = cv2.cvtColor(newImg, cv2.COLOR_BGR2GRAY)
-    #newImg1 = binarization(newImg)
-    #newImg1 = cv2.fastNlMeansDenoisingColored(newImg,None,10,0,7,21)
-    print(time.time()-start_time)
 
     newImg1 = binarization(newImg)
     newImg1 = 255-newImg1
-    #newImg1 = np.multiply(newImg1,mask)
     newImg1 = 255-newImg1
+
+    print(time.time()-start_time)
 
     for i in range(1):
         newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
@@ -452,26 +432,17 @@ def mainImg(img):
     newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations = 1)
     newImg1 = cv2.erode(newImg1,np.ones((1,3)),iterations = 1)
 
-
-    print("before:" + str(time.time()-start_time))
-
-    lineLocs,numDetected = rotateGetLines(newImg1,True)
+    print(time.time()-start_time)
+    lineLocs,numDetected = rotateGetLines(newImg1,False)
     print("Total: "+str(time.time()-start_time))
-    #newImg1 = plotLines(lineLocs, newImg1)
+
+
     o1 = plotLines(lineLocs, o1)
 
-    #HoughLines(newImg1)
     cv2.imshow("original",origin)
     cv2.imshow("alpha", segmented)
 
-    #plt.imshow(newImg1)
     cv2.imshow("binarization", newImg1)
-    #cv2.imshow("mask", mask)
-    #cv2.imshow("multiplied",newImg2)
-    #cv2.imshow("background subtraction", newImg)
-    #cv2.imshow("result", o1)
-    #cv2.waitKey(0)
-    #cv2.destroyAllWindows()
 
     return newImg1
 ####################################################
