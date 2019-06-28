@@ -191,24 +191,29 @@ def rotateGetLines(image,graph):
     o1 = 255-o1
     csums = np.sum(o1,axis = 0)
     image = rotateToHorizontal(image)
-    lineLocs.append(getLines(image))
+    k = getLines(image)
+    if k != -1:
+        lineLocs.append(getLines(image))
     leeway = 40
     if len(lineLocs)==1:
-        try:
+        if lineLocs[0]-leeway >= 0:
             o[:,lineLocs[0]-leeway:lineLocs[0]]=255
-        except:
-            pass
-        try:
+        else:
+            o[:,0:lineLocs[0]]=255
+
+        if lineLocs[0]+leeway >= o.shape[1]:
+            o[:,lineLocs[0]:-1]=255
+        else:
             o[:,lineLocs[0]:lineLocs[0]+leeway]=255
-        except:
-            pass
+
     else:
         numDetected = 0
-        return
+        return lineLocs,0
     image = rotateToHorizontal(o)
     cv2.imshow("sdjfnskjf",image)
-
-    lineLocs.append(getLines(image))
+    k = getLines(image)
+    if k!= -1:
+        lineLocs.append(getLines(image))
     if len(lineLocs) == 2:
         numDetected = 2
     else:
@@ -216,6 +221,7 @@ def rotateGetLines(image,graph):
     if graph:
         plt.plot(csums)
         for i in range(len(lineLocs)):
+            print(lineLocs[i])
             plt.axvline(x=lineLocs[i], color='r', linewidth=1)
         plt.ioff()
         plt.show()
@@ -241,8 +247,8 @@ def getLines(newImg):
     pred = np.argmax(csums)
     c1= newImg[:,pred]
     m= (int)(np.sum(c1)/255)
-    if m<=30:
-        return []
+    if m<=45:
+        return -1
     lhs = pred-leeway
     rhs = pred+leeway
     if lhs < 0:
