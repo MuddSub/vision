@@ -42,8 +42,8 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/Vision/images/"
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/images/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -290,9 +290,9 @@ def segment(image):
 
 
 def adjust(image):
-    alphah = 3
-    alphas = 3
-    alphav = 3
+    alphah = 1
+    alphas = 1
+    alphav = 1
 
     h, s, v = cv2.split(image)
     new_image = np.zeros(image.shape, image.dtype)
@@ -300,15 +300,15 @@ def adjust(image):
 
     maximum = h.mean()
     #maximum = h.min()
-    beta = -alphah*maximum  # Simple brightness control
+    beta = 127-alphah*maximum  # Simple brightness control
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
-    beta =-alphas*maximum  # Simple brightness control
+    beta =127-alphas*maximum  # Simple brightness control
     s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
     maximum = v.mean()
-    beta = -alphav*maximum  # Simple brightness control
+    beta = 127-alphav*maximum  # Simple brightness control
     v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
     new_image = cv2.merge([h1, s1, v1])
@@ -316,9 +316,9 @@ def adjust(image):
 
 
 def adjustLAB(image):
-    alphah = 5
+    alphah = 1
     alphas = 0
-    alphav = 3
+    alphav = 5
 
     image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
     h, s, v = cv2.split(image)
@@ -327,7 +327,7 @@ def adjustLAB(image):
 
     maximum = h.mean()
     #maximum = h.min()
-    beta = 200-alphah*maximum  # Simple brightness control
+    beta = 127-alphah*maximum  # Simple brightness control
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
@@ -340,7 +340,7 @@ def adjustLAB(image):
 
 
 
-    new_image = cv2.merge([h1, s1, v1])
+    new_image = cv2.merge([h, s1, v1])
     new_image = cv2.cvtColor(new_image,cv2.COLOR_YUV2BGR);
     return new_image
 
@@ -449,7 +449,7 @@ def mainImg(img):
         newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
         newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
     newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
-    #newImg1 = cv2.dilate(newImg1,np.ones((1,5)),iterations = 1)
+    newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations = 1)
     newImg1 = cv2.erode(newImg1,np.ones((1,3)),iterations = 1)
 
 
