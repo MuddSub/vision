@@ -185,20 +185,21 @@ def binarization(img):
 def rotateGetLines(image,graph):
     start = time.time()
     numDetected = -1
+    lineLocs = []
     o = copy.deepcopy(image)
     o1 = copy.deepcopy(image)
     o1 = 255-o1
     csums = np.sum(o1,axis = 0)
     image = rotateToHorizontal(image)
-    lineLocs,_ = getLines(image)
+    lineLocs.append(getLines(image))
     leeway = 40
     if len(lineLocs)==1:
         try:
-            o[:,lineLocs[0][0]-leeway:lineLocs[0][0]]=255
+            o[:,lineLocs[0]-leeway:lineLocs[0]]=255
         except:
             pass
         try:
-            o[:,lineLocs[0][0]:lineLocs[0][0]+leeway]=255
+            o[:,lineLocs[0]:lineLocs[0]+leeway]=255
         except:
             pass
     else:
@@ -207,7 +208,7 @@ def rotateGetLines(image,graph):
     image = rotateToHorizontal(o)
     cv2.imshow("sdjfnskjf",image)
 
-    lineLocs,_ = getLines(image, lineLocs)
+    lineLocs.append(getLines(image))
     if len(lineLocs) == 2:
         numDetected = 2
     else:
@@ -215,7 +216,7 @@ def rotateGetLines(image,graph):
     if graph:
         plt.plot(csums)
         for i in range(len(lineLocs)):
-            plt.axvline(x=lineLocs[i][0], color='r', linewidth=1)
+            plt.axvline(x=lineLocs[i], color='r', linewidth=1)
         plt.ioff()
         plt.show()
 
@@ -223,7 +224,7 @@ def rotateGetLines(image,graph):
 
 
 
-def getLines(newImg,lineLocs = []):
+def getLines(newImg):
     newImg = 255-newImg
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
@@ -237,41 +238,38 @@ def getLines(newImg,lineLocs = []):
     #        csums[i] = csums2[i]+csums2[i-1]
     #csums2 = copy.deepcopy(csums)
 
-    for i in range(1):
-        pred = np.argmax(csums)
-        c1= newImg[:,pred]
-        m= (int)(np.sum(c1)/255)
-        if m<=30:
-            continue
-
-        lineLocs.append([pred, csums[np.argmax(csums)]])
-        lhs = lineLocs[i][0]-leeway
-        rhs = lineLocs[i][0]+leeway
-        if lhs < 0:
-            lhs = 0
-        if rhs >= newImg.shape[1]:
-            rhs = newImg.shape[1]-1
-        csums[lhs:rhs] = 0
+    pred = np.argmax(csums)
+    c1= newImg[:,pred]
+    m= (int)(np.sum(c1)/255)
+    if m<=30:
+        return []
+    lhs = pred-leeway
+    rhs = pred+leeway
+    if lhs < 0:
+        lhs = 0
+    if rhs >= newImg.shape[1]:
+        rhs = newImg.shape[1]-1
+    csums[lhs:rhs] = 0
 
 
     newImg = cv2.cvtColor(newImg, cv2.COLOR_GRAY2BGR)
     #error = lineLocs[2][1]-(lineLocs[0][1]+lineLocs[1][1])/2
     error = 0
-    return lineLocs, error
+    return pred
 
 
 def plotLines(lineLocs, original):
     for i in range(len(lineLocs)):
-        cv2.line(original, (lineLocs[i][0], 0),
-                 (lineLocs[i][0], original.shape[0]), (0, 255, 0), 3)
+        cv2.line(original, (lineLocs[i], 0),
+                 (lineLocs[i], original.shape[0]), (0, 255, 0), 3)
     norm = 0
     center = 0
     for k in range(len(lineLocs)):
-        center = center + (50000-lineLocs[k][1])*lineLocs[k][0]
-        norm = norm + (50000-lineLocs[k][1])
+        center = center + (50000-lineLocs[1])*lineLocs[0]
+        norm = norm + (50000-lineLocs[1])
     #center = (int) (center/norm)
     if len(lineLocs)==2:
-        center = (int)((lineLocs[0][0]+lineLocs[1][0])/2)
+        center = (int)((lineLocs[0]+lineLocs[1])/2)
         cv2.line(original, (center, 0),
              (center, original.shape[0]), (0, 0, 255), 1)
     return original
@@ -350,7 +348,7 @@ def HoughLines(gray):
     cv2.imshow("lsdjjndldsjd",gray)
 
 
-def rotateToHorizontal(img, lb=-5, ub=5, incr=1, topN=1):
+def rotateToHorizontal(img, lb=-20, ub=20, incr=1, topN=1):
     bestscore = -np.inf
     bestTheta = 0
     img = 255 - img
@@ -443,6 +441,7 @@ def mainImg(img):
         newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
         newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
     newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
+    #newImg1 = cv2.dilate(newImg1,np.ones((1,5)),iterations = 1)
     newImg1 = cv2.erode(newImg1,np.ones((1,3)),iterations = 1)
 
 
