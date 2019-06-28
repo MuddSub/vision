@@ -190,7 +190,7 @@ def rotateGetLines(image,graph):
     csums = np.sum(o1,axis = 0)
     image = rotateToHorizontal(image)
     lineLocs,_ = getLines(image)
-    leeway = 10
+    leeway = 40
     if len(lineLocs)==1:
         try:
             o[:,lineLocs[0][0]-leeway:lineLocs[0][0]]=255
@@ -441,7 +441,7 @@ def mainImg(img):
         newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
         newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
     newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
-    newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations=1)
+    #newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations=1)
     newImg1 = cv2.erode(newImg1,np.ones((1,3)),iterations = 1)
 
     print(time.time()-start_time)
@@ -456,7 +456,7 @@ def mainImg(img):
 
 
     lineLocs,numDetected = rotateGetLines(newImg1,True)
-    newImg1 = plotLines(lineLocs, newImg1)
+    #newImg1 = plotLines(lineLocs, newImg1)
     o1 = plotLines(lineLocs, o1)
 
     #HoughLines(newImg1)
