@@ -247,7 +247,7 @@ def getLines(newImg):
     pred = np.argmax(csums)
     c1= newImg[:,pred]
     m= (int)(np.sum(c1)/255)
-    if m<=45:
+    if m<=20:
         return -1
     lhs = pred-leeway
     rhs = pred+leeway
