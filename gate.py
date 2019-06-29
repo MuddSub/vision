@@ -30,6 +30,7 @@ def open(name, path1):
     if name == "d":
         #path0 = "/home/dhyang/Desktop/Vision/Vision/images/"
         path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
+
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
@@ -170,8 +171,8 @@ def binarization(img):
 
 def rotateGetLines(image,graph):
     #HyperParamaters control speed
-    lb = -15
-    ub = 15
+    lb = -14
+    ub = 14
     delta =2
 
     start = time.time()
@@ -290,7 +291,6 @@ def adjust(image):
     h1, s1, v1 = cv2.split(new_image)
 
     maximum = h.mean()
-    #maximum = h.min()
     beta = 127-alphah*maximum  # Simple brightness control
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
