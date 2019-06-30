@@ -226,7 +226,7 @@ def rotateGetLines(image,graph):
         k = getLines(image)
         tmp = copy.deepcopy(lineLocs)
         tmp.append(k)
-        np.sort(tmp)
+        tmp = np.sort(tmp)
 
         r1 = tmp[1]-tmp[0]
         r2 = tmp[2]-tmp[1]
