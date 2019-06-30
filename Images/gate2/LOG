@@ -1,0 +1,4074 @@
+
+
+Welcome to EVA.
+Version 2014-12 / Built Dec 12 2020 20:40:40
+
+Run began @ Sat Dec 12 22:18:25 2020
+
+Using configuration file 'config'
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Press Control-C to quit this program. Your continued use constitutes acceptance of these terms and conditions.
+
+H:172    DH:0    D:8    DD:0    Pwr:100    K:0
+H:173    DH:0    D:4    DD:0    Pwr:100    K:0
+H:173    DH:0    D:3    DD:0    Pwr:100    K:0
+H:171    DH:0    D:3    DD:0    Pwr:100    K:0
+H:168    DH:0    D:2    DD:0    Pwr:100    K:0
+H:167    DH:0    D:3    DD:0    Pwr:100    K:0
+H:169    DH:0    D:3    DD:0    Pwr:100    K:0
+H:169    DH:0    D:3    DD:0    Pwr:100    K:0
+H:169    DH:0    D:3    DD:0    Pwr:100    K:0
+hi: 0
+
+Started vision on /dev/video0
+Camera has paused on /dev/video0
+Started vision on /dev/video1
+Camera has paused on /dev/video1
+Barracuda has probably started successfully.
+Wall-e has departed
+H:47    DH:0    D:1    DD:0    Pwr:100    K:0
+H:43    DH:0    D:0    DD:0    Pwr:100    K:0
+Wall-e has arrived
+--> gate has started @ 2420 <--
+H:0    DH:0    D:0    DD:0    Pwr:100    K:1
+Camera has resumed on /dev/video0
+pausing for -1
+pausing for 0
+-> gate has proceeded to stage 1 ['Check for Gate'] at 3512 <-
+H:0    DH:0    D:0    DD:40    Pwr:200    K:1
+-> gate has proceeded to stage 2 ['Move Forward'] at 3609 <-
+pausing for 34000
+pausing for 33904
+pausing for 33807
+pausing for 33711
+pausing for 33614
+pausing for 33518
+saving jpg at logs/20_12_13_06_18_25/0.jpg
+@ 2.33263 FPS
+pausing for 33414
+pausing for 33312
+H:0    DH:0    D:0    DD:40    Pwr:200    K:1
+pausing for 33215
+pausing for 33119
+pausing for 33023
+pausing for 32926
+pausing for 32830
+pausing for 32733
+pausing for 32641
+pausing for 32550
+pausing for 32459
+saving jpg at logs/20_12_13_06_18_25/1.jpg
+@ 9.4518 FPS
+pausing for 32359
+H:0    DH:0    D:0    DD:40    Pwr:200    K:1
+pausing for 32278
+pausing for 32201
+pausing for 32120
+pausing for 32039
+pausing for 31952
+pausing for 31865
+pausing for 31769
+pausing for 31672
+pausing for 31586
+pausing for 31510
+saving jpg at logs/20_12_13_06_18_25/2.jpg
+@ 10.5263 FPS
+pausing for 31424
+pausing for 31334
+H:0    DH:0    D:1    DD:40    Pwr:200    K:1
+pausing for 31244
+pausing for 31154
+pausing for 31068
+pausing for 30981
+pausing for 30885
+pausing for 30799
+pausing for 30719
+pausing for 30632
+pausing for 30540
+saving jpg at logs/20_12_13_06_18_25/3.jpg
+@ 10.3199 FPS
+pausing for 30452
+pausing for 30354
+H:0    DH:0    D:12    DD:40    Pwr:200    K:1
+pausing for 30263
+pausing for 30176
+pausing for 30090
+pausing for 30009
+pausing for 29928
+pausing for 29836
+pausing for 29750
+pausing for 29663
+pausing for 29586
+saving jpg at logs/20_12_13_06_18_25/4.jpg
+@ 10.4822 FPS
+pausing for 29479
+pausing for 29382
+pausing for 29300
+H:3    DH:0    D:12    DD:40    Pwr:200    K:1
+pausing for 29219
+pausing for 29123
+pausing for 29031
+pausing for 28940
+pausing for 28848
+pausing for 28757
+pausing for 28664
+pausing for 28573
+saving jpg at logs/20_12_13_06_18_25/5.jpg
+@ 9.87167 FPS
+pausing for 28484
+pausing for 28389
+pausing for 28304
+H:5    DH:0    D:16    DD:40    Pwr:200    K:1
+pausing for 28228
+pausing for 28152
+pausing for 28060
+pausing for 27954
+pausing for 27857
+pausing for 27754
+pausing for 27662
+pausing for 27565
+saving jpg at logs/20_12_13_06_18_25/6.jpg
+@ 9.92064 FPS
+pausing for 27469
+pausing for 27364
+H:5    DH:0    D:26    DD:40    Pwr:200    K:1
+pausing for 27257
+pausing for 27171
+pausing for 27095
+pausing for 26998
+pausing for 26907
+pausing for 26814
+pausing for 26733
+pausing for 26647
+pausing for 26560
+saving jpg at logs/20_12_13_06_18_25/7.jpg
+@ 9.95025 FPS
+pausing for 26459
+pausing for 26368
+H:4    DH:0    D:34    DD:40    Pwr:200    K:1
+pausing for 26281
+pausing for 26195
+pausing for 26104
+pausing for 26012
+pausing for 25921
+pausing for 25829
+pausing for 25738
+pausing for 25662
+pausing for 25570
+saving jpg at logs/20_12_13_06_18_25/8.jpg
+@ 10.101 FPS
+pausing for 25469
+pausing for 25373
+pausing for 25287
+H:4    DH:0    D:38    DD:40    Pwr:200    K:1
+pausing for 25200
+pausing for 25118
+pausing for 25042
+pausing for 24960
+pausing for 24869
+pausing for 24773
+pausing for 24681
+pausing for 24590
+saving jpg at logs/20_12_13_06_18_25/9.jpg
+@ 10.2041 FPS
+pausing for 24499
+pausing for 24404
+pausing for 24309
+H:3    DH:0    D:43    DD:40    Pwr:200    K:1
+pausing for 24223
+pausing for 24136
+pausing for 24045
+pausing for 23954
+pausing for 23858
+pausing for 23766
+pausing for 23680
+pausing for 23604
+saving jpg at logs/20_12_13_06_18_25/10.jpg
+@ 10.142 FPS
+pausing for 23516
+pausing for 23414
+pausing for 23318
+H:2    DH:0    D:44    DD:40    Pwr:200    K:1
+pausing for 23229
+pausing for 23143
+pausing for 23067
+pausing for 22989
+pausing for 22893
+pausing for 22801
+pausing for 22700
+pausing for 22624
+saving jpg at logs/20_12_13_06_18_25/11.jpg
+@ 10.2041 FPS
+pausing for 22534
+pausing for 22439
+pausing for 22344
+H:2    DH:0    D:42    DD:40    Pwr:200    K:1
+pausing for 22258
+pausing for 22169
+pausing for 22073
+pausing for 21981
+pausing for 21885
+pausing for 21793
+pausing for 21702
+pausing for 21616
+saving jpg at logs/20_12_13_06_18_25/12.jpg
+@ 9.92064 FPS
+pausing for 21514
+pausing for 21423
+pausing for 21336
+H:2    DH:0    D:39    DD:40    Pwr:200    K:1
+pausing for 21239
+pausing for 21142
+pausing for 21040
+pausing for 20949
+pausing for 20853
+pausing for 20756
+pausing for 20649
+pausing for 20553
+saving jpg at logs/20_12_13_06_18_25/13.jpg
+@ 9.40734 FPS
+pausing for 20454
+pausing for 20352
+H:3    DH:0    D:43    DD:40    Pwr:200    K:1
+pausing for 20249
+pausing for 20147
+pausing for 20051
+pausing for 19944
+pausing for 19863
+pausing for 19786
+pausing for 19694
+pausing for 19607
+pausing for 19531
+saving jpg at logs/20_12_13_06_18_25/14.jpg
+@ 9.78474 FPS
+pausing for 19429
+pausing for 19328
+H:3    DH:0    D:43    DD:40    Pwr:200    K:1
+pausing for 19236
+pausing for 19144
+pausing for 19058
+pausing for 18964
+pausing for 18873
+pausing for 18776
+pausing for 18680
+pausing for 18593
+pausing for 18502
+saving jpg at logs/20_12_13_06_18_25/15.jpg
+@ 9.71817 FPS
+pausing for 18399
+pausing for 18304
+H:3    DH:0    D:40    DD:40    Pwr:200    K:1
+pausing for 18213
+pausing for 18121
+pausing for 18025
+pausing for 17933
+pausing for 17852
+pausing for 17766
+pausing for 17669
+pausing for 17578
+pausing for 17481
+saving jpg at logs/20_12_13_06_18_25/16.jpg
+@ 9.79432 FPS
+pausing for 17379
+H:2    DH:0    D:41    DD:40    Pwr:200    K:1
+pausing for 17278
+pausing for 17186
+pausing for 17090
+pausing for 16998
+pausing for 16907
+pausing for 16805
+pausing for 16709
+pausing for 16622
+pausing for 16544
+pausing for 16463
+saving jpg at logs/20_12_13_06_18_25/17.jpg
+@ 9.82318 FPS
+pausing for 16369
+H:2    DH:0    D:42    DD:40    Pwr:200    K:1
+pausing for 16278
+pausing for 16186
+pausing for 16105
+pausing for 16013
+pausing for 15922
+pausing for 15820
+pausing for 15724
+pausing for 15632
+pausing for 15541
+pausing for 15449
+saving jpg at logs/20_12_13_06_18_25/18.jpg
+@ 9.86193 FPS
+pausing for 15354
+H:3    DH:0    D:43    DD:40    Pwr:200    K:1
+pausing for 15259
+pausing for 15163
+pausing for 15071
+pausing for 14979
+pausing for 14883
+pausing for 14791
+pausing for 14700
+pausing for 14609
+pausing for 14513
+pausing for 14421
+saving jpg at logs/20_12_13_06_18_25/19.jpg
+@ 9.72763 FPS
+pausing for 14324
+H:3    DH:0    D:43    DD:40    Pwr:200    K:1
+pausing for 14233
+pausing for 14136
+pausing for 14039
+pausing for 13944
+pausing for 13868
+pausing for 13791
+pausing for 13694
+pausing for 13599
+pausing for 13503
+pausing for 13421
+saving jpg at logs/20_12_13_06_18_25/20.jpg
+@ 10 FPS
+pausing for 13329
+H:3    DH:0    D:40    DD:40    Pwr:200    K:1
+pausing for 13234
+pausing for 13139
+pausing for 13053
+pausing for 12966
+pausing for 12880
+pausing for 12788
+pausing for 12694
+pausing for 12608
+pausing for 12514
+pausing for 12423
+saving jpg at logs/20_12_13_06_18_25/21.jpg
+@ 10.02 FPS
+pausing for 12334
+H:4    DH:0    D:41    DD:40    Pwr:200    K:1
+pausing for 12243
+pausing for 12159
+pausing for 12083
+pausing for 11992
+pausing for 11900
+pausing for 11809
+pausing for 11717
+pausing for 11626
+pausing for 11535
+pausing for 11438
+saving jpg at logs/20_12_13_06_18_25/22.jpg
+@ 10.1523 FPS
+pausing for 11339
+H:3    DH:0    D:42    DD:40    Pwr:200    K:1
+pausing for 11254
+pausing for 11169
+pausing for 11073
+pausing for 10966
+pausing for 10869
+pausing for 10773
+pausing for 10686
+pausing for 10605
+pausing for 10513
+pausing for 10422
+saving jpg at logs/20_12_13_06_18_25/23.jpg
+@ 9.84252 FPS
+pausing for 10324
+H:3    DH:0    D:40    DD:40    Pwr:200    K:1
+pausing for 10229
+pausing for 10138
+pausing for 10046
+pausing for 9955
+pausing for 9853
+pausing for 9762
+pausing for 9675
+pausing for 9599
+pausing for 9508
+pausing for 9416
+saving jpg at logs/20_12_13_06_18_25/24.jpg
+@ 9.94036 FPS
+pausing for 9309
+H:2    DH:0    D:42    DD:40    Pwr:200    K:1
+pausing for 9209
+pausing for 9118
+pausing for 9031
+pausing for 8934
+pausing for 8843
+pausing for 8751
+pausing for 8659
+pausing for 8573
+pausing for 8476
+pausing for 8380
+saving jpg at logs/20_12_13_06_18_25/25.jpg
+@ 9.65251 FPS
+H:3    DH:0    D:39    DD:40    Pwr:200    K:1
+pausing for 8279
+pausing for 8178
+pausing for 8081
+pausing for 7990
+pausing for 7893
+pausing for 7794
+pausing for 7697
+pausing for 7610
+pausing for 7514
+pausing for 7423
+pausing for 7326
+saving jpg at logs/20_12_13_06_18_25/26.jpg
+@ 9.48767 FPS
+H:3    DH:0    D:45    DD:40    Pwr:200    K:1
+pausing for 7224
+pausing for 7123
+pausing for 7031
+pausing for 6939
+pausing for 6853
+pausing for 6761
+pausing for 6665
+pausing for 6568
+pausing for 6477
+pausing for 6375
+H:3    DH:0    D:39    DD:40    Pwr:200    K:1
+pausing for 6284
+saving jpg at logs/20_12_13_06_18_25/27.jpg
+@ 9.59693 FPS
+pausing for 6196
+pausing for 6109
+pausing for 6024
+pausing for 5948
+pausing for 5871
+pausing for 5790
+pausing for 5714
+pausing for 5638
+pausing for 5544
+pausing for 5447
+pausing for 5360
+saving jpg at logs/20_12_13_06_18_25/28.jpg
+@ 10.8225 FPS
+H:4    DH:0    D:37    DD:40    Pwr:200    K:1
+pausing for 5264
+pausing for 5184
+pausing for 5088
+pausing for 5007
+pausing for 4925
+pausing for 4828
+pausing for 4737
+pausing for 4641
+pausing for 4544
+pausing for 4458
+pausing for 4381
+saving jpg at logs/20_12_13_06_18_25/29.jpg
+@ 10.2145 FPS
+H:4    DH:0    D:40    DD:40    Pwr:200    K:1
+pausing for 4279
+pausing for 4179
+pausing for 4083
+pausing for 3991
+pausing for 3895
+pausing for 3798
+pausing for 3717
+pausing for 3635
+pausing for 3549
+pausing for 3458
+pausing for 3361
+saving jpg at logs/20_12_13_06_18_25/30.jpg
+@ 9.80392 FPS
+H:4    DH:0    D:40    DD:40    Pwr:200    K:1
+pausing for 3269
+pausing for 3174
+pausing for 3087
+pausing for 3011
+pausing for 2919
+pausing for 2827
+pausing for 2736
+pausing for 2639
+pausing for 2542
+pausing for 2446
+pausing for 2349
+saving jpg at logs/20_12_13_06_18_25/31.jpg
+@ 9.88142 FPS
+H:4    DH:0    D:39    DD:40    Pwr:200    K:1
+pausing for 2250
+pausing for 2150
+pausing for 2045
+pausing for 1945
+pausing for 1849
+pausing for 1759
+pausing for 1683
+pausing for 1586
+pausing for 1490
+pausing for 1394
+pausing for 1312
+saving jpg at logs/20_12_13_06_18_25/32.jpg
+@ 9.6432 FPS
+H:3    DH:0    D:42    DD:40    Pwr:200    K:1
+pausing for 1214
+pausing for 1119
+pausing for 1014
+pausing for 932
+pausing for 845
+pausing for 764
+pausing for 678
+pausing for 586
+pausing for 499
+pausing for 404
+pausing for 318
+saving jpg at logs/20_12_13_06_18_25/33.jpg
+@ 10.0604 FPS
+H:3    DH:0    D:41    DD:40    Pwr:200    K:1
+pausing for 210
+pausing for 109
+pausing for 19
+pausing for 0
+-> gate has proceeded to stage 3 ['Finished'] at 37880 <-
+--> search has started @ 37977 <--
+Search task has started @ 37977
+Checking TaskID 3
+-> search has proceeded to stage 1 at 37977 <-
+TaskID 3 is available.
+--> buoy has started @ 38073 <--
+pausing for 5000
+pausing for 4913
+pausing for 4837
+saving jpg at logs/20_12_13_06_18_25/34.jpg
+@ 10.5263 FPS
+pausing for 4758
+H:3    DH:3    D:41    DD:75    Pwr:100    K:1
+pausing for 4663
+pausing for 4583
+pausing for 4491
+pausing for 4409
+pausing for 4328
+pausing for 4236
+pausing for 4155
+pausing for 4064
+pausing for 3967
+pausing for 3881
+saving jpg at logs/20_12_13_06_18_25/35.jpg
+@ 10.4603 FPS
+pausing for 3798
+H:3    DH:3    D:46    DD:75    Pwr:100    K:1
+pausing for 3708
+pausing for 3632
+pausing for 3546
+pausing for 3459
+pausing for 3378
+pausing for 3287
+pausing for 3200
+pausing for 3124
+pausing for 3027
+pausing for 2936
+saving jpg at logs/20_12_13_06_18_25/36.jpg
+@ 10.582 FPS
+pausing for 2833
+H:3    DH:3    D:57    DD:75    Pwr:100    K:1
+pausing for 2733
+pausing for 2637
+pausing for 2545
+pausing for 2459
+pausing for 2367
+pausing for 2276
+pausing for 2179
+pausing for 2083
+pausing for 1992
+pausing for 1910
+saving jpg at logs/20_12_13_06_18_25/37.jpg
+@ 9.74659 FPS
+pausing for 1808
+H:3    DH:3    D:66    DD:75    Pwr:100    K:1
+pausing for 1712
+pausing for 1620
+pausing for 1529
+pausing for 1437
+pausing for 1361
+pausing for 1285
+pausing for 1214
+pausing for 1127
+pausing for 1035
+pausing for 949
+saving jpg at logs/20_12_13_06_18_25/38.jpg
+@ 10.4058 FPS
+pausing for 853
+pausing for 767
+H:3    DH:3    D:77    DD:75    Pwr:100    K:1
+pausing for 680
+pausing for 593
+pausing for 511
+pausing for 414
+pausing for 323
+pausing for 233
+pausing for 141
+pausing for 60
+pausing for 0
+saving jpg at logs/20_12_13_06_18_25/39.jpg
+@ 10.2145 FPS
+-> buoy has proceeded to stage 1 ['Ram'] at 43304 <-
+buoy: -0.421875 -0.222222 -0.398438 -0.152778 -0.140625 -0.0972222
+ram: dx = -0.421875, dy = -0.222222, color = 0
+buoy: -0.140625 -0.222222 -0.40625 -0.152778 -0.132812 -0.111111
+ram: dx = -0.140625, dy = -0.222222, color = 0
+H:2    DH:354    D:83    DD:87    Pwr:100    K:1
+buoy: -0.414062 -0.222222 -0.421875 -0.152778 -0.148438 -0.111111
+ram: dx = -0.414062, dy = -0.222222, color = 0
+buoy: -0.414062 -0.236111 -0.40625 -0.166667 -0.125 -0.125
+ram: dx = -0.414062, dy = -0.236111, color = 0
+buoy: -0.414062 -0.236111 -0.40625 -0.166667 -0.125 -0.125
+ram: dx = -0.414062, dy = -0.236111, color = 0
+Wall-e has departed
+H:0    DH:0    D:83    DD:0    Pwr:100    K:0
+H:1    DH:0    D:83    DD:0    Pwr:100    K:0
+H:6    DH:0    D:75    DD:0    Pwr:100    K:0
+H:6    DH:0    D:65    DD:0    Pwr:100    K:0
+H:8    DH:0    D:52    DD:0    Pwr:100    K:0
+H:11    DH:0    D:38    DD:0    Pwr:100    K:0
+H:13    DH:0    D:22    DD:0    Pwr:100    K:0
+H:15    DH:0    D:10    DD:0    Pwr:100    K:0
+H:16    DH:0    D:2    DD:0    Pwr:100    K:0
+H:16    DH:0    D:0    DD:0    Pwr:100    K:0
+H:14    DH:0    D:0    DD:0    Pwr:100    K:0
+H:12    DH:0    D:1    DD:0    Pwr:100    K:0
+H:14    DH:0    D:0    DD:0    Pwr:100    K:0
+H:17    DH:0    D:0    DD:0    Pwr:100    K:0
+H:19    DH:0    D:0    DD:0    Pwr:100    K:0
+H:22    DH:0    D:0    DD:0    Pwr:100    K:0
+H:24    DH:0    D:0    DD:0    Pwr:100    K:0
+H:25    DH:0    D:0    DD:0    Pwr:100    K:0
+H:26    DH:0    D:0    DD:0    Pwr:100    K:0
+H:26    DH:0    D:0    DD:0    Pwr:100    K:0
+H:26    DH:0    D:0    DD:0    Pwr:100    K:0
+H:30    DH:0    D:0    DD:0    Pwr:100    K:0
+H:38    DH:0    D:0    DD:0    Pwr:100    K:0
+H:44    DH:0    D:0    DD:0    Pwr:100    K:0
+H:49    DH:0    D:0    DD:0    Pwr:100    K:0
+H:53    DH:0    D:0    DD:0    Pwr:100    K:0
+H:56    DH:0    D:0    DD:0    Pwr:100    K:0
+H:55    DH:0    D:2    DD:0    Pwr:100    K:0
+H:57    DH:0    D:1    DD:0    Pwr:100    K:0
+H:66    DH:0    D:1    DD:0    Pwr:100    K:0
+H:84    DH:0    D:0    DD:0    Pwr:100    K:0
+H:104    DH:0    D:2    DD:0    Pwr:100    K:0
+H:121    DH:0    D:4    DD:0    Pwr:100    K:0
+H:134    DH:0    D:2    DD:0    Pwr:100    K:0
+H:142    DH:0    D:3    DD:0    Pwr:100    K:0
+H:150    DH:0    D:3    DD:0    Pwr:100    K:0
+H:158    DH:0    D:2    DD:0    Pwr:100    K:0
+H:164    DH:0    D:2    DD:0    Pwr:100    K:0
+H:167    DH:0    D:2    DD:0    Pwr:100    K:0
+H:167    DH:0    D:2    DD:0    Pwr:100    K:0
+H:174    DH:0    D:2    DD:0    Pwr:100    K:0
+H:180    DH:0    D:1    DD:0    Pwr:100    K:0
+H:184    DH:0    D:0    DD:0    Pwr:100    K:0
+H:184    DH:0    D:1    DD:0    Pwr:100    K:0
+H:185    DH:0    D:1    DD:0    Pwr:100    K:0
+H:185    DH:0    D:4    DD:0    Pwr:100    K:0
+H:188    DH:0    D:4    DD:0    Pwr:100    K:0
+H:186    DH:0    D:7    DD:0    Pwr:100    K:0
+H:184    DH:0    D:8    DD:0    Pwr:100    K:0
+H:182    DH:0    D:9    DD:0    Pwr:100    K:0
+H:184    DH:0    D:9    DD:0    Pwr:100    K:0
+H:186    DH:0    D:7    DD:0    Pwr:100    K:0
+H:188    DH:0    D:8    DD:0    Pwr:100    K:0
+H:187    DH:0    D:12    DD:0    Pwr:100    K:0
+H:186    DH:0    D:12    DD:0    Pwr:100    K:0
+H:183    DH:0    D:11    DD:0    Pwr:100    K:0
+H:179    DH:0    D:11    DD:0    Pwr:100    K:0
+H:177    DH:0    D:10    DD:0    Pwr:100    K:0
+H:177    DH:0    D:9    DD:0    Pwr:100    K:0
+H:172    DH:0    D:11    DD:0    Pwr:100    K:0
+H:163    DH:0    D:11    DD:0    Pwr:100    K:0
+H:145    DH:0    D:11    DD:0    Pwr:100    K:0
+H:123    DH:0    D:11    DD:0    Pwr:100    K:0
+H:102    DH:0    D:11    DD:0    Pwr:100    K:0
+H:74    DH:0    D:10    DD:0    Pwr:100    K:0
+H:51    DH:0    D:7    DD:0    Pwr:100    K:0
+H:27    DH:0    D:4    DD:0    Pwr:100    K:0
+H:10    DH:0    D:2    DD:0    Pwr:100    K:0
+H:3    DH:0    D:3    DD:0    Pwr:100    K:0
+H:6    DH:0    D:3    DD:0    Pwr:100    K:0
+H:1    DH:0    D:2    DD:0    Pwr:100    K:0
+H:355    DH:0    D:0    DD:0    Pwr:100    K:0
+H:352    DH:0    D:0    DD:0    Pwr:100    K:0
+H:350    DH:0    D:1    DD:0    Pwr:100    K:0
+H:348    DH:0    D:1    DD:0    Pwr:100    K:0
+H:345    DH:0    D:0    DD:0    Pwr:100    K:0
+H:343    DH:0    D:0    DD:0    Pwr:100    K:0
+H:341    DH:0    D:0    DD:0    Pwr:100    K:0
+H:342    DH:0    D:0    DD:0    Pwr:100    K:0
+H:343    DH:0    D:0    DD:0    Pwr:100    K:0
+H:344    DH:0    D:0    DD:0    Pwr:100    K:0
+H:345    DH:0    D:0    DD:0    Pwr:100    K:0
+H:347    DH:0    D:0    DD:0    Pwr:100    K:0
+H:349    DH:0    D:0    DD:0    Pwr:100    K:0
+Wall-e has arrived
+--> gate has started @ 128420 <--
+H:0    DH:0    D:0    DD:40    Pwr:200    K:1
+pausing for -1
+pausing for 0
+-> gate has proceeded to stage 1 ['Check for Gate'] at 128695 <-
+-> gate has proceeded to stage 2 ['Move Forward'] at 128781 <-
+pausing for 34000
+saving jpg at logs/20_12_13_06_18_25/40.jpg
+@ 0.11673 FPS
+pausing for 33901
+pausing for 33806
+pausing for 33715
+pausing for 33621
+pausing for 33530
+H:0    DH:0    D:2    DD:40    Pwr:200    K:1
+pausing for 33438
+pausing for 33341
+pausing for 33250
+pausing for 33158
+pausing for 33072
+pausing for 32980
+saving jpg at logs/20_12_13_06_18_25/41.jpg
+@ 9.81354 FPS
+pausing for 32886
+pausing for 32790
+pausing for 32696
+pausing for 32606
+pausing for 32515
+H:0    DH:0    D:0    DD:40    Pwr:200    K:1
+pausing for 32423
+pausing for 32337
+pausing for 32245
+pausing for 32159
+pausing for 32068
+pausing for 31981
+saving jpg at logs/20_12_13_06_18_25/42.jpg
+@ 10 FPS
+pausing for 31888
+pausing for 31786
+pausing for 31685
+pausing for 31593
+pausing for 31502
+H:0    DH:0    D:1    DD:40    Pwr:200    K:1
+pausing for 31411
+pausing for 31321
+pausing for 31230
+pausing for 31143
+pausing for 31052
+pausing for 30961
+saving jpg at logs/20_12_13_06_18_25/43.jpg
+@ 9.80392 FPS
+pausing for 30862
+pausing for 30766
+pausing for 30675
+pausing for 30583
+pausing for 30492
+H:0    DH:0    D:2    DD:40    Pwr:200    K:1
+pausing for 30400
+pausing for 30309
+pausing for 30218
+pausing for 30126
+pausing for 30035
+pausing for 29943
+saving jpg at logs/20_12_13_06_18_25/44.jpg
+@ 9.82318 FPS
+pausing for 29850
+pausing for 29753
+pausing for 29662
+pausing for 29571
+pausing for 29484
+H:359    DH:0    D:5    DD:40    Pwr:200    K:1
+pausing for 29393
+pausing for 29301
+pausing for 29210
+pausing for 29119
+pausing for 29016
+pausing for 28925
+saving jpg at logs/20_12_13_06_18_25/45.jpg
+@ 9.82318 FPS
+pausing for 28826
+pausing for 28721
+pausing for 28626
+pausing for 28535
+H:0    DH:0    D:7    DD:40    Pwr:200    K:1
+pausing for 28441
+pausing for 28350
+pausing for 28258
+pausing for 28167
+pausing for 28075
+pausing for 27984
+pausing for 27893
+saving jpg at logs/20_12_13_06_18_25/46.jpg
+@ 9.68992 FPS
+pausing for 27791
+pausing for 27700
+pausing for 27608
+pausing for 27517
+H:2    DH:0    D:17    DD:40    Pwr:200    K:1
+pausing for 27425
+pausing for 27334
+pausing for 27248
+pausing for 27156
+pausing for 27065
+pausing for 26973
+pausing for 26882
+saving jpg at logs/20_12_13_06_18_25/47.jpg
+@ 9.8912 FPS
+pausing for 26781
+pausing for 26685
+pausing for 26593
+pausing for 26502
+H:4    DH:0    D:23    DD:40    Pwr:200    K:1
+pausing for 26411
+pausing for 26320
+pausing for 26228
+pausing for 26136
+pausing for 26045
+pausing for 25953
+pausing for 25862
+saving jpg at logs/20_12_13_06_18_25/48.jpg
+@ 9.80392 FPS
+pausing for 25761
+pausing for 25665
+pausing for 25573
+pausing for 25481
+H:5    DH:0    D:30    DD:40    Pwr:200    K:1
+pausing for 25390
+pausing for 25298
+pausing for 25207
+pausing for 25115
+pausing for 25024
+pausing for 24933
+pausing for 24841
+saving jpg at logs/20_12_13_06_18_25/49.jpg
+@ 9.79432 FPS
+pausing for 24741
+pausing for 24646
+pausing for 24555
+pausing for 24463
+H:5    DH:0    D:43    DD:40    Pwr:200    K:1
+pausing for 24371
+pausing for 24281
+pausing for 24184
+pausing for 24092
+pausing for 24001
+pausing for 23910
+pausing for 23818
+saving jpg at logs/20_12_13_06_18_25/50.jpg
+@ 9.77517 FPS
+pausing for 23716
+pausing for 23614
+pausing for 23523
+H:4    DH:0    D:42    DD:40    Pwr:200    K:1
+pausing for 23421
+pausing for 23325
+pausing for 23228
+pausing for 23137
+pausing for 23050
+pausing for 22959
+pausing for 22862
+pausing for 22771
+saving jpg at logs/20_12_13_06_18_25/51.jpg
+@ 9.5511 FPS
+pausing for 22671
+pausing for 22576
+pausing for 22479
+H:3    DH:0    D:43    DD:40    Pwr:200    K:1
+pausing for 22388
+pausing for 22297
+pausing for 22205
+pausing for 22114
+pausing for 22021
+pausing for 21930
+pausing for 21836
+pausing for 21745
+saving jpg at logs/20_12_13_06_18_25/52.jpg
+@ 9.74659 FPS
+pausing for 21656
+pausing for 21560
+pausing for 21461
+H:3    DH:0    D:41    DD:40    Pwr:200    K:1
+pausing for 21370
+pausing for 21278
+pausing for 21192
+pausing for 21101
+pausing for 21005
+pausing for 20913
+pausing for 20822
+pausing for 20735
+saving jpg at logs/20_12_13_06_18_25/53.jpg
+@ 9.9108 FPS
+pausing for 20642
+pausing for 20546
+pausing for 20454
+H:3    DH:0    D:42    DD:40    Pwr:200    K:1
+pausing for 20363
+pausing for 20271
+pausing for 20180
+pausing for 20089
+pausing for 19997
+pausing for 19906
+pausing for 19814
+pausing for 19723
+saving jpg at logs/20_12_13_06_18_25/54.jpg
+@ 9.87167 FPS
+pausing for 19629
+pausing for 19533
+H:3    DH:0    D:42    DD:40    Pwr:200    K:1
+pausing for 19441
+pausing for 19350
+pausing for 19258
+pausing for 19167
+pausing for 19076
+pausing for 18984
+pausing for 18893
+pausing for 18801
+pausing for 18710
+saving jpg at logs/20_12_13_06_18_25/55.jpg
+@ 9.87167 FPS
+pausing for 18617
+pausing for 18510
+H:3    DH:0    D:45    DD:40    Pwr:200    K:1
+pausing for 18418
+pausing for 18321
+pausing for 18230
+pausing for 18133
+pausing for 18041
+pausing for 17944
+pausing for 17848
+pausing for 17751
+pausing for 17654
+saving jpg at logs/20_12_13_06_18_25/56.jpg
+@ 9.4697 FPS
+pausing for 17531
+H:3    DH:0    D:42    DD:40    Pwr:200    K:1
+pausing for 17429
+pausing for 17333
+pausing for 17236
+pausing for 17140
+pausing for 17031
+pausing for 16935
+pausing for 16843
+pausing for 16741
+pausing for 16645
+pausing for 16548
+saving jpg at logs/20_12_13_06_18_25/57.jpg
+@ 9.04977 FPS
+H:3    DH:0    D:43    DD:40    Pwr:200    K:1
+pausing for 16450
+pausing for 16343
+pausing for 16242
+pausing for 16145
+pausing for 16049
+pausing for 15952
+pausing for 15856
+pausing for 15766
+pausing for 15675
+pausing for 15584
+pausing for 15492
+saving jpg at logs/20_12_13_06_18_25/58.jpg
+@ 9.46074 FPS
+H:2    DH:0    D:42    DD:40    Pwr:200    K:1
+pausing for 15391
+pausing for 15295
+pausing for 15203
+pausing for 15112
+pausing for 15021
+pausing for 14925
+pausing for 14833
+pausing for 14742
+pausing for 14636
+pausing for 14545
+pausing for 14453
+H:3    DH:0    D:42    DD:40    Pwr:200    K:1
+saving jpg at logs/20_12_13_06_18_25/59.jpg
+@ 9.62464 FPS
+pausing for 14361
+pausing for 14266
+pausing for 14171
+pausing for 14080
+pausing for 13988
+pausing for 13897
+pausing for 13806
+pausing for 13714
+pausing for 13623
+pausing for 13536
+H:3    DH:0    D:42    DD:40    Pwr:200    K:1
+pausing for 13435
+saving jpg at logs/20_12_13_06_18_25/60.jpg
+@ 9.82318 FPS
+pausing for 13326
+pausing for 13221
+pausing for 13124
+pausing for 13028
+pausing for 12931
+pausing for 12835
+pausing for 12738
+pausing for 12642
+pausing for 12545
+H:3    DH:0    D:40    DD:40    Pwr:200    K:1
+pausing for 12448
+pausing for 12347
+saving jpg at logs/20_12_13_06_18_25/61.jpg
+@ 9.18274 FPS
+pausing for 12236
+pausing for 12134
+pausing for 12038
+pausing for 11946
+pausing for 11849
+pausing for 11753
+pausing for 11656
+pausing for 11556
+pausing for 11460
+H:3    DH:0    D:43    DD:40    Pwr:200    K:1
+pausing for 11363
+pausing for 11272
+saving jpg at logs/20_12_13_06_18_25/62.jpg
+@ 9.31099 FPS
+pausing for 11178
+pausing for 11081
+pausing for 10990
+pausing for 10898
+pausing for 10812
+pausing for 10721
+pausing for 10625
+pausing for 10533
+H:3    DH:0    D:46    DD:40    Pwr:200    K:1
+pausing for 10442
+pausing for 10355
+pausing for 10266
+saving jpg at logs/20_12_13_06_18_25/63.jpg
+@ 9.94036 FPS
+pausing for 10173
+pausing for 10076
+pausing for 9985
+pausing for 9894
+pausing for 9802
+pausing for 9711
+pausing for 9619
+pausing for 9528
+H:3    DH:0    D:40    DD:40    Pwr:200    K:1
+pausing for 9436
+pausing for 9345
+pausing for 9253
+saving jpg at logs/20_12_13_06_18_25/64.jpg
+@ 9.88142 FPS
+pausing for 9151
+pausing for 9060
+pausing for 8968
+pausing for 8877
+pausing for 8786
+pausing for 8695
+pausing for 8603
+pausing for 8512
+H:3    DH:0    D:38    DD:40    Pwr:200    K:1
+pausing for 8426
+pausing for 8334
+pausing for 8248
+saving jpg at logs/20_12_13_06_18_25/65.jpg
+@ 9.94036 FPS
+pausing for 8155
+pausing for 8058
+pausing for 7966
+pausing for 7880
+pausing for 7788
+pausing for 7702
+pausing for 7611
+pausing for 7524
+H:3    DH:0    D:40    DD:40    Pwr:200    K:1
+pausing for 7433
+pausing for 7341
+pausing for 7250
+saving jpg at logs/20_12_13_06_18_25/66.jpg
+@ 10.02 FPS
+pausing for 7161
+pausing for 7065
+pausing for 6968
+pausing for 6877
+pausing for 6785
+pausing for 6694
+pausing for 6608
+pausing for 6516
+H:4    DH:0    D:37    DD:40    Pwr:200    K:1
+pausing for 6425
+pausing for 6333
+pausing for 6242
+saving jpg at logs/20_12_13_06_18_25/67.jpg
+@ 9.92064 FPS
+pausing for 6151
+pausing for 6056
+pausing for 5961
+pausing for 5870
+pausing for 5778
+pausing for 5687
+pausing for 5590
+pausing for 5489
+H:3    DH:0    D:41    DD:40    Pwr:200    K:1
+pausing for 5397
+pausing for 5306
+pausing for 5214
+saving jpg at logs/20_12_13_06_18_25/68.jpg
+@ 9.7371 FPS
+pausing for 5121
+pausing for 5025
+pausing for 4933
+pausing for 4842
+pausing for 4756
+pausing for 4664
+pausing for 4573
+pausing for 4481
+H:3    DH:0    D:42    DD:40    Pwr:200    K:1
+pausing for 4390
+pausing for 4296
+pausing for 4205
+saving jpg at logs/20_12_13_06_18_25/69.jpg
+@ 9.90099 FPS
+pausing for 4116
+pausing for 4010
+pausing for 3906
+pausing for 3810
+pausing for 3713
+pausing for 3611
+pausing for 3515
+H:3    DH:0    D:45    DD:40    Pwr:200    K:1
+pausing for 3416
+pausing for 3320
+pausing for 3223
+pausing for 3127
+saving jpg at logs/20_12_13_06_18_25/70.jpg
+@ 9.27644 FPS
+pausing for 3016
+pausing for 2914
+pausing for 2818
+pausing for 2721
+pausing for 2625
+pausing for 2528
+H:3    DH:0    D:40    DD:40    Pwr:200    K:1
+pausing for 2432
+pausing for 2340
+pausing for 2251
+pausing for 2160
+pausing for 2068
+saving jpg at logs/20_12_13_06_18_25/71.jpg
+@ 9.4518 FPS
+pausing for 1976
+pausing for 1881
+pausing for 1786
+pausing for 1695
+pausing for 1603
+pausing for 1517
+H:4    DH:0    D:39    DD:40    Pwr:200    K:1
+pausing for 1425
+pausing for 1334
+pausing for 1243
+pausing for 1151
+pausing for 1060
+saving jpg at logs/20_12_13_06_18_25/72.jpg
+@ 9.9108 FPS
+pausing for 966
+pausing for 870
+pausing for 778
+pausing for 687
+pausing for 596
+pausing for 504
+H:4    DH:0    D:41    DD:40    Pwr:200    K:1
+pausing for 413
+pausing for 321
+pausing for 230
+pausing for 138
+pausing for 47
+saving jpg at logs/20_12_13_06_18_25/73.jpg
+@ 9.87167 FPS
+pausing for 0
+-> gate has proceeded to stage 3 ['Finished'] at 163023 <-
+--> search has started @ 163120 <--
+Search task has started @ 163120
+Checking TaskID 3
+-> search has proceeded to stage 1 at 163120 <-
+TaskID 3 is available.
+--> buoy has started @ 163211 <--
+pausing for 5000
+pausing for 4909
+H:4    DH:3    D:40    DD:75    Pwr:100    K:1
+pausing for 4822
+pausing for 4731
+pausing for 4644
+pausing for 4553
+saving jpg at logs/20_12_13_06_18_25/74.jpg
+@ 10.7181 FPS
+pausing for 4460
+pausing for 4365
+pausing for 4270
+pausing for 4179
+pausing for 4087
+pausing for 3996
+pausing for 3910
+H:4    DH:3    D:44    DD:75    Pwr:100    K:1
+pausing for 3818
+pausing for 3732
+pausing for 3640
+pausing for 3549
+saving jpg at logs/20_12_13_06_18_25/75.jpg
+@ 9.96016 FPS
+pausing for 3450
+pausing for 3355
+pausing for 3264
+pausing for 3172
+pausing for 3081
+pausing for 2990
+pausing for 2898
+H:4    DH:3    D:50    DD:75    Pwr:100    K:1
+pausing for 2807
+pausing for 2715
+pausing for 2624
+pausing for 2532
+saving jpg at logs/20_12_13_06_18_25/76.jpg
+@ 9.84252 FPS
+pausing for 2439
+pausing for 2343
+pausing for 2250
+pausing for 2159
+pausing for 2067
+pausing for 1976
+H:4    DH:3    D:60    DD:75    Pwr:100    K:1
+pausing for 1884
+pausing for 1790
+pausing for 1699
+pausing for 1607
+pausing for 1516
+saving jpg at logs/20_12_13_06_18_25/77.jpg
+@ 9.83284 FPS
+pausing for 1425
+pausing for 1330
+pausing for 1235
+pausing for 1144
+H:4    DH:3    D:69    DD:75    Pwr:100    K:1
+pausing for 1057
+pausing for 966
+pausing for 869
+pausing for 773
+pausing for 682
+pausing for 590
+pausing for 494
+saving jpg at logs/20_12_13_06_18_25/78.jpg
+@ 9.78474 FPS
+pausing for 400
+pausing for 304
+H:4    DH:3    D:76    DD:75    Pwr:100    K:1
+pausing for 190
+pausing for 99
+pausing for 7
+pausing for 0
+-> buoy has proceeded to stage 1 ['Ram'] at 168492 <-
+buoy: -0.179688 -0.333333 0 -0.305556 0.484375 0.486111
+ram: dx = -0.179688, dy = -0.333333, color = 0
+buoy: -0.171875 -0.347222 0.015625 -0.319444 0.476562 0.5
+ram: dx = -0.171875, dy = -0.347222, color = 0
+buoy: -0.171875 -0.361111 0.0234375 -0.319444 0.476562 0.5
+ram: dx = -0.171875, dy = -0.361111, color = 0
+buoy: -0.164062 -0.347222 0.015625 -0.319444 0.453125 0.5
+ram: dx = -0.164062, dy = -0.347222, color = 0
+buoy: -0.179688 -0.347222 0.015625 -0.319444 0.476562 0.472222
+ram: dx = -0.179688, dy = -0.347222, color = 0
+saving jpg at logs/20_12_13_06_18_25/79.jpg
+@ 9.08265 FPS
+buoy: -0.164062 -0.347222 0.015625 -0.319444 0.476562 0.5
+ram: dx = -0.164062, dy = -0.347222, color = 0
+H:3    DH:354    D:85    DD:93    Pwr:100    K:1
+buoy: -0.15625 -0.361111 0.0234375 -0.333333 0.453125 0.5
+ram: dx = -0.15625, dy = -0.361111, color = 0
+buoy: -0.15625 -0.361111 0.0234375 -0.333333 0.476562 0.5
+ram: dx = -0.15625, dy = -0.361111, color = 0
+buoy: -0.148438 -0.361111 0.03125 -0.333333 0.476562 0.5
+ram: dx = -0.148438, dy = -0.361111, color = 0
+buoy: -0.148438 -0.361111 0.03125 -0.333333 0.445312 0.5
+ram: dx = -0.148438, dy = -0.361111, color = 0
+buoy: -0.148438 -0.361111 0.03125 -0.333333 0.445312 0.5
+ram: dx = -0.148438, dy = -0.361111, color = 0
+buoy: -0.140625 -0.361111 0.046875 -0.333333 0.476562 0.5
+ram: dx = -0.140625, dy = -0.361111, color = 0
+buoy: -0.148438 -0.347222 0.046875 -0.319444 0.453125 0.5
+ram: dx = -0.148438, dy = -0.347222, color = 0
+buoy: -0.140625 -0.333333 0.0546875 -0.305556 0.476562 0.5
+ram: dx = -0.140625, dy = -0.333333, color = 0
+buoy: -0.140625 -0.305556 0.0546875 -0.277778 0.453125 0.5
+ram: dx = -0.140625, dy = -0.305556, color = 0
+buoy: -0.148438 -0.305556 0.0546875 -0.263889 0.476562 0.5
+ram: dx = -0.148438, dy = -0.305556, color = 0
+saving jpg at logs/20_12_13_06_18_25/80.jpg
+@ 8.74891 FPS
+H:1    DH:353    D:93    DD:101    Pwr:75    K:-1
+buoy: -0.125 -0.263889 0.0625 -0.25 0.453125 0.5
+ram: dx = -0.125, dy = -0.263889, color = 0
+buoy: -0.140625 -0.25 0.28125 -0.180556 0.476562 0.5
+ram: dx = -0.140625, dy = -0.25, color = 0
+buoy: -0.140625 -0.236111 0.0546875 -0.194444 0.445312 0.5
+ram: dx = -0.140625, dy = -0.236111, color = 0
+buoy: -0.132812 -0.208333 0.0625 -0.180556 0.46875 0.5
+ram: dx = -0.132812, dy = -0.208333, color = 0
+buoy: -0.132812 -0.208333 0.0625 -0.166667 0.484375 0.486111
+ram: dx = -0.132812, dy = -0.208333, color = 0
+buoy: -0.132812 -0.180556 0.0625 -0.138889 0.476562 0.5
+ram: dx = -0.132812, dy = -0.180556, color = 0
+buoy: -0.132812 -0.180556 0.0625 -0.138889 0.453125 0.5
+ram: dx = -0.132812, dy = -0.180556, color = 0
+buoy: -0.109375 -0.194444 0.0625 -0.152778 0.453125 0.5
+ram: dx = -0.109375, dy = -0.194444, color = 0
+buoy: -0.125 -0.208333 0.078125 -0.166667 0.476562 0.5
+ram: dx = -0.125, dy = -0.208333, color = 0
+buoy: -0.117188 -0.222222 0.0703125 -0.166667 0.484375 0.5
+ram: dx = -0.117188, dy = -0.222222, color = 0
+H:0    DH:353    D:98    DD:100    Pwr:100    K:1
+buoy: -0.109375 -0.222222 0.078125 -0.180556 0.460938 0.5
+ram: dx = -0.109375, dy = -0.222222, color = 0
+saving jpg at logs/20_12_13_06_18_25/81.jpg
+@ 8.96861 FPS
+buoy: -0.101562 -0.236111 0.0859375 -0.194444 0.46875 0.5
+ram: dx = -0.101562, dy = -0.236111, color = 0
+buoy: -0.117188 -0.236111 0.0859375 -0.208333 0.460938 0.5
+ram: dx = -0.117188, dy = -0.236111, color = 0
+buoy: -0.09375 -0.25 0.078125 -0.208333 0.453125 0.5
+ram: dx = -0.09375, dy = -0.25, color = 0
+buoy: -0.109375 -0.25 0.078125 -0.208333 0.453125 0.5
+ram: dx = -0.109375, dy = -0.25, color = 0
+buoy: -0.109375 -0.25 0.0859375 -0.208333 0.484375 0.486111
+ram: dx = -0.109375, dy = -0.25, color = 0
+buoy: -0.109375 -0.236111 0.0859375 -0.194444 0.484375 0.472222
+ram: dx = -0.109375, dy = -0.236111, color = 0
+buoy: -0.0859375 -0.222222 0.09375 -0.180556 0.476562 0.5
+ram: dx = -0.0859375, dy = -0.222222, color = 0
+buoy: -0.109375 -0.194444 0.101562 -0.166667 0.460938 0.5
+ram: dx = -0.109375, dy = -0.194444, color = 0
+H:359    DH:352    D:105    DD:100    Pwr:100    K:1
+buoy: -0.0859375 -0.166667 0.351562 -0.375 0.445312 0.5
+ram: dx = -0.0859375, dy = -0.166667, color = 0
+buoy: -0.0859375 -0.138889 0.296875 -0.305556 0.476562 0.5
+ram: dx = -0.0859375, dy = -0.138889, color = 0
+buoy: -0.09375 -0.0972222 0.09375 -0.0555556 0.320312 0
+ram: dx = -0.09375, dy = -0.0972222, color = 0
+saving jpg at logs/20_12_13_06_18_25/82.jpg
+@ 8.65801 FPS
+buoy: -0.09375 -0.0138889 0.09375 0.0277778 0.328125 0.0833333
+ram: dx = -0.09375, dy = -0.0138889, color = 0
+buoy: -0.09375 0.0277778 -0.4375 -0.305556 0.328125 0.125
+ram: dx = -0.09375, dy = 0.0277778, color = 0
+buoy: -0.09375 0.0277778 -0.4375 -0.305556 0.328125 0.125
+ram: dx = -0.09375, dy = 0.0277778, color = 0
+buoy: -0.078125 0.0555556 -0.4375 -0.263889 0.328125 0.152778
+ram: dx = -0.078125, dy = 0.0555556, color = 0
+buoy: -0.0859375 0.0972222 -0.4375 -0.236111 0.335938 0.194444
+ram: dx = -0.0859375, dy = 0.0972222, color = 0
+buoy: -0.0703125 0.125 0.101562 0.166667 0.34375 0.222222
+ram: dx = -0.0703125, dy = 0.125, color = 0
+buoy: -0.0703125 0.152778 0.117188 0.194444 0.34375 0.263889
+ram: dx = -0.0703125, dy = 0.152778, color = 0
+H:357    DH:352    D:109    DD:100    Pwr:100    K:1
+buoy: -0.078125 0.180556 -0.4375 -0.361111 -0.0703125 0.208333
+ram: dx = -0.078125, dy = 0.180556, color = 0
+buoy: -0.078125 0.208333 0.257812 -0.194444 0.359375 0.305556
+ram: dx = -0.078125, dy = 0.208333, color = 0
+buoy: -0.0625 0.236111 0 -0.375 0.367188 0.333333
+ram: dx = -0.0625, dy = 0.236111, color = 0
+buoy: -0.0625 0.236111 -0.4375 -0.305556 0.367188 0.347222
+ram: dx = -0.0625, dy = 0.236111, color = 0
+saving jpg at logs/20_12_13_06_18_25/83.jpg
+@ 8.91266 FPS
+buoy: -0.0546875 0.236111 0.195312 -0.291667 0.375 0.347222
+ram: dx = -0.0546875, dy = 0.236111, color = 0
+buoy: -0.0390625 0.236111 0.296875 -0.208333 0.382812 0.347222
+ram: dx = -0.0390625, dy = 0.236111, color = 0
+buoy: -0.0390625 0.236111 -0.34375 -0.361111 0.390625 0.333333
+ram: dx = -0.0390625, dy = 0.236111, color = 0
+buoy: -0.03125 0.208333 0.257812 -0.361111 0.398438 0.319444
+ram: dx = -0.03125, dy = 0.208333, color = 0
+buoy: -0.0390625 0.208333 0.0546875 -0.319444 0.40625 0.305556
+ram: dx = -0.0390625, dy = 0.208333, color = 0
+buoy: -0.0234375 0.194444 0.0703125 -0.291667 0.414062 0.291667
+ram: dx = -0.0234375, dy = 0.194444, color = 0
+H:355    DH:353    D:109    DD:100    Pwr:100    K:1
+buoy: -0.03125 0.194444 0.335938 -0.347222 0.414062 0.277778
+ram: dx = -0.03125, dy = 0.194444, color = 0
+buoy: -0.0078125 0.166667 -0.351562 -0.319444 0.414062 0.263889
+ram: dx = -0.0078125, dy = 0.166667, color = 0
+buoy: -0.0078125 0.152778 0.359375 -0.319444 0.421875 0.236111
+ram: dx = -0.0078125, dy = 0.152778, color = 0
+buoy: 0 0.125 -0.320312 -0.277778 0.429688 0.222222
+ram: dx = 0, dy = 0.125, color = 0
+buoy: 0 0.111111 -0.4375 -0.375 0.4375 0.194444
+ram: dx = 0, dy = 0.111111, color = 0
+saving jpg at logs/20_12_13_06_18_25/84.jpg
+@ 8.86525 FPS
+buoy: 0.0078125 0.0833333 0.375 0.0555556 0.445312 0.166667
+ram: dx = 0.0078125, dy = 0.0833333, color = 0
+buoy: 0.015625 0.0555556 0.382812 -0.0138889 0.453125 0.152778
+ram: dx = 0.015625, dy = 0.0555556, color = 0
+buoy: 0.015625 0.0416667 0.320312 -0.111111 0.46875 0.5
+ram: dx = 0.015625, dy = 0.0416667, color = 0
+buoy: 0.0078125 0.0138889 0.257812 0.375 0.0234375 0.0416667
+saving jpg at logs/20_12_13_06_18_25/85.jpg
+@ 23.2019 FPS
+-> buoy has proceeded to stage 2 ['Adjust'] at 175111 <-
+H:352    DH:352    D:102    DD:105    Pwr:150    K:1
+buoy: 0.0347826 0.0138889 -0.417391 -0.347222 0.478261 0.5
+adjust: dx = 0.0347826, dy = 0.0138889, color = 0
+buoy: 0.026087 -0.0138889 0.365217 -0.152778 0.486957 0.5
+adjust: dx = 0.026087, dy = -0.0138889, color = 0
+buoy: 0.0434783 -0.0277778 0.365217 -0.138889 0.495652 0.5
+adjust: dx = 0.0434783, dy = -0.0277778, color = 0
+buoy: 0.0521739 -0.0555556 -0.278261 0.0416667 0.486957 0.5
+adjust: dx = 0.0521739, dy = -0.0555556, color = 0
+buoy: 0.0608696 -0.125 0.269565 -0.0972222 0.469565 0.5
+adjust: dx = 0.0608696, dy = -0.125, color = 0
+buoy: 0.0608696 -0.138889 0.278261 -0.111111 0.495652 0.5
+adjust: dx = 0.0608696, dy = -0.138889, color = 0
+buoy: 0.0608696 -0.138889 0.26087 -0.0972222 0.478261 0.5
+adjust: dx = 0.0608696, dy = -0.138889, color = 0
+buoy: 0.0695652 -0.125 0.26087 -0.0833333 0.495652 0.5
+adjust: dx = 0.0695652, dy = -0.125, color = 0
+buoy: 0.0608696 -0.111111 -0.0173913 -0.375 0.478261 0.5
+adjust: dx = 0.0608696, dy = -0.111111, color = 0
+buoy: 0.0608696 -0.0694444 -0.286957 -0.222222 0.46087 0.5
+adjust: dx = 0.0608696, dy = -0.0694444, color = 0
+H:351    DH:354    D:104    DD:100    Pwr:150    K:1
+buoy: 0.0608696 -0.0555556 -0.33913 0.180556 0.495652 0.472222
+adjust: dx = 0.0608696, dy = -0.0555556, color = 0
+saving jpg at logs/20_12_13_06_18_25/86.jpg
+@ 8.39631 FPS
+buoy: 0.0521739 -0.0277778 -0.356522 -0.138889 0.486957 0.5
+adjust: dx = 0.0521739, dy = -0.0277778, color = 0
+buoy: 0.0434783 0 -0.382609 0.25 0.0521739 0.0277778
+adjust: dx = 0.0434783, dy = 0, color = 0
+buoy: 0.0608696 0.0277778 0.278261 0.0694444 0.0521739 0.0555556
+adjust: dx = 0.0608696, dy = 0.0277778, color = 0
+buoy: 0.0608696 0.0694444 0.313043 -0.375 0.0521739 0.0833333
+adjust: dx = 0.0608696, dy = 0.0694444, color = 0
+buoy: 0.0434783 0.0972222 0.173913 -0.375 0.0521739 0.111111
+adjust: dx = 0.0434783, dy = 0.0972222, color = 0
+buoy: 0.0521739 0.111111 0.121739 -0.375 0.243478 -0.430556
+adjust: dx = 0.0521739, dy = 0.111111, color = 0
+buoy: 0.0347826 0.111111 -0.382609 0.0972222 0.234783 -0.416667
+adjust: dx = 0.0347826, dy = 0.111111, color = 0
+buoy: 0.0347826 0.111111 0.13913 -0.347222 0.0521739 0.125
+adjust: dx = 0.0347826, dy = 0.111111, color = 0
+H:352    DH:353    D:103    DD:96    Pwr:150    K:1
+buoy: 0.0347826 0.0833333 -0.026087 -0.361111 0.0521739 0.111111
+adjust: dx = 0.0347826, dy = 0.0833333, color = 0
+buoy: 0.0434783 0.0833333 0.121739 -0.319444 0.0434783 0.0972222
+adjust: dx = 0.0434783, dy = 0.0833333, color = 0
+buoy: 0.0347826 0.0138889 0.252174 -0.347222 0.0434783 0.0416667
+adjust: dx = 0.0347826, dy = 0.0138889, color = 0
+saving jpg at logs/20_12_13_06_18_25/87.jpg
+@ 8.54701 FPS
+buoy: 0.0434783 0 0.382609 0.180556 0.0347826 0.0277778
+adjust: dx = 0.0434783, dy = 0, color = 0
+buoy: 0.026087 0 0.26087 0.0416667 0.0434783 0.0138889
+adjust: dx = 0.026087, dy = 0, color = 0
+buoy: 0.0434783 0 0.26087 0.0416667 0.0347826 0.0277778
+adjust: dx = 0.0434783, dy = 0, color = 0
+buoy: 0.026087 0.0138889 0.0695652 -0.361111 0.026087 0.0416667
+adjust: dx = 0.026087, dy = 0.0138889, color = 0
+buoy: 0.0347826 0.0138889 0.269565 0.0555556 0.026087 0.0416667
+adjust: dx = 0.0347826, dy = 0.0138889, color = 0
+buoy: 0.0173913 0.0138889 0.382609 -0.347222 0.0347826 0.0416667
+adjust: dx = 0.0173913, dy = 0.0138889, color = 0
+H:354    DH:353    D:100    DD:98    Pwr:150    K:1
+buoy: 0.026087 0.0416667 0.269565 0.0555556 0.026087 0.0555556
+adjust: dx = 0.026087, dy = 0.0416667, color = 0
+buoy: 0.00869565 0.0416667 0.26087 0.0833333 0.026087 0.0694444
+adjust: dx = 0.00869565, dy = 0.0416667, color = 0
+buoy: 0.026087 0.0555556 0.26087 0.0972222 0.026087 0.0833333
+adjust: dx = 0.026087, dy = 0.0555556, color = 0
+buoy: 0.00869565 0.0694444 0.382609 -0.347222 0.0173913 0.0833333
+adjust: dx = 0.00869565, dy = 0.0694444, color = 0
+buoy: 0 0.0416667 0.252174 0.0833333 0.00869565 0.0694444
+adjust: dx = 0, dy = 0.0416667, color = 0
+saving jpg at logs/20_12_13_06_18_25/88.jpg
+@ 8.44595 FPS
+buoy: 0 0.0138889 0.26087 0.0416667 0.00869565 0.0416667
+adjust: dx = 0, dy = 0.0138889, color = 0
+buoy: 0.00869565 0.0138889 0.26087 0.0416667 0.0173913 0.0277778
+adjust: dx = 0.00869565, dy = 0.0138889, color = 0
+buoy: 0 0.0277778 0.26087 0.0416667 0 0.0416667
+adjust: dx = 0, dy = 0.0277778, color = 0
+buoy: 0.00869565 0.0138889 -0.373913 -0.361111 0.00869565 0.0416667
+adjust: dx = 0.00869565, dy = 0.0138889, color = 0
+buoy: -0.00869565 0.0277778 0.252174 0.0555556 0 0.0555556
+adjust: dx = -0.00869565, dy = 0.0277778, color = 0
+H:355    DH:355    D:103    DD:100    Pwr:150    K:1
+buoy: 0 0.0416667 -0.408696 -0.361111 0 0.0555556
+adjust: dx = 0, dy = 0.0416667, color = 0
+buoy: -0.0173913 0.0555556 0.252174 0.0833333 0 0.0694444
+adjust: dx = -0.0173913, dy = 0.0555556, color = 0
+buoy: -0.0173913 0.0555556 0.226087 -0.333333 -0.00869565 0.0833333
+adjust: dx = -0.0173913, dy = 0.0555556, color = 0
+buoy: -0.0173913 0.0694444 0.234783 0.111111 0 0.0833333
+adjust: dx = -0.0173913, dy = 0.0694444, color = 0
+buoy: -0.00869565 0.0694444 0.252174 0.111111 -0.00869565 0.0972222
+adjust: dx = -0.00869565, dy = 0.0694444, color = 0
+buoy: -0.026087 0.0833333 0.243478 0.111111 -0.0173913 0.111111
+adjust: dx = -0.026087, dy = 0.0833333, color = 0
+saving jpg at logs/20_12_13_06_18_25/89.jpg
+@ 8.39631 FPS
+buoy: -0.00869565 0.0972222 0.234783 0.125 -0.0173913 0.125
+adjust: dx = -0.00869565, dy = 0.0972222, color = 0
+buoy: -0.026087 0.0972222 0.269565 -0.333333 -0.0173913 0.125
+adjust: dx = -0.026087, dy = 0.0972222, color = 0
+buoy: -0.0173913 0.0972222 0.243478 0.125 0.191304 -0.486111
+adjust: dx = -0.0173913, dy = 0.0972222, color = 0
+H:356    DH:356    D:100    DD:100    Pwr:150    K:1
+buoy: -0.0173913 0.0833333 0.269565 -0.347222 -0.0173913 0.111111
+adjust: dx = -0.0173913, dy = 0.0833333, color = 0
+buoy: -0.026087 0.0833333 0.252174 0.111111 -0.026087 0.111111
+adjust: dx = -0.026087, dy = 0.0833333, color = 0
+buoy: -0.0347826 0.0833333 0.243478 0.111111 -0.0173913 0.0972222
+adjust: dx = -0.0347826, dy = 0.0833333, color = 0
+buoy: -0.0347826 0.0694444 0.243478 0.0972222 -0.0173913 0.0833333
+adjust: dx = -0.0347826, dy = 0.0694444, color = 0
+buoy: -0.0173913 0.0416667 0.234783 0.0833333 -0.0173913 0.0694444
+adjust: dx = -0.0173913, dy = 0.0416667, color = 0
+buoy: -0.0173913 0.0416667 0.26087 -0.375 -0.026087 0.0694444
+adjust: dx = -0.0173913, dy = 0.0416667, color = 0
+buoy: -0.026087 0.0416667 0.243478 0.0694444 -0.0173913 0.0555556
+adjust: dx = -0.026087, dy = 0.0416667, color = 0
+buoy: -0.026087 0.0416667 0.243478 0.0833333 -0.00869565 0.0555556
+adjust: dx = -0.026087, dy = 0.0416667, color = 0
+saving jpg at logs/20_12_13_06_18_25/90.jpg
+@ 8.70322 FPS
+buoy: -0.026087 0.0277778 0.269565 0.0555556 -0.00869565 0.0555556
+adjust: dx = -0.026087, dy = 0.0277778, color = 0
+buoy: -0.00869565 0.0277778 0.26087 0.0555556 -0.00869565 0.0416667
+adjust: dx = -0.00869565, dy = 0.0277778, color = 0
+H:356    DH:356    D:99    DD:100    Pwr:150    K:1
+buoy: -0.026087 0.0138889 0.278261 0.0416667 -0.00869565 0.0416667
+adjust: dx = -0.026087, dy = 0.0138889, color = 0
+buoy: -0.0173913 0.0138889 0.278261 0.0416667 -0.00869565 0.0416667
+adjust: dx = -0.0173913, dy = 0.0138889, color = 0
+buoy: 0 0.0138889 0.252174 0.0694444 0 0.0416667
+adjust: dx = 0, dy = 0.0138889, color = 0
+buoy: -0.0173913 0.0277778 0.278261 0.0694444 0 0.0555556
+adjust: dx = -0.0173913, dy = 0.0277778, color = 0
+buoy: 0 0.0277778 0.269565 0.0833333 0 0.0555556
+adjust: dx = 0, dy = 0.0277778, color = 0
+buoy: 0 0.0277778 0.278261 0.0694444 0 0.0555556
+adjust: dx = 0, dy = 0.0277778, color = 0
+buoy: 0 0.0277778 0.278261 0.0833333 0.00869565 0.0555556
+adjust: dx = 0, dy = 0.0277778, color = 0
+buoy: -0.00869565 0.0416667 0.278261 0.0833333 0.00869565 0.0555556
+adjust: dx = -0.00869565, dy = 0.0416667, color = 0
+buoy: -0.00869565 0.0277778 0.278261 0.0833333 0.00869565 0.0555556
+adjust: dx = -0.00869565, dy = 0.0277778, color = 0
+saving jpg at logs/20_12_13_06_18_25/91.jpg
+@ 8.77963 FPS
+H:355    DH:355    D:100    DD:98    Pwr:150    K:1
+buoy: -0.00869565 0.0277778 0.304348 0.0694444 0 0.0555556
+adjust: dx = -0.00869565, dy = 0.0277778, color = 0
+buoy: -0.00869565 0.0277778 0.313043 0.0694444 0.00869565 0.0555556
+adjust: dx = -0.00869565, dy = 0.0277778, color = 0
+buoy: 0.00869565 0.0277778 0.295652 0.0833333 0.00869565 0.0555556
+adjust: dx = 0.00869565, dy = 0.0277778, color = 0
+buoy: 0.00869565 0.0277778 0.295652 0.0694444 0.00869565 0.0555556
+adjust: dx = 0.00869565, dy = 0.0277778, color = 0
+buoy: 0.0173913 0.0138889 0.304348 0.0694444 0.00869565 0.0416667
+adjust: dx = 0.0173913, dy = 0.0138889, color = 0
+buoy: 0.0173913 -0.0138889 0.330435 0.0416667 0.00869565 0.0277778
+adjust: dx = 0.0173913, dy = -0.0138889, color = 0
+buoy: 0 -0.0277778 0.313043 0.0277778 0.00869565 0.0138889
+adjust: dx = 0, dy = -0.0277778, color = 0
+buoy: 0.00869565 -0.0416667 0.313043 0.0138889 0.026087 -0.0138889
+adjust: dx = 0.00869565, dy = -0.0416667, color = 0
+buoy: 0.026087 -0.0555556 0.347826 -0.0138889 0.026087 -0.0277778
+adjust: dx = 0.026087, dy = -0.0555556, color = 0
+buoy: 0.0347826 -0.0694444 0.347826 -0.0277778 0.026087 -0.0416667
+adjust: dx = 0.0347826, dy = -0.0694444, color = 0
+H:354    DH:355    D:100    DD:100    Pwr:150    K:1
+buoy: 0.0173913 -0.0833333 0.347826 -0.0277778 0.0347826 -0.0555556
+adjust: dx = 0.0173913, dy = -0.0833333, color = 0
+saving jpg at logs/20_12_13_06_18_25/92.jpg
+@ 8.77963 FPS
+buoy: 0.0173913 -0.0972222 0.33913 -0.0555556 0.0347826 -0.0694444
+adjust: dx = 0.0173913, dy = -0.0972222, color = 0
+buoy: 0.026087 -0.111111 0.33913 -0.0694444 0.0434783 -0.0833333
+adjust: dx = 0.026087, dy = -0.111111, color = 0
+buoy: 0.0434783 -0.111111 0.365217 -0.0555556 0.026087 -0.0694444
+adjust: dx = 0.0434783, dy = -0.111111, color = 0
+buoy: 0.0434783 -0.0972222 0.373913 -0.0416667 0.0434783 -0.0694444
+adjust: dx = 0.0434783, dy = -0.0972222, color = 0
+buoy: 0.026087 -0.0833333 0.382609 -0.0416667 0.0434783 -0.0555556
+adjust: dx = 0.026087, dy = -0.0833333, color = 0
+buoy: 0.0347826 -0.0694444 0.382609 -0.0277778 0.0347826 -0.0416667
+adjust: dx = 0.0347826, dy = -0.0694444, color = 0
+buoy: 0.0347826 -0.0694444 0.382609 -0.0138889 0.0521739 -0.0416667
+adjust: dx = 0.0347826, dy = -0.0694444, color = 0
+buoy: 0.0521739 -0.0416667 0.4 0.0138889 0.0521739 0
+adjust: dx = 0.0521739, dy = -0.0416667, color = 0
+buoy: 0.0347826 -0.0138889 0.382609 0.0555556 0.0347826 0.0277778
+adjust: dx = 0.0347826, dy = -0.0138889, color = 0
+H:353    DH:354    D:101    DD:100    Pwr:150    K:1
+buoy: 0.0347826 0 0.391304 0.0694444 0.0434783 0.0555556
+adjust: dx = 0.0347826, dy = 0, color = 0
+buoy: 0.0521739 0.0138889 0.4 0.0694444 0.0521739 0.0555556
+adjust: dx = 0.0521739, dy = 0.0138889, color = 0
+saving jpg at logs/20_12_13_06_18_25/93.jpg
+@ 8.69565 FPS
+buoy: 0.0347826 0.0277778 0.391304 0.0833333 0.0521739 0.0555556
+adjust: dx = 0.0347826, dy = 0.0277778, color = 0
+buoy: 0.0347826 0.0277778 0.391304 0.0972222 0.0434783 0.0694444
+adjust: dx = 0.0347826, dy = 0.0277778, color = 0
+buoy: 0.0347826 0.0416667 0.391304 0.0972222 0.0521739 0.0694444
+adjust: dx = 0.0347826, dy = 0.0416667, color = 0
+buoy: 0.0521739 0.0277778 0.417391 0.0972222 0.0521739 0.0694444
+adjust: dx = 0.0521739, dy = 0.0277778, color = 0
+buoy: 0.0347826 0.0277778 0.408696 0.0972222 0.0521739 0.0694444
+adjust: dx = 0.0347826, dy = 0.0277778, color = 0
+buoy: 0.0347826 0.0277778 0.417391 0.0833333 0.0521739 0.0555556
+adjust: dx = 0.0347826, dy = 0.0277778, color = 0
+buoy: 0.0434783 0 0.408696 0.0694444 0.0521739 0.0416667
+adjust: dx = 0.0434783, dy = 0, color = 0
+H:353    DH:355    D:105    DD:100    Pwr:150    K:1
+buoy: 0.0521739 0 0.408696 0.0555556 0.0608696 0.0277778
+adjust: dx = 0.0521739, dy = 0, color = 0
+buoy: 0.0608696 -0.0138889 0.426087 0.0555556 0.0608696 0.0277778
+adjust: dx = 0.0608696, dy = -0.0138889, color = 0
+buoy: 0.0434783 -0.0138889 0.417391 0.0277778 0.0434783 0.0277778
+adjust: dx = 0.0434783, dy = -0.0138889, color = 0
+buoy: 0.0434783 -0.0416667 0.426087 0.0138889 0.0521739 0
+adjust: dx = 0.0434783, dy = -0.0416667, color = 0
+saving jpg at logs/20_12_13_06_18_25/94.jpg
+@ 8.51064 FPS
+buoy: 0.0434783 -0.0416667 0.426087 0.0277778 0.0608696 -0.0138889
+adjust: dx = 0.0434783, dy = -0.0416667, color = 0
+buoy: 0.0608696 -0.0555556 0.426087 0.0138889 0.0521739 0
+adjust: dx = 0.0608696, dy = -0.0555556, color = 0
+buoy: 0.0608696 -0.0416667 0.426087 0.0277778 0.0608696 0
+adjust: dx = 0.0608696, dy = -0.0416667, color = 0
+buoy: 0.0434783 -0.0416667 0.426087 0.0138889 0.0434783 0
+adjust: dx = 0.0434783, dy = -0.0416667, color = 0
+buoy: 0.0608696 -0.0416667 0.426087 0.0277778 0.0608696 0
+adjust: dx = 0.0608696, dy = -0.0416667, color = 0
+H:354    DH:357    D:100    DD:99    Pwr:150    K:1
+buoy: 0.0608696 -0.0277778 0.426087 0.0416667 0.0608696 0.0138889
+adjust: dx = 0.0608696, dy = -0.0277778, color = 0
+buoy: 0.0695652 -0.0138889 0.426087 0.0555556 0.0521739 0.0416667
+adjust: dx = 0.0695652, dy = -0.0138889, color = 0
+buoy: 0.0347826 0.0138889 0.0434783 0.0833333 0.0434783 0.0694444
+adjust: dx = 0.0347826, dy = 0.0138889, color = 0
+buoy: 0.0347826 0.0416667 -0.026087 -0.347222 0.0608696 0.0833333
+adjust: dx = 0.0347826, dy = 0.0416667, color = 0
+buoy: 0.0347826 0.0555556 0.347826 -0.277778 0.0434783 0.111111
+adjust: dx = 0.0347826, dy = 0.0555556, color = 0
+buoy: 0.026087 0.0694444 0.391304 -0.25 0.0347826 0.125
+adjust: dx = 0.026087, dy = 0.0694444, color = 0
+saving jpg at logs/20_12_13_06_18_25/95.jpg
+@ 8.88889 FPS
+buoy: 0.0347826 0.0972222 0.0434783 0.0416667 0.0521739 0.138889
+adjust: dx = 0.0347826, dy = 0.0972222, color = 0
+buoy: 0.0521739 0.0972222 0.286957 -0.263889 0.0521739 0.152778
+adjust: dx = 0.0521739, dy = 0.0972222, color = 0
+buoy: 0.026087 0.125 0.0434783 -0.0416667 0.0347826 0.166667
+adjust: dx = 0.026087, dy = 0.125, color = 0
+buoy: 0.026087 0.111111 0 0.125 0.0521739 0.166667
+adjust: dx = 0.026087, dy = 0.111111, color = 0
+buoy: 0.026087 0.111111 0 0.125 0.0521739 0.166667
+adjust: dx = 0.026087, dy = 0.111111, color = 0
+H:355    DH:356    D:104    DD:97    Pwr:150    K:1
+buoy: 0.026087 0.111111 0.0347826 -0.0416667 0.0521739 0.166667
+adjust: dx = 0.026087, dy = 0.111111, color = 0
+buoy: 0.026087 0.111111 0.026087 0.0555556 0.0347826 0.166667
+adjust: dx = 0.026087, dy = 0.111111, color = 0
+buoy: 0.026087 0.0972222 0.408696 -0.375 0.0347826 0.152778
+adjust: dx = 0.026087, dy = 0.0972222, color = 0
+buoy: 0.026087 0.0694444 0.0347826 0.0416667 0.0434783 0.138889
+adjust: dx = 0.026087, dy = 0.0694444, color = 0
+buoy: 0.026087 0.0694444 0.0347826 -0.0833333 0.026087 0.125
+adjust: dx = 0.026087, dy = 0.0694444, color = 0
+buoy: 0.026087 0.0555556 0.0347826 0 0.0347826 0.111111
+adjust: dx = 0.026087, dy = 0.0555556, color = 0
+saving jpg at logs/20_12_13_06_18_25/96.jpg
+@ 9.43396 FPS
+buoy: 0.0434783 0 0.0347826 -0.0277778 0.0347826 0.0833333
+adjust: dx = 0.0434783, dy = 0, color = 0
+buoy: 0.026087 0 0.026087 -0.0555556 0.026087 0.0555556
+adjust: dx = 0.026087, dy = 0, color = 0
+buoy: 0.026087 -0.0138889 0.026087 -0.0694444 0.026087 0.0416667
+adjust: dx = 0.026087, dy = -0.0138889, color = 0
+buoy: 0.0173913 -0.0277778 0.0347826 -0.0833333 0.026087 0.0277778
+adjust: dx = 0.0173913, dy = -0.0277778, color = 0
+H:356    DH:356    D:99    DD:100    Pwr:150    K:1
+buoy: 0.0434783 -0.0694444 0.0347826 -0.111111 0.026087 0
+adjust: dx = 0.0434783, dy = -0.0694444, color = 0
+buoy: 0.0434783 -0.0833333 0.0347826 -0.125 0.0434783 -0.0138889
+adjust: dx = 0.0434783, dy = -0.0833333, color = 0
+buoy: 0.0173913 -0.0972222 0.0347826 -0.138889 0.0434783 -0.0277778
+adjust: dx = 0.0173913, dy = -0.0972222, color = 0
+buoy: 0.0173913 -0.0972222 0.0347826 -0.263889 0.026087 -0.0416667
+adjust: dx = 0.0173913, dy = -0.0972222, color = 0
+buoy: 0.0434783 -0.125 0.0173913 -0.180556 0.026087 -0.0555556
+adjust: dx = 0.0434783, dy = -0.125, color = 0
+buoy: 0.0434783 -0.138889 0.026087 -0.180556 0.026087 -0.0555556
+adjust: dx = 0.0434783, dy = -0.138889, color = 0
+buoy: 0.0173913 -0.138889 0.0173913 -0.180556 0.026087 -0.0416667
+adjust: dx = 0.0173913, dy = -0.138889, color = 0
+saving jpg at logs/20_12_13_06_18_25/97.jpg
+@ 9.08265 FPS
+buoy: 0.0173913 -0.111111 0.00869565 -0.166667 0.0173913 -0.0416667
+adjust: dx = 0.0173913, dy = -0.111111, color = 0
+buoy: 0.0434783 -0.111111 0.0347826 -0.152778 0.026087 -0.0277778
+adjust: dx = 0.0434783, dy = -0.111111, color = 0
+buoy: 0.0173913 -0.0694444 0.0434783 -0.152778 0.0173913 -0.0138889
+adjust: dx = 0.0173913, dy = -0.0694444, color = 0
+H:356    DH:356    D:102    DD:100    Pwr:150    K:1
+buoy: 0.0173913 -0.0694444 0.0434783 -0.125 0.0173913 0
+adjust: dx = 0.0173913, dy = -0.0694444, color = 0
+buoy: 0.0173913 -0.0416667 -0.0173913 -0.0277778 0.026087 0.0277778
+adjust: dx = 0.0173913, dy = -0.0416667, color = 0
+buoy: 0.00869565 -0.0277778 0.0521739 -0.0833333 0.0173913 0.0416667
+adjust: dx = 0.00869565, dy = -0.0277778, color = 0
+buoy: 0.0173913 -0.0138889 0.026087 -0.0833333 0.026087 0.0555556
+adjust: dx = 0.0173913, dy = -0.0138889, color = 0
+buoy: 0.0173913 -0.0138889 0.0434783 -0.0833333 0.0434783 0.0416667
+adjust: dx = 0.0173913, dy = -0.0138889, color = 0
+buoy: 0.0173913 -0.0277778 0.026087 -0.0972222 0.026087 0.0416667
+adjust: dx = 0.0173913, dy = -0.0277778, color = 0
+buoy: 0.0173913 -0.0277778 -0.0173913 -0.0138889 0.026087 0.0416667
+adjust: dx = 0.0173913, dy = -0.0277778, color = 0
+buoy: 0.0173913 -0.0416667 0.026087 -0.111111 0.026087 0.0416667
+adjust: dx = 0.0173913, dy = -0.0416667, color = 0
+saving jpg at logs/20_12_13_06_18_25/98.jpg
+@ 8.93655 FPS
+buoy: 0.0173913 -0.0416667 0.0521739 -0.0972222 0.026087 0.0555556
+adjust: dx = 0.0173913, dy = -0.0416667, color = 0
+H:357    DH:357    D:102    DD:100    Pwr:150    K:1
+buoy: 0.0173913 -0.0138889 0.0347826 -0.0694444 0.0347826 0.0833333
+adjust: dx = 0.0173913, dy = -0.0138889, color = 0
+buoy: 0.0173913 0 0.0347826 -0.0694444 0.0347826 0.0833333
+adjust: dx = 0.0173913, dy = 0, color = 0
+buoy: 0.0521739 -0.0277778 0.0347826 -0.125 0.026087 0.0694444
+adjust: dx = 0.0521739, dy = -0.0277778, color = 0
+buoy: 0.0173913 -0.0138889 0.0434783 -0.0833333 0.0347826 0.0694444
+adjust: dx = 0.0173913, dy = -0.0138889, color = 0
+buoy: 0.0173913 -0.0138889 0.0434783 -0.0833333 0.0347826 0.0694444
+adjust: dx = 0.0173913, dy = -0.0138889, color = 0
+buoy: 0.0521739 -0.0277778 -0.0173913 0 0.026087 0.0555556
+adjust: dx = 0.0521739, dy = -0.0277778, color = 0
+buoy: 0.0521739 -0.0416667 0.0347826 -0.138889 0.026087 0.0555556
+adjust: dx = 0.0521739, dy = -0.0416667, color = 0
+buoy: 0.026087 -0.0416667 0.0347826 -0.0972222 0.0347826 0.0694444
+adjust: dx = 0.026087, dy = -0.0416667, color = 0
+buoy: 0.0521739 -0.0277778 0.0521739 -0.0833333 0.026087 0.0694444
+adjust: dx = 0.0521739, dy = -0.0277778, color = 0
+H:357    DH:359    D:101    DD:100    Pwr:150    K:1
+buoy: 0.026087 -0.0138889 -0.00869565 -0.0555556 0.026087 0.0972222
+adjust: dx = 0.026087, dy = -0.0138889, color = 0
+saving jpg at logs/20_12_13_06_18_25/99.jpg
+@ 8.88889 FPS
+buoy: 0.026087 0 -0.00869565 0.111111 0.026087 0.111111
+adjust: dx = 0.026087, dy = 0, color = 0
+buoy: 0.026087 0.0138889 0.0869565 -0.0416667 0.026087 0.125
+adjust: dx = 0.026087, dy = 0.0138889, color = 0
+buoy: 0.026087 0.0138889 0.0869565 -0.0277778 0.026087 0.125
+adjust: dx = 0.026087, dy = 0.0138889, color = 0
+buoy: 0.026087 0.0138889 0.0869565 -0.0138889 0.026087 0.138889
+adjust: dx = 0.026087, dy = 0.0138889, color = 0
+buoy: 0.026087 0.0138889 0.0869565 -0.0138889 0.026087 0.138889
+adjust: dx = 0.026087, dy = 0.0138889, color = 0
+buoy: 0.0434783 0.0416667 -0.0173913 0.152778 0.0347826 0.152778
+adjust: dx = 0.0434783, dy = 0.0416667, color = 0
+buoy: 0.0347826 0.0416667 0.0869565 0.166667 0.026087 0.152778
+adjust: dx = 0.0347826, dy = 0.0416667, color = 0
+buoy: 0.026087 0.0555556 0.0782609 0.166667 0.026087 0.166667
+adjust: dx = 0.026087, dy = 0.0555556, color = 0
+buoy: 0.026087 0.0555556 -0.0173913 0.0138889 0.026087 0.166667
+adjust: dx = 0.026087, dy = 0.0555556, color = 0
+buoy: 0.0347826 0.0694444 0.0869565 0.180556 0.026087 0.166667
+adjust: dx = 0.0347826, dy = 0.0694444, color = 0
+H:357    DH:358    D:102    DD:98    Pwr:150    K:1
+buoy: 0.0347826 0.0694444 0.0956522 0.180556 0.0347826 0.180556
+adjust: dx = 0.0347826, dy = 0.0694444, color = 0
+saving jpg at logs/20_12_13_06_18_25/100.jpg
+@ 9.26784 FPS
+buoy: 0.0434783 0.0555556 -0.00869565 0.180556 0.026087 0.166667
+adjust: dx = 0.0434783, dy = 0.0555556, color = 0
+buoy: 0.0434783 0.0555556 0.104348 0.166667 0.0347826 0.166667
+adjust: dx = 0.0434783, dy = 0.0555556, color = 0
+buoy: 0.0434783 0.0555556 0.104348 0.180556 0.0347826 0.166667
+adjust: dx = 0.0434783, dy = 0.0555556, color = 0
+buoy: 0.0434783 0.0555556 0.104348 0.180556 0.0347826 0.166667
+adjust: dx = 0.0434783, dy = 0.0555556, color = 0
+buoy: 0.0434783 0.0277778 0.113043 0.180556 0.0347826 0.166667
+adjust: dx = 0.0434783, dy = 0.0277778, color = 0
+buoy: 0.0434783 0.0555556 0.104348 0.180556 0.0434783 0.180556
+adjust: dx = 0.0434783, dy = 0.0555556, color = 0
+buoy: 0.0347826 0.0694444 0.113043 0.180556 0.0521739 0.180556
+adjust: dx = 0.0347826, dy = 0.0694444, color = 0
+buoy: 0.0434783 0.0277778 0.00869565 0.180556 0.0521739 0.166667
+adjust: dx = 0.0434783, dy = 0.0277778, color = 0
+buoy: 0.0695652 0.0138889 0.13913 0.180556 0.0608696 0.166667
+adjust: dx = 0.0695652, dy = 0.0138889, color = 0
+H:357    DH:322    D:102    DD:100    Pwr:150    K:1
+buoy: 0.0608696 -0.0277778 0.00869565 0.166667 0.0608696 0.152778
+adjust: dx = 0.0608696, dy = -0.0277778, color = 0
+buoy: 0.0782609 -0.0555556 0.147826 0.152778 0.13913 0.0972222
+saving jpg at logs/20_12_13_06_18_25/101.jpg
+@ 9.42507 FPS
+pausing for 3000
+pausing for 2905
+pausing for 2808
+pausing for 2711
+pausing for 2610
+pausing for 2524
+pausing for 2447
+pausing for 2366
+pausing for 2279
+H:352    DH:357    D:102    DD:101    Pwr:150    K:1
+pausing for 2187
+pausing for 2100
+saving jpg at logs/20_12_13_06_18_25/102.jpg
+@ 10.0402 FPS
+pausing for 1995
+pausing for 1903
+pausing for 1812
+pausing for 1720
+pausing for 1635
+pausing for 1554
+pausing for 1455
+pausing for 1359
+pausing for 1260
+H:343    DH:357    D:102    DD:101    Pwr:150    K:1
+pausing for 1158
+pausing for 1062
+saving jpg at logs/20_12_13_06_18_25/103.jpg
+@ 9.63391 FPS
+pausing for 965
+pausing for 865
+pausing for 761
+pausing for 665
+pausing for 568
+pausing for 470
+pausing for 374
+pausing for 292
+H:334    DH:357    D:100    DD:101    Pwr:150    K:1
+pausing for 196
+pausing for 99
+pausing for 8
+saving jpg at logs/20_12_13_06_18_25/104.jpg
+@ 9.48767 FPS
+pausing for 0
+-> buoy has proceeded to stage 3 ['Backup'] at 196453 <-
+pausing for 10000
+pausing for 9914
+pausing for 9838
+pausing for 9746
+pausing for 9655
+pausing for 9563
+H:330    DH:357    D:102    DD:101    Pwr:0    K:1
+pausing for 9477
+pausing for 9385
+pausing for 9299
+saving jpg at logs/20_12_13_06_18_25/105.jpg
+@ 10.0806 FPS
+pausing for 9203
+pausing for 9107
+pausing for 9020
+pausing for 8929
+pausing for 8837
+pausing for 8746
+pausing for 8669
+pausing for 8588
+H:334    DH:357    D:100    DD:101    Pwr:0    K:1
+pausing for 8503
+pausing for 8407
+pausing for 8315
+saving jpg at logs/20_12_13_06_18_25/106.jpg
+@ 10.1626 FPS
+pausing for 8213
+pausing for 8117
+pausing for 8035
+pausing for 7949
+pausing for 7863
+pausing for 7778
+pausing for 7672
+pausing for 7575
+H:341    DH:357    D:101    DD:101    Pwr:0    K:1
+pausing for 7479
+pausing for 7382
+pausing for 7283
+saving jpg at logs/20_12_13_06_18_25/107.jpg
+@ 9.68992 FPS
+pausing for 7188
+pausing for 7081
+pausing for 6983
+pausing for 6886
+pausing for 6789
+pausing for 6692
+pausing for 6605
+H:349    DH:357    D:102    DD:101    Pwr:0    K:1
+pausing for 6508
+pausing for 6422
+pausing for 6346
+pausing for 6269
+saving jpg at logs/20_12_13_06_18_25/108.jpg
+@ 9.87167 FPS
+pausing for 6183
+pausing for 6093
+pausing for 5998
+pausing for 5902
+pausing for 5815
+pausing for 5719
+pausing for 5643
+pausing for 5566
+H:354    DH:357    D:103    DD:101    Pwr:0    K:1
+pausing for 5488
+pausing for 5402
+pausing for 5315
+saving jpg at logs/20_12_13_06_18_25/109.jpg
+@ 10.4712 FPS
+pausing for 5238
+pausing for 5148
+pausing for 5067
+pausing for 4978
+pausing for 4887
+pausing for 4795
+pausing for 4714
+pausing for 4633
+pausing for 4536
+H:352    DH:357    D:97    DD:101    Pwr:0    K:1
+pausing for 4450
+pausing for 4374
+saving jpg at logs/20_12_13_06_18_25/110.jpg
+@ 10.627 FPS
+pausing for 4278
+pausing for 4177
+pausing for 4068
+pausing for 3972
+pausing for 3875
+pausing for 3779
+pausing for 3682
+pausing for 3591
+H:351    DH:357    D:102    DD:101    Pwr:0    K:1
+pausing for 3514
+pausing for 3423
+pausing for 3331
+saving jpg at logs/20_12_13_06_18_25/111.jpg
+@ 9.58773 FPS
+pausing for 3233
+pausing for 3138
+pausing for 3047
+pausing for 2955
+pausing for 2869
+pausing for 2768
+pausing for 2672
+pausing for 2580
+H:351    DH:357    D:108    DD:101    Pwr:0    K:1
+pausing for 2499
+pausing for 2412
+pausing for 2336
+saving jpg at logs/20_12_13_06_18_25/112.jpg
+@ 10.0503 FPS
+pausing for 2233
+pausing for 2138
+pausing for 2047
+pausing for 1960
+pausing for 1864
+pausing for 1772
+pausing for 1676
+pausing for 1590
+H:352    DH:357    D:100    DD:101    Pwr:0    K:1
+pausing for 1513
+pausing for 1422
+pausing for 1331
+saving jpg at logs/20_12_13_06_18_25/113.jpg
+@ 9.95025 FPS
+pausing for 1228
+pausing for 1133
+pausing for 1043
+pausing for 947
+pausing for 855
+pausing for 764
+pausing for 668
+pausing for 572
+H:354    DH:357    D:107    DD:101    Pwr:0    K:1
+pausing for 480
+pausing for 389
+pausing for 297
+saving jpg at logs/20_12_13_06_18_25/114.jpg
+@ 9.67118 FPS
+pausing for 198
+pausing for 98
+pausing for 8
+pausing for 0
+-> buoy has proceeded to stage 4 ['ResetHeadingAndDepth'] at 206734 <-
+pausing for 5000
+pausing for 4909
+pausing for 4822
+H:354    DH:3    D:99    DD:75    Pwr:100    K:1
+pausing for 4746
+pausing for 4670
+pausing for 4588
+saving jpg at logs/20_12_13_06_18_25/115.jpg
+@ 10.4822 FPS
+pausing for 4500
+pausing for 4419
+pausing for 4333
+pausing for 4247
+pausing for 4164
+pausing for 4078
+pausing for 3984
+pausing for 3903
+pausing for 3816
+H:356    DH:3    D:94    DD:75    Pwr:100    K:1
+pausing for 3724
+pausing for 3634
+saving jpg at logs/20_12_13_06_18_25/116.jpg
+@ 10.4712 FPS
+pausing for 3534
+pausing for 3434
+pausing for 3349
+pausing for 3258
+pausing for 3166
+pausing for 3075
+pausing for 2994
+pausing for 2912
+pausing for 2821
+H:356    DH:3    D:84    DD:75    Pwr:100    K:1
+pausing for 2730
+pausing for 2638
+saving jpg at logs/20_12_13_06_18_25/117.jpg
+@ 10.0402 FPS
+pausing for 2539
+pausing for 2454
+pausing for 2373
+pausing for 2282
+pausing for 2200
+pausing for 2119
+pausing for 2039
+pausing for 1954
+pausing for 1878
+pausing for 1797
+H:357    DH:3    D:70    DD:75    Pwr:100    K:1
+pausing for 1710
+saving jpg at logs/20_12_13_06_18_25/118.jpg
+@ 10.7759 FPS
+pausing for 1619
+pausing for 1519
+pausing for 1414
+pausing for 1332
+pausing for 1245
+pausing for 1164
+pausing for 1084
+pausing for 1003
+pausing for 909
+pausing for 813
+H:358    DH:3    D:69    DD:75    Pwr:100    K:1
+pausing for 716
+saving jpg at logs/20_12_13_06_18_25/119.jpg
+@ 10.0604 FPS
+pausing for 624
+pausing for 539
+pausing for 443
+pausing for 351
+pausing for 255
+pausing for 174
+pausing for 87
+pausing for 0
+-> buoy has proceeded to stage 1 ['Ram'] at 211896 <-
+buoy: -0.046875 -0.347222 0.3125 -0.319444 -0.03125 -0.291667
+ram: dx = 0.3125, dy = -0.319444, color = 1
+buoy: -0.0546875 -0.333333 0.328125 -0.319444 -0.0390625 -0.291667
+ram: dx = 0.328125, dy = -0.319444, color = 1
+H:0    DH:19    D:69    DD:80    Pwr:100    K:1
+buoy: -0.0390625 -0.361111 0.320312 -0.333333 -0.0390625 -0.305556
+ram: dx = 0.320312, dy = -0.333333, color = 1
+saving jpg at logs/20_12_13_06_18_25/120.jpg
+@ 9.74659 FPS
+buoy: -0.0546875 -0.361111 0.320312 -0.333333 -0.0390625 -0.319444
+ram: dx = 0.320312, dy = -0.333333, color = 1
+buoy: -0.0546875 -0.375 0.320312 -0.361111 -0.046875 -0.347222
+ram: dx = 0.320312, dy = -0.361111, color = 1
+buoy: -0.0546875 -0.375 0.320312 -0.361111 -0.046875 -0.347222
+ram: dx = 0.320312, dy = -0.361111, color = 1
+buoy: -0.0703125 -0.375 0.28125 -0.375 -0.046875 -0.375
+ram: dx = 0.28125, dy = -0.375, color = 1
+buoy: -0.0703125 -0.375 0.28125 -0.375 -0.046875 -0.375
+ram: dx = 0.28125, dy = -0.375, color = 1
+buoy: -0.0546875 -0.347222 0.273438 -0.375 -0.0390625 -0.388889
+ram: dx = 0.273438, dy = -0.375, color = 1
+buoy: -0.0625 -0.347222 0.273438 -0.375 -0.0546875 -0.388889
+ram: dx = 0.273438, dy = -0.375, color = 1
+buoy: -0.0703125 -0.361111 0.34375 0.152778 -0.0546875 -0.402778
+ram: dx = 0.34375, dy = 0.152778, color = 1
+buoy: 0.203125 -0.375 0.148438 -0.319444 -0.0625 -0.416667
+ram: dx = 0.148438, dy = -0.319444, color = 1
+H:2    DH:10    D:75    DD:84    Pwr:100    K:1
+buoy: -0.0703125 -0.375 0.0859375 -0.347222 -0.0625 -0.416667
+ram: dx = 0.0859375, dy = -0.347222, color = 1
+buoy: 0.390625 -0.333333 0.429688 -0.375 -0.0625 -0.430556
+ram: dx = 0.429688, dy = -0.375, color = 1
+saving jpg at logs/20_12_13_06_18_25/121.jpg
+@ 9.0009 FPS
+buoy: 0.382812 -0.319444 0.320312 -0.319444 -0.0703125 -0.430556
+ram: dx = 0.320312, dy = -0.319444, color = 1
+buoy: 0.421875 -0.361111 0.101562 -0.375 -0.0703125 -0.444444
+ram: dx = 0.101562, dy = -0.375, color = 1
+buoy: 0.40625 -0.375 0.320312 -0.333333 -0.0703125 -0.458333
+ram: dx = 0.320312, dy = -0.333333, color = 1
+buoy: 0.421875 -0.361111 0.164062 -0.305556 -0.078125 -0.458333
+ram: dx = 0.164062, dy = -0.305556, color = 1
+buoy: 0.390625 -0.319444 0.414062 -0.361111 -0.0859375 -0.472222
+ram: dx = 0.414062, dy = -0.361111, color = 1
+buoy: 0.398438 -0.375 0.367188 0 -0.09375 -0.472222
+ram: dx = 0.367188, dy = 0, color = 1
+buoy: 0.398438 -0.375 0.367188 0 -0.09375 -0.472222
+ram: dx = 0.367188, dy = 0, color = 1
+H:4    DH:25    D:78    DD:78    Pwr:100    K:1
+buoy: 0.429688 -0.361111 -0.273438 0.388889 -0.09375 -0.458333
+ram: dx = -0.273438, dy = 0.388889, color = 1
+buoy: 0.429688 -0.347222 0.421875 -0.333333 -0.101562 -0.444444
+ram: dx = 0.421875, dy = -0.333333, color = 1
+buoy: 0.429688 -0.347222 0.421875 -0.333333 -0.101562 -0.444444
+ram: dx = 0.421875, dy = -0.333333, color = 1
+buoy: 0.382812 -0.333333 -0.34375 -0.375 -0.117188 -0.430556
+ram: dx = -0.34375, dy = -0.375, color = 1
+saving jpg at logs/20_12_13_06_18_25/122.jpg
+@ 9.13242 FPS
+buoy: 0.421875 -0.375 0.203125 -0.375 -0.125 -0.402778
+ram: dx = 0.203125, dy = -0.375, color = 1
+buoy: -0.125 -0.361111 0.210938 -0.375 -0.125 -0.375
+ram: dx = 0.210938, dy = -0.375, color = 1
+buoy: -0.117188 -0.375 0.226562 -0.375 -0.132812 -0.361111
+ram: dx = 0.226562, dy = -0.375, color = 1
+buoy: -0.164062 -0.375 0.1875 -0.375 -0.148438 -0.375
+ram: dx = 0.1875, dy = -0.375, color = 1
+buoy: 0.414062 -0.277778 0.171875 -0.375 -0.148438 -0.388889
+ram: dx = 0.171875, dy = -0.375, color = 1
+buoy: 0.414062 -0.277778 0.171875 -0.375 -0.148438 -0.388889
+ram: dx = 0.171875, dy = -0.375, color = 1
+buoy: -0.164062 -0.375 0.164062 -0.375 -0.140625 -0.388889
+ram: dx = 0.164062, dy = -0.375, color = 1
+H:7    DH:15    D:83    DD:94    Pwr:100    K:1
+buoy: -0.140625 -0.375 0.164062 -0.375 -0.15625 -0.375
+ram: dx = 0.164062, dy = -0.375, color = 1
+buoy: -0.171875 -0.375 0.171875 -0.375 -0.164062 -0.375
+ram: dx = 0.171875, dy = -0.375, color = 1
+buoy: -0.164062 -0.361111 0.171875 -0.375 -0.15625 -0.375
+ram: dx = 0.171875, dy = -0.375, color = 1
+buoy: -0.1875 -0.375 0.1875 -0.375 -0.164062 -0.361111
+ram: dx = 0.1875, dy = -0.375, color = 1
+saving jpg at logs/20_12_13_06_18_25/123.jpg
+@ 9.04977 FPS
+buoy: -0.179688 -0.375 0.179688 -0.347222 -0.179688 -0.347222
+ram: dx = 0.179688, dy = -0.347222, color = 1
+buoy: -0.164062 -0.375 0.179688 -0.347222 -0.179688 -0.333333
+ram: dx = 0.179688, dy = -0.347222, color = 1
+buoy: -0.1875 -0.375 0.164062 -0.319444 -0.179688 -0.319444
+ram: dx = 0.164062, dy = -0.319444, color = 1
+buoy: -0.1875 -0.375 0.164062 -0.319444 -0.179688 -0.319444
+ram: dx = 0.164062, dy = -0.319444, color = 1
+buoy: -0.1875 -0.347222 0.171875 -0.305556 -0.179688 -0.305556
+ram: dx = 0.171875, dy = -0.305556, color = 1
+buoy: -0.171875 -0.347222 0.164062 -0.291667 -0.179688 -0.291667
+ram: dx = 0.164062, dy = -0.291667, color = 1
+H:8    DH:17    D:90    DD:94    Pwr:100    K:1
+buoy: -0.195312 -0.319444 0.148438 -0.277778 -0.1875 -0.277778
+ram: dx = 0.148438, dy = -0.277778, color = 1
+buoy: -0.171875 -0.319444 0.164062 -0.277778 -0.1875 -0.263889
+ram: dx = 0.164062, dy = -0.277778, color = 1
+buoy: -0.1875 -0.305556 0.140625 -0.236111 -0.179688 -0.25
+ram: dx = 0.140625, dy = -0.236111, color = 1
+buoy: -0.195312 -0.277778 -0.195312 -0.333333 -0.1875 -0.222222
+ram: dx = -0.195312, dy = -0.333333, color = 1
+buoy: -0.203125 -0.25 0.15625 -0.194444 -0.179688 -0.208333
+ram: dx = 0.15625, dy = -0.194444, color = 1
+saving jpg at logs/20_12_13_06_18_25/124.jpg
+@ 9.09091 FPS
+buoy: -0.203125 -0.222222 0.132812 -0.194444 -0.195312 -0.180556
+ram: dx = 0.132812, dy = -0.194444, color = 1
+buoy: -0.203125 -0.208333 0.132812 -0.166667 -0.179688 -0.180556
+ram: dx = 0.132812, dy = -0.166667, color = 1
+buoy: -0.210938 -0.222222 0.132812 -0.152778 -0.179688 -0.180556
+ram: dx = 0.132812, dy = -0.152778, color = 1
+buoy: -0.203125 -0.236111 0.125 -0.166667 -0.203125 -0.166667
+ram: dx = 0.125, dy = -0.166667, color = 1
+H:9    DH:16    D:97    DD:100    Pwr:100    K:1
+buoy: -0.195312 -0.208333 0.132812 -0.152778 -0.195312 -0.166667
+ram: dx = 0.132812, dy = -0.152778, color = 1
+buoy: -0.195312 -0.208333 0.132812 -0.152778 -0.195312 -0.166667
+ram: dx = 0.132812, dy = -0.152778, color = 1
+buoy: -0.210938 -0.208333 0.140625 -0.152778 -0.210938 -0.152778
+ram: dx = 0.140625, dy = -0.152778, color = 1
+buoy: -0.203125 -0.194444 0.140625 -0.152778 -0.203125 -0.138889
+ram: dx = 0.140625, dy = -0.152778, color = 1
+buoy: -0.195312 -0.166667 0.140625 -0.138889 -0.203125 -0.125
+ram: dx = 0.140625, dy = -0.138889, color = 1
+buoy: -0.203125 -0.111111 0.125 -0.0833333 -0.203125 -0.0833333
+ram: dx = 0.125, dy = -0.0833333, color = 1
+buoy: -0.210938 -0.111111 0.101562 -0.0416667 -0.210938 -0.0555556
+ram: dx = 0.101562, dy = -0.0416667, color = 1
+saving jpg at logs/20_12_13_06_18_25/125.jpg
+@ 8.91266 FPS
+buoy: -0.226562 -0.0694444 0.109375 -0.0138889 -0.210938 -0.0277778
+ram: dx = 0.109375, dy = -0.0138889, color = 1
+buoy: -0.210938 -0.0416667 0.125 0 -0.234375 0.0138889
+ram: dx = 0.125, dy = 0, color = 1
+buoy: -0.234375 -0.0138889 0.117188 0.0555556 -0.21875 0.0416667
+ram: dx = 0.117188, dy = 0.0555556, color = 1
+H:11    DH:17    D:102    DD:100    Pwr:100    K:1
+buoy: -0.242188 0.0277778 0.09375 0.0972222 -0.234375 0.0833333
+ram: dx = 0.09375, dy = 0.0972222, color = 1
+buoy: -0.226562 0.0555556 0.101562 0.111111 -0.226562 0.111111
+ram: dx = 0.101562, dy = 0.111111, color = 1
+buoy: -0.226562 0.0555556 0.101562 0.111111 -0.226562 0.111111
+ram: dx = 0.101562, dy = 0.111111, color = 1
+buoy: -0.242188 0.0833333 0.117188 0.125 -0.226562 0.138889
+ram: dx = 0.117188, dy = 0.125, color = 1
+buoy: -0.25 0.125 0.078125 0.194444 -0.242188 0.180556
+ram: dx = 0.078125, dy = 0.194444, color = 1
+buoy: -0.25 0.152778 0.0625 0.222222 -0.25 0.208333
+ram: dx = 0.0625, dy = 0.222222, color = 1
+buoy: -0.257812 0.180556 0.078125 0.25 -0.257812 0.236111
+ram: dx = 0.078125, dy = 0.25, color = 1
+buoy: -0.257812 0.194444 0.078125 0.236111 0.0078125 -0.472222
+ram: dx = 0.078125, dy = 0.236111, color = 1
+saving jpg at logs/20_12_13_06_18_25/126.jpg
+@ 9.40734 FPS
+H:12    DH:16    D:107    DD:100    Pwr:100    K:1
+buoy: -0.257812 0.222222 0.078125 0.263889 -0.257812 0.277778
+ram: dx = 0.078125, dy = 0.263889, color = 1
+buoy: -0.273438 0.222222 0.0546875 0.277778 -0.0078125 -0.486111
+ram: dx = 0.0546875, dy = 0.277778, color = 1
+buoy: -0.28125 0.222222 -0.242188 0.236111 -0.0078125 -0.486111
+ram: dx = -0.242188, dy = 0.236111, color = 1
+buoy: -0.28125 0.222222 0.0703125 0.277778 -0.0234375 -0.458333
+ram: dx = 0.0703125, dy = 0.277778, color = 1
+buoy: -0.296875 0.25 0.046875 0.291667 -0.0234375 -0.486111
+ram: dx = 0.046875, dy = 0.291667, color = 1
+buoy: -0.296875 0.25 0.046875 0.291667 -0.0234375 -0.458333
+ram: dx = 0.046875, dy = 0.291667, color = 1
+buoy: -0.296875 0.25 0.0546875 0.263889 -0.0234375 -0.444444
+ram: dx = 0.0546875, dy = 0.263889, color = 1
+buoy: -0.28125 0.236111 0.0234375 0.263889 -0.0234375 -0.444444
+ram: dx = 0.0234375, dy = 0.263889, color = 1
+buoy: -0.296875 0.222222 0.0625 0.25 -0.273438 0.25
+ram: dx = 0.0625, dy = 0.25, color = 1
+H:14    DH:17    D:106    DD:100    Pwr:100    K:1
+buoy: -0.3125 0.208333 0.0546875 0.25 -0.289062 0.25
+ram: dx = 0.0546875, dy = 0.25, color = 1
+buoy: -0.304688 0.152778 0.03125 0.194444 -0.28125 0.194444
+ram: dx = 0.03125, dy = 0.194444, color = 1
+saving jpg at logs/20_12_13_06_18_25/127.jpg
+@ 6.15006 FPS
+buoy: -0.304688 0.125 0.0390625 0.152778 -0.289062 0.166667
+ram: dx = 0.0390625, dy = 0.152778, color = 1
+buoy: -0.304688 0.0972222 0.0234375 0.138889 -0.296875 0.138889
+ram: dx = 0.0234375, dy = 0.138889, color = 1
+buoy: -0.304688 0.0555556 0.0625 0.0833333 -0.289062 0.0972222
+ram: dx = 0.0625, dy = 0.0833333, color = 1
+buoy: -0.304688 0.0277778 0.0546875 0.0416667 -0.289062 0.0694444
+ram: dx = 0.0546875, dy = 0.0416667, color = 1
+buoy: -0.3125 0.0138889 0.0390625 0.0555556 -0.296875 0.0555556
+ram: dx = 0.0390625, dy = 0.0555556, color = 1
+buoy: -0.3125 -0.0277778 0.015625 0.0277778 -0.289062 0.0277778
+saving jpg at logs/20_12_13_06_18_25/128.jpg
+@ 16.835 FPS
+-> buoy has proceeded to stage 2 ['Adjust'] at 221020 <-
+buoy: -0.321739 -0.0416667 0.0521739 0.0138889 -0.321739 0.0138889
+adjust: dx = 0.0521739, dy = 0.0138889, color = 1
+H:14    DH:16    D:100    DD:100    Pwr:150    K:1
+buoy: -0.33913 -0.0416667 0.0608696 -0.0138889 -0.313043 0
+adjust: dx = 0.0608696, dy = -0.0138889, color = 1
+buoy: -0.33913 -0.0694444 0.0347826 -0.0138889 -0.321739 -0.0138889
+adjust: dx = 0.0347826, dy = -0.0138889, color = 1
+buoy: -0.33913 -0.0694444 0.0347826 -0.0277778 -0.321739 -0.0277778
+adjust: dx = 0.0347826, dy = -0.0277778, color = 1
+buoy: -0.347826 -0.0833333 0.0521739 -0.0694444 -0.330435 -0.0416667
+adjust: dx = 0.0521739, dy = -0.0694444, color = 1
+buoy: -0.347826 -0.0972222 -0.373913 -0.0972222 -0.313043 -0.0694444
+adjust: dx = -0.373913, dy = -0.0972222, color = 1
+buoy: -0.347826 -0.111111 0.0347826 -0.0833333 -0.330435 -0.0694444
+adjust: dx = 0.0347826, dy = -0.0833333, color = 1
+buoy: -0.330435 -0.0972222 0.0434783 -0.0694444 -0.347826 -0.0555556
+adjust: dx = 0.0434783, dy = -0.0694444, color = 1
+buoy: -0.356522 -0.0972222 0.0434783 -0.0555556 -0.33913 -0.0416667
+adjust: dx = 0.0434783, dy = -0.0555556, color = 1
+buoy: -0.33913 -0.0833333 0.0173913 -0.0277778 -0.356522 -0.0277778
+adjust: dx = 0.0173913, dy = -0.0277778, color = 1
+buoy: -0.347826 -0.0972222 0.0173913 -0.0277778 -0.347826 -0.0416667
+adjust: dx = 0.0173913, dy = -0.0277778, color = 1
+saving jpg at logs/20_12_13_06_18_25/129.jpg
+@ 9.3633 FPS
+H:16    DH:16    D:96    DD:98    Pwr:150    K:1
+buoy: -0.373913 -0.0972222 -0.4 -0.0833333 -0.365217 -0.0416667
+adjust: dx = -0.4, dy = -0.0833333, color = 1
+buoy: -0.373913 -0.125 0.0347826 -0.0694444 -0.356522 -0.0694444
+adjust: dx = 0.0347826, dy = -0.0694444, color = 1
+buoy: -0.382609 -0.152778 0.0173913 -0.0694444 -0.365217 -0.0833333
+adjust: dx = 0.0173913, dy = -0.0694444, color = 1
+buoy: -0.382609 -0.152778 -0.417391 -0.138889 -0.382609 -0.0972222
+adjust: dx = -0.417391, dy = -0.138889, color = 1
+buoy: -0.391304 -0.152778 0.00869565 -0.125 -0.382609 -0.111111
+adjust: dx = 0.00869565, dy = -0.125, color = 1
+buoy: -0.4 -0.152778 0 -0.111111 -0.391304 -0.111111
+adjust: dx = 0, dy = -0.111111, color = 1
+buoy: -0.408696 -0.152778 -0.4 -0.208333 -0.4 -0.0972222
+adjust: dx = -0.4, dy = -0.208333, color = 1
+buoy: -0.391304 -0.152778 0 -0.0833333 -0.4 -0.0833333
+adjust: dx = 0, dy = -0.0833333, color = 1
+buoy: -0.417391 -0.138889 -0.417391 -0.166667 -0.417391 -0.0555556
+adjust: dx = -0.417391, dy = -0.166667, color = 1
+buoy: -0.408696 -0.0833333 -0.026087 -0.0277778 -0.408696 -0.0416667
+adjust: dx = -0.026087, dy = -0.0277778, color = 1
+H:19    DH:17    D:99    DD:100    Pwr:150    K:1
+buoy: -0.417391 -0.0833333 -0.0173913 -0.0416667 -0.443478 -0.0277778
+adjust: dx = -0.0173913, dy = -0.0416667, color = 1
+saving jpg at logs/20_12_13_06_18_25/130.jpg
+@ 9.25069 FPS
+buoy: -0.426087 -0.0972222 -0.026087 -0.0416667 -0.417391 -0.0555556
+adjust: dx = -0.026087, dy = -0.0416667, color = 1
+buoy: -0.426087 -0.125 -0.0347826 -0.0694444 -0.443478 -0.0694444
+adjust: dx = -0.0347826, dy = -0.0694444, color = 1
+buoy: -0.0521739 -0.194444 -0.0434783 -0.0833333 -0.478261 -0.0972222
+adjust: dx = -0.0434783, dy = -0.0833333, color = 1
+buoy: -0.0521739 -0.194444 -0.0434783 -0.0833333 -0.478261 -0.0972222
+adjust: dx = -0.0434783, dy = -0.0833333, color = 1
+buoy: -0.0608696 -0.222222 -0.0347826 -0.138889 -0.478261 -0.125
+adjust: dx = -0.0347826, dy = -0.138889, color = 1
+buoy: -0.0434783 -0.25 -0.0521739 -0.166667 -0.478261 -0.152778
+adjust: dx = -0.0521739, dy = -0.166667, color = 1
+buoy: -0.0608696 -0.277778 -0.0695652 -0.166667 -0.486957 -0.166667
+adjust: dx = -0.0695652, dy = -0.166667, color = 1
+buoy: -0.0695652 -0.263889 -0.0434783 -0.180556 -0.495652 -0.166667
+adjust: dx = -0.0434783, dy = -0.180556, color = 1
+buoy: -0.0695652 -0.25 -0.0869565 -0.152778 -0.495652 -0.138889
+adjust: dx = -0.0869565, dy = -0.152778, color = 1
+H:20    DH:16    D:100    DD:103    Pwr:150    K:1
+buoy: -0.0782609 -0.236111 -0.0695652 -0.125 -0.495652 -0.138889
+adjust: dx = -0.0695652, dy = -0.125, color = 1
+buoy: -0.0695652 -0.236111 -0.0782609 -0.125 -0.495652 -0.125
+adjust: dx = -0.0782609, dy = -0.125, color = 1
+saving jpg at logs/20_12_13_06_18_25/131.jpg
+@ 9.1659 FPS
+buoy: -0.0782609 -0.194444 -0.0521739 -0.0833333 -0.486957 -0.0972222
+adjust: dx = -0.0521739, dy = -0.0833333, color = 1
+buoy: -0.0782609 -0.166667 -0.0869565 -0.0555556 -0.495652 -0.0694444
+adjust: dx = -0.0869565, dy = -0.0555556, color = 1
+buoy: -0.0782609 -0.125 -0.0782609 -0.0138889 -0.495652 -0.0416667
+adjust: dx = -0.0782609, dy = -0.0138889, color = 1
+buoy: -0.0782609 -0.111111 -0.0695652 0 -0.495652 -0.0138889
+adjust: dx = -0.0695652, dy = 0, color = 1
+buoy: -0.0869565 -0.0694444 -0.0782609 0.0416667 -0.495652 0.0138889
+adjust: dx = -0.0782609, dy = 0.0416667, color = 1
+buoy: -0.0782609 -0.0277778 -0.0608696 0.0694444 -0.495652 0.0416667
+adjust: dx = -0.0608696, dy = 0.0694444, color = 1
+buoy: -0.0869565 0 -0.0521739 0.0833333 -0.495652 0.0694444
+adjust: dx = -0.0521739, dy = 0.0833333, color = 1
+buoy: -0.0782609 0.0138889 -0.0521739 0.111111 -0.495652 0.0694444
+adjust: dx = -0.0521739, dy = 0.111111, color = 1
+H:20    DH:18    D:99    DD:97    Pwr:150    K:1
+buoy: -0.0521739 0.0277778 -0.0695652 0.111111 0.469565 0.291667
+adjust: dx = -0.0695652, dy = 0.111111, color = 1
+buoy: -0.0782609 0.0416667 -0.0956522 0.138889 0.469565 0.305556
+adjust: dx = -0.0956522, dy = 0.138889, color = 1
+buoy: -0.0695652 0.0277778 -0.0782609 0.138889 -0.495652 0.0972222
+adjust: dx = -0.0782609, dy = 0.138889, color = 1
+saving jpg at logs/20_12_13_06_18_25/132.jpg
+@ 8.81057 FPS
+buoy: -0.0695652 0.0277778 -0.0521739 0.138889 0.478261 0.305556
+adjust: dx = -0.0521739, dy = 0.138889, color = 1
+buoy: -0.0695652 0.0416667 -0.0782609 0.138889 -0.495652 0.0972222
+adjust: dx = -0.0782609, dy = 0.138889, color = 1
+buoy: -0.0434783 0.0277778 -0.0608696 0.111111 -0.495652 0.0972222
+adjust: dx = -0.0608696, dy = 0.111111, color = 1
+buoy: -0.0521739 0.166667 -0.0608696 0.125 -0.495652 0.0833333
+adjust: dx = -0.0608696, dy = 0.125, color = 1
+buoy: -0.0347826 0.152778 -0.0434783 0.0972222 -0.495652 0.0694444
+adjust: dx = -0.0434783, dy = 0.0972222, color = 1
+buoy: -0.0347826 -0.0138889 -0.0434783 0.0833333 -0.495652 0.0694444
+adjust: dx = -0.0434783, dy = 0.0833333, color = 1
+buoy: -0.0521739 -0.0416667 -0.0521739 0.0694444 -0.495652 0.0416667
+adjust: dx = -0.0521739, dy = 0.0694444, color = 1
+H:18    DH:17    D:96    DD:97    Pwr:150    K:1
+buoy: -0.0434783 -0.0555556 -0.0434783 0.0555556 -0.495652 0.0416667
+adjust: dx = -0.0434783, dy = 0.0555556, color = 1
+buoy: -0.0434783 -0.0694444 -0.0347826 0.0416667 -0.495652 0.0138889
+adjust: dx = -0.0347826, dy = 0.0416667, color = 1
+buoy: -0.0434783 -0.0833333 -0.0434783 0.0138889 -0.495652 -0.0277778
+adjust: dx = -0.0434783, dy = 0.0138889, color = 1
+buoy: -0.026087 -0.111111 -0.00869565 -0.0138889 -0.486957 -0.0555556
+adjust: dx = -0.00869565, dy = -0.0138889, color = 1
+saving jpg at logs/20_12_13_06_18_25/133.jpg
+@ 9.26784 FPS
+buoy: -0.00869565 -0.152778 -0.0173913 -0.0416667 -0.495652 -0.0694444
+adjust: dx = -0.0173913, dy = -0.0416667, color = 1
+buoy: -0.00869565 -0.152778 -0.0173913 -0.0416667 -0.495652 -0.0694444
+adjust: dx = -0.0173913, dy = -0.0416667, color = 1
+buoy: 0 -0.0277778 -0.026087 -0.0833333 -0.495652 -0.111111
+adjust: dx = -0.026087, dy = -0.0833333, color = 1
+buoy: -0.00869565 -0.222222 0 -0.125 -0.495652 -0.125
+adjust: dx = 0, dy = -0.125, color = 1
+buoy: -0.00869565 -0.236111 0.00869565 -0.111111 -0.495652 -0.125
+adjust: dx = 0.00869565, dy = -0.111111, color = 1
+buoy: 0.00869565 -0.208333 0.00869565 -0.0972222 -0.495652 -0.111111
+adjust: dx = 0.00869565, dy = -0.0972222, color = 1
+H:17    DH:17    D:102    DD:100    Pwr:150    K:1
+buoy: -0.00869565 -0.194444 0.00869565 -0.0833333 -0.495652 -0.111111
+adjust: dx = 0.00869565, dy = -0.0833333, color = 1
+buoy: 0 -0.180556 -0.00869565 -0.0833333 -0.495652 -0.111111
+adjust: dx = -0.00869565, dy = -0.0833333, color = 1
+buoy: 0.0173913 -0.180556 -0.00869565 -0.0555556 -0.495652 -0.0972222
+adjust: dx = -0.00869565, dy = -0.0555556, color = 1
+buoy: 0.026087 -0.375 0.0173913 -0.0833333 -0.495652 -0.0833333
+adjust: dx = 0.0173913, dy = -0.0833333, color = 1
+buoy: 0.026087 -0.0138889 0.0173913 -0.0694444 -0.495652 -0.0972222
+adjust: dx = 0.0173913, dy = -0.0694444, color = 1
+saving jpg at logs/20_12_13_06_18_25/134.jpg
+@ 9.29368 FPS
+buoy: 0.00869565 -0.194444 0 -0.0972222 -0.495652 -0.125
+adjust: dx = 0, dy = -0.0972222, color = 1
+buoy: 0.0173913 -0.236111 0.00869565 -0.0972222 0.347826 0.5
+adjust: dx = 0.00869565, dy = -0.0972222, color = 1
+buoy: 0.0347826 -0.25 0.0173913 -0.152778 0.330435 0.5
+adjust: dx = 0.0173913, dy = -0.152778, color = 1
+buoy: 0.026087 -0.319444 0.0347826 -0.180556 0.286957 0.5
+adjust: dx = 0.0347826, dy = -0.180556, color = 1
+buoy: 0.0434783 -0.152778 0.026087 -0.222222 0.226087 0.5
+adjust: dx = 0.026087, dy = -0.222222, color = 1
+H:16    DH:17    D:97    DD:100    Pwr:150    K:1
+buoy: 0.0521739 -0.208333 0.026087 -0.263889 0.130435 0.5
+adjust: dx = 0.026087, dy = -0.263889, color = 1
+buoy: 0.0521739 -0.236111 0.0434783 -0.291667 0.113043 0.5
+adjust: dx = 0.0434783, dy = -0.291667, color = 1
+buoy: 0.0608696 -0.277778 0.0434783 -0.347222 0.0869565 0.5
+adjust: dx = 0.0434783, dy = -0.347222, color = 1
+buoy: 0.0608696 -0.291667 0.0521739 -0.347222 0.0869565 0.5
+adjust: dx = 0.0521739, dy = -0.347222, color = 1
+buoy: 0.0608696 -0.291667 0.0434783 -0.347222 0.0869565 0.5
+adjust: dx = 0.0434783, dy = -0.347222, color = 1
+buoy: 0.0608696 -0.305556 0.0521739 -0.361111 0.0608696 0.5
+adjust: dx = 0.0521739, dy = -0.361111, color = 1
+saving jpg at logs/20_12_13_06_18_25/135.jpg
+@ 9.01713 FPS
+buoy: 0.0695652 -0.319444 0.0521739 -0.375 0.0869565 0.5
+adjust: dx = 0.0521739, dy = -0.375, color = 1
+buoy: 0.113043 -0.319444 0.0521739 -0.347222 0.026087 -0.319444
+adjust: dx = 0.0521739, dy = -0.347222, color = 1
+buoy: 0.121739 -0.319444 0.0956522 -0.361111 0.113043 -0.375
+adjust: dx = 0.0956522, dy = -0.361111, color = 1
+buoy: 0.130435 -0.291667 0.104348 -0.347222 0.0782609 -0.305556
+adjust: dx = 0.104348, dy = -0.347222, color = 1
+H:16    DH:21    D:98    DD:109    Pwr:150    K:1
+buoy: 0.121739 -0.25 0.113043 -0.319444 0.0782609 -0.263889
+adjust: dx = 0.113043, dy = -0.319444, color = 1
+buoy: 0.121739 -0.222222 0.121739 -0.291667 0.0869565 -0.236111
+adjust: dx = 0.121739, dy = -0.291667, color = 1
+buoy: 0.130435 -0.180556 0.113043 -0.263889 0.0782609 -0.194444
+adjust: dx = 0.113043, dy = -0.263889, color = 1
+buoy: 0.121739 -0.166667 0.113043 -0.208333 0.0956522 -0.166667
+adjust: dx = 0.113043, dy = -0.208333, color = 1
+buoy: 0.130435 -0.111111 0.113043 -0.180556 0.0782609 -0.125
+adjust: dx = 0.113043, dy = -0.180556, color = 1
+buoy: 0.130435 -0.0833333 0.130435 -0.152778 0.0869565 -0.0833333
+adjust: dx = 0.130435, dy = -0.152778, color = 1
+buoy: 0.0521739 -0.0972222 0.121739 -0.111111 0.0782609 -0.0277778
+adjust: dx = 0.121739, dy = -0.111111, color = 1
+saving jpg at logs/20_12_13_06_18_25/136.jpg
+@ 8.81057 FPS
+buoy: 0.0608696 -0.291667 0.130435 -0.0972222 0.104348 -0.0138889
+adjust: dx = 0.130435, dy = -0.0972222, color = 1
+buoy: 0.0695652 -0.277778 0.0608696 0.0138889 0.0434783 0.0555556
+adjust: dx = 0.0608696, dy = 0.0138889, color = 1
+buoy: 0.0521739 -0.25 0.0608696 0.0416667 0.0782609 0.0694444
+adjust: dx = 0.0608696, dy = 0.0416667, color = 1
+H:17    DH:20    D:99    DD:97    Pwr:150    K:1
+buoy: 0.0434783 -0.208333 0.0521739 0.0555556 0.026087 0.0972222
+adjust: dx = 0.0521739, dy = 0.0555556, color = 1
+buoy: 0.0434783 -0.180556 0.104348 0.0555556 0.0782609 0.125
+adjust: dx = 0.104348, dy = 0.0555556, color = 1
+buoy: 0.0608696 -0.222222 0.104348 0.0694444 0.0956522 0.125
+adjust: dx = 0.104348, dy = 0.0694444, color = 1
+buoy: 0.0434783 -0.152778 0.121739 0.0833333 0.0782609 0.166667
+adjust: dx = 0.121739, dy = 0.0833333, color = 1
+buoy: 0.0782609 -0.125 0.121739 0.0972222 0.0782609 0.194444
+adjust: dx = 0.121739, dy = 0.0972222, color = 1
+buoy: 0.0869565 0.222222 0.13913 0.111111 0.0869565 0.222222
+adjust: dx = 0.13913, dy = 0.111111, color = 1
+buoy: 0.0869565 0.263889 0.026087 0.208333 0.0869565 0.263889
+adjust: dx = 0.026087, dy = 0.208333, color = 1
+buoy: 0.0782609 -0.0416667 0.0608696 0.263889 0.113043 0.277778
+adjust: dx = 0.0608696, dy = 0.263889, color = 1
+saving jpg at logs/20_12_13_06_18_25/137.jpg
+@ 9.04159 FPS
+buoy: 0.0869565 0.333333 0.026087 0.333333 0.0695652 0.347222
+adjust: dx = 0.026087, dy = 0.333333, color = 1
+buoy: 0.0869565 0.361111 0.0695652 0.305556 0.0782609 0.375
+adjust: dx = 0.0695652, dy = 0.305556, color = 1
+H:18    DH:21    D:102    DD:100    Pwr:150    K:1
+buoy: 0.0869565 0.388889 0.0173913 0.388889 0.0782609 0.388889
+adjust: dx = 0.0173913, dy = 0.388889, color = 1
+buoy: 0.0347826 0.0416667 0.0695652 0.347222 0.0869565 0.402778
+adjust: dx = 0.0695652, dy = 0.347222, color = 1
+buoy: 0.0347826 0.0416667 0.0608696 0.347222 0.0782609 0.402778
+adjust: dx = 0.0608696, dy = 0.347222, color = 1
+buoy: 0.0956522 0.375 0.026087 0.375 0.0695652 0.388889
+adjust: dx = 0.026087, dy = 0.375, color = 1
+buoy: 0.0956522 0.333333 0.0521739 0.333333 0.0434783 0.375
+adjust: dx = 0.0521739, dy = 0.333333, color = 1
+buoy: 0.0956522 0.333333 0.0521739 0.333333 0.0434783 0.375
+adjust: dx = 0.0521739, dy = 0.333333, color = 1
+buoy: 0.0956522 0.305556 0.0782609 0.236111 0.0695652 0.333333
+adjust: dx = 0.0782609, dy = 0.236111, color = 1
+buoy: 0.0434783 -0.152778 0.104348 0.194444 0.0869565 0.291667
+adjust: dx = 0.104348, dy = 0.194444, color = 1
+buoy: 0.0434783 -0.138889 0.0521739 0.25 0.156522 0.180556
+adjust: dx = 0.0521739, dy = 0.25, color = 1
+saving jpg at logs/20_12_13_06_18_25/138.jpg
+@ 9.18274 FPS
+buoy: 0.0434783 -0.222222 0.104348 0.125 0.0695652 0.25
+adjust: dx = 0.104348, dy = 0.125, color = 1
+H:19    DH:24    D:102    DD:97    Pwr:150    K:1
+buoy: 0.0521739 -0.263889 0.0521739 0.180556 0.0782609 0.194444
+adjust: dx = 0.0521739, dy = 0.180556, color = 1
+buoy: 0.0521739 -0.305556 0.0608696 0.138889 0.0782609 0.166667
+adjust: dx = 0.0608696, dy = 0.138889, color = 1
+buoy: 0.0521739 -0.305556 0.0608696 0.138889 0.0782609 0.166667
+adjust: dx = 0.0608696, dy = 0.138889, color = 1
+buoy: 0.113043 0.0416667 0.0608696 0.0555556 0.0608696 0.0972222
+adjust: dx = 0.0608696, dy = 0.0555556, color = 1
+buoy: 0.113043 0.0416667 0.0608696 0.0555556 0.0608696 0.0972222
+adjust: dx = 0.0608696, dy = 0.0555556, color = 1
+buoy: 0.113043 0.0138889 0.121739 -0.0833333 0.191304 -0.0972222
+adjust: dx = 0.121739, dy = -0.0833333, color = 1
+buoy: 0.182609 -0.0833333 0.130435 -0.138889 0.2 -0.166667
+adjust: dx = 0.130435, dy = -0.138889, color = 1
+buoy: 0.0956522 -0.0555556 -0.0608696 -0.222222 0.191304 -0.138889
+adjust: dx = -0.0608696, dy = -0.222222, color = 1
+buoy: 0.121739 -0.0833333 -0.0608696 -0.25 0.104348 -0.0555556
+adjust: dx = -0.0608696, dy = -0.25, color = 1
+buoy: 0.234783 -0.166667 0.173913 -0.194444 0.104348 -0.0555556
+adjust: dx = 0.173913, dy = -0.194444, color = 1
+saving jpg at logs/20_12_13_06_18_25/139.jpg
+@ 8.94454 FPS
+H:20    DH:29    D:104    DD:105    Pwr:150    K:1
+buoy: 0.234783 -0.138889 0.234783 -0.361111 0.0956522 -0.0277778
+adjust: dx = 0.234783, dy = -0.361111, color = 1
+buoy: 0.217391 -0.125 0.156522 -0.152778 0.191304 -0.125
+adjust: dx = 0.156522, dy = -0.152778, color = 1
+buoy: 0.156522 -0.0972222 0.165217 -0.166667 0.182609 -0.138889
+adjust: dx = 0.165217, dy = -0.166667, color = 1
+buoy: 0.156522 -0.0972222 0.252174 -0.347222 0.0782609 -0.0555556
+adjust: dx = 0.252174, dy = -0.347222, color = 1
+buoy: 0.269565 -0.166667 -0.0695652 -0.25 0.104348 -0.0277778
+adjust: dx = -0.0695652, dy = -0.25, color = 1
+buoy: 0.278261 -0.166667 0.278261 -0.361111 0.113043 -0.0277778
+adjust: dx = 0.278261, dy = -0.361111, color = 1
+buoy: 0.295652 -0.194444 0.0521739 -0.0694444 0.191304 -0.111111
+adjust: dx = 0.0521739, dy = -0.0694444, color = 1
+buoy: 0.286957 -0.180556 0.234783 -0.222222 0.26087 -0.166667
+adjust: dx = 0.234783, dy = -0.222222, color = 1
+buoy: 0.330435 -0.222222 0.26087 -0.222222 0.113043 0
+adjust: dx = 0.26087, dy = -0.222222, color = 1
+buoy: 0.347826 -0.236111 0.278261 -0.222222 0.121739 0.0277778
+adjust: dx = 0.278261, dy = -0.222222, color = 1
+H:22    DH:37    D:107    DD:100    Pwr:150    K:1
+buoy: 0.347826 -0.236111 0.278261 -0.222222 0.121739 0.0277778
+adjust: dx = 0.278261, dy = -0.222222, color = 1
+saving jpg at logs/20_12_13_06_18_25/140.jpg
+@ 9.26784 FPS
+buoy: 0.365217 -0.222222 0.286957 -0.222222 0.252174 -0.0694444
+adjust: dx = 0.286957, dy = -0.222222, color = 1
+buoy: 0.373913 -0.166667 0.365217 -0.333333 0.313043 -0.125
+adjust: dx = 0.365217, dy = -0.333333, color = 1
+buoy: 0.391304 -0.277778 0.2 0 0.382609 -0.277778
+adjust: dx = 0.2, dy = 0, color = 1
+buoy: 0.426087 -0.291667 0.226087 -0.0277778 0.373913 -0.25
+adjust: dx = 0.226087, dy = -0.0277778, color = 1
+buoy: 0.426087 -0.291667 0.226087 -0.0277778 0.373913 -0.25
+adjust: dx = 0.226087, dy = -0.0277778, color = 1
+buoy: 0.426087 -0.347222 0.217391 -0.0694444 -0.0695652 -0.180556
+adjust: dx = 0.217391, dy = -0.0694444, color = 1
+buoy: 0.426087 -0.361111 0.226087 -0.125 0.382609 -0.375
+adjust: dx = 0.226087, dy = -0.125, color = 1
+buoy: 0.243478 -0.319444 0.208696 -0.166667 0.417391 -0.430556
+adjust: dx = 0.208696, dy = -0.166667, color = 1
+buoy: 0.252174 -0.375 0.217391 -0.222222 0.356522 -0.388889
+adjust: dx = 0.217391, dy = -0.222222, color = 1
+H:25    DH:35    D:105    DD:100    Pwr:150    K:1
+buoy: 0.156522 -0.263889 0.217391 -0.25 0.373913 -0.458333
+adjust: dx = 0.217391, dy = -0.25, color = 1
+buoy: 0.408696 -0.375 0.191304 -0.236111 0.217391 0.5
+adjust: dx = 0.191304, dy = -0.236111, color = 1
+saving jpg at logs/20_12_13_06_18_25/141.jpg
+@ 8.97666 FPS
+buoy: 0.2 -0.361111 0.173913 -0.208333 0.0956522 -0.25
+adjust: dx = 0.173913, dy = -0.208333, color = 1
+buoy: 0.2 -0.375 0.173913 -0.180556 0.330435 -0.375
+adjust: dx = 0.173913, dy = -0.180556, color = 1
+buoy: 0.173913 -0.361111 0.165217 -0.152778 0.0608696 -0.319444
+adjust: dx = 0.165217, dy = -0.152778, color = 1
+buoy: -0.182609 -0.319444 -0.208696 -0.138889 0.356522 -0.486111
+adjust: dx = -0.208696, dy = -0.138889, color = 1
+buoy: 0.295652 -0.361111 0.243478 -0.208333 0.278261 -0.388889
+adjust: dx = 0.243478, dy = -0.208333, color = 1
+buoy: 0.304348 -0.361111 0.0869565 -0.0972222 0.286957 -0.416667
+adjust: dx = 0.0869565, dy = -0.0972222, color = 1
+buoy: 0.104348 -0.375 0.0434783 -0.0833333 0.234783 -0.361111
+adjust: dx = 0.0434783, dy = -0.0833333, color = 1
+buoy: 0.104348 -0.375 0.0434783 -0.0833333 0.234783 -0.361111
+adjust: dx = 0.0434783, dy = -0.0833333, color = 1
+H:29    DH:30    D:103    DD:100    Pwr:150    K:1
+buoy: 0.26087 -0.375 0.0608696 -0.0833333 0.217391 -0.444444
+adjust: dx = 0.0608696, dy = -0.0833333, color = 1
+buoy: 0.269565 -0.375 0.0347826 -0.0555556 0.217391 -0.430556
+adjust: dx = 0.0347826, dy = -0.0555556, color = 1
+buoy: 0.269565 -0.375 0 -0.0416667 0.208696 -0.347222
+adjust: dx = 0, dy = -0.0416667, color = 1
+saving jpg at logs/20_12_13_06_18_25/142.jpg
+@ 9.38967 FPS
+buoy: 0.252174 -0.375 0.13913 -0.125 0.252174 -0.444444
+adjust: dx = 0.13913, dy = -0.125, color = 1
+buoy: 0.252174 -0.375 0.104348 -0.0972222 -0.4 -0.166667
+adjust: dx = 0.104348, dy = -0.0972222, color = 1
+buoy: 0.252174 -0.375 -0.0173913 -0.0277778 0.2 -0.361111
+adjust: dx = -0.0173913, dy = -0.0277778, color = 1
+buoy: 0.26087 -0.375 -0.026087 -0.0138889 0.2 -0.361111
+adjust: dx = -0.026087, dy = -0.0138889, color = 1
+buoy: 0.26087 -0.375 0.0173913 -0.0555556 0.234783 -0.388889
+adjust: dx = 0.0173913, dy = -0.0555556, color = 1
+buoy: 0.234783 -0.375 0.113043 -0.166667 0.165217 -0.375
+adjust: dx = 0.113043, dy = -0.166667, color = 1
+buoy: 0.243478 -0.375 -0.313043 -0.0694444 0.208696 -0.388889
+adjust: dx = -0.313043, dy = -0.0694444, color = 1
+H:31    DH:15    D:101    DD:101    Pwr:150    K:1
+buoy: 0.234783 -0.375 -0.356522 -0.0833333 0.2 -0.375
+adjust: dx = -0.356522, dy = -0.0833333, color = 1
+buoy: 0.217391 -0.375 0.0347826 -0.111111 -0.0782609 -0.25
+adjust: dx = 0.0347826, dy = -0.111111, color = 1
+buoy: 0.208696 -0.375 -0.0173913 -0.0416667 -0.417391 -0.138889
+adjust: dx = -0.0173913, dy = -0.0416667, color = 1
+buoy: 0.0956522 -0.375 0.026087 -0.0694444 -0.026087 -0.291667
+adjust: dx = 0.026087, dy = -0.0694444, color = 1
+saving jpg at logs/20_12_13_06_18_25/143.jpg
+@ 9.12409 FPS
+buoy: 0.191304 -0.375 -0.426087 -0.0416667 0.0869565 -0.263889
+adjust: dx = -0.426087, dy = -0.0416667, color = 1
+buoy: 0.182609 -0.375 0.0347826 -0.111111 -0.0521739 -0.236111
+adjust: dx = 0.0347826, dy = -0.111111, color = 1
+buoy: 0.0608696 -0.361111 0.00869565 -0.0833333 0.121739 -0.388889
+adjust: dx = 0.00869565, dy = -0.0833333, color = 1
+buoy: 0.147826 -0.375 -0.0434783 -0.0833333 0.113043 -0.402778
+adjust: dx = -0.0434783, dy = -0.0833333, color = 1
+buoy: 0.026087 -0.375 0.00869565 -0.208333 0.00869565 -0.388889
+adjust: dx = 0.00869565, dy = -0.208333, color = 1
+buoy: -0.217391 -0.347222 -0.13913 -0.111111 0.0695652 -0.444444
+adjust: dx = -0.13913, dy = -0.111111, color = 1
+H:31    DH:24    D:102    DD:100    Pwr:150    K:1
+buoy: -0.408696 -0.277778 -0.0173913 -0.236111 -0.0695652 -0.472222
+adjust: dx = -0.0173913, dy = -0.236111, color = 1
+buoy: -0.113043 -0.263889 -0.226087 -0.0833333 -0.13913 -0.25
+adjust: dx = -0.226087, dy = -0.0833333, color = 1
+buoy: -0.0347826 -0.375 -0.26087 -0.0833333 -0.0695652 -0.472222
+adjust: dx = -0.26087, dy = -0.0833333, color = 1
+buoy: -0.417391 -0.347222 -0.382609 -0.0416667 -0.33913 -0.375
+adjust: dx = -0.382609, dy = -0.0416667, color = 1
+buoy: -0.26087 -0.361111 -0.373913 -0.0833333 -0.243478 -0.416667
+adjust: dx = -0.373913, dy = -0.0833333, color = 1
+saving jpg at logs/20_12_13_06_18_25/144.jpg
+@ 9.3633 FPS
+buoy: -0.356522 -0.361111 -0.356522 -0.152778 -0.373913 -0.388889
+adjust: dx = -0.356522, dy = -0.152778, color = 1
+buoy: -0.426087 -0.25 -0.426087 -0.166667 -0.391304 -0.430556
+adjust: dx = -0.426087, dy = -0.166667, color = 1
+buoy: -0.417391 -0.291667 -0.426087 -0.305556 -0.408696 -0.472222
+adjust: dx = -0.426087, dy = -0.305556, color = 1
+buoy: 0.417391 -0.333333 -0.373913 -0.375 -0.495652 -0.486111
+adjust: dx = -0.373913, dy = -0.375, color = 1
+buoy: 0.382609 -0.166667 0.252174 -0.375 0.00869565 0.5
+adjust: dx = 0.252174, dy = -0.375, color = 1
+H:30    DH:43    D:100    DD:100    Pwr:150    K:1
+buoy: 0.321739 -0.291667 0.347826 -0.347222 0.0521739 0.5
+saving jpg at logs/20_12_13_06_18_25/145.jpg
+@ 16.3934 FPS
+pausing for 3000
+pausing for 2895
+pausing for 2799
+pausing for 2707
+pausing for 2626
+pausing for 2544
+pausing for 2448
+pausing for 2357
+pausing for 2265
+pausing for 2174
+H:34    DH:30    D:105    DD:110    Pwr:150    K:1
+pausing for 2077
+saving jpg at logs/20_12_13_06_18_25/146.jpg
+@ 9.76562 FPS
+pausing for 1990
+pausing for 1890
+pausing for 1794
+pausing for 1702
+pausing for 1611
+pausing for 1519
+pausing for 1428
+pausing for 1337
+pausing for 1240
+pausing for 1149
+H:38    DH:30    D:109    DD:110    Pwr:150    K:1
+pausing for 1052
+saving jpg at logs/20_12_13_06_18_25/147.jpg
+@ 9.7561 FPS
+pausing for 954
+pausing for 855
+pausing for 754
+pausing for 662
+pausing for 566
+pausing for 470
+pausing for 379
+pausing for 282
+pausing for 191
+H:36    DH:30    D:109    DD:110    Pwr:150    K:1
+pausing for 94
+pausing for 3
+saving jpg at logs/20_12_13_06_18_25/148.jpg
+@ 9.53289 FPS
+pausing for 0
+-> buoy has proceeded to stage 3 ['Backup'] at 242338 <-
+pausing for 10000
+pausing for 9923
+pausing for 9842
+pausing for 9765
+pausing for 9673
+pausing for 9576
+pausing for 9474
+H:32    DH:30    D:113    DD:110    Pwr:0    K:1
+pausing for 9377
+pausing for 9281
+saving jpg at logs/20_12_13_06_18_25/149.jpg
+@ 10.0503 FPS
+pausing for 9188
+pausing for 9086
+pausing for 8973
+pausing for 8876
+pausing for 8777
+pausing for 8680
+pausing for 8583
+pausing for 8482
+H:27    DH:30    D:114    DD:110    Pwr:0    K:1
+pausing for 8380
+pausing for 8283
+pausing for 8186
+saving jpg at logs/20_12_13_06_18_25/150.jpg
+@ 9.13242 FPS
+pausing for 8093
+pausing for 8008
+pausing for 7917
+pausing for 7825
+pausing for 7733
+pausing for 7642
+pausing for 7550
+pausing for 7469
+H:26    DH:30    D:111    DD:110    Pwr:0    K:1
+pausing for 7388
+pausing for 7298
+pausing for 7227
+saving jpg at logs/20_12_13_06_18_25/151.jpg
+@ 10.4275 FPS
+pausing for 7133
+pausing for 7038
+pausing for 6948
+pausing for 6857
+pausing for 6765
+pausing for 6684
+pausing for 6587
+pausing for 6496
+pausing for 6425
+H:28    DH:30    D:110    DD:110    Pwr:0    K:1
+pausing for 6338
+pausing for 6242
+saving jpg at logs/20_12_13_06_18_25/152.jpg
+@ 10.1523 FPS
+pausing for 6148
+pausing for 6057
+pausing for 5973
+pausing for 5883
+pausing for 5787
+pausing for 5700
+pausing for 5604
+pausing for 5513
+pausing for 5427
+H:28    DH:30    D:112    DD:110    Pwr:0    K:1
+pausing for 5335
+pausing for 5243
+saving jpg at logs/20_12_13_06_18_25/153.jpg
+@ 10.01 FPS
+pausing for 5154
+pausing for 5062
+pausing for 4978
+pausing for 4887
+pausing for 4806
+pausing for 4709
+pausing for 4623
+pausing for 4531
+pausing for 4445
+H:27    DH:30    D:112    DD:110    Pwr:0    K:1
+pausing for 4358
+pausing for 4272
+saving jpg at logs/20_12_13_06_18_25/154.jpg
+@ 10.2987 FPS
+pausing for 4178
+pausing for 4083
+pausing for 3988
+pausing for 3907
+pausing for 3818
+pausing for 3736
+pausing for 3638
+pausing for 3541
+pausing for 3449
+H:26    DH:30    D:117    DD:110    Pwr:0    K:1
+pausing for 3352
+pausing for 3255
+saving jpg at logs/20_12_13_06_18_25/155.jpg
+@ 9.83284 FPS
+pausing for 3148
+pausing for 3051
+pausing for 2974
+pausing for 2893
+pausing for 2803
+pausing for 2722
+pausing for 2635
+pausing for 2544
+pausing for 2453
+H:25    DH:30    D:112    DD:110    Pwr:0    K:1
+pausing for 2371
+pausing for 2285
+saving jpg at logs/20_12_13_06_18_25/156.jpg
+@ 10.3093 FPS
+pausing for 2183
+pausing for 2082
+pausing for 1990
+pausing for 1904
+pausing for 1822
+pausing for 1736
+pausing for 1643
+pausing for 1547
+pausing for 1455
+H:25    DH:30    D:112    DD:110    Pwr:0    K:1
+pausing for 1354
+pausing for 1257
+saving jpg at logs/20_12_13_06_18_25/157.jpg
+@ 9.72763 FPS
+pausing for 1158
+pausing for 1063
+pausing for 967
+pausing for 875
+pausing for 779
+pausing for 687
+pausing for 606
+pausing for 530
+pausing for 438
+H:25    DH:30    D:109    DD:110    Pwr:0    K:1
+pausing for 347
+pausing for 253
+saving jpg at logs/20_12_13_06_18_25/158.jpg
+@ 9.96016 FPS
+pausing for 164
+pausing for 63
+pausing for 0
+-> buoy has proceeded to stage 4 ['ResetHeadingAndDepth'] at 252549 <-
+pausing for 5000
+pausing for 4929
+pausing for 4845
+pausing for 4754
+pausing for 4678
+H:24    DH:3    D:109    DD:75    Pwr:100    K:1
+pausing for 4581
+pausing for 4510
+saving jpg at logs/20_12_13_06_18_25/159.jpg
+@ 10.3627 FPS
+pausing for 4415
+pausing for 4320
+pausing for 4220
+pausing for 4129
+pausing for 4037
+pausing for 3941
+pausing for 3844
+pausing for 3753
+pausing for 3666
+H:19    DH:3    D:103    DD:75    Pwr:100    K:1
+pausing for 3570
+pausing for 3480
+saving jpg at logs/20_12_13_06_18_25/160.jpg
+@ 9.70874 FPS
+pausing for 3382
+pausing for 3275
+pausing for 3185
+pausing for 3089
+pausing for 3007
+pausing for 2930
+pausing for 2839
+pausing for 2748
+pausing for 2656
+H:15    DH:3    D:94    DD:75    Pwr:100    K:1
+pausing for 2570
+pausing for 2474
+saving jpg at logs/20_12_13_06_18_25/161.jpg
+@ 9.94036 FPS
+pausing for 2375
+pausing for 2274
+pausing for 2187
+pausing for 2106
+pausing for 2024
+pausing for 1933
+pausing for 1841
+pausing for 1750
+pausing for 1653
+H:11    DH:3    D:81    DD:75    Pwr:100    K:1
+pausing for 1562
+pausing for 1465
+saving jpg at logs/20_12_13_06_18_25/162.jpg
+@ 9.9108 FPS
+pausing for 1377
+pausing for 1285
+pausing for 1190
+pausing for 1099
+pausing for 1007
+pausing for 911
+pausing for 814
+pausing for 728
+pausing for 637
+H:7    DH:3    D:70    DD:75    Pwr:100    K:1
+pausing for 550
+pausing for 474
+saving jpg at logs/20_12_13_06_18_25/163.jpg
+@ 10.0908 FPS
+pausing for 380
+pausing for 274
+pausing for 172
+pausing for 75
+pausing for 0
+-> buoy has proceeded to stage 5 ['MoveOn'] at 257748 <-
+pausing for 18000
+pausing for 17904
+H:3    DH:3    D:72    DD:40    Pwr:200    K:1
+pausing for 17807
+pausing for 17715
+pausing for 17634
+saving jpg at logs/20_12_13_06_18_25/164.jpg
+@ 9.48767 FPS
+pausing for 17544
+pausing for 17454
+pausing for 17353
+pausing for 17271
+pausing for 17194
+pausing for 17108
+pausing for 17032
+pausing for 16950
+pausing for 16854
+H:1    DH:3    D:62    DD:40    Pwr:200    K:1
+pausing for 16768
+pausing for 16686
+saving jpg at logs/20_12_13_06_18_25/165.jpg
+@ 10.5485 FPS
+pausing for 16584
+pausing for 16489
+pausing for 16410
+pausing for 16309
+pausing for 16218
+pausing for 16116
+pausing for 16025
+pausing for 15933
+pausing for 15847
+H:2    DH:3    D:52    DD:40    Pwr:200    K:1
+pausing for 15750
+pausing for 15669
+saving jpg at logs/20_12_13_06_18_25/166.jpg
+@ 9.83284 FPS
+pausing for 15579
+pausing for 15484
+pausing for 15388
+pausing for 15291
+pausing for 15195
+pausing for 15103
+pausing for 15007
+pausing for 14925
+H:3    DH:3    D:43    DD:40    Pwr:200    K:1
+pausing for 14829
+pausing for 14744
+pausing for 14663
+saving jpg at logs/20_12_13_06_18_25/167.jpg
+@ 9.94036 FPS
+pausing for 14564
+pausing for 14474
+pausing for 14398
+pausing for 14301
+pausing for 14225
+pausing for 14138
+pausing for 14052
+pausing for 13965
+pausing for 13878
+H:5    DH:3    D:38    DD:40    Pwr:200    K:1
+pausing for 13777
+pausing for 13680
+saving jpg at logs/20_12_13_06_18_25/168.jpg
+@ 10.1729 FPS
+pausing for 13584
+pausing for 13484
+pausing for 13388
+pausing for 13296
+pausing for 13200
+pausing for 13108
+pausing for 13017
+pausing for 12920
+H:7    DH:3    D:38    DD:40    Pwr:200    K:1
+pausing for 12829
+pausing for 12738
+pausing for 12651
+saving jpg at logs/20_12_13_06_18_25/169.jpg
+@ 9.71817 FPS
+pausing for 12559
+pausing for 12464
+pausing for 12372
+pausing for 12286
+pausing for 12194
+pausing for 12104
+pausing for 12013
+pausing for 11921
+H:7    DH:3    D:39    DD:40    Pwr:200    K:1
+pausing for 11825
+pausing for 11733
+pausing for 11642
+saving jpg at logs/20_12_13_06_18_25/170.jpg
+@ 9.9108 FPS
+pausing for 11539
+pausing for 11444
+pausing for 11358
+pausing for 11271
+pausing for 11175
+pausing for 11078
+pausing for 10992
+pausing for 10895
+H:6    DH:3    D:39    DD:40    Pwr:200    K:1
+pausing for 10799
+pausing for 10702
+pausing for 10606
+saving jpg at logs/20_12_13_06_18_25/171.jpg
+@ 9.65251 FPS
+pausing for 10496
+pausing for 10399
+pausing for 10297
+pausing for 10201
+pausing for 10104
+pausing for 10008
+pausing for 9911
+H:6    DH:3    D:40    DD:40    Pwr:200    K:1
+pausing for 9815
+pausing for 9723
+pausing for 9627
+pausing for 9540
+saving jpg at logs/20_12_13_06_18_25/172.jpg
+@ 9.38086 FPS
+pausing for 9447
+pausing for 9340
+pausing for 9234
+pausing for 9155
+pausing for 9073
+pausing for 8997
+pausing for 8915
+H:6    DH:3    D:37    DD:40    Pwr:200    K:1
+pausing for 8824
+pausing for 8734
+pausing for 8643
+pausing for 8549
+saving jpg at logs/20_12_13_06_18_25/173.jpg
+@ 10.0908 FPS
+pausing for 8449
+pausing for 8344
+pausing for 8248
+pausing for 8166
+pausing for 8090
+pausing for 8004
+pausing for 7927
+pausing for 7836
+H:5    DH:3    D:37    DD:40    Pwr:200    K:1
+pausing for 7755
+pausing for 7673
+pausing for 7582
+saving jpg at logs/20_12_13_06_18_25/174.jpg
+@ 10.3413 FPS
+pausing for 7489
+pausing for 7388
+pausing for 7294
+pausing for 7204
+pausing for 7108
+pausing for 7021
+pausing for 6925
+H:4    DH:3    D:38    DD:40    Pwr:200    K:1
+pausing for 6828
+pausing for 6742
+pausing for 6655
+pausing for 6574
+saving jpg at logs/20_12_13_06_18_25/175.jpg
+@ 9.92064 FPS
+pausing for 6490
+pausing for 6399
+pausing for 6304
+pausing for 6218
+pausing for 6126
+pausing for 6040
+pausing for 5964
+pausing for 5872
+H:5    DH:3    D:39    DD:40    Pwr:200    K:1
+pausing for 5781
+pausing for 5689
+pausing for 5609
+saving jpg at logs/20_12_13_06_18_25/176.jpg
+@ 10.3627 FPS
+pausing for 5519
+pausing for 5414
+pausing for 5314
+pausing for 5222
+pausing for 5126
+pausing for 5045
+pausing for 4963
+pausing for 4879
+H:6    DH:3    D:36    DD:40    Pwr:200    K:1
+pausing for 4783
+pausing for 4707
+pausing for 4625
+saving jpg at logs/20_12_13_06_18_25/177.jpg
+@ 10.1626 FPS
+pausing for 4529
+pausing for 4434
+pausing for 4342
+pausing for 4245
+pausing for 4148
+pausing for 4051
+pausing for 3955
+pausing for 3858
+H:6    DH:3    D:39    DD:40    Pwr:200    K:1
+pausing for 3776
+pausing for 3690
+pausing for 3598
+saving jpg at logs/20_12_13_06_18_25/178.jpg
+@ 9.7371 FPS
+pausing for 3499
+pausing for 3404
+pausing for 3308
+pausing for 3216
+pausing for 3135
+pausing for 3059
+pausing for 2967
+pausing for 2881
+H:6    DH:3    D:45    DD:40    Pwr:200    K:1
+pausing for 2805
+pausing for 2713
+pausing for 2632
+saving jpg at logs/20_12_13_06_18_25/179.jpg
+@ 10.352 FPS
+pausing for 2549
+pausing for 2464
+pausing for 2367
+pausing for 2289
+pausing for 2208
+pausing for 2116
+pausing for 2035
+pausing for 1949
+pausing for 1862
+H:6    DH:3    D:38    DD:40    Pwr:200    K:1
+pausing for 1771
+pausing for 1680
+saving jpg at logs/20_12_13_06_18_25/180.jpg
+@ 10.5042 FPS
+pausing for 1595
+pausing for 1504
+pausing for 1409
+pausing for 1318
+pausing for 1226
+pausing for 1130
+pausing for 1033
+pausing for 947
+pausing for 856
+H:7    DH:3    D:40    DD:40    Pwr:200    K:1
+pausing for 774
+pausing for 678
+saving jpg at logs/20_12_13_06_18_25/181.jpg
+@ 9.98004 FPS
+pausing for 579
+pausing for 483
+pausing for 386
+pausing for 290
+pausing for 198
+pausing for 107
+pausing for 10
+pausing for 0
+-> buoy has proceeded to stage 6 ['Finish'] at 276033 <-
+H:7    DH:3    D:40    DD:40    Pwr:200    K:1
+pausing for 5000
+pausing for 4903
+saving jpg at logs/20_12_13_06_18_25/182.jpg
+@ 9.53289 FPS
+pausing for 4803
+pausing for 4712
+pausing for 4635
+pausing for 4549
+pausing for 4453
+pausing for 4361
+pausing for 4265
+pausing for 4168
+H:7    DH:13    D:46    DD:75    Pwr:100    K:1
+pausing for 4082
+pausing for 3990
+pausing for 3899
+saving jpg at logs/20_12_13_06_18_25/183.jpg
+@ 9.96016 FPS
+pausing for 3793
+pausing for 3696
+pausing for 3605
+pausing for 3514
+pausing for 3417
+pausing for 3331
+pausing for 3244
+pausing for 3148
+H:8    DH:13    D:53    DD:75    Pwr:100    K:1
+pausing for 3056
+pausing for 2965
+pausing for 2873
+saving jpg at logs/20_12_13_06_18_25/184.jpg
+@ 9.74659 FPS
+pausing for 2785
+pausing for 2688
+pausing for 2607
+pausing for 2516
+pausing for 2414
+pausing for 2323
+pausing for 2226
+pausing for 2135
+H:10    DH:13    D:63    DD:75    Pwr:100    K:1
+pausing for 2038
+pausing for 1947
+pausing for 1855
+saving jpg at logs/20_12_13_06_18_25/185.jpg
+@ 9.82318 FPS
+pausing for 1763
+pausing for 1663
+pausing for 1567
+pausing for 1475
+pausing for 1384
+pausing for 1282
+pausing for 1191
+H:10    DH:13    D:70    DD:75    Pwr:100    K:1
+pausing for 1089
+pausing for 1003
+pausing for 921
+pausing for 830
+saving jpg at logs/20_12_13_06_18_25/186.jpg
+@ 9.7561 FPS
+pausing for 728
+pausing for 632
+pausing for 555
+pausing for 463
+pausing for 372
+pausing for 280
+pausing for 189
+H:11    DH:13    D:81    DD:75    Pwr:100    K:1
+pausing for 103
+pausing for 11
+pausing for 0
+-> buoy has proceeded to stage 7 ['Done'] at 281301 <-
+saving jpg at logs/20_12_13_06_18_25/187.jpg
+@ 9.99001 FPS
+--> search has started @ 281394 <--
+Search task has started @ 281483
+Checking TaskID 5
+-> search has proceeded to stage 1 at 281483 <-
+TaskID 5 is available.
+--> l_gate has started @ 281583 <--
+pausing for 5000
+pausing for 4908
+pausing for 4817
+pausing for 4730
+H:12    DH:11    D:87    DD:100    Pwr:200    K:1
+pausing for 4644
+pausing for 4553
+pausing for 4466
+pausing for 4390
+saving jpg at logs/20_12_13_06_18_25/188.jpg
+@ 10.1112 FPS
+pausing for 4293
+pausing for 4197
+pausing for 4105
+pausing for 4009
+pausing for 3917
+pausing for 3826
+pausing for 3740
+H:12    DH:11    D:91    DD:100    Pwr:200    K:1
+pausing for 3643
+pausing for 3557
+pausing for 3478
+pausing for 3382
+saving jpg at logs/20_12_13_06_18_25/189.jpg
+@ 9.92064 FPS
+pausing for 3285
+pausing for 3193
+pausing for 3106
+pausing for 3013
+pausing for 2927
+pausing for 2851
+pausing for 2754
+pausing for 2657
+H:14    DH:11    D:96    DD:100    Pwr:200    K:1
+pausing for 2560
+pausing for 2468
+pausing for 2373
+saving jpg at logs/20_12_13_06_18_25/190.jpg
+@ 9.9108 FPS
+pausing for 2284
+pausing for 2203
+pausing for 2123
+pausing for 2047
+pausing for 1948
+pausing for 1853
+pausing for 1757
+H:14    DH:11    D:102    DD:100    Pwr:200    K:1
+pausing for 1655
+pausing for 1559
+pausing for 1477
+pausing for 1396
+saving jpg at logs/20_12_13_06_18_25/191.jpg
+@ 10.2354 FPS
+pausing for 1303
+pausing for 1211
+pausing for 1113
+pausing for 1027
+pausing for 938
+pausing for 848
+pausing for 757
+pausing for 665
+H:13    DH:11    D:103    DD:100    Pwr:200    K:1
+pausing for 574
+pausing for 483
+pausing for 392
+saving jpg at logs/20_12_13_06_18_25/192.jpg
+@ 9.96016 FPS
+pausing for 303
+pausing for 222
+pausing for 131
+pausing for 44
+pausing for 0
+-> l_gate has proceeded to stage 3 ['Deadreck'] at 286813 <-
+pausing for 12000
+pausing for 11914
+H:13    DH:193    D:105    DD:100    Pwr:200    K:1
+pausing for 11822
+pausing for 11735
+pausing for 11649
+saving jpg at logs/20_12_13_06_18_25/193.jpg
+@ 10.4712 FPS
+pausing for 11540
+pausing for 11443
+pausing for 11347
+pausing for 11250
+pausing for 11153
+pausing for 11057
+pausing for 10960
+H:30    DH:193    D:97    DD:100    Pwr:200    K:1
+pausing for 10868
+pausing for 10772
+pausing for 10691
+pausing for 10609
+saving jpg at logs/20_12_13_06_18_25/194.jpg
+@ 9.61539 FPS
+pausing for 10510
+pausing for 10411
+pausing for 10324
+pausing for 10233
+pausing for 10131
+pausing for 10030
+pausing for 9938
+H:57    DH:193    D:103    DD:100    Pwr:200    K:1
+pausing for 9847
+pausing for 9750
+pausing for 9654
+pausing for 9562
+saving jpg at logs/20_12_13_06_18_25/195.jpg
+@ 9.5511 FPS
+pausing for 9464
+pausing for 9360
+pausing for 9265
+pausing for 9174
+pausing for 9082
+pausing for 8991
+pausing for 8894
+H:85    DH:193    D:100    DD:100    Pwr:200    K:1
+pausing for 8810
+pausing for 8718
+pausing for 8627
+pausing for 8540
+saving jpg at logs/20_12_13_06_18_25/196.jpg
+@ 9.78474 FPS
+pausing for 8440
+pausing for 8335
+pausing for 8239
+pausing for 8147
+pausing for 8050
+pausing for 7954
+H:111    DH:193    D:102    DD:100    Pwr:200    K:1
+pausing for 7862
+pausing for 7776
+pausing for 7684
+pausing for 7608
+pausing for 7526
+saving jpg at logs/20_12_13_06_18_25/197.jpg
+@ 9.86193 FPS
+pausing for 7435
+pausing for 7355
+pausing for 7265
+pausing for 7189
+pausing for 7103
+pausing for 7026
+pausing for 6940
+H:133    DH:193    D:102    DD:100    Pwr:200    K:1
+pausing for 6848
+pausing for 6761
+pausing for 6665
+pausing for 6589
+saving jpg at logs/20_12_13_06_18_25/198.jpg
+@ 10.6724 FPS
+pausing for 6498
+pausing for 6400
+pausing for 6324
+pausing for 6233
+pausing for 6136
+pausing for 6039
+pausing for 5948
+H:150    DH:193    D:99    DD:100    Pwr:200    K:1
+pausing for 5867
+pausing for 5780
+pausing for 5694
+pausing for 5618
+saving jpg at logs/20_12_13_06_18_25/199.jpg
+@ 10.2881 FPS
+pausing for 5530
+pausing for 5450
+pausing for 5369
+pausing for 5290
+pausing for 5204
+pausing for 5123
+pausing for 5036
+pausing for 4939
+H:163    DH:193    D:99    DD:100    Pwr:200    K:1
+pausing for 4842
+pausing for 4746
+pausing for 4649
+saving jpg at logs/20_12_13_06_18_25/200.jpg
+@ 10.3306 FPS
+pausing for 4551
+pausing for 4460
+pausing for 4355
+pausing for 4269
+pausing for 4203
+pausing for 4126
+pausing for 4040
+pausing for 3949
+H:173    DH:193    D:99    DD:100    Pwr:200    K:1
+pausing for 3862
+pausing for 3776
+pausing for 3680
+saving jpg at logs/20_12_13_06_18_25/201.jpg
+@ 10.3199 FPS
+pausing for 3580
+pausing for 3485
+pausing for 3389
+pausing for 3297
+pausing for 3201
+pausing for 3104
+pausing for 3013
+pausing for 2921
+H:182    DH:193    D:101    DD:100    Pwr:200    K:1
+pausing for 2825
+pausing for 2728
+pausing for 2642
+saving jpg at logs/20_12_13_06_18_25/202.jpg
+@ 9.63391 FPS
+pausing for 2555
+pausing for 2465
+pausing for 2378
+pausing for 2302
+pausing for 2221
+pausing for 2129
+pausing for 2038
+pausing for 1946
+H:188    DH:193    D:102    DD:100    Pwr:200    K:1
+pausing for 1843
+pausing for 1752
+pausing for 1656
+saving jpg at logs/20_12_13_06_18_25/203.jpg
+@ 10.142 FPS
+pausing for 1557
+pausing for 1460
+pausing for 1360
+pausing for 1263
+pausing for 1166
+pausing for 1065
+pausing for 968
+pausing for 872
+H:192    DH:193    D:101    DD:100    Pwr:200    K:1
+pausing for 801
+pausing for 719
+pausing for 628
+saving jpg at logs/20_12_13_06_18_25/204.jpg
+@ 9.72763 FPS
+pausing for 535
+pausing for 434
+pausing for 335
+pausing for 244
+pausing for 152
+pausing for 61
+pausing for 0
+-> l_gate has proceeded to stage 4 ['Backup'] at 299014 <-
+H:194    DH:193    D:103    DD:100    Pwr:0    K:1
+pausing for 30000
+pausing for 29913
+pausing for 29842
+saving jpg at logs/20_12_13_06_18_25/205.jpg
+@ 9.96016 FPS
+pausing for 29743
+pausing for 29648
+pausing for 29553
+pausing for 29467
+pausing for 29373
+pausing for 29297
+pausing for 29215
+pausing for 29129
+H:192    DH:193    D:102    DD:100    Pwr:0    K:1
+pausing for 29042
+pausing for 28955
+pausing for 28858
+saving jpg at logs/20_12_13_06_18_25/206.jpg
+@ 10.1626 FPS
+pausing for 28768
+pausing for 28678
+pausing for 28573
+pausing for 28476
+pausing for 28379
+pausing for 28288
+pausing for 28201
+pausing for 28120
+H:188    DH:193    D:101    DD:100    Pwr:0    K:1
+pausing for 28043
+pausing for 27957
+pausing for 27881
+saving jpg at logs/20_12_13_06_18_25/207.jpg
+@ 10.2354 FPS
+pausing for 27778
+pausing for 27688
+pausing for 27597
+pausing for 27500
+pausing for 27409
+pausing for 27323
+pausing for 27226
+pausing for 27135
+H:189    DH:193    D:100    DD:100    Pwr:0    K:1
+pausing for 27048
+pausing for 26962
+pausing for 26870
+saving jpg at logs/20_12_13_06_18_25/208.jpg
+@ 9.90099 FPS
+pausing for 26778
+pausing for 26683
+pausing for 26582
+pausing for 26490
+pausing for 26408
+pausing for 26327
+pausing for 26235
+pausing for 26149
+H:190    DH:193    D:99    DD:100    Pwr:0    K:1
+pausing for 26052
+pausing for 25966
+pausing for 25890
+saving jpg at logs/20_12_13_06_18_25/209.jpg
+@ 10.1937 FPS
+pausing for 25796
+pausing for 25693
+pausing for 25588
+pausing for 25491
+pausing for 25410
+pausing for 25313
+pausing for 25211
+pausing for 25113
+H:191    DH:193    D:100    DD:100    Pwr:0    K:1
+pausing for 25023
+pausing for 24931
+pausing for 24845
+saving jpg at logs/20_12_13_06_18_25/210.jpg
+@ 9.56023 FPS
+pausing for 24738
+pausing for 24638
+pausing for 24547
+pausing for 24466
+pausing for 24374
+pausing for 24287
+pausing for 24191
+pausing for 24099
+H:190    DH:193    D:101    DD:100    Pwr:0    K:1
+pausing for 23998
+pausing for 23901
+pausing for 23820
+saving jpg at logs/20_12_13_06_18_25/211.jpg
+@ 9.76562 FPS
+pausing for 23738
+pausing for 23632
+pausing for 23543
+pausing for 23466
+pausing for 23390
+pausing for 23313
+pausing for 23242
+pausing for 23156
+H:189    DH:193    D:101    DD:100    Pwr:0    K:1
+pausing for 23080
+pausing for 22983
+pausing for 22892
+saving jpg at logs/20_12_13_06_18_25/212.jpg
+@ 10.7759 FPS
+pausing for 22793
+pausing for 22697
+pausing for 22605
+pausing for 22509
+pausing for 22422
+pausing for 22331
+pausing for 22240
+pausing for 22148
+H:188    DH:193    D:102    DD:100    Pwr:0    K:1
+pausing for 22062
+pausing for 21968
+pausing for 21882
+saving jpg at logs/20_12_13_06_18_25/213.jpg
+@ 9.90099 FPS
+pausing for 21793
+pausing for 21698
+pausing for 21608
+pausing for 21518
+pausing for 21432
+pausing for 21350
+pausing for 21259
+pausing for 21173
+H:187    DH:193    D:100    DD:100    Pwr:0    K:1
+pausing for 21081
+pausing for 20990
+pausing for 20893
+saving jpg at logs/20_12_13_06_18_25/214.jpg
+@ 10.1112 FPS
+pausing for 20813
+pausing for 20722
+pausing for 20631
+pausing for 20538
+pausing for 20442
+pausing for 20350
+pausing for 20259
+pausing for 20188
+pausing for 20091
+H:186    DH:193    D:102    DD:100    Pwr:0    K:1
+pausing for 20000
+pausing for 19903
+saving jpg at logs/20_12_13_06_18_25/215.jpg
+@ 10.101 FPS
+pausing for 19803
+pausing for 19702
+pausing for 19615
+pausing for 19524
+pausing for 19427
+pausing for 19335
+pausing for 19239
+pausing for 19148
+H:185    DH:193    D:98    DD:100    Pwr:0    K:1
+pausing for 19056
+pausing for 18970
+pausing for 18888
+saving jpg at logs/20_12_13_06_18_25/216.jpg
+@ 9.85222 FPS
+pausing for 18799
+pausing for 18698
+pausing for 18602
+pausing for 18510
+pausing for 18418
+pausing for 18327
+pausing for 18240
+pausing for 18144
+H:185    DH:193    D:99    DD:100    Pwr:0    K:1
+pausing for 18052
+pausing for 17961
+pausing for 17875
+saving jpg at logs/20_12_13_06_18_25/217.jpg
+@ 9.87167 FPS
+pausing for 17783
+pausing for 17692
+pausing for 17600
+pausing for 17504
+pausing for 17413
+pausing for 17321
+pausing for 17235
+pausing for 17138
+H:186    DH:193    D:102    DD:100    Pwr:0    K:1
+pausing for 17047
+pausing for 16960
+pausing for 16874
+saving jpg at logs/20_12_13_06_18_25/218.jpg
+@ 9.99001 FPS
+pausing for 16773
+pausing for 16687
+pausing for 16611
+pausing for 16524
+pausing for 16443
+pausing for 16352
+pausing for 16265
+pausing for 16184
+pausing for 16092
+H:186    DH:193    D:104    DD:100    Pwr:0    K:1
+pausing for 16001
+pausing for 15910
+saving jpg at logs/20_12_13_06_18_25/219.jpg
+@ 10.3734 FPS
+pausing for 15828
+pausing for 15728
+pausing for 15637
+pausing for 15558
+pausing for 15472
+pausing for 15381
+pausing for 15284
+pausing for 15188
+pausing for 15096
+H:185    DH:193    D:99    DD:100    Pwr:0    K:1
+pausing for 15005
+pausing for 14918
+saving jpg at logs/20_12_13_06_18_25/220.jpg
+@ 10.0806 FPS
+pausing for 14825
+pausing for 14723
+pausing for 14623
+pausing for 14533
+pausing for 14442
+pausing for 14345
+pausing for 14243
+pausing for 14137
+H:186    DH:193    D:98    DD:100    Pwr:0    K:1
+pausing for 14045
+pausing for 13969
+pausing for 13882
+saving jpg at logs/20_12_13_06_18_25/221.jpg
+@ 9.66184 FPS
+pausing for 13773
+pausing for 13673
+pausing for 13592
+pausing for 13508
+pausing for 13406
+pausing for 13310
+pausing for 13213
+pausing for 13122
+H:187    DH:193    D:101    DD:100    Pwr:0    K:1
+pausing for 13025
+pausing for 12927
+pausing for 12830
+saving jpg at logs/20_12_13_06_18_25/222.jpg
+@ 9.5057 FPS
+pausing for 12732
+pausing for 12628
+pausing for 12528
+pausing for 12432
+pausing for 12343
+pausing for 12258
+pausing for 12162
+H:187    DH:193    D:98    DD:100    Pwr:0    K:1
+pausing for 12070
+pausing for 11979
+pausing for 11887
+pausing for 11791
+saving jpg at logs/20_12_13_06_18_25/223.jpg
+@ 9.61539 FPS
+pausing for 11698
+pausing for 11598
+pausing for 11496
+pausing for 11413
+pausing for 11332
+pausing for 11256
+pausing for 11169
+H:187    DH:193    D:99    DD:100    Pwr:0    K:1
+pausing for 11073
+pausing for 10987
+pausing for 10905
+pausing for 10828
+saving jpg at logs/20_12_13_06_18_25/224.jpg
+@ 10.3842 FPS
+pausing for 10733
+pausing for 10638
+pausing for 10542
+pausing for 10450
+pausing for 10358
+pausing for 10272
+pausing for 10185
+pausing for 10109
+H:187    DH:193    D:97    DD:100    Pwr:0    K:1
+pausing for 10023
+pausing for 9931
+pausing for 9850
+saving jpg at logs/20_12_13_06_18_25/225.jpg
+@ 10.2249 FPS
+pausing for 9753
+pausing for 9658
+pausing for 9567
+pausing for 9480
+pausing for 9384
+pausing for 9287
+pausing for 9201
+pausing for 9104
+H:187    DH:193    D:101    DD:100    Pwr:0    K:1
+pausing for 9008
+pausing for 8916
+pausing for 8820
+saving jpg at logs/20_12_13_06_18_25/226.jpg
+@ 9.70874 FPS
+pausing for 8718
+pausing for 8617
+pausing for 8525
+pausing for 8439
+pausing for 8358
+pausing for 8276
+pausing for 8179
+H:187    DH:193    D:102    DD:100    Pwr:0    K:1
+pausing for 8083
+pausing for 7991
+pausing for 7900
+pausing for 7809
+saving jpg at logs/20_12_13_06_18_25/227.jpg
+@ 9.88142 FPS
+pausing for 7708
+pausing for 7622
+pausing for 7525
+pausing for 7444
+pausing for 7363
+pausing for 7273
+pausing for 7197
+pausing for 7106
+H:187    DH:193    D:101    DD:100    Pwr:0    K:1
+pausing for 7009
+pausing for 6913
+pausing for 6826
+saving jpg at logs/20_12_13_06_18_25/228.jpg
+@ 10.1833 FPS
+pausing for 6743
+pausing for 6643
+pausing for 6551
+pausing for 6460
+pausing for 6358
+pausing for 6262
+pausing for 6173
+H:186    DH:193    D:100    DD:100    Pwr:0    K:1
+pausing for 6073
+pausing for 5976
+pausing for 5880
+pausing for 5773
+saving jpg at logs/20_12_13_06_18_25/229.jpg
+@ 9.49668 FPS
+pausing for 5663
+pausing for 5563
+pausing for 5471
+pausing for 5378
+pausing for 5291
+pausing for 5204
+pausing for 5128
+H:186    DH:193    D:99    DD:100    Pwr:0    K:1
+pausing for 5042
+pausing for 4965
+pausing for 4889
+pausing for 4803
+saving jpg at logs/20_12_13_06_18_25/230.jpg
+@ 10.3093 FPS
+pausing for 4708
+pausing for 4613
+pausing for 4517
+pausing for 4425
+pausing for 4333
+pausing for 4237
+pausing for 4150
+H:186    DH:193    D:97    DD:100    Pwr:0    K:1
+pausing for 4059
+pausing for 3968
+pausing for 3881
+pausing for 3790
+saving jpg at logs/20_12_13_06_18_25/231.jpg
+@ 9.87167 FPS
+pausing for 3688
+pausing for 3587
+pausing for 3495
+pausing for 3399
+pausing for 3307
+pausing for 3216
+pausing for 3119
+H:186    DH:193    D:102    DD:100    Pwr:0    K:1
+pausing for 3028
+pausing for 2941
+pausing for 2850
+pausing for 2758
+saving jpg at logs/20_12_13_06_18_25/232.jpg
+@ 9.68992 FPS
+pausing for 2663
+pausing for 2568
+pausing for 2477
+pausing for 2385
+pausing for 2289
+pausing for 2198
+pausing for 2106
+H:186    DH:193    D:101    DD:100    Pwr:0    K:1
+pausing for 2015
+pausing for 1923
+pausing for 1832
+pausing for 1740
+saving jpg at logs/20_12_13_06_18_25/233.jpg
+@ 9.83284 FPS
+pausing for 1648
+pausing for 1547
+pausing for 1450
+pausing for 1359
+pausing for 1268
+pausing for 1182
+pausing for 1095
+H:187    DH:193    D:99    DD:100    Pwr:0    K:1
+pausing for 1014
+pausing for 933
+pausing for 843
+pausing for 762
+saving jpg at logs/20_12_13_06_18_25/234.jpg
+@ 10.2145 FPS
+pausing for 668
+pausing for 572
+pausing for 473
+pausing for 383
+pausing for 292
+pausing for 195
+pausing for 99
+H:188    DH:193    D:102    DD:100    Pwr:0    K:1
+pausing for 2
+pausing for 0
+-> l_gate has proceeded to stage 5 ['End'] at 329290 <-
+pausing for 12000
+saving jpg at logs/20_12_13_06_18_25/235.jpg
+@ 9.67118 FPS
+pausing for 11900
+pausing for 11809
+pausing for 11727
+pausing for 11641
+pausing for 11560
+pausing for 11474
+pausing for 11387
+H:195    DH:0    D:99    DD:100    Pwr:100    K:1
+pausing for 11295
+pausing for 11209
+pausing for 11128
+pausing for 11036
+saving jpg at logs/20_12_13_06_18_25/236.jpg
+@ 10.3734 FPS
+pausing for 10930
+pausing for 10830
+pausing for 10744
+pausing for 10652
+pausing for 10561
+pausing for 10480
+pausing for 10393
+H:222    DH:0    D:98    DD:100    Pwr:100    K:1
+pausing for 10300
+pausing for 10209
+pausing for 10122
+pausing for 10026
+saving jpg at logs/20_12_13_06_18_25/237.jpg
+@ 9.90099 FPS
+pausing for 9932
+pausing for 9836
+pausing for 9740
+pausing for 9645
+pausing for 9549
+pausing for 9457
+pausing for 9371
+H:251    DH:0    D:96    DD:100    Pwr:100    K:1
+pausing for 9290
+pausing for 9208
+pausing for 9122
+pausing for 9041
+saving jpg at logs/20_12_13_06_18_25/238.jpg
+@ 10.142 FPS
+pausing for 8940
+pausing for 8839
+pausing for 8762
+pausing for 8686
+pausing for 8615
+pausing for 8525
+pausing for 8439
+pausing for 8362
+H:279    DH:0    D:99    DD:100    Pwr:100    K:1
+pausing for 8286
+pausing for 8210
+pausing for 8118
+saving jpg at logs/20_12_13_06_18_25/239.jpg
+@ 10.8578 FPS
+pausing for 8030
+pausing for 7924
+pausing for 7825
+pausing for 7739
+pausing for 7640
+pausing for 7544
+pausing for 7452
+H:302    DH:0    D:99    DD:100    Pwr:100    K:1
+pausing for 7356
+pausing for 7259
+pausing for 7168
+pausing for 7076
+saving jpg at logs/20_12_13_06_18_25/240.jpg
+@ 9.58773 FPS
+pausing for 6975
+pausing for 6874
+pausing for 6782
+pausing for 6706
+pausing for 6609
+pausing for 6512
+pausing for 6419
+H:320    DH:0    D:100    DD:100    Pwr:100    K:1
+pausing for 6330
+pausing for 6244
+pausing for 6147
+pausing for 6055
+saving jpg at logs/20_12_13_06_18_25/241.jpg
+@ 9.80392 FPS
+pausing for 5972
+pausing for 5877
+pausing for 5785
+pausing for 5689
+pausing for 5597
+pausing for 5506
+pausing for 5414
+H:334    DH:0    D:104    DD:100    Pwr:100    K:1
+pausing for 5318
+pausing for 5242
+pausing for 5160
+pausing for 5063
+saving jpg at logs/20_12_13_06_18_25/242.jpg
+@ 10.0705 FPS
+pausing for 4955
+pausing for 4853
+pausing for 4751
+pausing for 4654
+pausing for 4557
+pausing for 4461
+pausing for 4375
+H:345    DH:0    D:98    DD:100    Pwr:100    K:1
+pausing for 4279
+pausing for 4187
+pausing for 4095
+pausing for 4009
+saving jpg at logs/20_12_13_06_18_25/243.jpg
+@ 9.47867 FPS
+pausing for 3910
+pausing for 3825
+pausing for 3734
+pausing for 3642
+Wall-e has departed
+H:353    DH:0    D:96    DD:0    Pwr:100    K:0
+H:354    DH:0    D:95    DD:0    Pwr:100    K:0
+H:340    DH:0    D:85    DD:0    Pwr:100    K:0
+H:328    DH:0    D:75    DD:0    Pwr:100    K:0
+H:331    DH:0    D:60    DD:0    Pwr:100    K:0
+H:339    DH:0    D:44    DD:0    Pwr:100    K:0
+H:346    DH:0    D:30    DD:0    Pwr:100    K:0
+H:346    DH:0    D:18    DD:0    Pwr:100    K:0
+H:351    DH:0    D:9    DD:0    Pwr:100    K:0
+H:352    DH:0    D:6    DD:0    Pwr:100    K:0
+H:359    DH:0    D:6    DD:0    Pwr:100    K:0
+H:3    DH:0    D:6    DD:0    Pwr:100    K:0
+H:0    DH:0    D:3    DD:0    Pwr:100    K:0
+H:8    DH:0    D:0    DD:0    Pwr:100    K:0
+H:18    DH:0    D:0    DD:0    Pwr:100    K:0
+H:24    DH:0    D:1    DD:0    Pwr:100    K:0
+H:25    DH:0    D:4    DD:0    Pwr:100    K:0
+
+--------------------------------------------------------------------------------
+SIGINT received
