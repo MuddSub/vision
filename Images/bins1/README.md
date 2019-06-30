@@ -1,1 +1,0 @@
-# bins-vision
