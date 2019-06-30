@@ -1,9 +1,10 @@
+#!/usr/bin/env python
+
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import copy
 from skimage.data import page
-from skimage.filters import (threshold_otsu, threshold_niblack, threshold_sauvola)
 from skimage.transform import rotate
 from scipy.signal import savgol_filter
 from scipy import signal
@@ -11,7 +12,7 @@ import os
 import sys
 import time
 
-class gate:
+class Gate:
     def openFile(self, name, path1):
         #"/Users/rongk/Downloads/test.jpg"):
         if name == "d":
@@ -472,10 +473,10 @@ class gate:
             else:
                 return lineLocs[0],lineLocs[1]
 
-def main():
-    a = gate()
-    img = a.openFile('d','testImg')
-    print(a.findBars(img))
+#def main():
+#    a = Gate()
+#    img = a.openFile('d','testImg')
+#    print(a.findBars(img))
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+#    main()
