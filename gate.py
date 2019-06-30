@@ -28,8 +28,8 @@ lg = []
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        #path0 = "/home/dhyang/Desktop/Vision/Vision/images/"
-        path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/images/"
+        #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
 
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
@@ -207,9 +207,39 @@ def rotateGetLines(image,graph):
     if k!= -1:
         lineLocs.append(getLines(image))
     if len(lineLocs) == 2:
-        numDetected = 2
+        if lineLocs[1]-leeway >= 0:
+            o[:,lineLocs[1]-leeway:lineLocs[1]]=255
+        else:
+            o[:,0:lineLocs[1]]=255
+
+        if lineLocs[1]+leeway >= o.shape[1]:
+            o[:,lineLocs[1]:-1]=255
+        else:
+            o[:,lineLocs[1]:lineLocs[1]+leeway]=255
     else:
         numDetected = 1
+        return lineLocs,1
+
+    image = rotateToHorizontal(o,lb,ub,delta)
+    k = getLines(image)
+    if k!= -1:
+        k = getLines(image)
+        tmp = copy.deepcopy(lineLocs)
+        tmp.append(k)
+        np.sort(tmp)
+
+        r1 = tmp[1]-tmp[0]
+        r2 = tmp[2]-tmp[1]
+        r3 = tmp[2]-tmp[0]
+        if r3 > image.shape[1]/2:
+            if max(r1,r2)/min(r1,r2) < 2:
+                lineLocs.append(k)
+                numDetected = 3
+            else:
+                numDetected = 2
+
+    else:
+        return lineLocs,3
     if graph:
         plt.plot(csums)
         for i in range(len(lineLocs)):
@@ -397,6 +427,8 @@ def findLeft(img):
         csums1[lhs:rhs] = 0
     return lineLocs
 
+
+
 def mainImg(img):
     start_time = time.time()
     original = img
@@ -411,6 +443,7 @@ def mainImg(img):
 
 
     segmented = adjust(segmented)
+
     # Higher discernability = lower distinguishing power
 
     discernability = 25
