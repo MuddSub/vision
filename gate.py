@@ -28,7 +28,7 @@ lg = []
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/Vision/images/"
+        path0 = "/home/dhyang/Desktop/Vision/Vision/"
         #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
 
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
@@ -146,7 +146,7 @@ def FsimpleColorBalance(img, percent):
         channels[i] = np.where(channels[i] > lowVal, channels[i], lowVal)
         channels[i] = np.where(channels[i] < topVal, channels[i], topVal)
         channels[i] = cv2.normalize(
-            channels[i], channels[i], 0.0, 255.0/2, cv2.NORM_MINMAX)
+                channels[i], channels[i], 0.0, 255.0/2, cv2.NORM_MINMAX)
         channels[i] = np.float32(channels[i])
     #print("2:",time.time()-start_time)
 
@@ -233,7 +233,7 @@ def rotateGetLines(image,graph):
         r3 = tmp[2]-tmp[0]
         if r3 > image.shape[1]/2:
             if max(r1,r2)/min(r1,r2) < 2:
-                lineLocs.append(k)
+                lineLocs==tmp
                 numDetected = 3
             else:
                 numDetected = 2
@@ -471,13 +471,26 @@ def mainImg(img):
 
 
     o1 = plotLines(lineLocs, o1)
-
     cv2.imshow("original",origin)
     cv2.imshow("alpha", segmented)
-
     cv2.imshow("binarization", newImg1)
+    cv2.imshow("result",o1)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
-    return newImg1
+    if len(lineLocs)==0:
+        return -1,-1,0
+    if len(lineLocs)==1:
+        return -2,-2,0
+    if len(lineLocs)==2:
+        return lineLocs[0],lineLocs[1],0
+
+    if len(lineLocs)==3:
+        if lineLocs[1]-lineLocs[0]>lineLocs[2]-lineLocs[1]:
+            return lineLocs[1],lineLocs[2]
+        else:
+            return lineLocs[0],lineLocs[1]
+
 ####################################################
 #########################################################
 #####################################################
@@ -491,11 +504,8 @@ def main():
             cv2.imwrite("/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train_binarized/"+str(i)+".jpg",b)
     else:
         img = open(sys.argv[1], sys.argv[2])
-        b = mainImg(img)
-        cv2.imshow("Result",img)
-        #cv2.imshow("binarized",b)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+        g1,g2,close = mainImg(img)
+        print(g1,g2,close)
 
 if __name__ == "__main__":
     main()
