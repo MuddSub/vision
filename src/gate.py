@@ -416,7 +416,7 @@ class Gate:
         original = img
         origin = copy.deepcopy(original)
 
-        o1 = original
+        out = original
 
         segmented = self.segment(original)
 
@@ -452,26 +452,26 @@ class Gate:
         print("Total: "+str(time.time()-start_time))
 
 
-        o1 = self.plotLines(lineLocs, o1)
-        cv2.imshow("original",origin)
-        cv2.imshow("alpha", segmented)
-        cv2.imshow("binarization", newImg1)
-        cv2.imshow("result",o1)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+        out = self.plotLines(lineLocs, out)
+        #cv2.imshow("original",origin)
+        #cv2.imshow("alpha", segmented)
+        #cv2.imshow("binarization", newImg1)
+        #cv2.imshow("result",out)
+        #cv2.waitKey(0)
+        #cv2.destroyAllWindows()
 
         if len(lineLocs)==0:
-            return -1,-1,0
+            return out, -1,-1,-1,0
         if len(lineLocs)==1:
-            return -2,-2,0
+            return out, -2,-2,-2,0
         if len(lineLocs)==2:
-            return lineLocs[0],lineLocs[1],0
+            return out, lineLocs[0],-1,lineLocs[1],0
 
         if len(lineLocs)==3:
             if lineLocs[1]-lineLocs[0]>lineLocs[2]-lineLocs[1]:
-                return lineLocs[1],lineLocs[2]
+                return out, lineLocs[0],lineLocs[1],lineLocs[2], 1
             else:
-                return lineLocs[0],lineLocs[1]
+                return out, lineLocs[0],lineLocs[1],lineLocs[2], 2
 
 #def main():
 #    a = Gate()
