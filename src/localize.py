@@ -1,14 +1,14 @@
+#!/usr/bin/env python
+
 import rospy
 from particle_filter import ParticleFilter
-frome localization.msg import *
-from std_msgs import Bool, Float64
+from vision.msg import *
+from std_msgs.msg import Bool, Float64
 
-class Localization:
+class Localize:
 
-	def __init__():
+	def __init__(self):
 		
-		rospy.init_node('localization', anonymous=True)
-
 		#separate for each
 		self.gateLeft = ParticleFilter()
 		self.gateDiv = ParticleFilter()
@@ -32,8 +32,8 @@ class Localization:
 		self.gateEnable = False
 		self.buoyEnable = False
 		
-		self.buoyPub = rospy.Publisher("buoyState", buoy, queue_size=2)
-		self.gatePub = rospy.Publisher("gateState", gate, queue_size=2)
+		self.buoyPub = rospy.Publisher("buoyState", buoy, queue_size=1)
+		self.gatePub = rospy.Publisher("gateState", gate, queue_size=1)
 
 	
 	#buoyPos = [heave, yaw]
@@ -47,7 +47,7 @@ class Localization:
 		
 		msg.yaw, msg.yawConf = self.buoyYaw.getPredictedState()
 		msg.heave, msg.heaveConf = self.buoyHeave.getPredictedState()
-		buoyPub.publish(msg)
+		self.buoyPub.publish(msg)
 
 	#gatePos = [left, div, right]
 	def updateGate(self, gatePos):
@@ -62,8 +62,8 @@ class Localization:
 		msg.left, msg.leftConf = self.gateLeft.getPredictedState()
 		msg.right, msg.rightConf = self.gateRight.getPredictedState()
 		msg.div, msg.divConf = self.gateDiv.getPredictedState()
-		
-		gatePub.publish(msg)
+		print(msg.left)
+		self.gatePub.publish(msg)
 		
 	
 		

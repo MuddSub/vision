@@ -22,7 +22,7 @@ import copy
 
 class ParticleFilter():
     particleMat = []
-    def __init__(self, angleAmount):
+    def __init__(self, angleAmount=360):
         ''' 
         angleAmount is the number of angle we want in particleMat. 
         coordinate: say we use polar with 0 in Cartesian positve x direction. It goes [0,len(angleAmount)), 
@@ -38,7 +38,7 @@ class ParticleFilter():
     def addTask(self):
         pass
     
-    def update(self,newAngle,stdev=50,pixelPos=Flase):
+    def update(self,newAngle,stdev=50,pixelPos=False):
         '''
         data will be the input data in angles, most likely one single input and error in angle. 
         angle might need adjustment to fit our coordinates.
@@ -52,7 +52,7 @@ class ParticleFilter():
                 newAngle = -math.degrees(np.arctan((319.5-newAngle)/725.24))
             else:
                 newAngle = math.degrees(np.arctan((newAngle-319.5)/725.24))
-                
+        print("new angle:", newAngle)
         #Might want to change to adust number of measurements to change weights
         fWeight = 0.09
         
@@ -83,6 +83,9 @@ class ParticleFilter():
         max_x = angles[array(self.particleMat).argmax()] 
         stDev = np.std(np.array(self.particleMat), axis = 0)
         confidence = self.particleMat[(int)(max_x/self.i_to_angle)]
+        print("MAX_X", max_x)
+        if max_x > 180:
+			max_x = max_x - 360
         return max_x, confidence
     
 
@@ -101,17 +104,17 @@ class ParticleFilter():
 
 # In[201]:
 
-def test():
-	particle = ParticleFilter(360)
-	for i in range(15):
-		a=particle.update(0,50,'angle')
-		a=particle.update(0,50,'angle')
-		
-	a = particle.updateSubmarineAngle(-37)
-		
-	for i in range(359):
-		plt.polar(i/180*math.pi, particle.particleMat[i],"bo")
-	print(particle.getPredictedState())
+#def test():
+#	particle = ParticleFilter(360)
+#	for i in range(15):
+#		a=particle.update(0,50,'angle')
+#		a=particle.update(0,50,'angle')
+#		
+#	a = particle.updateSubmarineAngle(-37)
+#		
+#	for i in range(359):
+#		plt.polar(i/180*math.pi, particle.particleMat[i],"bo")
+#	print(particle.getPredictedState())
 
 
 # In[ ]:

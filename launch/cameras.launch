@@ -22,8 +22,8 @@
     <node name="cameras" pkg="vision" type="cameras.py" output="screen" />
 
 
-	 <node pkg="rosbag" type="record" name="rosbag_record" 
-		   args="record -o /tmp/vision_bag /usb_cam_0/image_raw /usb_cam_1/image_raw"/>
+	<!-- <node pkg="rosbag" type="record" name="rosbag_record" 
+		   args="record -o /tmp/vision_bag /usb_cam_0/image_raw /usb_cam_1/image_raw"/> -->
 
 
 </launch>
