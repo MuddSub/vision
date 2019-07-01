@@ -39,8 +39,13 @@ def open(name, path1):
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
+<<<<<<< HEAD
+        path0 = "/Users/rongk/Downloads/visionCode/Vision/bins/"
+    path2 = ".jpg"
+=======
         path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
     path2 = ".png"
+>>>>>>> 4d50d2269d8c248bfa8e869f8a22640ccb8f167c
     path = path0+str(path1)+path2
     img = cv2.imread(path)
     return img
