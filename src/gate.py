@@ -476,10 +476,10 @@ class Gate:
             else:
                 return out, lineLocs[0],lineLocs[1],lineLocs[2], 2
 
-def main():
-    a = Gate()
-    img = a.openFile('d','Untitled')
-    print(a.findBars(img))
+#def main():
+#    a = Gate()
+#    img = a.openFile('d','Untitled')
+#    print(a.findBars(img))
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+#    main()
