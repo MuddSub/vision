@@ -221,10 +221,13 @@ class Gate:
                     lineLocs==tmp
                     numDetected = 3
                 else:
+                    lineLocs = [tmp[0],tmp[2]]
                     numDetected = 2
 
         else:
-            return lineLocs,3
+            lineLocs = np.sort(lineLocs)
+            return lineLocs,2
+        
         if graph:
             plt.plot(csums)
             for i in range(len(lineLocs)):
