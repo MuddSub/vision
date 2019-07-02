@@ -16,7 +16,7 @@ class Gate:
     def openFile(self, name, path1):
         #"/Users/rongk/Downloads/test.jpg"):
         if name == "d":
-            path0 = "/home/dhyang/Desktop/Vision/Vision/"
+            path0 = "/home/dhyang/Desktop/Vision/vision/"
             #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
 
         #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
@@ -218,7 +218,7 @@ class Gate:
             r3 = tmp[2]-tmp[0]
             if r3 > image.shape[1]/2:
                 if max(r1,r2)/min(r1,r2) < 2:
-                    lineLocs==tmp
+                    lineLocs=tmp
                     numDetected = 3
                 else:
                     lineLocs = [tmp[0],tmp[2]]
@@ -227,7 +227,7 @@ class Gate:
         else:
             lineLocs = np.sort(lineLocs)
             return lineLocs,2
-        
+
         if graph:
             plt.plot(csums)
             for i in range(len(lineLocs)):
@@ -280,7 +280,7 @@ class Gate:
         norm = 0
         center = 0
         if len(lineLocs)!=2:
-            return
+            return original
         for k in range(len(lineLocs)):
             center = center + (50000-lineLocs[1])*lineLocs[0]
             norm = norm + (50000-lineLocs[1])
@@ -456,12 +456,12 @@ class Gate:
 
 
         out = self.plotLines(lineLocs, out)
-        #cv2.imshow("original",origin)
-        #cv2.imshow("alpha", segmented)
-        #cv2.imshow("binarization", newImg1)
-        #cv2.imshow("result",out)
-        #cv2.waitKey(0)
-        #cv2.destroyAllWindows()
+        cv2.imshow("original",origin)
+        cv2.imshow("alpha", segmented)
+        cv2.imshow("binarization", newImg1)
+        cv2.imshow("result",out)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
 
         if len(lineLocs)==0:
             return out, -1,-1,-1,0
@@ -476,10 +476,10 @@ class Gate:
             else:
                 return out, lineLocs[0],lineLocs[1],lineLocs[2], 2
 
-#def main():
-#    a = Gate()
-#    img = a.openFile('d','testImg')
-#    print(a.findBars(img))
+def main():
+    a = Gate()
+    img = a.openFile('d','Untitled')
+    print(a.findBars(img))
 
-#if __name__ == '__main__':
-#    main()
+if __name__ == '__main__':
+    main()
