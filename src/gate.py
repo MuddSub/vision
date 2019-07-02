@@ -221,7 +221,7 @@ class Gate:
                     lineLocs=tmp
                     numDetected = 3
                 else:
-                    lineLocs = [tmp[0],tmp[2]]
+                    lineLocs = np.sort(lineLocs)
                     numDetected = 2
 
         else:
