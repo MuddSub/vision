@@ -2,7 +2,7 @@
 from __future__ import print_function
 
 import roslib
-roslib.load_manifest('Vision')
+roslib.load_manifest('vision')
 import sys
 import rospy
 import cv2
@@ -14,6 +14,8 @@ from gate import Gate
 class Cameras:
 	
 	def __init__(self):
+		rospy.init_node('Cameras', anonymous=True)
+
 		self.cameraMap = {'down': None, 'front': None}
 		self.cvImage0 = None
 		self.cvImage1 = None
@@ -21,10 +23,12 @@ class Cameras:
 		self.image0Sub = rospy.Subscriber("usb_cam_0/image_raw", Image, self.callback0)
 		self.image1Sub = rospy.Subscriber("usb_cam_1/image_raw", Image, self.callback1)
 
+		self.imagePub = rospy.Publisher("image_out", Image,queue_size=1)
+
 		self.loadCameras()
 		
-		rospy.init_node('Cameras', anonymous=True)
-
+		self.cam0Ready = False
+		self.cam1Ready = False
 
 	def loadCameras(self):
 		#load camera names from /dev/video[n]
@@ -41,11 +45,11 @@ class Cameras:
 			
 		if(f0.read(1) == 'U'):
 			#0 corresponds to /dev/video0, 1 to /dev/video1
-			self.cameraMap['down'] = 1
-			self.cameraMap['front'] = 0
-		else:
+			self.cameraMap['down'] = 0
 			self.cameraMap['front'] = 1
-			self.cameraMap['down'] = 0		
+		else:
+			self.cameraMap['front'] = 0
+			self.cameraMap['down'] = 1	
 		
 	
 	def getFrame(self, camera):
@@ -66,6 +70,7 @@ class Cameras:
 		return self.getFrame('down')
 		
 	def callback0(self, data):
+		self.cam0Ready = True
 		try:
 			cvImage = self.bridge.imgmsg_to_cv2(data, "bgr8")
 		except CvBridgeError as e:
@@ -73,6 +78,8 @@ class Cameras:
 		self.cvImage0 = cvImage
 
 	def callback1(self, data):
+		self.cam1Ready = True
+
 		try:
 			cvImage = self.bridge.imgmsg_to_cv2(data, "bgr8")
 		except CvBridgeError as e:
@@ -80,17 +87,25 @@ class Cameras:
 		self.cvImage1 = cvImage
 
 def main(args):
+	rospy.init_node('Cameras', anonymous=True)
+
 	cams = Cameras()
 	gate = Gate()
-	rospy.init_node('Cameras', anonymous=True)
+
 	rate = rospy.Rate(30)
 	try:
 		while not rospy.is_shutdown():
-			img = cams.getDownFrame()
-			gate.findBars(img)
-			cv2.imshow("Bars", img)
-			cv2.waitKey(0)
-			rate.sleep()
+			if(cams.cam0Ready and cams.cam1Ready):
+				img = cams.getFrontFrame()
+				print("IMG", img)
+				gate.findBars(img)
+
+				try:
+					cams.imagePub.publish(cams.bridge.cv2_to_imgmsg(img, "bgr8"))
+				except Exception as e:
+					print("HERE")
+					print(e)
+				
 	except KeyboardInterrupt:
 		print("Shutting down")
 	cv2.destroyAllWindows()
