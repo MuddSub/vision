@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from numpy import array
 import copy
-
+import rospy
 
 # In[200]:
 
@@ -33,6 +33,7 @@ class ParticleFilter():
         self.i_to_angle = 360/angleAmount
     
     def resetWeights(self):
+	rospy.logwarn("RESET WEIGHTS")
         self.particleMat = [ 1 for i in range(self.particles) ]
         
     def addTask(self):
@@ -83,7 +84,8 @@ class ParticleFilter():
         max_x = angles[array(self.particleMat).argmax()] 
         stDev = np.std(np.array(self.particleMat), axis = 0)
         confidence = self.particleMat[(int)(max_x/self.i_to_angle)]
-        print("MAX_X", max_x)
+        print("PIXEL_POS: ", max_x)
+	print("CONFIDENCE: ",confidence)
         if max_x > 180:
 			max_x = max_x - 360
         return max_x, confidence

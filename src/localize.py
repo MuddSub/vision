@@ -34,6 +34,8 @@ class Localize:
 		
 		self.buoyPub = rospy.Publisher("buoyState", buoy, queue_size=1)
 		self.gatePub = rospy.Publisher("gateState", gate, queue_size=1)
+		
+		self.gateResetSub = rospy.Subscriber("gateReset", Bool, self.gateResetCB)
 
 	
 	#buoyPos = [heave, yaw]
@@ -58,6 +60,7 @@ class Localize:
 		if(gatePos[2] is not None):
 				self.gateRight.update(gatePos[2])
 		
+		
 		msg = gate()
 		msg.left, msg.leftConf = self.gateLeft.getPredictedState()
 		msg.right, msg.rightConf = self.gateRight.getPredictedState()
@@ -65,6 +68,11 @@ class Localize:
 		print(msg.left)
 		self.gatePub.publish(msg)
 		
+	def gateResetCB(self, data):
+		rospy.loginfo("Gate reset CB")
+		self.gateLeft.resetWeights()
+		self.gateDiv.resetWeights()
+		self.gateRight.resetWeights()
 	
 		
 
