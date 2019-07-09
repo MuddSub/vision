@@ -16,7 +16,7 @@ class Gate:
     def openFile(self, name, path1):
         #"/Users/rongk/Downloads/test.jpg"):
         if name == "d":
-            path0 = "/home/dhyang/Desktop/Vision/vision/"
+            path0 = "/home/dhyang/Desktop/Vision/vision/Images/"
             #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
 
         #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
@@ -158,9 +158,9 @@ class Gate:
         return thresh1
 
     def rotateGetLines(self,image,graph):
-        lb = -14
-        ub = 14
-        delta =2
+        lb = -20
+        ub = 20
+        delta =2.5
 
         start = time.time()
         numDetected = -1
@@ -456,6 +456,9 @@ class Gate:
 
 
         out = self.plotLines(lineLocs, out)
+        segmented = cv2.resize(segmented,(500,500))
+        out = cv2.resize(out,(500,500))
+        #newImg1 = cv2.resize(newImg1,(500,500))
         cv2.imshow("original",origin)
         cv2.imshow("alpha", segmented)
         cv2.imshow("binarization", newImg1)
@@ -476,10 +479,10 @@ class Gate:
             else:
                 return out, lineLocs[0],lineLocs[1],lineLocs[2], 2
 
-#def main():
-#    a = Gate()
-#    img = a.openFile('d','Untitled')
-#    print(a.findBars(img))
+def main():
+    a = Gate()
+    img = a.openFile('d','hello')
+    print(a.findBars(img))
 
-#if __name__ == '__main__':
-#    main()
+if __name__ == '__main__':
+    main()
