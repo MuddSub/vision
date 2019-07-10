@@ -44,7 +44,7 @@ def open(name, path1):
     path = path0+str(path1)+path2
     img = cv2.imread(path)
     print(path)
-    img = cv2.resize(img, (500,500))
+    img = cv2.resize(img, (0,0), fx=0.5, fy=0.5)
     return img
 
 
@@ -183,9 +183,9 @@ def segment(image):
 
 
 def adjust(image):
-    alphah = 0.5
-    alphas = 0.5
-    alphav = 0.5
+    alphah = 5
+    alphas = 5
+    alphav = 5
 
     h, s, v = cv2.split(image)
     new_image = np.zeros(image.shape, image.dtype)
@@ -207,35 +207,10 @@ def adjust(image):
     new_image = cv2.merge([h1, s1, v1])
     return new_image
 
-def adjust1(image):
-    alphah = 2
-    alphas = 2
-    alphav = 2
-
-    h, s, v = cv2.split(image)
-    new_image = np.zeros(image.shape, image.dtype)
-    h1, s1, v1 = cv2.split(new_image)
-
-    maximum = h.mean()
-    #maximum = h.min()
-    beta = -alphah*maximum  # Simple brightness control
-    h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
-
-    maximum = s.mean()
-    beta = -alphas*maximum  # Simple brightness control
-    s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
-
-    maximum = v.mean()
-    beta = -alphav*maximum  # Simple brightness control
-    v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
-
-    new_image = cv2.merge([h1, s1, v1])
-    return new_image
-
 def adjustYUV(image):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
-    alphah = 1
-    alphas = 1
+    alphah = 2
+    alphas = 0
     alphav = 0
 
     h, s, v = cv2.split(image)
@@ -244,7 +219,7 @@ def adjustYUV(image):
 
     maximum = h.mean()
     #maximum = h.min()
-    beta = 127-alphah*maximum  # Simple brightness control
+    beta = -alphah*maximum  # Simple brightness control
     h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
     maximum = s.mean()
@@ -259,55 +234,15 @@ def adjustYUV(image):
     new_image = cv2.cvtColor(new_image, cv2.COLOR_YUV2BGR)
     return new_image
 
-def adjustHSV(image):
-    alphah = 0
-    alphas = 10
-    alphav = 10
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-    h, s, v = cv2.split(image)
-    new_image = np.zeros(image.shape, image.dtype)
-    h1, s1, v1 = cv2.split(new_image)
-
-    maximum = h.mean()
-    #maximum = h.min()
-    beta = 127-alphah*maximum  # Simple brightness control
-    h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
-
-    maximum = s.mean()
-    beta = -alphas*maximum  # Simple brightness control
-    s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
-
-    maximum = v.mean()
-    beta = -alphav*maximum  # Simple brightness control
-    v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
-    new_image = cv2.cvtColor(image,cv2.COLOR_HSV2BGR)
-
-    new_image = cv2.merge([h, s1, v1])
-    return new_image
-
 def boundingRectangle(original,thresh):
     contours,h = cv2.findContours(thresh,1,2)
-    leeway = 20
-    cntsSorted = sorted(contours, key=lambda x: cv2.contourArea(x))
-    for cnt in np.flip(cntsSorted):
+    for cnt in contours:
         rect = cv2.minAreaRect(cnt)
         box = cv2.boxPoints(rect)
         box = np.int0(box)
         area = cv2.contourArea(cnt)
-        if area > 10000:
-            continue
-        cv2.drawContours(original,[box],0,(0,0,255))
-        center = int((box[0][0]+box[2][0])/2)
-        try:
-            thresh[:,center-leeway:center]=255
-        except:
-            thresh[:,0:center]=0
-        try:
-            thresh[:,center:center+leeway]=255
-        except:
-            thresh[:,center:]=0
-        print(box[2][0])
-        break
+        if area > 100:
+            cv2.drawContours(original,[box],0,(0,0,255))
 
 def fill(original,thresh):
     contours,h = cv2.findContours(thresh,1,2)
@@ -351,25 +286,21 @@ def mainImg(img):
 
     #original = reflect(original)
     show2(original, "filtered", False)
-    segmented = adjust(original)
-    segmented = adjustYUV(segmented)
-    #segmented = adjust(segmented)
-    segmented = adjustHSV(segmented)
-    segmented = adjust1(segmented)
+    segmented = adjustYUV(original)
+    segmented = adjust(segmented)
+
     #get mask
     mask = getMask(segmented)
-    cv2.imshow("mask",mask)
 
     #binarization
     newImg1 = cv2.cvtColor(segmented, cv2.COLOR_BGR2GRAY)
 
     newImg1 = binarization(newImg1)
-    #newImg1 = cv2.bitwise_not(mask)
+    newImg1 = cv2.bitwise_not(mask)
     #newImg1 = floodfill(newImg1)
-    #newImg1 = fill(o1,newImg1)
-    #newImg1 = cv2.cvtColor(newImg1, cv2.COLOR_BGR2GRAY)
-    boundingRectangle(o1,newImg1)
-    boundingRectangle(o1,newImg1)
+    newImg1 = fill(o1,newImg1)
+    newImg1 = cv2.cvtColor(newImg1, cv2.COLOR_BGR2GRAY)
+    #boundingRectangle(o1,newImg1)
     segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
     cv2.imshow("alpha", segmented)
     cv2.imshow("binarization", newImg1)
