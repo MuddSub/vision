@@ -287,14 +287,14 @@ def adjustHSV(image):
 
 def boundingRectangle(original,thresh):
     contours,h = cv2.findContours(thresh,1,2)
-    leeway = 20
+    leeway = 50
     cntsSorted = sorted(contours, key=lambda x: cv2.contourArea(x))
     for cnt in np.flip(cntsSorted):
         rect = cv2.minAreaRect(cnt)
         box = cv2.boxPoints(rect)
         box = np.int0(box)
         area = cv2.contourArea(cnt)
-        if area > 10000:
+        if area > 10000 or area < 500:
             continue
         cv2.drawContours(original,[box],0,(0,0,255))
         center = int((box[0][0]+box[2][0])/2)
