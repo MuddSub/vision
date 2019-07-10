@@ -35,14 +35,16 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/Vision/gate1/"
+        path0 = "/home/dhyang/Desktop/Vision/vision/Images/buoy/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
-        path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
+        path0 = "/Users/rongk/Downloads/visionCode/Vision/bins/"
     path2 = ".jpg"
     path = path0+str(path1)+path2
     img = cv2.imread(path)
+    print(path)
+    img = cv2.resize(img, (0,0), fx=0.5, fy=0.5)
     return img
 
 
@@ -111,36 +113,29 @@ def FsimpleColorBalance(img, percent):
     for i in range(chnls):
         # find the low and high precentile values based on input percentile
         flat = np.array(channels[i].flat)
-        print("--- %s seconds ---" % (time.time() - start_time))
         flat.sort()
-        print("--- %s seconds ---" % (time.time() - start_time))
         lowVal = flat[int(np.floor(len(flat)*halfPercent))]
 
         topVal = flat[int(np.ceil(len(flat)*(1-halfPercent)))]
         channels[i] = np.where(channels[i] > lowVal, channels[i], lowVal)
         channels[i] = np.where(channels[i] < topVal, channels[i], topVal)
-        print("--- %s seconds ---" % (time.time() - start_time))
         channels[i] = cv2.normalize(
             channels[i], channels[i], 0.0, 255.0/2, cv2.NORM_MINMAX)
-        print("--- %s seconds ---" % (time.time() - start_time))
         channels[i] = np.float32(channels[i])
-        print("=======================================")
 
     result = cv2.merge(channels)
-    print("--- %s seconds ---" % (time.time() - start_time))
     return result
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
-def binarization(img):
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    ret, thresh1 = cv2.threshold(gray, 245, 255, cv2.THRESH_BINARY_INV)
+def binarization(gray):
+    ret, thresh1 = cv2.threshold(gray,200, 255, cv2.THRESH_BINARY)
     thresh1 = cv2.bitwise_not(thresh1)
     return thresh1
 
 
-def getLines(newImg,graph):
+def getLines(newImg):
     csums = np.sum(newImg, axis=0)
     csums1 = copy.deepcopy(csums)
     lineLocs = []
@@ -154,7 +149,7 @@ def getLines(newImg,graph):
         if rhs >= newImg.shape[1]:
             rhs = newImg.shape[1]-1
         csums[lhs:rhs] = 1000000
-    if graph:
+    if True:
         plt.plot(csums1)
         for i in range(len(lineLocs)):
             plt.axvline(x=lineLocs[i][0], color='r', linewidth=1)
@@ -188,8 +183,8 @@ def segment(image):
 
 
 def adjust(image):
-    alphah = 3
-    alphas = 3
+    alphah = 5
+    alphas = 5
     alphav = 5
 
     h, s, v = cv2.split(image)
@@ -212,7 +207,72 @@ def adjust(image):
     new_image = cv2.merge([h1, s1, v1])
     return new_image
 
+def adjustYUV(image):
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
+    alphah = 1
+    alphas = 0
+    alphav = 0
+
+    h, s, v = cv2.split(image)
+    new_image = np.zeros(image.shape, image.dtype)
+    h1, s1, v1 = cv2.split(new_image)
+
+    maximum = h.mean()
+    #maximum = h.min()
+    beta = -alphah*maximum  # Simple brightness control
+    h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
+
+    maximum = s.mean()
+    beta = 127-alphas*maximum  # Simple brightness control
+    s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
+
+    maximum = v.mean()
+    beta = 127-alphav*maximum  # Simple brightness control
+    v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
+
+    new_image = cv2.merge([h1, s1, v1])
+    new_image = cv2.cvtColor(new_image, cv2.COLOR_YUV2BGR)
+    return new_image
+
+def boundingRectangle(original,thresh):
+    contours,h = cv2.findContours(thresh,1,2)
+    for cnt in contours:
+        rect = cv2.minAreaRect(cnt)
+        box = cv2.boxPoints(rect)
+        box = np.int0(box)
+        area = cv2.contourArea(cnt)
+        if area > 100:
+            cv2.drawContours(original,[box],0,(0,0,255))
+
+def fill(original,thresh):
+    contours,h = cv2.findContours(thresh,1,2)
+    img = np.ones([original.shape[0],original.shape[1],3], dtype=np.uint8)*255
+    for cnt in contours:
+        rect = cv2.minAreaRect(cnt)
+        box = cv2.boxPoints(rect)
+        box = np.int0(box)
+        area = cv2.contourArea(cnt)
+        if area > 100 and area < 10000:
+            cv2.drawContours(img,[box],0,(0,0,0),thickness=cv2.FILLED)
+    return img
 ############################################
+
+
+def getMask(img):
+    lower_green = np.array([0,0,0])
+    upper_green = np.array([255,220,255])
+    mask = cv2.inRange(img, lower_green, upper_green)
+    mask = cv2.bitwise_not(mask)
+    return mask
+
+def floodfill(img):
+    im_floodfill = img.copy()
+    h, w = img.shape[:2]
+    mask = np.zeros((h+2, w+2), np.uint8)
+    cv2.floodFill(im_floodfill, mask, (0,0), 255)
+    im_floodfill_inv = cv2.bitwise_not(im_floodfill)
+    im_out = img | im_floodfill_inv
+    return im_out
 
 
 def mainImg(img):
@@ -221,33 +281,32 @@ def mainImg(img):
     origin = copy.deepcopy(original)
 
     o1 = original
-    print("--- %s seconds ---" % (time.time() - start_time))
 
     #cv2.imshow("original", origin)
-    original = reflect(original)
-    print("--- %s seconds ---" % (time.time() - start_time))
 
-    segmented = segment(original)
-
+    #original = reflect(original)
+    show2(original, "filtered", False)
+    segmented = adjustYUV(original)
     segmented = adjust(segmented)
 
-    # Higher discernability = lower distinguishing power
+    #get mask
+    mask = getMask(segmented)
+    cv2.imshow("mask",mask)
 
-    discernability = 31
+    #binarization
+    newImg1 = cv2.cvtColor(segmented, cv2.COLOR_BGR2GRAY)
 
-    newImg = cv2.medianBlur(segmented, discernability)
-    newImg = 255-cv2.absdiff(segmented, newImg)
-
-    newImg1 = binarization(newImg)
-    print("--- %s seconds ---" % (time.time() - start_time))
-
-    lineLocs, certainty = getLines(newImg1,False)
-    o1 = plotLines(lineLocs, o1)
-    print("--- %s seconds ---" % (time.time() - start_time))
-
+    newImg1 = binarization(newImg1)
+    newImg1 = cv2.bitwise_not(mask)
+    #newImg1 = floodfill(newImg1)
+    #newImg1 = fill(o1,newImg1)
+    #newImg1 = cv2.cvtColor(newImg1, cv2.COLOR_BGR2GRAY)
+    boundingRectangle(o1,newImg1)
+    segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
     cv2.imshow("alpha", segmented)
     cv2.imshow("binarization", newImg1)
-    #cv2.imshow("background subtraction", newImg)
+    #cv2.imshow("background subtraction", redSpace)
+    end_time = time.time()
     cv2.imshow("result", o1)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
@@ -266,3 +325,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
