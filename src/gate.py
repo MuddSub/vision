@@ -42,39 +42,6 @@ class Gate:
     # main program removebackscatter
     #######################################
 
-    def detectNoteheadBlobs(self,img, minarea, maxarea):
-
-        # define blob detector
-        params = cv2.SimpleBlobDetector_Params()
-
-        # Change thresholds
-        # params.minThreshold = 100;
-        # params.maxThreshold = 200;
-
-        # Filter by Area
-        # params.filterByArea = True
-        params.minArea = minarea
-        params.maxArea = maxarea
-
-        # Filter by Circularity
-        # params.filterByCircularity = True
-        # params.minCircularity = 0.1
-
-        # Filter by Convexity
-        # params.filterByConvexity = True
-        # params.minConvexity = 0.87
-
-        # Filter by Inertia
-        # params.filterByInertia = True
-        # params.minInertiaRatio = 0.01
-
-        # Create a detector with the parameters
-        detector = cv2.SimpleBlobDetector_create(params)
-
-        keypoints = detector.detect(img)
-        im_with_keypoints = cv2.drawKeypoints(np.array(img), keypoints, np.array([]), (0,0,255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-
-        return keypoints, im_with_keypoints
 
     def reflect(self, image, blkSize=10*10, patchSize=8, lamb=10, gamma=1, r=10, eps=1e-6, level=5):
         start_time = time.time()
