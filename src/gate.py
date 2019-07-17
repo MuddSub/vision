@@ -23,7 +23,7 @@ class Gate:
         #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
         else:
             path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
-        path = path0+str(path1)
+        path = path0+path1
         if os.path.isfile(path+'.jpg'):
             img = cv2.imread(path+'.jpg')
         else:
@@ -257,7 +257,7 @@ class Gate:
         pred = np.argmax(csums)
         c1= newImg[:,pred]
         m= (int)(np.sum(c1)/255)
-        if m<=20:
+        if m<=35:
             return -1
         lhs = pred-leeway
         rhs = pred+leeway
@@ -481,7 +481,7 @@ class Gate:
 
 def main():
     a = Gate()
-    img = a.openFile('d','hello')
+    img = a.openFile('d',sys.argv[1])
     print(a.findBars(img))
 
 if __name__ == '__main__':
