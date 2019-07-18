@@ -258,7 +258,7 @@ class Gate:
         pred = np.argmax(csums)
         c1= newImg[:,pred]
         m= (int)(np.sum(c1)/255)
-        if m<=20:
+        if m<=35:
             return -1
         lhs = pred-leeway
         rhs = pred+leeway

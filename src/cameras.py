@@ -98,7 +98,10 @@ def main(args):
 	loc = Localize()
 	rate = rospy.Rate(30)
 	try:
-		while not rospy.is_shutdown():
+		while True:
+			if rospy.is_shutdown():
+				rospy.logerr("FUCK")
+				break
 			if(cams.cam0Ready and cams.cam1Ready):
 				img = cams.getFrontFrame()
 				if(img is None):
@@ -109,13 +112,14 @@ def main(args):
 				try:
 					cams.imagePub.publish(cams.bridge.cv2_to_imgmsg(img, "bgr8"))
 				except Exception as e:
-					print("HERE")
-					print(e)
-				
+					rospy.logerr("EXCEPTION IN CAMERAS: ")
+					rospy.logerr(e)
+
+					
 				
 	except KeyboardInterrupt:
-		print("Shutting down")
+		rospy.logerr("Shutting down")
 	cv2.destroyAllWindows()
-
+	rospy.logerr("KILL")
 if __name__==("__main__"):
 	main(sys.argv)
