@@ -307,8 +307,11 @@ class Buoy:
                 thresh[:,center:center+leeway]=255
             except:
                 thresh[:,center:]=0
-            print(box[2][0])
+            xcoord = center
+            ycoord = int((box[0][1]+box[2][1])/2)
+            return xcoord,ycoord
             break
+        return -1,-1
 
     def fill(self,original,thresh):
         contours,h = cv2.findContours(thresh,1,2)
@@ -371,8 +374,16 @@ class Buoy:
         #newImg1 = cv2.cvtColor(newImg1, cv2.COLOR_BGR2GRAY)
 
         cv2.imshow("binarization", newImg1)
-        self.boundingRectangle(o1,newImg1)
-        self.boundingRectangle(o1,newImg1)
+        boxList = []
+
+        x1,y1 = self.boundingRectangle(o1,newImg1)
+        x2,y2 = self.boundingRectangle(o1,newImg1)
+        if x1 != -1:
+            boxList.append([x1,y1])
+        else:
+            return []
+        if x2!=-1:
+            boxList.append([x2,y2])
         self.segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
         cv2.imshow("alpha", segmented)
         #cv2.imshow("background subtraction", redSpace)
@@ -380,8 +391,8 @@ class Buoy:
         cv2.imshow("result", o1)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
+        return boxList
 
-        return segmented
 ####################################################
 #########################################################
 #####################################################
@@ -390,8 +401,8 @@ class Buoy:
 def main():
     a = Buoy()
     img = a.openFile(sys.argv[1], int(sys.argv[2]))
-    a.mainImg(img)
-
+    boxes = a.mainImg(img)
+    print(boxes)
 
 if __name__ == "__main__":
     main()
