@@ -16,7 +16,7 @@ class Gate:
     def openFile(self, name, path1):
         #"/Users/rongk/Downloads/test.jpg"):
         if name == "d":
-            path0 = "/home/dhyang/Desktop/Vision/vision/Images/"
+            path0 = "/home/dhyang/Desktop/Vision/vision/Images/Neural_Net/Train/"
             #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
 
         #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
@@ -24,6 +24,7 @@ class Gate:
         else:
             path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
         path = path0+path1
+        print(path)
         if os.path.isfile(path+'.jpg'):
             img = cv2.imread(path+'.jpg')
         else:
@@ -266,9 +267,9 @@ class Gate:
 
 
     def adjust(self,image):
-        alphah = 1
-        alphas = 1
-        alphav = 1
+        alphah = 2
+        alphas = 2
+        alphav = 2
 
         h, s, v = cv2.split(image)
         new_image = np.zeros(image.shape, image.dtype)
