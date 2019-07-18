@@ -267,7 +267,7 @@ class Buoy:
 
     def adjustHSV(self,image):
         alphah = 0
-        alphas = 2
+        alphas = 4
         alphav = 2
         image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         h, s, v = cv2.split(image)
@@ -300,7 +300,7 @@ class Buoy:
             box = cv2.boxPoints(rect)
             box = np.int0(box)
             area = cv2.contourArea(cnt)
-            if area > 10000 or area < 500:
+            if area > 10000 or area < 400:
                 continue
             cv2.drawContours(original,[box],0,(0,0,255))
             center = int((box[0][0]+box[2][0])/2)
@@ -334,7 +334,7 @@ class Buoy:
 
     def getMask(self,img):
         lower_green = np.array([0,0,0])
-        upper_green = np.array([255,255,250])
+        upper_green = np.array([255,255,200])
         mask = cv2.inRange(img, lower_green, upper_green)
         mask = cv2.bitwise_not(mask)
         return mask
