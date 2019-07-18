@@ -4,12 +4,14 @@ from __future__ import print_function
 import roslib
 roslib.load_manifest('vision')
 import sys
+sys.path.append("./localization")
 import rospy
 import cv2
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 from gate import Gate
+from localize import Localize
 
 class Cameras:
 	
@@ -71,6 +73,7 @@ class Cameras:
 		
 	def callback0(self, data):
 		self.cam0Ready = True
+
 		try:
 			cvImage = self.bridge.imgmsg_to_cv2(data, "bgr8")
 		except CvBridgeError as e:
@@ -86,29 +89,37 @@ class Cameras:
 			print(e)
 		self.cvImage1 = cvImage
 
+
 def main(args):
 	rospy.init_node('Cameras', anonymous=True)
 
 	cams = Cameras()
 	gate = Gate()
-
+	loc = Localize()
 	rate = rospy.Rate(30)
 	try:
-		while not rospy.is_shutdown():
+		while True:
+			if rospy.is_shutdown():
+				rospy.logerr("FUCK")
+				break
 			if(cams.cam0Ready and cams.cam1Ready):
 				img = cams.getFrontFrame()
-				print("IMG", img)
-				gate.findBars(img)
-
+				if(img is None):
+					rospy.logwarn("none image recieved")
+					continue
+				bars = gate.findBars(img)
+				loc.updateGate([bars[1], bars[2], bars[3]])
 				try:
 					cams.imagePub.publish(cams.bridge.cv2_to_imgmsg(img, "bgr8"))
 				except Exception as e:
-					print("HERE")
-					print(e)
+					rospy.logerr("EXCEPTION IN CAMERAS: ")
+					rospy.logerr(e)
+
+					
 				
 	except KeyboardInterrupt:
-		print("Shutting down")
+		rospy.logerr("Shutting down")
 	cv2.destroyAllWindows()
-
+	rospy.logerr("KILL")
 if __name__==("__main__"):
 	main(sys.argv)

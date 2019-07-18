@@ -16,6 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospack
   rospy
   std_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -73,10 +74,10 @@ add_message_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+generate_messages(
+   DEPENDENCIES
+   std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -110,8 +111,8 @@ add_message_files(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES vision
-#  CATKIN_DEPENDS OpenCV cv_bridge image_transport roscpp roslib rospack rospy std_msgs
-#  DEPENDS system_lib
+  CATKIN_DEPENDS cv_bridge image_transport roscpp roslib rospack rospy std_msgs message_runtime
+  DEPENDS system_lib
 )
 
 ###########
@@ -202,3 +203,13 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+add_executable(dummy src/dummy.cpp
+)
+
+
+target_link_libraries(dummy ${catkin_LIBRARIES})
+add_dependencies(dummy
+  ${${PROJECT_NAME}_EXPORTED_TARGETS}
+  msg_pkg_generate_messages_cpp
+  
+)

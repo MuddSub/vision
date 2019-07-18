@@ -40,7 +40,9 @@ class ParticleFilter():
     
     def update(self,newAngle,stdev=50,pixelPos=Flase):
         '''
-        data will be the input data in angles, most likely one single input and error in angle. 
+        data will be the input data in angles, most likely one s
+    def resetWeights(self):
+        self.particleMat = [ 1 for i in range(self.particles) ]ingle input and error in angle. 
         angle might need adjustment to fit our coordinates.
         error might need treatment to become standard deviation
         '''
