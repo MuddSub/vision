@@ -267,8 +267,8 @@ class Buoy:
 
     def adjustHSV(self,image):
         alphah = 0
-        alphas = 3
-        alphav = 3
+        alphas = 2
+        alphav = 2
         image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         h, s, v = cv2.split(image)
         new_image = np.zeros(image.shape, image.dtype)
@@ -373,11 +373,11 @@ class Buoy:
         newImg1 = r
         #newImg1 = cv2.cvtColor(segmented, cv2.COLOR_BGR2GRAY)
 
-        cv2.imshow("before",newImg1)
+        #cv2.imshow("before",newImg1)
         newImg1 = self.binarization(newImg1)
         newImg1 = cv2.morphologyEx(newImg1, cv2.MORPH_OPEN, np.ones((5,5)))
 
-        cv2.imshow("after",newImg1)
+        #cv2.imshow("after",newImg1)
         newImg1 = cv2.bitwise_not(mask)
 
         #newImg1 = floodfill(newImg1)
