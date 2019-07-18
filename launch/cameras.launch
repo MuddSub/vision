@@ -19,7 +19,7 @@
         <param name="io_method" value="mmap"/>
     </node>
 
-    <node name="cameras" pkg="vision" type="cameras.py" output="screen" />
+    <node name="cameras" pkg="vision" type="cameras.py" output="log" />
 
 <!--    <node pkg="rosbag" type="record" name="rosbag_record" 
 		   args="record -o /tmp/vision_bag  /image_out" /> --> 
