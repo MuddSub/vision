@@ -131,9 +131,12 @@ class Buoy:
 
 
     def binarization(self,gray):
-        ret, thresh1 = cv2.threshold(gray,200, 255, cv2.THRESH_BINARY)
-        thresh1 = cv2.bitwise_not(thresh1)
-        return thresh1
+        ret, thresh1 = cv2.threshold(gray,255, 255, cv2.THRESH_BINARY)
+        #cv2.imshow("skjfhsj",gray)
+        ret2,th2 = cv2.threshold(gray,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+        #th2 = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,11,-10)
+        th2 = cv2.bitwise_not(th2)
+        return th2
 
 
     def getLines(self,newImg):
@@ -184,7 +187,7 @@ class Buoy:
 
 
     def adjust(self,image):
-        alphah = 0.5
+        alphah = 0
         alphas = 0.5
         alphav = 0.5
 
@@ -209,9 +212,9 @@ class Buoy:
         return new_image
 
     def adjust1(self,image):
-        alphah = 2
-        alphas = 2
-        alphav = 2
+        alphah = 5
+        alphas = 5
+        alphav = 5
 
         h, s, v = cv2.split(image)
         new_image = np.zeros(image.shape, image.dtype)
@@ -236,8 +239,8 @@ class Buoy:
     def adjustYUV(self,image):
         image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
         alphah = 1
-        alphas = 1
-        alphav = 0
+        alphas = 0.15
+        alphav = 0.15
 
         h, s, v = cv2.split(image)
         new_image = np.zeros(image.shape, image.dtype)
@@ -262,8 +265,8 @@ class Buoy:
 
     def adjustHSV(self,image):
         alphah = 0
-        alphas = 10
-        alphav = 10
+        alphas = 3
+        alphav = 3
         image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         h, s, v = cv2.split(image)
         new_image = np.zeros(image.shape, image.dtype)
@@ -275,11 +278,11 @@ class Buoy:
         h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
         maximum = s.mean()
-        beta = -alphas*maximum  # Simple brightness control
+        beta = 127-alphas*maximum  # Simple brightness control
         s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
         maximum = v.mean()
-        beta = -alphav*maximum  # Simple brightness control
+        beta = 127-alphav*maximum  # Simple brightness control
         v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
         new_image = cv2.cvtColor(image,cv2.COLOR_HSV2BGR)
 
@@ -329,7 +332,7 @@ class Buoy:
 
     def getMask(self,img):
         lower_green = np.array([0,0,0])
-        upper_green = np.array([255,220,255])
+        upper_green = np.array([255,255,250])
         mask = cv2.inRange(img, lower_green, upper_green)
         mask = cv2.bitwise_not(mask)
         return mask
@@ -362,13 +365,18 @@ class Buoy:
         #get mask
         mask = self.getMask(segmented)
         cv2.imshow("mask",mask)
-
         #binarization
+
+        b,g,r = cv2.split(segmented)
+        newImg1 = b
         newImg1 = cv2.cvtColor(segmented, cv2.COLOR_BGR2GRAY)
 
+        cv2.imshow("before",newImg1)
         newImg1 = self.binarization(newImg1)
-        newImg1 = cv2.morphologyEx(newImg1, cv2.MORPH_OPEN, np.ones((5,5)))
-        #newImg1 = cv2.bitwise_not(mask)
+        #newImg1 = cv2.morphologyEx(newImg1, cv2.MORPH_OPEN, np.ones((5,5)))
+        newImg1 = cv2.bitwise_not(mask)
+
+        cv2.imshow("after",newImg1)
         #newImg1 = floodfill(newImg1)
         #newImg1 = fill(o1,newImg1)
         #newImg1 = cv2.cvtColor(newImg1, cv2.COLOR_BGR2GRAY)
@@ -380,8 +388,6 @@ class Buoy:
         x2,y2 = self.boundingRectangle(o1,newImg1)
         if x1 != -1:
             boxList.append([x1,y1])
-        else:
-            return []
         if x2!=-1:
             boxList.append([x2,y2])
         self.segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
