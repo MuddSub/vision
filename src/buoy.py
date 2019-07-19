@@ -366,7 +366,7 @@ class Buoy:
         segmented = self.adjust1(segmented)
         #get mask
         mask = self.getMask(segmented)
-        cv2.imshow("mask",mask)
+        #cv2.imshow("mask",mask)
         #binarization
 
         b,g,r = cv2.split(segmented)
@@ -384,7 +384,7 @@ class Buoy:
         #newImg1 = fill(o1,newImg1)
         #newImg1 = cv2.cvtColor(newImg1, cv2.COLOR_BGR2GRAY)
 
-        cv2.imshow("binarization", newImg1)
+        #cv2.imshow("binarization", newImg1)
         boxList = []
 
         x1,y1 = self.boundingRectangle(o1,newImg1)
@@ -394,12 +394,12 @@ class Buoy:
         if x2!=-1:
             boxList.append([x2,y2])
         self.segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
-        cv2.imshow("alpha", segmented)
+        #cv2.imshow("alpha", segmented)
         #cv2.imshow("background subtraction", redSpace)
         end_time = time.time()
-        cv2.imshow("result", o1)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+        #cv2.imshow("result", o1)
+        #cv2.waitKey(0)
+        #cv2.destroyAllWindows()
         return boxList
 
 ####################################################
