@@ -16,6 +16,9 @@ class Buoy:
     ################################
     # helpers and driver
     ################################
+    
+    def __init__(self):
+        self.resultImg = None
 
 
     def show(self,img, msg="image", ana=True):
@@ -347,6 +350,9 @@ class Buoy:
         im_floodfill_inv = cv2.bitwise_not(im_floodfill)
         im_out = img | im_floodfill_inv
         return im_out
+    
+    def getResultImg(self):
+        return self.resultImg
 
 
     def mainImg(self,img):
@@ -397,6 +403,7 @@ class Buoy:
         #cv2.imshow("alpha", segmented)
         #cv2.imshow("background subtraction", redSpace)
         end_time = time.time()
+        self.resultImg = o1
         #cv2.imshow("result", o1)
         #cv2.waitKey(0)
         #cv2.destroyAllWindows()
