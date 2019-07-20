@@ -184,6 +184,9 @@ class Gate:
             r1 = tmp[1]-tmp[0]
             r2 = tmp[2]-tmp[1]
             r3 = tmp[2]-tmp[0]
+		
+		
+	    #CHANGE THIS LINE TO DETERMINE WHEN WE DETECT 3 GATES		
             if r3 > image.shape[1]/2:
                 if max(r1,r2)/min(r1,r2) < 2:
                     lineLocs=tmp
