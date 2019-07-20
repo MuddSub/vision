@@ -295,7 +295,7 @@ class Buoy:
         return new_image
 
     def boundingRectangle(self,original,thresh):
-        contours,h = cv2.findContours(thresh,1,2)
+        _,contours,h = cv2.findContours(thresh,1,2)
         leeway = 80
         cntsSorted = sorted(contours, key=lambda x: cv2.contourArea(x))
         for cnt in np.flip(cntsSorted):
@@ -355,7 +355,7 @@ class Buoy:
         return self.resultImg
 
 
-    def mainImg(self,img):
+    def findBuoys(self,img):
         start_time = time.time()
         original = img
         origin = copy.deepcopy(original)

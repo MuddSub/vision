@@ -114,37 +114,6 @@ class ParticleFilter():
 	    max_x = array(self.particleMat).argmax()
 	    confidence = self.particleMat[max_x]
 	    max_x = max_x - self.particles/2
-	    return max_x,confidence,sum(self.particleMat)
+	    return max_x,confidence
 		
 
-# Proposed Move Condition
-# particle.getPredictedState will return a vector of 3 values:
-#     1) Predicted angle
-#     2) Weight at angle
-#     3) Sum of weights
-#
-# We use quantity 3 to evaluate "accumulation," or whether we had enough measurements to start predicting angle data.
-#
-# Once the weight at angle is higher than, say, 120, we next use quantity 2 to calculate "certainty." I suggest, based of very crude estimate, a weight of 2.75? as a threshold of certainty.
-#
-# Our idea is to turn toward that weight, then go forward. Once the angle gets too far from origin, we reset the angle matrix.
-
-# In[201]:
-
-# def test():
-#	particle = ParticleFilter(360)
-#	for i in range(15):
-#		a=particle.update(0,50,'angle')
-#		a=particle.update(0,50,'angle')
-#
-#	a = particle.updateSubmarineAngle(-37)
-#
-#	for i in range(359):
-#		plt.polar(i/180*math.pi, particle.particleMat[i],"bo")
-#	print(particle.getPredictedState())
-
-
-# In[ ]:
-
-
-# In[ ]:
