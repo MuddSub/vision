@@ -33,11 +33,10 @@ class Cameras:
 		self.gatePub = rospy.Publisher("out_gate", Image,queue_size=1)
 		self.buoyPub = rospy.Publisher("out_buoy", Image, queue_size=1)
 
-		self.loadCameras()
-		
 		self.cam0Ready = False
 		self.cam1Ready = False
-
+		
+		self.loadCameras()
 	def loadCameras(self):
 		#load camera names from /dev/video[n]
 		try:
@@ -48,7 +47,9 @@ class Cameras:
 		try:
 			f1 = open("/sys/class/video4linux/video1/name")
 		except Exception as e:
-			print("Whoops, couldn't find camera 1!")
+			print("Whoops, couldn't find camera 1! Assuming only camera is front-facing")
+			self.cameraMap['front'] = 0
+			self.cameraMap['down'] = None
 			return
 			
 		if(f0.read(1) == 'U'):
@@ -62,10 +63,12 @@ class Cameras:
 	
 	def getFrame(self, camera):
 		try:
-			dev	= self.cameraMap[camera]
+			dev = self.cameraMap[camera]
 		except Exception as e:
 			print("Error in get frame:", e)
-			
+		if dev is None:
+			print("Tried to use None camera")
+			return
 		if(dev == 0):
 			return self.cvImage0
 		else:
@@ -79,7 +82,6 @@ class Cameras:
 		
 	def callback0(self, data):
 		self.cam0Ready = True
-
 		try:
 			cvImage = self.bridge.imgmsg_to_cv2(data, "bgr8")
 		except CvBridgeError as e:
@@ -109,7 +111,7 @@ def main(args):
 			if rospy.is_shutdown():
 				rospy.logerr("FUCK")
 				break
-			if(cams.cam0Ready and cams.cam1Ready):
+			if(cams.cam0Ready and (cams.cam1Ready or cams.cameraMap['down'] is None)):
 				img_gate = cams.getFrontFrame()
 				img_buoy = copy.deepcopy(img_gate)
 				
@@ -130,7 +132,8 @@ def main(args):
 					rospy.logerr("EXCEPTION IN CAMERAS: ")
 					rospy.logerr(e)
 
-					
+			else:
+				print("NOT READY")
 				
 	except KeyboardInterrupt:
 		rospy.logerr("Shutting down")
