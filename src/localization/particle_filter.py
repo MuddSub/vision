@@ -45,7 +45,7 @@ class ParticleFilter():
     def addTask(self):
         pass
 
-    def update(self, newAngle, stdev=50):
+    def update(self, newAngle, stdev=50, mode = 'gate'):
         '''
         data will be the input data in angles, most likely one single input and error in angle. 
         angle might need adjustment to fit our coordinates.
@@ -55,13 +55,15 @@ class ParticleFilter():
         increase prob for "angle", bc we see angle.
         '''
         if not self.pixelPos:
-            if newAngle <= 319:
-                newAngle = -math.degrees(np.arctan((319.5-newAngle)/725.24))
-            else:
-                newAngle = math.degrees(np.arctan((newAngle-319.5)/725.24))
+            newAngle = -.00000021000348518549*newAngle**3 + .000197285560199453*newAngle**2 + .0854187551642605*newAngle - 40.4349555736021
+	    #if newAngle <= 319:
+            #	newAngle = -math.degrees(np.arctan((319.5-newAngle)/297.73))
+            #else:
+            #	newAngle = math.degrees(np.arctan((newAngle-319.5)/297.73))
             print("new angle:", newAngle)
             # Might want to change to adust number of measurements to change weights
-            fWeight = 0.09
+            fWeight = 0.12
+	    stdev = 10
 
             for i in range(len(self.particleMat)):
                 angle = int(round(i*self.i_to_angle))
@@ -73,7 +75,7 @@ class ParticleFilter():
                     (1-fWeight)*self.particleMat[i]
         else:
             fWeight = 0.3
-	    stdev = 65
+	    stdev = 40
             for i in range(1, len(self.particleMat)+1):
                 diff = math.fabs(newAngle-i)
                 gaussDelta = math.e**(-diff*diff / (2 * stdev**2)) * \
