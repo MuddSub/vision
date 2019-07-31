@@ -45,7 +45,7 @@ class ParticleFilter():
     def addTask(self):
         pass
 
-    def update(self, newAngle, stdev=50, mode = 'gate'):
+    def update(self, newAngle, stdev=50,target = 'gate'):
         '''
         data will be the input data in angles, most likely one single input and error in angle. 
         angle might need adjustment to fit our coordinates.
@@ -62,8 +62,12 @@ class ParticleFilter():
             #	newAngle = math.degrees(np.arctan((newAngle-319.5)/297.73))
             print("new angle:", newAngle)
             # Might want to change to adust number of measurements to change weights
-            fWeight = 0.12
-	    stdev = 10
+	    if target == 'buoy':
+            	fWeight = 0.12
+	    	stdev = 10
+	    elif target == 'gate':
+		fWeight = 0.12
+		stdev = 10
 
             for i in range(len(self.particleMat)):
                 angle = int(round(i*self.i_to_angle))

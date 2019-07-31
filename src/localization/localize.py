@@ -48,12 +48,12 @@ class Localize:
 	def updateBuoy(self, buoyPos):
 		if len(buoyPos) == 0:
 			return
-		self.firstBuoyYaw.update(buoyPos[0][0])
-		self.firstBuoyHeave.update(buoyPos[0][1])
+		self.firstBuoyYaw.update(buoyPos[0][0], target='buoy')
+		self.firstBuoyHeave.update(buoyPos[0][1], target='buoy')
 
 		if len(buoyPos) == 2:
-			self.secondBuoyYaw.update(buoyPos[1][0])
-			self.secondBuoyYaw.update(buoyPos[1][1])				
+			self.secondBuoyYaw.update(buoyPos[1][0], target='buoy')
+			self.secondBuoyHeave.update(buoyPos[1][1], target='buoy')				
 
 		msg = buoy()
 		
@@ -68,11 +68,11 @@ class Localize:
 	#gatePos = [left, div, right]
 	def updateGate(self, gatePos):
 		if(gatePos[0] is not None):
-			self.gateLeft.update(gatePos[0])
+			self.gateLeft.update(gatePos[0], target='gate')
 		if(gatePos[1] is not None):
-				self.gateDiv.update(gatePos[1])
+				self.gateDiv.update(gatePos[1], target='gate')
 		if(gatePos[2] is not None):
-				self.gateRight.update(gatePos[2])
+				self.gateRight.update(gatePos[2], target='gate')
 		
 		
 		msg = gate()

@@ -297,8 +297,7 @@ class Buoy:
         return new_image
 
     def boundingRectangle(self,original,thresh):
-        contours,h = cv2.findContours(thresh,1,2)
-
+        _,contours,h = cv2.findContours(thresh,1,2)
         leeway = 40
         #print("hi")
         cntsSorted = sorted(contours, key=lambda x: cv2.contourArea(x))
@@ -411,7 +410,7 @@ class Buoy:
         boxList = []
 
         x1,y1 = self.boundingRectangle(o1,newImg1)
-        cv2.imshow("binarization1", newImg1)
+        #cv2.imshow("binarization1", newImg1)
         x2,y2 = self.boundingRectangle(o1,newImg1)
         if x1 != -1:
             boxList.append([x1,y1])
@@ -419,12 +418,16 @@ class Buoy:
             boxList.append([x2,y2])
         self.resultImg = o1
         self.segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
-        cv2.imshow("alpha", segmented)
+        #cv2.imshow("alpha", segmented)
         #cv2.imshow("background subtraction", redSpace)
+        end_time = time.time()
+        #cv2.imshow("result", o1)
+        #cv2.waitKey(0)
+        #cv2.destroyAllWindows()
         print(time.time()-start_time)
-        cv2.imshow("result", o1)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+        #cv2.imshow("result", o1)
+        #cv2.waitKey(0)
+        #cv2.destroyAllWindows()
         return boxList
 
 ####################################################
