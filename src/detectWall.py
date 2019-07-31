@@ -113,10 +113,10 @@ class Gate:
 
 
     def binarization(self,img):
-        img = cv2.GaussianBlur(img,(5,5),0)
+        img = cv2.GaussianBlur(img,(15,15),0)
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         #gray = cv2.bilateralFilter(gray,9,10,15)
-        thresh1 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 35, 2)
+        thresh1 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 25, 2)
         #ret, thresh1 = cv2.threshold(gray, 250, 255, cv2.THRESH_BINARY_INV)
 
         thresh1 = cv2.bitwise_not(thresh1)
@@ -261,11 +261,14 @@ class Gate:
         return original
 
 
-    def segment(self,image):
+    def segment(self,image,mode):
         mdpt = (int)(image.shape[0]/2)
-        striph = 50
-        return image[mdpt - striph: mdpt + striph, :]
-
+        striph = 100
+        if mode == 'r':
+            print("hi")
+            return image[:,-striph: -1]
+        elif mode == 'l':
+            return image[:,0:striph]
 
     def adjust(self,image):
         alphah = 2
@@ -293,9 +296,9 @@ class Gate:
 
 
     def adjustLAB(self,image):
-        alphah = 1
+        alphah = 3
         alphas = 0
-        alphav = 10
+        alphav = 0
 
         image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
         h, s, v = cv2.split(image)
@@ -383,14 +386,14 @@ class Gate:
 
 
 
-    def findBars(self,img):
+    def findBars(self,img,mode = 'l'):
         start_time = time.time()
         original = img
         origin = copy.deepcopy(original)
 
         out = original
 
-        segmented = self.segment(original)
+        segmented = self.segment(original,mode)
 
 
         segmented = self.adjustLAB(segmented)
@@ -408,41 +411,50 @@ class Gate:
 
         newImg1 = self.binarization(newImg)
         newImg1 = 255-newImg1
-        newImg1 = 255-newImg1
+        #newImg1 = 255-newImg1
 
         print(time.time()-start_time)
 
-        for i in range(1):
-            newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
-            newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
-        newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
-        newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations = 1)
-        newImg1 = cv2.erode(newImg1,np.ones((1,3)),iterations = 1)
+        #for i in range(1):
+        #    newImg1 = cv2.dilate(newImg1,np.ones((5,1)),iterations = 2)
+        #    newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
+        #newImg1 = cv2.erode(newImg1,np.ones((5,1)),iterations = 1)
+        #newImg1 = cv2.dilate(newImg1,np.ones((1,3)),iterations = 1)
+        #newImg1 = cv2.erode(newImg1,np.ones((1,3)),iterations = 1)
 
-        print(time.time()-start_time)
-        lineLocs,numDetected = self.rotateGetLines(newImg1,False)
-        print("Total: "+str(time.time()-start_time))
+        #print(time.time()-start_time)
+        #lineLocs,numDetected = self.rotateGetLines(newImg1,False)
+        #print("Total: "+str(time.time()-start_time))
+        s = sum(sum(newImg1))
+        print(s)
+        #print(sum(sum(newImg1)))
+        if s > 10000:
+            print("Wall")
+            #return True
+        else:
+            print("No Wall")
+            #return False
+        #lineLocs = []
 
-
-        out = self.plotLines(lineLocs, out)
+        #out = self.plotLines(lineLocs, out)
         cv2.imshow("original",origin)
         cv2.imshow("alpha", segmented)
         cv2.imshow("binarization", newImg1)
         cv2.imshow("result",out)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
-        if len(lineLocs)==0:
-            return out, None,None,None,0
-        if len(lineLocs)==1:
-            return out, None,None,None,0
-        if len(lineLocs)==2:
-            return out, lineLocs[0],None,lineLocs[1],0
+        #if len(lineLocs)==0:
+        #    return out, None,None,None,0
+        #if len(lineLocs)==1:
+        #    return out, None,None,None,0
+        #if len(lineLocs)==2:
+        #    return out, lineLocs[0],None,lineLocs[1],0
 
-        if len(lineLocs)==3:
-            if lineLocs[1]-lineLocs[0]>lineLocs[2]-lineLocs[1]:
-                return out, lineLocs[0],lineLocs[1],lineLocs[2], 1
-            else:
-                return out, lineLocs[0],lineLocs[1],lineLocs[2], 2
+        #if len(lineLocs)==3:
+        #    if lineLocs[1]-lineLocs[0]>lineLocs[2]-lineLocs[1]:
+        #        return out, lineLocs[0],lineLocs[1],lineLocs[2], 1
+        #    else:
+        #        return out, lineLocs[0],lineLocs[1],lineLocs[2], 2
 
 def main():
     a = Gate()

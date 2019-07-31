@@ -16,10 +16,12 @@ class Buoy:
     ################################
     # helpers and driver
     ################################
-    
+
     def __init__(self):
         self.resultImg = None
 
+    def getResultImg(self):
+        return self.resultImg
 
     def show(self,img, msg="image", ana=True):
         cv2.imshow(msg, img)
@@ -39,16 +41,16 @@ class Buoy:
     def openFile(self,name, path1):
         #"/Users/rongk/Downloads/test.jpg"):
         if name == "d":
-            path0 = "/home/dhyang/Desktop/Vision/vision/Images/buoy/"
+            path0 = "/home/dhyang/Desktop/Vision/vision/Images/buoyComp/"
         #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
         #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
         else:
             path0 = "/Users/rongk/Downloads/visionCode/Vision/bins/"
         path2 = ".jpg"
-        path = path0+str(path1)+path2
+        path = path0+path1+path2
         img = cv2.imread(path)
         print(path)
-        img = cv2.resize(img, (500,500))
+        #img = cv2.resize(img, (500,500))
         return img
 
 
@@ -192,9 +194,9 @@ class Buoy:
 
 
     def adjust(self,image):
-        alphah = 0
-        alphas = 0.5
-        alphav = 0.5
+        alphah = 8
+        alphas = 8
+        alphav = 8
 
         h, s, v = cv2.split(image)
         new_image = np.zeros(image.shape, image.dtype)
@@ -217,9 +219,9 @@ class Buoy:
         return new_image
 
     def adjust1(self,image):
-        alphah = 5
-        alphas = 5
-        alphav = 5
+        alphah = 8
+        alphas = 8
+        alphav = 8
 
         h, s, v = cv2.split(image)
         new_image = np.zeros(image.shape, image.dtype)
@@ -295,30 +297,40 @@ class Buoy:
         return new_image
 
     def boundingRectangle(self,original,thresh):
-        _,contours,h = cv2.findContours(thresh,1,2)
-        leeway = 80
+        contours,h = cv2.findContours(thresh,1,2)
+
+        leeway = 40
+        #print("hi")
         cntsSorted = sorted(contours, key=lambda x: cv2.contourArea(x))
         for cnt in np.flip(cntsSorted):
             rect = cv2.minAreaRect(cnt)
             box = cv2.boxPoints(rect)
             box = np.int0(box)
             area = cv2.contourArea(cnt)
-            if area > 10000 or area < 400:
+            if area > 100000 or area <800:
+                continue
+            if abs(box[3][0]-box[1][0])>5*abs(box[3][1]-box[1][1]):
+                continue
+            if abs(box[3][0]-box[1][0])*5<abs(box[3][1]-box[1][1]):
                 continue
             cv2.drawContours(original,[box],0,(0,0,255))
-            center = int((box[0][0]+box[2][0])/2)
-            try:
+            center = int((box[3][0]+box[1][0])/2)
+            leeway = int(abs(box[3][0]-box[1][0])*0.75)
+            #print(box)
+            #leeway = 10
+
+            print(area)
+            if center-leeway > 0:
                 thresh[:,center-leeway:center]=255
-            except:
-                thresh[:,0:center]=0
-            try:
+            else:
+                thresh[:,0:center]=255
+            if center+leeway < thresh.shape[1]:
                 thresh[:,center:center+leeway]=255
-            except:
-                thresh[:,center:]=0
+            else:
+                thresh[:,center:]=255
             xcoord = center
-            ycoord = int((box[0][1]+box[2][1])/2)
+            ycoord = int((box[3][1]+box[1][1])/2)
             return xcoord,ycoord
-            break
         return -1,-1
 
     def fill(self,original,thresh):
@@ -337,7 +349,7 @@ class Buoy:
 
     def getMask(self,img):
         lower_green = np.array([0,0,0])
-        upper_green = np.array([255,255,200])
+        upper_green = np.array([255,255,240])
         mask = cv2.inRange(img, lower_green, upper_green)
         mask = cv2.bitwise_not(mask)
         return mask
@@ -350,12 +362,9 @@ class Buoy:
         im_floodfill_inv = cv2.bitwise_not(im_floodfill)
         im_out = img | im_floodfill_inv
         return im_out
-    
-    def getResultImg(self):
-        return self.resultImg
 
 
-    def findBuoys(self,img):
+    def mainImg(self,img):
         start_time = time.time()
         original = img
         origin = copy.deepcopy(original)
@@ -366,47 +375,56 @@ class Buoy:
 
         #original = reflect(original)
         segmented = self.adjust(original)
-        segmented = self.adjustYUV(segmented)
+        #segmented = self.adjustYUV(segmented)
         #segmented = adjust(segmented)
-        segmented = self.adjustHSV(segmented)
-        segmented = self.adjust1(segmented)
+        #segmented = self.adjustHSV(segmented)
+        #segmented = self.adjust1(segmented)
         #get mask
+        #tmp = sum(segmented)
+        #tmp[tmp>=360] = 0
+        #tmp[tmp < 350] = 255
+        #cv2.imshow("sjfs",tmp)
         mask = self.getMask(segmented)
         #cv2.imshow("mask",mask)
         #binarization
 
-        b,g,r = cv2.split(segmented)
-        newImg1 = r
+        #b,g,r = cv2.split(segmented)
+        #newImg1 = r
         #newImg1 = cv2.cvtColor(segmented, cv2.COLOR_BGR2GRAY)
 
         #cv2.imshow("before",newImg1)
-        newImg1 = self.binarization(newImg1)
-        newImg1 = cv2.morphologyEx(newImg1, cv2.MORPH_OPEN, np.ones((5,5)))
+        #newImg1 = self.binarization(newImg1)
 
         #cv2.imshow("after",newImg1)
         newImg1 = cv2.bitwise_not(mask)
+        #newImg1 = cv2.erode(newImg1,np.ones((10,5)),iterations=1)
+        #newImg1 = cv2.morphologyEx(newImg1, cv2.MORPH_OPEN, np.ones((5,5)))
 
         #newImg1 = floodfill(newImg1)
         #newImg1 = fill(o1,newImg1)
         #newImg1 = cv2.cvtColor(newImg1, cv2.COLOR_BGR2GRAY)
+        newImg1 = cv2.bitwise_not(newImg1)
+        newImg1 = np.pad(newImg1,((1,1),(1,1)),'constant')
+        newImg1 = cv2.bitwise_not(newImg1)
 
-        #cv2.imshow("binarization", newImg1)
+        cv2.imshow("binarization", newImg1)
         boxList = []
 
         x1,y1 = self.boundingRectangle(o1,newImg1)
+        cv2.imshow("binarization1", newImg1)
         x2,y2 = self.boundingRectangle(o1,newImg1)
         if x1 != -1:
             boxList.append([x1,y1])
         if x2!=-1:
             boxList.append([x2,y2])
-        self.segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
-        #cv2.imshow("alpha", segmented)
-        #cv2.imshow("background subtraction", redSpace)
-        end_time = time.time()
         self.resultImg = o1
-        #cv2.imshow("result", o1)
-        #cv2.waitKey(0)
-        #cv2.destroyAllWindows()
+        self.segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
+        cv2.imshow("alpha", segmented)
+        #cv2.imshow("background subtraction", redSpace)
+        print(time.time()-start_time)
+        cv2.imshow("result", o1)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
         return boxList
 
 ####################################################
@@ -416,7 +434,7 @@ class Buoy:
 
 def main():
     a = Buoy()
-    img = a.openFile(sys.argv[1], int(sys.argv[2]))
+    img = a.openFile(sys.argv[1], sys.argv[2])
     boxes = a.mainImg(img)
     print(boxes)
 

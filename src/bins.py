@@ -35,13 +35,13 @@ def show2(img, msg="image2", ana=True):
 def open(name, path1):
     #"/Users/rongk/Downloads/test.jpg"):
     if name == "d":
-        path0 = "/home/dhyang/Desktop/Vision/vision/Images/buoy/"
+        path0 = "/home/dhyang/Desktop/Vision/vision/Images/buoyComp/"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
     #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
     else:
         path0 = "/Users/rongk/Downloads/visionCode/Vision/bins/"
     path2 = ".jpg"
-    path = path0+str(path1)+path2
+    path = path0+path1+path2
     img = cv2.imread(path)
     print(path)
     img = cv2.resize(img, (0,0), fx=0.5, fy=0.5)
@@ -209,9 +209,9 @@ def adjust(image):
 
 def adjustYUV(image):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
-    alphah = 2
+    alphah = 3
     alphas = 0
-    alphav = 0
+    alphav = 3
 
     h, s, v = cv2.split(image)
     new_image = np.zeros(image.shape, image.dtype)
@@ -260,7 +260,7 @@ def fill(original,thresh):
 
 def getMask(img):
     lower_green = np.array([0,0,0])
-    upper_green = np.array([255,220,255])
+    upper_green = np.array([255,180,255])
     mask = cv2.inRange(img, lower_green, upper_green)
     mask = cv2.bitwise_not(mask)
     return mask
@@ -284,7 +284,7 @@ def mainImg(img):
 
     #cv2.imshow("original", origin)
 
-    #original = reflect(original)
+    original = reflect(original)
     show2(original, "filtered", False)
     segmented = adjustYUV(original)
     segmented = adjust(segmented)
@@ -317,7 +317,7 @@ def mainImg(img):
 
 
 def main():
-    img = open(sys.argv[1], int(sys.argv[2]))
+    img = open(sys.argv[1], sys.argv[2])
     mainImg(img)
     print("Vision Code")
 
