@@ -20,15 +20,21 @@ class Localize:
 		self.gateRightPos = [0,0]
 
 		
-		#buoy up/down left/right
-		self.buoyHeave = ParticleFilter()
-		self.buoyYaw = ParticleFilter()
+		#buoy up/down. First/second in terms of area
+		self.firstBuoyHeave = ParticleFilter(pixelPos = True)
+		self.firstBuoyYaw = ParticleFilter()
 		
-		self.buoyHeavePos = [0,0]
-		self.buoyYawPos = [0,0]
+		self.firstBuoyHeavePos = [0,0]
+		self.firstBuoyYawPos = [0,0]
+		
+
+		self.secondBuoyHeave = ParticleFilter(pixelPos = True)
+                self.secondBuoyYaw = ParticleFilter()
+
+                self.secondBuoyHeavePos = [0,0]
+                self.secondBuoyYawPos = [0,0]
 
 
-		
 		self.gateEnable = False
 		self.buoyEnable = False
 		
@@ -36,19 +42,27 @@ class Localize:
 		self.gatePub = rospy.Publisher("gateState", gate, queue_size=1)
 		
 		self.gateResetSub = rospy.Subscriber("gateReset", Bool, self.gateResetCB)
-
+		self.buoyResetSub = rospy.Subscriber("buoyReset", Bool, self.buoyResetCB)
 	
-	#buoyPos = [heave, yaw]
+	#buoyPos = [[yaw1,heave1], [yaw2,heave2]]
 	def updateBuoy(self, buoyPos):
-		if(buoyPos[0] is not None):
-			self.buoyHeave.update(buoyPos[0], pixelPos = True)
-		if(buoyPos[1] is not None):
-				self.buoyYaw.update(buoyPos[1])
-				
+		if len(buoyPos) == 0:
+			return
+		self.firstBuoyYaw.update(buoyPos[0][0])
+		self.firstBuoyHeave.update(buoyPos[0][1])
+
+		if len(buoyPos) == 2:
+			self.secondBuoyYaw.update(buoyPos[1][0])
+			self.secondBuoyYaw.update(buoyPos[1][1])				
+
 		msg = buoy()
 		
-		msg.yaw, msg.yawConf = self.buoyYaw.getPredictedState()
-		msg.heave, msg.heaveConf = self.buoyHeave.getPredictedState()
+		msg.firstYaw, msg.firstYawConf = self.firstBuoyYaw.getPredictedState()
+		msg.firstHeave, msg.firstHeaveConf = self.firstBuoyHeave.getPredictedState()
+
+		msg.secondYaw, msg.secondYawConf = self.secondBuoyYaw.getPredictedState()
+                msg.secondHeave, msg.secondHeaveConf = self.secondBuoyHeave.getPredictedState()
+
 		self.buoyPub.publish(msg)
 
 	#gatePos = [left, div, right]
@@ -69,11 +83,12 @@ class Localize:
 		self.gatePub.publish(msg)
 		
 	def gateResetCB(self, data):
-		rospy.loginfo("Gate reset CB")
 		self.gateLeft.resetWeights()
 		self.gateDiv.resetWeights()
 		self.gateRight.resetWeights()
 	
-		
-
-	
+	def buoyResetCB(self, data):
+		self.firstBuoyHeave.resetWeights()	
+		self.firstBuoyYaw.resetWeights()	
+		self.secondBuoyHeave.resetWeights()	
+		self.secondBuoyYaw.resetWeights()	

@@ -1,4 +1,8 @@
-float64 heave
-float64 heaveConf
-float64 yaw
-float64 yawConf
+float64 firstHeave
+float64 firstHeaveConf
+float64 firstYaw
+float64 firstYawConf
+float64 secondHeave
+float64 secondHeaveConf
+float64 secondYaw
+float64 secondYawConf

@@ -16,6 +16,9 @@ class Buoy:
     ################################
     # helpers and driver
     ################################
+    
+    def __init__(self):
+        self.resultImg = None
 
 
     def show(self,img, msg="image", ana=True):
@@ -292,7 +295,7 @@ class Buoy:
         return new_image
 
     def boundingRectangle(self,original,thresh):
-        contours,h = cv2.findContours(thresh,1,2)
+        _,contours,h = cv2.findContours(thresh,1,2)
         leeway = 80
         cntsSorted = sorted(contours, key=lambda x: cv2.contourArea(x))
         for cnt in np.flip(cntsSorted):
@@ -347,9 +350,12 @@ class Buoy:
         im_floodfill_inv = cv2.bitwise_not(im_floodfill)
         im_out = img | im_floodfill_inv
         return im_out
+    
+    def getResultImg(self):
+        return self.resultImg
 
 
-    def mainImg(self,img):
+    def findBuoys(self,img):
         start_time = time.time()
         original = img
         origin = copy.deepcopy(original)
@@ -366,7 +372,7 @@ class Buoy:
         segmented = self.adjust1(segmented)
         #get mask
         mask = self.getMask(segmented)
-        cv2.imshow("mask",mask)
+        #cv2.imshow("mask",mask)
         #binarization
 
         b,g,r = cv2.split(segmented)
@@ -384,7 +390,7 @@ class Buoy:
         #newImg1 = fill(o1,newImg1)
         #newImg1 = cv2.cvtColor(newImg1, cv2.COLOR_BGR2GRAY)
 
-        cv2.imshow("binarization", newImg1)
+        #cv2.imshow("binarization", newImg1)
         boxList = []
 
         x1,y1 = self.boundingRectangle(o1,newImg1)
@@ -394,12 +400,13 @@ class Buoy:
         if x2!=-1:
             boxList.append([x2,y2])
         self.segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
-        cv2.imshow("alpha", segmented)
+        #cv2.imshow("alpha", segmented)
         #cv2.imshow("background subtraction", redSpace)
         end_time = time.time()
-        cv2.imshow("result", o1)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+        self.resultImg = o1
+        #cv2.imshow("result", o1)
+        #cv2.waitKey(0)
+        #cv2.destroyAllWindows()
         return boxList
 
 ####################################################
