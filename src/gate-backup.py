@@ -16,7 +16,7 @@ class Gate:
     def openFile(self, name, path1):
         #"/Users/rongk/Downloads/test.jpg"):
         if name == "d":
-            path0 = "/home/dhyang/Desktop/Vision/vision/Images/compGate/frame"
+            path0 = "/home/dhyang/Desktop/Vision/vision/Images/Neural_Net/Train/"
             #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
 
         #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
@@ -295,7 +295,7 @@ class Gate:
     def adjustLAB(self,image):
         alphah = 1
         alphas = 0
-        alphav = 10
+        alphav = 5
 
         image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
         h, s, v = cv2.split(image)
@@ -311,7 +311,7 @@ class Gate:
         s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
         maximum = v.mean()
-        beta = 200-alphav*maximum  # Simple brightness control
+        beta = 127-alphav*maximum  # Simple brightness control
         v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
 
