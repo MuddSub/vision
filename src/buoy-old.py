@@ -16,7 +16,7 @@ class Buoy:
     ################################
     # helpers and driver
     ################################
-    
+
     def __init__(self):
         self.resultImg = None
 
@@ -39,15 +39,17 @@ class Buoy:
     def openFile(self,name, path1):
         #"/Users/rongk/Downloads/test.jpg"):
         if name == "d":
-            path0 = "/home/dhyang/Desktop/Vision/vision/Images/buoy/"
+            path0 = '/media/dhyang/Ubuntu 18_04_2 LTS amd64/images_real/frame'
+            #path0 = "/home/dhyang/Desktop/Vision/vision/Images/buoy/"
         #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
         #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
         else:
             path0 = "/Users/rongk/Downloads/visionCode/Vision/bins/"
         path2 = ".jpg"
-        path = path0+str(path1)+path2
-        img = cv2.imread(path)
+        path = path0+path1+path2
         print(path)
+        img = cv2.imread(path)
+        #print(path)
         img = cv2.resize(img, (500,500))
         return img
 
@@ -295,7 +297,7 @@ class Buoy:
         return new_image
 
     def boundingRectangle(self,original,thresh):
-        _,contours,h = cv2.findContours(thresh,1,2)
+        contours,h = cv2.findContours(thresh,1,2)
         leeway = 80
         cntsSorted = sorted(contours, key=lambda x: cv2.contourArea(x))
         for cnt in np.flip(cntsSorted):
@@ -350,12 +352,12 @@ class Buoy:
         im_floodfill_inv = cv2.bitwise_not(im_floodfill)
         im_out = img | im_floodfill_inv
         return im_out
-    
+
     def getResultImg(self):
         return self.resultImg
 
 
-    def findBuoys(self,img):
+    def mainImg(self,img):
         start_time = time.time()
         original = img
         origin = copy.deepcopy(original)
@@ -400,13 +402,13 @@ class Buoy:
         if x2!=-1:
             boxList.append([x2,y2])
         self.segmented = cv2.cvtColor(segmented, cv2.COLOR_HSV2RGB)
-        #cv2.imshow("alpha", segmented)
+        cv2.imshow("alpha", segmented)
         #cv2.imshow("background subtraction", redSpace)
         end_time = time.time()
         self.resultImg = o1
-        #cv2.imshow("result", o1)
-        #cv2.waitKey(0)
-        #cv2.destroyAllWindows()
+        cv2.imshow("result", o1)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
         return boxList
 
 ####################################################
@@ -416,7 +418,7 @@ class Buoy:
 
 def main():
     a = Buoy()
-    img = a.openFile(sys.argv[1], int(sys.argv[2]))
+    img = a.openFile(sys.argv[1], sys.argv[2])
     boxes = a.mainImg(img)
     print(boxes)
 

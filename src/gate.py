@@ -14,10 +14,13 @@ import time
 
 class Gate:
     def openFile(self, name, path1):
+
         #"/Users/rongk/Downloads/test.jpg"):
         if name == "d":
-            path0 = "/home/dhyang/Desktop/Vision/vision/Images/compGate/frame"
-            #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
+            #path0 = '/media/dhyang/4E10-86F1/images_real/frame'
+            #path0 = '/media/dhyang/Ubuntu 18_04_2 LTS amd64/images_real/frame'
+            path0 = "/home/dhyang/Desktop/Robotics/Vision/vision/Images/comp"
+            #path0 = "/home/dhyang/Desktop/Vision/vision/Images/Neural_Net/Train/"
 
         #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
         #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/03.jpg"
@@ -25,10 +28,14 @@ class Gate:
             path0 = "/Users/rongk/Downloads/visionCode/Vision/test2/"
         path = path0+path1
         print(path)
-        if os.path.isfile(path+'.jpg'):
-            img = cv2.imread(path+'.jpg')
-        else:
-            img = cv2.imread(path+'.png')
+
+        #if os.path.isfile(path+'.jpg'):
+        #    img = cv2.imread(path+'.jpg')
+        #else:
+        #    img = cv2.imread(path+'.png')
+
+        img = cv2.imread("/home/dhyang/Desktop/Robotics/Vision/vision/Images/comp/gate1.png")
+        img = cv2.resize(img,(640,480))
         return img
 
 
@@ -184,7 +191,7 @@ class Gate:
             r1 = tmp[1]-tmp[0]
             r2 = tmp[2]-tmp[1]
             r3 = tmp[2]-tmp[0]
-            if r3 > image.shape[1]/2:
+            if r3 > image.shape[1]*0.35:
                 if max(r1,r2)/min(r1,r2) < 2:
                     lineLocs=tmp
                     numDetected = 3
@@ -264,7 +271,7 @@ class Gate:
     def segment(self,image):
         mdpt = (int)(image.shape[0]/2)
         striph = 50
-        return image[mdpt - striph: mdpt + striph, :]
+        return image[mdpt - 2*striph: mdpt + striph, :]
 
 
     def adjust(self,image):
@@ -281,7 +288,7 @@ class Gate:
         h1 = cv2.convertScaleAbs(h, alpha=alphah, beta=beta)
 
         maximum = s.mean()
-        beta =127-alphas*maximum  # Simple brightness control
+        beta = 127-alphas*maximum  # Simple brightness control
         s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
         maximum = v.mean()
@@ -294,8 +301,8 @@ class Gate:
 
     def adjustLAB(self,image):
         alphah = 1
-        alphas = 0
-        alphav = 10
+        alphas = 1
+        alphav = 3
 
         image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
         h, s, v = cv2.split(image)
@@ -311,7 +318,7 @@ class Gate:
         s1 = cv2.convertScaleAbs(s, alpha=alphas, beta=beta)
 
         maximum = v.mean()
-        beta = 200-alphav*maximum  # Simple brightness control
+        beta = 127-alphav*maximum  # Simple brightness control
         v1 = cv2.convertScaleAbs(v, alpha=alphav, beta=beta)
 
 
@@ -400,7 +407,7 @@ class Gate:
 
         # Higher discernability = lower distinguishing power
 
-        discernability = 25
+        discernability = 55
 
         newImg = cv2.medianBlur(segmented, discernability)
         newImg = 255-cv2.absdiff(segmented, newImg)

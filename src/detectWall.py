@@ -16,7 +16,10 @@ class Gate:
     def openFile(self, name, path1):
         #"/Users/rongk/Downloads/test.jpg"):
         if name == "d":
-            path0 = "/home/dhyang/Desktop/Vision/vision/Images/compGate/frame"
+            path0 ='/media/dhyang/Ubuntu 18_04_2 LTS amd64/images_real/frame'
+            #path0 = "/media/dhyang/UBUNTU 18_04_2 LTS amd64/images_real/frame"
+            #path0 = "/home/dhyang/Desktop/Vision/vision/Images/compGate/frame"
+
             #path0 = "/home/dhyang/Desktop/Vision/Vision/Neural_Net/Train/"
 
         #path = "/Users/rongk/Downloads/Vision-master/Vision-master/RoboticsImages/images/training15.png"
@@ -29,6 +32,7 @@ class Gate:
             img = cv2.imread(path+'.jpg')
         else:
             img = cv2.imread(path+'.png')
+        img = cv2.resize(img,(640,480))
         return img
 
 
@@ -386,7 +390,7 @@ class Gate:
 
 
 
-    def findBars(self,img,mode = 'l'):
+    def findBars(self,img,mode = 'r'):
         start_time = time.time()
         original = img
         origin = copy.deepcopy(original)
